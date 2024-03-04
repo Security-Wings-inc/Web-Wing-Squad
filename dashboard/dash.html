@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home dash</title>
+    <link rel="stylesheet" href="../css/dash.css">
+</head>
+
+<body onload="main_home()">
+    <div class="main">
+
+        <div class="header" onmouseenter="dentro()" onmouseleave="fora()" id="header">
+
+            <div class="nav-bar" onclick="home()">
+                <button id="homeButton"> <img src="../assets/home-dash.png" alt="" ></button>
+
+                <button id="home" class="hide">Home</button>
+
+            </div>
+
+
+            <div class="nav-bar" onclick="game()">
+                <button id="gameButton"><img src="../assets/game.png" alt=""></button>
+
+                <button id="game" class="hide">Game</button>
+
+            </div>
+
+
+            <div class="nav-bar" onclick="stats()">
+                <button id="stastButton"> <img src="../assets/dash.png" alt=""></button>
+
+                <button id="dash" class="hide">Stats</button>
+
+            </div>
+
+            <div class="nav-bar" onclick="rank()">
+                <button id="rankButton"><img src="../assets/medalha.png" alt=""></button>
+
+                <button id="rank" class="hide">Ranking</button>
+
+            </div>
+
+            <div class="nav-bar hide" onclick="back()" id="backButton">
+                <button id="backButton"> <img src="../assets/return.png" alt=""></button>
+
+                <button id="dash">Voltar</button>
+
+            </div>
+
+        </div>
+
+        <div class="content-main" id="content">
+            <div class="titulo">
+                <h1>Bem vindo hooper</h1>
+                <div class="describe">
+                    <p>Tudo que você encotra aqui</p>
+                </div>
+            </div>
+
+            <div class="conteudo">
+                <div class="colunas">
+                    <div class="titulo">
+                        <h1>Quiz</h1>
+                    </div>
+                    <div class="describe">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima ipsam corrupti, velit quas
+                            porro eos quis sequi vel, nesciunt cupiditate vitae modi labore, quibusdam debitis.</p>
+                    </div>
+
+                </div>
+
+                <div class="colunas">
+                    <div class="titulo">
+                        <h1>Stats</h1>
+                    </div>
+                    <div class="describe">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima ipsam corrupti, velit quas
+                            porro eos quis sequi vel, nesciunt cupiditate vitae modi labore, quibusdam debitis.</p>
+                    </div>
+
+                </div>
+
+
+                <div class="colunas">
+                    <div class="titulo">
+                        <h1>Ranking</h1>
+                    </div>
+                    <div class="describe">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima ipsam corrupti, velit quas
+                            porro eos quis sequi vel, nesciunt cupiditate vitae modi labore, quibusdam debitis.</p>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+</body>
+
+</html>
+
+
+<script src="../scripts/hideAndshow.js"></script>

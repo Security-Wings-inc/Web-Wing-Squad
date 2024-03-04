@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rank</title>
+    <link rel="stylesheet" href="../css/rank.css">
+</head>
+
+<body>
+    <div class="main">
+
+        <div class="header" onmouseenter="dentro()" onmouseleave="fora()" id="header">
+
+            <div class="nav-bar" onclick="home()">
+                <button> <img src="../assets/home-dash.png" alt="" id="homeButton"></button>
+
+                <button id="home" class="hide">Home</button>
+
+            </div>
+
+
+            <div class="nav-bar" onclick="game()">
+                <button id="gameButton"><img src="../assets/game.png" alt=""></button>
+
+                <button id="game" class="hide">Game</button>
+
+            </div>
+
+
+            <div class="nav-bar" onclick="stats()">
+                <button id="stastButton"> <img src="../assets/dash.png" alt=""></button>
+
+                <button id="dash" class="hide">Stats</button>
+
+            </div>
+
+            <div class="nav-bar" onclick="rank()">
+                <button id="rankButton"><img src="../assets/medalha.png" alt=""></button>
+
+                <button id="rank" class="hide">Ranking</button>
+
+            </div>
+
+            <div class="nav-bar hide" onclick="back()" id="backButton">
+                <button id="backButton"> <img src="../assets/return.png" alt=""></button>
+
+                <button id="dash">Voltar</button>
+
+            </div>
+
+        </div>
+
+        <div class="content-rank">
+            <div class="columns" id="rankeado">
+
+
+                <div class="numbers">
+                    <p>1</p>
+                </div>
+
+                <div class="numbers">
+                    <p>2</p>
+                </div>
+
+                <div class="numbers">
+                    <p>3</p>
+                </div>
+
+                <div class="numbers">
+                    <p>4</p>
+                </div>
+
+
+                <div class="numbers">
+                    <p>5</p>
+                </div>
+
+            </div>
+
+            <div class="columns" id="nomes">
+                <div class="names">
+                    <p>Nome 1</p>
+                </div>
+
+                <div class="names">
+                    <p>Nome 2</p>
+                </div>
+
+                <div class="names">
+                    <p>Nome 3</p>
+                </div>
+
+                <div class="names">
+                    <p>Nome 4</p>
+                </div>
+
+                <div class="names">
+                    <p>Nome 5</p>
+                </div>
+            </div>
+
+            <div class="columns" id="score">
+                <div class="points">
+                    <p>X pontos</p>
+                </div>
+
+                <div class="points">
+                    <p>X pontos</p>
+                </div>
+
+                <div class="points">
+                    <p>X pontos</p>
+                </div>
+
+                <div class="points">
+                    <p>X pontos</p>
+                </div>
+
+                <div class="points">
+                    <p>X pontos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<script src="../scripts/hideAndshow.js"></script>

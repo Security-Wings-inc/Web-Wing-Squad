@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat";
+}
+
+.main {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid #454444;
+    width: 3.5rem;
+    height: 100vh;
+
+}
+
+.nav-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 12rem;
+    margin-top: 1rem;
+    transition: all 0.8s;
+
+
+
+
+}
+
+.nav-bar button {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 200;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    margin-top: 0.3rem;
+
+
+}
+
+
+
+.nav-bar:hover {
+    transform: scale(1.3);
+}
+
+.hide {
+    display: none;
+}
+
+.nav-bar img {
+    width: 2rem;
+    cursor: pointer;
+    transition: all 0.8s;
+
+
+}
+
+
+
+.content-main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 70rem;
+    height: 40rem;
+    margin-right: 10rem;
+    /* border: 1px solid #454444; */
+
+}
+
+.titulo {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin-top: 1rem;
+    text-align: center;
+    height: 6.5rem;
+
+    h1 {
+        font-weight: 200;
+        font-size: 3.5rem;
+
+    }
+
+
+}
+
+
+
+.describe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    p {
+        font-weight: 200;
+        font-size: 1.5rem;
+
+    }
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: row;
+    width: 70rem;
+    height: 30rem;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.colunas {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    width: 20rem;
+    height: 26rem;
+    margin-left: 1rem;
+    border: 1px solid #454444;
+
+    .describe {
+
+        display: flex;
+        margin-top: 0.5rem;
+
+    }
+
+    p {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 200
+    }
+
+    .titulo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+#backButton img{
+    width: 2rem;
+}
+
+
+#backButton{
+    width: 3rem;
+}
+
+#backButton button{
+    font-size: 1.1rem;
+}

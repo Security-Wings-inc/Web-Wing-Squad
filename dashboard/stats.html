@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats</title>
+    <link rel="stylesheet" href="../css/stats.css">
+</head>
+
+<body onload="main_stats()">
+    <div class="main">
+
+        <div class="header" onmouseenter="dentro()" onmouseleave="fora()" id="header">
+
+            <div class="nav-bar" onclick="home()">
+                <button> <img src="../assets/home-dash.png" alt="" id="homeButton"></button>
+
+                <button id="home" class="hide">Home</button>
+
+            </div>
+
+
+            <div class="nav-bar" onclick="game()">
+                <button id="gameButton"><img src="../assets/game.png" alt=""></button>
+
+                <button id="game" class="hide">Game</button>
+
+            </div>
+
+
+            <div class="nav-bar" onclick="stats()">
+                <button id="stastButton"> <img src="../assets/dash.png" alt=""></button>
+
+                <button id="dash" class="hide">Stats</button>
+
+            </div>
+
+            <div class="nav-bar" onclick="rank()">
+                <button id="rankButton"><img src="../assets/medalha.png" alt=""></button>
+
+                <button id="rank" class="hide">Ranking</button>
+
+            </div>
+
+            <div class="nav-bar hide" onclick="back()" id="backButton">
+                <button id="backButton"> <img src="../assets/return.png" alt=""></button>
+
+                <button id="dash">Voltar</button>
+
+            </div>
+
+        </div>
+      
+        <div class="content-stats">
+            <div class="square" id="green-square">
+
+                <div class="titulo">
+                    <h1 id="green">Green Ligth</h1>
+                </div>
+
+                <div class="describe">
+
+                    <p>Você acertou: X</p>
+                </div>
+
+                <div class="img">
+                    <img src="../assets/lista-de-controle.png" alt="">
+                </div>
+            </div>
+            <div class="square">
+
+                <div class="titulo">
+                    <h1 id="red">Air ball</h1>
+                </div>
+
+                <div class="describe">
+                    <p>Você errou: X</p>
+                </div>
+
+                <div class="img">
+                    <img src="../assets/cancelar.png" alt="">
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+</html>
+<script src="../scripts/hideAndshow.js"></script>

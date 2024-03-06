@@ -32,6 +32,14 @@
 
 }
 
+.Sub-Nav{
+    position: absolute;
+    display: none;
+    background-color: white;
+    width: 50%;
+    height: 25rem;
+}
+
 .input p {
     color: white;
     margin-bottom: 0.5rem;
@@ -90,3 +98,54 @@
 }
 
 
+@media only screen and (max-width: 1250px) {
+   
+    body{
+        background-color: black;
+    }
+
+    .nav-bar{
+        display: none;
+    }
+
+    .nav-bar-mobile{
+        background-color: white;
+        width: 35px;
+        height: 35px;
+        margin-right: 50px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-cadastro {
+        width: auto;
+        height: 100%;
+        background-color: black;
+        display: block;
+        justify-content: center;
+        align-items: center;
+    
+    }
+
+    .left-cadastro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        height: 35rem;
+        flex-direction: column;
+    
+    }
+
+    .rigth-cadastro {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: auto;
+        height: 30rem;
+        flex-direction: column;
+        margin-left:0 ;
+        box-shadow: 9px -6px 75px 10px rgba(255,255,255,0.26);
+    }
+
+  }

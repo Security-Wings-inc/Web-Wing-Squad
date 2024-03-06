@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -23,12 +23,19 @@
             <a href="./sobre.html">Sobre nós</a>
             <a href="./cadastro.html">Cadastro</a>
             <a href="./login.html">Login</a>
-
-
         </div>
+
+        <div id="imgHamburguerOpne" onclick="AbrirMenu()" class="nav-bar-mobile">
+            <img  src="./assets/Hamburguer-open.png" alt="">
+           </div>
 
     </div>
 
+    <div id="Sub-Nav" class="Sub-Nav">
+        <p> <a href="./sobre.html">Sobre nós</a></p>
+        <a href="./cadastro.html"><p>Cadastro</p></a>
+        <a href="./login.html"><p>Login</p></a>
+    </div>
 
     <div class="main-cadastro">
 
@@ -76,6 +83,8 @@
 
     </div>
 </body>
+
+<script src="./scripts/navbarMenuHamburguer.js"></script>
 
 </html>
 <script>

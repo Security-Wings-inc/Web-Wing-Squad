@@ -577,3 +577,19 @@ height: 100%;
 
 
     
+
+@media only screen and (max-width: 1250px) {
+
+    body { overflow-x: hidden; }
+
+    .header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 99.9%;
+        height: 10rem;
+        background-color: black;
+    }
+
+  }

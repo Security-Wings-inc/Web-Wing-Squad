@@ -115,7 +115,7 @@
 .button-edit-name {
     background-color: transparent;
     border: none;
-    justify-content: end;
+    justify-content: start;
     cursor: pointer;
 }
 

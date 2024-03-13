@@ -39,8 +39,6 @@
     transition: all 0.8s;
 
 
-
-
 }
 
 .nav-bar button {
@@ -104,19 +102,21 @@
 
 }
 
-
-
 .describe {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    justify-content: flex-start;
+}
 
-    p {
-        font-weight: 200;
-        font-size: 1.5rem;
+.name-user {
+    justify-content: flex-start;
+    margin: 10px 0 0 10px;
+}
 
-    }
+.button-edit-name {
+    background-color: transparent;
+    border: none;
+    justify-content: end;
+    cursor: pointer;
 }
 
 .conteudo {
@@ -133,7 +133,6 @@
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
-    align-items: center;
     width: 20rem;
     height: 26rem;
     margin-left: 1rem;
@@ -157,6 +156,17 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+    }
+
+    .photo-user-container {
+        gap: 30px;
+    }
+
+    .photo {
+        width: 80px;
+        height: 80px;
+        border-radius: 100px;
+        cursor: pointer;
     }
 
 }

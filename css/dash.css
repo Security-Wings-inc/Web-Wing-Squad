@@ -136,14 +136,19 @@
     width: 20rem;
     height: 26rem;
     margin-left: 1rem;
-    border: 1px solid #454444;
+    border: 1px solid white;
 
-    .describe {
+}
 
-        display: flex;
-        margin-top: 0.5rem;
+.describe {
+    border: 1px solid ;
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+    align-items: center;
+    justify-content: center;
 
-    }
+}
 
     p {
         color: white;
@@ -169,7 +174,7 @@
         cursor: pointer;
     }
 
-}
+
 
 #backButton img{
     width: 2rem;
@@ -182,4 +187,56 @@
 
 #backButton button{
     font-size: 1.1rem;
+}
+
+
+
+
+.entradas-user{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+        margin-top: 2rem;
+
+    h1{
+        color: white;
+        font-size: 1rem;
+        font-weight: 200;
+    }
+
+    input{
+        margin-top: 0.2rem;
+        height: 1.5rem;
+        text-align: center;
+        outline: none;
+
+    }
+
+}
+
+.entradas-user2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    margin-top:1rem;
+
+    h1{
+        color: white;
+        font-size: 1rem;
+        font-weight: 200;
+        margin-top: 0.2rem;
+    }
+
+
+    input{
+        margin-top: 0.2rem;
+        height: 1.5rem;
+        text-align: center;
+        outline: none;
+
+    }
+
 }

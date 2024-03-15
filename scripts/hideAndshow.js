@@ -58,7 +58,7 @@ const ocultarLetras = () => {
 
 const home = () => {
 
-    window.location = "./dash.html"
+    window.location = "./user.html"
 }
 
 const game = () => {

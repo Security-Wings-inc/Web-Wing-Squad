@@ -45,7 +45,7 @@
 .logo a {
     text-decoration: none;
     font-size: 2.5rem;
-    color: white;
+    color: #FFB510;
     font-weight: 250;
     margin-left: 3rem;
     transition: all 0.8s;
@@ -55,7 +55,7 @@
 .nav-bar a {
     text-decoration: none;
     font-size: 1.5rem;
-    color: white;
+    color: #FFB510;
     font-weight: 200;
     margin-right: 3.5rem;
     transition: all 0.8s;
@@ -120,12 +120,14 @@
 .titulo {
     display: flex;
     justify-content: center;
+    color: #FFB510;
+    margin-top: 3rem;
+
 
 }
 
 .titulo h1 {
     font-weight: 200;
-    color: white;
     font-size: 2.5rem;
 }
 

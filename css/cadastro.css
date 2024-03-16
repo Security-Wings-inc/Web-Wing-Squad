@@ -16,6 +16,8 @@
     width: 45rem;
     height: 35rem;
     flex-direction: column;
+    box-sizing: border-box;
+    margin-right: 8rem;
 
 }
 
@@ -25,10 +27,10 @@
     justify-content: center;
     align-items: center;
     width: 30rem;
-    height: 30rem;
+    height: fit-content;
     flex-direction: column;
-    margin-left: 2rem;
-    box-shadow: 9px -6px 75px 10px rgba(255,255,255,0.26);
+    margin: 20rem 0rem 20rem 0rem ;
+    box-shadow: 9px -6px 75px 10px #0D0D84;
 
 }
 
@@ -80,6 +82,7 @@
     font-weight: 200;
     transition: all 0.8s;
     cursor: pointer;
+    margin-bottom: 3rem;
 }
 
 .button-l-c button:hover{

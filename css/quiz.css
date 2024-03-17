@@ -75,8 +75,7 @@
 }
 
 
-
-.content-quiz {
+.container{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,131 +83,11 @@
     width: 70rem;
     height: 45rem;
     margin-right: 10rem;
-
-}
-
-.titulo {
-    display: flex;
-    flex-direction: column;
-    color: white;
-    margin-top: 1rem;
-    text-align: center;
-    height: 6.5rem;
-    justify-content: center;
-
-    h1 {
-        font-weight: 100;
-        font-size: 3.3rem;
-
-    }
-
+    border: 1px solid white;
 
 }
 
 
-
-.describe {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
-    p {
-        font-weight: 200;
-        font-size: 1.5rem;
-
-    }
-}
-
-
-.container-quiz {
-    display: flex;
-    flex-direction: column;
-    width: 40rem;
-    height: 30rem;
-    /* border: 1px solid #454444; */
-    align-items: center;
-    justify-content: center;
-
-    .titulo h1 {
-        font-size: 2.5rem;
-        font-weight: 200;
-    }
-
-    .describe p {
-        font-size: 1.7rem;
-        font-weight: 200;
-        color: white;
-    }
-}
-
-.respostas {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 30rem;
-    height: 15rem;
-    text-align: center;
-
-
-    button {
-        background-color: white;
-        border: none;
-        color: black;
-        margin-top: 1rem;
-        width: 18.5rem;
-        height: 2.2rem;
-        font-size: 1.25rem;
-        font-weight: 450;
-        cursor: pointer;
-        transition: all 0.8s;
-        border-radius: 0.2rem;
-    }
-}
-
-.respostas button:hover {
-
-    transform: scale(1.3);
-}
-
-.hide {
-    display: none;
-}
-
-
-.resultado{
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    flex-direction: column;
-    width: 25rem;
-    height: 20rem;
-    /* border: 1px solid #454444; */
-
-  
-}
-
-.button-show{
-display: flex;
-justify-content: center;
-align-items: center;
-width: 15rem;
-height: 4rem;
-button{
-    width: 10rem;
-    height: 2.5rem;
-    font-weight: 400;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.8s;
-}
-}
-
-.button-show button:hover{
-    transform: scale(1.2);
- 
-}
 
 
 #backButton img{

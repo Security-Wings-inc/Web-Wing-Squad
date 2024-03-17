@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stats</title>
+    <title>Admin</title>
+    <link rel="icon" href="/assets/logo-site.png">
+
     <link rel="stylesheet" href="../css/stats.css">
 </head>
 
@@ -14,7 +16,7 @@
         <div class="header" onmouseenter="dentro()" onmouseleave="fora()" id="header">
 
             <div class="nav-bar" onclick="home()">
-                <button> <img src="../assets/home-dash.png" alt="" id="homeButton"></button>
+                <button id="homeButton"> <img src="../assets/group.png" alt="" ></button>
 
                 <button id="home" class="hide">Usuário</button>
 
@@ -22,69 +24,63 @@
 
 
             <div class="nav-bar" onclick="game()">
-                <button id="gameButton"><img src="../assets/game.png" alt=""></button>
+                <button id="gameButton"><img src="../assets/dash.png" alt=""></button>
 
-                <button id="game" class="hide">Game</button>
+                <button id="game" class="hide">Dashboard</button>
 
             </div>
 
 
             <div class="nav-bar" onclick="stats()">
-                <button id="stastButton"> <img src="../assets/dash.png" alt=""></button>
+                <button id="stastButton"> <img src="../assets/admin.png" alt=""></button>
 
-                <button id="dash" class="hide">Stats</button>
-
-            </div>
-
-            <div class="nav-bar" onclick="rank()">
-                <button id="rankButton"><img src="../assets/medalha.png" alt=""></button>
-
-                <button id="rank" class="hide">Ranking</button>
+                <button id="dash" class="hide">Admin</button>
 
             </div>
+
+        
 
             <div class="nav-bar hide" onclick="back()" id="backButton">
                 <button id="backButton"> <img src="../assets/return.png" alt=""></button>
 
-                <button id="dash">Voltar</button>
+                <button id="dash">sair</button>
 
             </div>
 
         </div>
+
+
+
+        <div class="container">
+            <div class="titulo">
+                <h1>Entre com suas credenciais e tenha acesso à criação, remoção e alteração das permissões dos usuários</h1>            </div>
+
+            <div class="login-admin">
+
+                <div class="title-inp">
+                    <p>Username ou Email</p> 
+                </div>
+               
+                <input type="text" placeholder="username ou email">
+                
+                <div class="title-inp-down">
+                    <p>Senha</p> 
+                </div>
+
+                <input type="text" placeholder="senha">
+
+                <div class="btn-login-admin">
+
+                    <button>Login</button>
+                </div>
+
+            </div>
+
+
+        </div>
+
       
-        <div class="content-stats">
-            <div class="square" id="green-square">
-
-                <div class="titulo">
-                    <h1 id="green">Green Ligth</h1>
-                </div>
-
-                <div class="describe">
-
-                    <p>Você acertou: X</p>
-                </div>
-
-                <div class="img">
-                    <img src="../assets/lista-de-controle.png" alt="">
-                </div>
-            </div>
-            <div class="square">
-
-                <div class="titulo">
-                    <h1 id="red">Air ball</h1>
-                </div>
-
-                <div class="describe">
-                    <p>Você errou: X</p>
-                </div>
-
-                <div class="img">
-                    <img src="../assets/cancelar.png" alt="">
-                </div>
-
-
-            </div>
-        </div>
+      
 
 
     </div>

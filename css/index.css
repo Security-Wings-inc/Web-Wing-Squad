@@ -231,7 +231,11 @@
     background-color: black;
     justify-content: space-evenly;
     align-items: center;
-    border-top: 1px solid white;
+    border-top: 1px solid #FFB510;
+    a{
+        text-decoration: none;
+        color: white;
+    }
 }
 
 
@@ -245,6 +249,7 @@
    
     h1{
     font-weight: 300;
+    color: white;
 }
 }
 
@@ -260,6 +265,7 @@
         font-weight: 200;
     }
 
+        
     p{
         font-size: 1.4rem;
         justify-content: center;

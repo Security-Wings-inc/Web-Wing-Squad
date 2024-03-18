@@ -111,6 +111,11 @@
     display: flex;
     justify-content: flex-start;
     justify-content: space-between;
+    color: white;
+
+    button {
+        color: white;
+    }
 }
 
 .button-edit-name {

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>home</title>
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/cadastro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- Biblioteca dos icones do footer -->
 
@@ -25,12 +26,19 @@
             <a href="./sobre.html">Sobre nós</a>
             <a href="./cadastro.html">Cadastro</a>
             <a href="./login.html">Login</a>
+        </div>
 
-
+        <div id="imgHamburguerOpne" onclick="AbrirMenu()" class="nav-bar-mobile">
+            <img  src="./assets/Hamburguer-open.png" alt="">
         </div>
 
     </div>
 
+    <div id="Sub-Nav" class="Sub-Nav">
+        <p> <a href="./sobre.html">Sobre nós</a></p>
+        <p> <a href="./cadastro.html">Cadastro</a></p>
+        <p> <a href="./login.html"><p>Login</a></p>
+    </div>
 
     <div class="main">
 
@@ -131,3 +139,5 @@
 
     </body>
 
+    <script src="./scripts/navbarMenuHamburguer.js"></script>
+</html>

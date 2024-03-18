@@ -41,7 +41,6 @@ const exibirLetras = () => {
     $home.classList.remove("hide");
     $game.classList.remove("hide");
     $dash.classList.remove("hide");
-    $rank.classList.remove("hide");
     $buttonback.classList.remove("hide");
 }
 
@@ -50,7 +49,6 @@ const ocultarLetras = () => {
     $home.classList.add("hide");
     $game.classList.add("hide");
     $dash.classList.add("hide");
-    $rank.classList.add("hide");
     $buttonback.classList.add("hide")
 
 }
@@ -75,10 +73,7 @@ const stats = () => {
 
 }
 
-const rank = () => {
-    window.location = "./rank.html"
 
-}
 
 const back = () =>{
     window.location = "../index.html"
@@ -111,12 +106,5 @@ const main_stats = () => {
 
 }
 
-const main_rank = () => {
 
-    $rank.style.borderBottom = '1px solid white'
-    $game.style.borderBottom = '0px'
-    $home.style.borderBottom = '0px'
-    $dash.style.borderBottom = '0px'
-
-}
 

@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
+    <title>Dashboards</title>
     <link rel="stylesheet" href="../css/quiz.css">
+    <link rel="icon" href="/assets/logo-site.png">
+
 </head>
 
 <body onload="main_game()">
@@ -14,7 +16,7 @@
         <div class="header" onmouseenter="dentro()" onmouseleave="fora()" id="header">
 
             <div class="nav-bar" onclick="home()">
-                <button> <img src="../assets/home-dash.png" alt="" id="homeButton"></button>
+                <button id="homeButton"> <img src="../assets/group.png" alt=""></button>
 
                 <button id="home" class="hide">Usuário</button>
 
@@ -22,260 +24,43 @@
 
 
             <div class="nav-bar" onclick="game()">
-                <button id="gameButton"><img src="../assets/game.png" alt=""></button>
+                <button id="gameButton"><img src="../assets/dash.png" alt=""></button>
 
-                <button id="game" class="hide">Game</button>
+                <button id="game" class="hide">Dashboard</button>
 
             </div>
 
 
             <div class="nav-bar" onclick="stats()">
-                <button id="stastButton"> <img src="../assets/dash.png" alt=""></button>
+                <button id="stastButton"> <img src="../assets/admin.png" alt=""></button>
 
-                <button id="dash" class="hide">Stats</button>
-
-            </div>
-
-            <div class="nav-bar" onclick="rank()">
-                <button id="rankButton"><img src="../assets/medalha.png" alt=""></button>
-
-                <button id="rank" class="hide">Ranking</button>
+                <button id="dash" class="hide">Admin</button>
 
             </div>
-          
+
+
+
             <div class="nav-bar hide" onclick="back()" id="backButton">
                 <button id="backButton"> <img src="../assets/return.png" alt=""></button>
 
-                <button id="dash">Voltar</button>
-
-            </div>
-
-        </div>
-
-        <div class="content-quiz">
-            <div class="titulo">
-                <h1>Game Arena</h1>
-            </div>
-
-            <div class="container-quiz" id="pergunta1">
-                <div class="titulo">
-                    <h1>Pergunta 1</h1>
-                </div>
-
-                <div class="describe">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat laboriosam ipsa harum ipsum, ad
-                        vel itaque, temporibus nobis hic fugiat, vero explicabo architecto error in.</p>
-                </div>
-
-                <div class="respostas">
-                    <button onclick="certo()">Certo</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                </div>
-
-            </div>
-
-            <div class="container-quiz hide" id="pergunta2">
-                <div class="titulo">
-                    <h1>Pergunta 2</h1>
-                </div>
-
-                <div class="describe">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat laboriosam ipsa harum ipsum, ad
-                        vel itaque, temporibus nobis hic fugiat, vero explicabo architecto error in.</p>
-                </div>
-
-                <div class="respostas">
-                    <button onclick="certo()">Certo</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                </div>
-
-            </div>
-
-
-            <div class="container-quiz hide" id="pergunta3">
-                <div class="titulo">
-                    <h1>Pergunta 3</h1>
-                </div>
-
-                <div class="describe">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat laboriosam ipsa harum ipsum, ad
-                        vel itaque, temporibus nobis hic fugiat, vero explicabo architecto error in.</p>
-                </div>
-
-                <div class="respostas">
-                    <button onclick="certo()">Certo</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                </div>
-
-            </div>
-
-
-            <div class="container-quiz hide" id="pergunta4">
-                <div class="titulo">
-                    <h1>Pergunta 4</h1>
-                </div>
-
-                <div class="describe">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat laboriosam ipsa harum ipsum, ad
-                        vel itaque, temporibus nobis hic fugiat, vero explicabo architecto error in.</p>
-                </div>
-
-                <div class="respostas">
-                    <button onclick="certo()">Certo</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                </div>
-
-            </div>
-
-
-            <div class="container-quiz hide" id="pergunta5">
-                <div class="titulo">
-                    <h1>Pergunta 5</h1>
-                </div>
-
-                <div class="describe">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat laboriosam ipsa harum ipsum, ad
-                        vel itaque, temporibus nobis hic fugiat, vero explicabo architecto error in.</p>
-                </div>
-
-                <div class="respostas">
-                    <button onclick="certo()">Certo</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                </div>
-
-            </div>
-
-            <div class="container-quiz hide" id="pergunta6">
-                <div class="titulo">
-                    <h1>Pergunta 6</h1>
-                </div>
-
-                <div class="describe">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat laboriosam ipsa harum ipsum, ad
-                        vel itaque, temporibus nobis hic fugiat, vero explicabo architecto error in.</p>
-                </div>
-
-                <div class="respostas">
-                    <button onclick="certo()">Certo</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                </div>
-
-            </div>
-
-
-            <div class="container-quiz hide" id="pergunta7">
-                <div class="titulo">
-                    <h1>Pergunta 7</h1>
-                </div>
-
-                <div class="describe">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat laboriosam ipsa harum ipsum, ad
-                        vel itaque, temporibus nobis hic fugiat, vero explicabo architecto error in.</p>
-                </div>
-
-                <div class="respostas">
-                    <button onclick="certo()">Certo</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                </div>
-
-            </div>
-
-
-
-            <div class="container-quiz hide" id="pergunta8">
-                <div class="titulo">
-                    <h1>Pergunta 8</h1>
-                </div>
-
-                <div class="describe">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat laboriosam ipsa harum ipsum, ad
-                        vel itaque, temporibus nobis hic fugiat, vero explicabo architecto error in.</p>
-                </div>
-
-                <div class="respostas">
-                    <button onclick="certo()">Certo</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                </div>
-
-            </div>
-
-
-            <div class="container-quiz hide" id="pergunta9">
-                <div class="titulo">
-                    <h1>Pergunta 9</h1>
-                </div>
-
-                <div class="describe">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat laboriosam ipsa harum ipsum, ad
-                        vel itaque, temporibus nobis hic fugiat, vero explicabo architecto error in.</p>
-                </div>
-
-                <div class="respostas">
-                    <button onclick="certo()">Certo</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                </div>
-
-            </div>
-
-
-            <div class="container-quiz hide" id="pergunta10">
-                <div class="titulo">
-                    <h1>Pergunta 10</h1>
-                </div>
-
-                <div class="describe">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat laboriosam ipsa harum ipsum, ad
-                        vel itaque, temporibus nobis hic fugiat, vero explicabo architecto error in.</p>
-                </div>
-
-                <div class="respostas">
-                    <button onclick="certo()">Certo</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                    <button onclick="errado()">Errado</button>
-                </div>
-
-            </div>
-
-            <div class="container-quiz hide" id="div-resultado">
-                <div class="resultado">
-                    <div class="titulo">
-                        <h1>Pressione o botão e veja seus Stats</h1>
-                    </div>
-                    <div class="button-show">
-                        <button onclick="stats()">Veja seus stats</button>
-                    </div>
-
-                </div>
+                <button id="dash">sair</button>
 
             </div>
 
         </div>
 
 
+        <div class="container"></div>
 
 
-    </div>
 
 
+
+
+
+
+
+</div>
 
 
 </body>

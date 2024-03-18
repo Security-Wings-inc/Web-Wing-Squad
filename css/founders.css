@@ -33,7 +33,7 @@ height: 22rem;
 .box-founder{
     display: flex;
     flex-direction: column;
-    border-radius: 5px;
+    border-radius: 2px;
     align-items: center;
     width: 50rem;
     height: 22rem;

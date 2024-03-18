@@ -76,80 +76,125 @@
 
 
 
-.content-stats {
+.container{
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     width: 70rem;
-    height: 30rem;
+    height: 45rem;
     margin-right: 10rem;
+
 }
 
 
-
-
-.hide {
-    display: none;
-}
-
-.square {
+.titulo{
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 30rem;
-    height: 30rem;
-    margin-left: 2rem;
-
-
-}
-
-.titulo {
-    display: flex;
-    flex-direction: column;
-    color: white;
-    font-size: 2.5rem;
     text-align: center;
 
-    h1 {
+    h1{
+        color: white;
+        font-size: 2.5rem;
         font-weight: 200;
+        text-align: center;
     }
 
-    #green {
-        color: green;
+
+}
+
+.login-admin{
+    width: 25rem;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    box-shadow: 18px 3px 80px -18px rgba(255,255,255,1);
+
+
+
+    input{
+text-align: center;
+height: 2rem;
+width: 20rem;
     }
 
-    #red {
-        color: red;
+}
+
+
+
+#backButton img{
+    width: 2rem;
+}
+
+
+#backButton{
+    width: 3rem;
+}
+
+#backButton button{
+    font-size: 1.1rem;
+}
+
+.title-inp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    p{
+        color: white;
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+       
+       
     }
 }
 
-.img {
+
+.title-inp-down{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    p{
+        color: white;
+        font-size: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 0.5rem;
+      
+    }
+}
+
+
+.btn-login-admin{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 10rem;
+    height: 5rem;
     margin-top: 2rem;
 
-    img {
-        width: 5rem;
+    button{
+        background-color: black;
+        border: none;
+        outline: none;
+        color: white;
+        font-size: 2rem;
+        font-weight: 200;
+        transition: all 0.8s;
     }
 }
 
 
-.describe {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin-top: 2.5rem;
-
-    p {
-        font-weight: 200;
-        font-size: 1.5rem;
-        color: white;
-
-    }
+.btn-login-admin button:hover{
+ 
+    transform: scale(1.5);
 }
 
 

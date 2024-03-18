@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="icon" href="/assets/logo-site.png">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/cadastro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
@@ -14,8 +17,8 @@
 
 
         <div class="logo">
-            <img src="./assets/ball.svg" alt="">
-            <a href="./index.html">Hooper World</a>
+            <img src="./assets/logo-site.png" alt="" style="width: 70px;">
+            <a href="./index.html">Cyberwatch</a>
         </div>
 
 
@@ -25,16 +28,19 @@
             <a href="./login.html">Login</a>
         </div>
 
-        <div id="imgHamburguerOpne" onclick="AbrirMenu()" class="nav-bar-mobile">
-            <img  src="./assets/Hamburguer-open.png" alt="">
-           </div>
+
+        </div>
 
     </div>
 
     <div id="Sub-Nav" class="Sub-Nav">
         <p> <a href="./sobre.html">Sobre nós</a></p>
-        <a href="./cadastro.html"><p>Cadastro</p></a>
-        <a href="./login.html"><p>Login</p></a>
+        <a href="./cadastro.html">
+            <p>Cadastro</p>
+        </a>
+        <a href="./login.html">
+            <p>Login</p>
+        </a>
     </div>
 
     <div class="main-cadastro">
@@ -82,6 +88,33 @@
     </div>
 
     </div>
+
+    <div class="footer">
+
+        <div class="colunas">
+            <h1>Social Midia</h1>
+            <div class="container-footer-in-row">
+                <i class="fa fa-instagram"></i>
+                <i class="fa fa-github"></i>
+                <i class="fa  fa-envelope"></i>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="colunas">
+            <h1>Founders </h1>
+            <div class="container-footer-in-row">
+                <p><a href="./founders.html">Conheça nossos fundadores</a></p>
+            </div>
+
+        </div>
+
+
+
+    </div>
 </body>
 
 <script src="./scripts/navbarMenuHamburguer.js"></script>
@@ -92,9 +125,9 @@
 
         var $email = document.getElementById("email").value
         var $senha = document.getElementById("senha").value
-        
-        
-        if($email == 123 && $senha == 123){
+
+
+        if ($email == 123 && $senha == 123) {
             window.location = "././dashboard/user.html"
 
         }

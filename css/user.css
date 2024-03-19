@@ -9,7 +9,7 @@
 .main {
     display: flex;
     width: 100vw;
-    height: 100vh;
+    height: fit-content;
     background-color: black;
     align-items: center;
     justify-content: space-between;
@@ -126,7 +126,7 @@
 }
 
 .conteudo {
-    margin-top: 2.5rem;
+    /* margin-top: 2.5rem; */
     display: flex;
     flex-direction: row;
     width: 70rem;

@@ -1,0 +1,169 @@
+.historia{
+    width: 100%;
+    display: flex;
+    height: 800px;
+}
+
+.imgHistoria{
+    width: 75%;
+    margin: auto;
+}
+
+.img1{
+    position: absolute;
+    top: 50px;
+    left: -100px;
+}
+
+.img2RetanguloHistoria{
+    top: 0;
+}
+
+.Integrantes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.linha1{
+    display: flex;
+}
+
+.linha2{
+    display: flex;
+}
+
+.h1Fundadores{
+    text-align: center;
+}
+
+.Integrante{
+    width: 332px;
+    height: 250px;
+    background-color: #A1DCE9;
+    margin: 50px;
+    border-radius: 25px;
+    align-items: center;
+    justify-content: center;
+}
+.ClasAbsoluteIntegrante{
+display: flex;
+justify-content: center;
+align-items: center;
+height: 250px;
+}
+
+.h1Fundadores{
+font-family: Viga;
+color: #176B87;
+font-size: 64px;
+}
+
+.imgAbsoluteFonder{
+    margin-left: -100px;
+}
+
+.textFonders{
+    margin-left: 30px;
+}
+
+.h1Founder{
+font-family: Viga;
+color: #176B87;
+font-size: 30px;
+}
+
+.PFounders{
+color: #176B87;
+font-family: Yaldevi;
+font-size: 24px;
+}
+
+.historiaMobal{
+    display: none;
+}
+
+@media only screen and (max-width: 1050px) {
+
+    .img1{
+        display: none;
+    }
+
+    .img2RetanguloHistoria{
+        display: none;
+    }
+
+    .historia{
+        display: none;
+    }
+
+    .historiaMobal{
+        margin-top: 20px;
+        margin-bottom: 50px;
+        display: block;
+        width: 100%;
+        height: 500px;
+        background-color: #176B87;
+    }
+
+
+
+    
+
+
+
+    .Integrantes{
+        display: block;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin: auto;
+        width:100% ;
+    }
+    
+    .linha1{
+        display: block;
+    }
+    
+    .linha2{
+        display: block;
+    }
+    
+    .h1Fundadores{
+        text-align: center;
+    }
+    
+    .Integrante{
+        width: 300px;
+        height: 250px;
+        background-color: #A1DCE9;
+        margin: 50px;
+        border-radius: 25px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ClasAbsoluteIntegrante{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    }
+
+    .imgAbsoluteFonder{
+        margin-left: -30px;
+    }
+    
+    .textFonders{
+        margin-left: 30px;
+    }
+
+    .h1Fundadores{
+        font-family: Viga;
+        color: #176B87;
+        font-size: 50px;
+        }
+}

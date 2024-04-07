@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
+
+.background-cadastro{
+    width: 100%;
+    height: 250vh;
+    background-image: url(../assets/imgs/image\ 2.png);
+    background-repeat: none;
+    background-size: cover;
+    background-position: 50%;
+}
+
+.container-cadastro{
+    width: 75%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box-cadastro{
+    width: 80%;
+    height: 90%;
+
+    border-radius: 75px;
+    background-color: #E0F6F9;
+}
+.logo-box-cadastro{
+    width: 100%;
+    height: 10rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+.logo-box-cadastro img{
+    width: 10rem;
+}
+.form-cadastro{
+    width: 100%;
+    height: 90%;
+    border: red 2px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.form-cadastro h1{
+    font-family: "Viga", sans-serif;
+    color: #176B87;
+    font-size: 4rem;
+    font-weight: 200;
+
+    margin: 20px;
+}
+.form-cadastro input{
+    margin: 30px;
+    width: 65%;
+    height: 2.5rem;
+    padding: 25px;
+
+    border-radius: 50px;
+    border: #A1DCE9 2px solid;
+    font-size: 25px;
+    align-items: center;
+}
+.form-cadastro input::placeholder{
+    color: #176B87;
+    
+    font-family: "Yaldevi", sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+
+}
+.form-cadastro button{
+    width: 70%;
+    height: 5rem;
+    
+    border: none;
+    border-radius: 50px;
+    background-color: #176B87;
+
+    color: white;
+
+    font-family: "Viga", sans-serif;
+    font-weight: 500;
+    font-size: 25px;
+}

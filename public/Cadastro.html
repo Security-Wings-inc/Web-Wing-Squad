@@ -106,50 +106,68 @@
 
 <script>
 
-    function cadastrar() {
-        var nomeVar = nomeIpt.value;
-        var sobrenomeVar = sobreNomeIpt.value;
-        var nomeEmpresa = nomeEmpresaIpt.value;
-        var cnpjVar = cnpjIpt.value;
-        var emailVar = emailIpt.value;
-        var senhaVar = senhaIpt.value;
-        var senhaConfirmVar = senhaConfirm.value;
+function verificarNumeros(nome, sobrenome) {
+    const regexNumeros = /\d/;
+    return regexNumeros.test(nome) || regexNumeros.test(sobrenome);
+}
 
-        console.log("entrando no fetch")
+function verificarFormatoEmail(email) {
+    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regexEmail.test(email);
+}
 
+function verificarCNPJ(cnpj) {
+    cnpj = cnpj.replace(/\D/g,'');
+    return cnpj.length === 14;
+}
 
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                nomeServer: nomeVar,
-                sobrenomeServer: sobrenomeVar,
-                nomeEmpresaServer: nomeEmpresa,
-                cnpjServer: cnpjVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar
+var nomeVar = nomeIpt.value;
+var sobrenomeVar = sobreNomeIpt.value;
+var nomeEmpresa = nomeEmpresaIpt.value;
+var cnpjVar = cnpjIpt.value;
+var emailVar = emailIpt.value;
+var senhaVar = senhaIpt.value;
+var senhaConfirmVar = senhaConfirm.value;
 
-            }),
-        })  
+if (verificarNumeros(nomeVar, sobrenomeVar)) {
+    alert("O nome e sobrenome não podem conter números.");
+} else if (!verificarFormatoEmail(emailVar)) {
+    alert("Por favor, insira um endereço de email válido.");
+} else if (!verificarCNPJ(cnpjVar)) {
+    alert("Por favor, insira um CNPJ válido com 14 dígitos.");
+} else if (senhaVar !== senhaConfirmVar) {
+    alert("As senhas digitadas não correspondem. Por favor, verifique.");
+} else {
+    console.log("entrando no fetch")
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nomeServer: nomeVar,
+            sobrenomeServer: sobrenomeVar,
+            nomeEmpresaServer: nomeEmpresa,
+            cnpjServer: cnpjVar,
+            emailServer: emailVar,
+            senhaServer: senhaVar
+        }),
+    })
+    .then(function (resposta) {
+        if (resposta.ok) {
+            setTimeout(() => {
+                window.location = "./Entrar.html";
+            }, 1000);
+        } else {
+            alert(`Houve um problema com seu cadastro. Por favor, realize-o novamente.`);
+        }
+    })
+    .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+    });
+}
 
-       .then(function (resposta) {
-                if (resposta) {
-                    setTimeout(() => {
-                        window.location = "./Entrar.html";
-                    }, "1000");
-                } else {
-                    alert(`Hove um problema com seu cadastro realize-o novamente`)
-                }
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-
-        return false;
-
-    }
+return false;
 
 
 </script>

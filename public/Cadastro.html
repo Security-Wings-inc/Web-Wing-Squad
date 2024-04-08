@@ -67,7 +67,7 @@
                     <img src="./assets/logoNome.svg " alt="">
                 </div>
 
-                <form class="form-cadastro" action="">
+                
                     <h1>Criar sua conta</h1>
 
                     <input type="text" placeholder="Nome" id="nomeIpt">
@@ -79,11 +79,22 @@
                     <input type="text" placeholder="Confirmar senha" id="senhaConfirm">
                     <button onclick="cadastrar()">Finalizar cadastro</button>
 
-                </form>
             </div>
         </div>
     </main>
+
+    <input type="text" placeholder="Nome" id="nomeIpt">
+    <input type="text" placeholder="Sobrenome" id="sobreNomeIpt">
+    <input type="text" placeholder="Nome da empresa" id="nomeEmpresaIpt">
+    <input type="text" placeholder="CNPJ da empresa" id="cnpjIpt">
+    <input type="text" placeholder="Endereço de E-mail" id="emailIpt">
+    <input type="text" placeholder="Senha" id="senhaIpt">
+    <input type="text" placeholder="Confirmar senha" id="senhaConfirm">
+    <button onclick="cadastrar()">Finalizar cadastro</button>
+
+
     <footer>
+        <a href="./Entrar.html"></a>
         <img src="./assets/Logo+nome.png" alt="">
         <p style="font-size: 20px; color: #F0FAFF; font-family:Yaldevi;">© 2024 Web Wings. Todos os direitos reservados.
             <br> Desenvolvido por alunos da SPTECH.
@@ -95,10 +106,11 @@
         </div>
     </footer>
 </body>
-<!-- <script src="./js/Navbar.js"></script> -->
+
 
 </html>
 
+<script type="module" src="js/Navbar.js"></script>
 
 <script>
 
@@ -128,35 +140,25 @@
                 senhaServer: senhaVar
 
             }),
-        })
+        })  
 
-            .then(function (resposta) {
-                if (resposta.ok) {
+       .then(function (resposta) {
+                alert("entrando no fetch")
+                if (resposta) {
                     setTimeout(() => {
                         window.location = "./Entrar.html";
-                    }, "500")
+                    }, "1000");
                 } else {
-                    console.log("erro")
+                    alert(`Hove um problema com seu cadastro realize-o novamente`)
                 }
             })
             .catch(function (resposta) {
-                console.log(`algo de errado... ${resposta}`)
-            })
+                console.log(`#ERRO: ${resposta}`);
+            });
 
-        return
+        return false;
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
 </script>

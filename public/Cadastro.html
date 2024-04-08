@@ -67,9 +67,10 @@
                     <img src="./assets/logoNome.svg " alt="">
                 </div>
 
-                
-                    <h1>Criar sua conta</h1>
+                <div class="form-cadastro" >
 
+                    <h1>Criar sua conta</h1>
+                    
                     <input type="text" placeholder="Nome" id="nomeIpt">
                     <input type="text" placeholder="Sobrenome" id="sobreNomeIpt">
                     <input type="text" placeholder="Nome da empresa" id="nomeEmpresaIpt">
@@ -78,20 +79,11 @@
                     <input type="text" placeholder="Senha" id="senhaIpt">
                     <input type="text" placeholder="Confirmar senha" id="senhaConfirm">
                     <button onclick="cadastrar()">Finalizar cadastro</button>
-
+                    
+                </div>
             </div>
         </div>
     </main>
-
-    <input type="text" placeholder="Nome" id="nomeIpt">
-    <input type="text" placeholder="Sobrenome" id="sobreNomeIpt">
-    <input type="text" placeholder="Nome da empresa" id="nomeEmpresaIpt">
-    <input type="text" placeholder="CNPJ da empresa" id="cnpjIpt">
-    <input type="text" placeholder="Endereço de E-mail" id="emailIpt">
-    <input type="text" placeholder="Senha" id="senhaIpt">
-    <input type="text" placeholder="Confirmar senha" id="senhaConfirm">
-    <button onclick="cadastrar()">Finalizar cadastro</button>
-
 
     <footer>
         <a href="./Entrar.html"></a>
@@ -143,7 +135,6 @@
         })  
 
        .then(function (resposta) {
-                alert("entrando no fetch")
                 if (resposta) {
                     setTimeout(() => {
                         window.location = "./Entrar.html";

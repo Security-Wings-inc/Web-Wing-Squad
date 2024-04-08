@@ -117,10 +117,10 @@ function verificarFormatoEmail(email) {
 }
 
 function verificarCNPJ(cnpj) {
-    cnpj = cnpj.replace(/\D/g,'');
     return cnpj.length === 14;
 }
 
+function cadastrar(){
 var nomeVar = nomeIpt.value;
 var sobrenomeVar = sobreNomeIpt.value;
 var nomeEmpresa = nomeEmpresaIpt.value;
@@ -131,10 +131,10 @@ var senhaConfirmVar = senhaConfirm.value;
 
 if (verificarNumeros(nomeVar, sobrenomeVar)) {
     alert("O nome e sobrenome não podem conter números.");
+} else if ( !verificarCNPJ(cnpjVar)) {
+    alert("Por favor, insira um CNPJ válido com 14 dígitos."); 
 } else if (!verificarFormatoEmail(emailVar)) {
-    alert("Por favor, insira um endereço de email válido.");
-} else if (!verificarCNPJ(cnpjVar)) {
-    alert("Por favor, insira um CNPJ válido com 14 dígitos.");
+   alert("Por favor, insira um endereço de email válido.");
 } else if (senhaVar !== senhaConfirmVar) {
     alert("As senhas digitadas não correspondem. Por favor, verifique.");
 } else {
@@ -168,6 +168,8 @@ if (verificarNumeros(nomeVar, sobrenomeVar)) {
 }
 
 return false;
+
+}
 
 
 </script>

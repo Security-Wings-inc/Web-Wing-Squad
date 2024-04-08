@@ -1,133 +1,136 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>home</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/index.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!-- Biblioteca dos icones do footer -->
+    <link rel="stylesheet" href="./css/footer.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Viga&family=Yaldevi:wght@200..700&display=swap" rel="stylesheet">
+
 
 </head>
-
 <body>
-    <div class="header">
+    
+    <Header>
 
+        <div class="HeaderLogo">
+            <a href="./Index.html"><img class="imgLogo" src="./assets/Group 1.png" alt=""></a>
+        </div>
 
-        <div class="logo">
-            <img src="./assets/logo-site.png" alt="" style="width: 70px;">
-            <a href="./index.html">Cyberwatch</a>
+        <div class="divList">
+            <ul class="listaHeader">
+                <a class="aLiListaHeader" href="./SobreNós.html"><li class="LiListaHeader">Sobre nós</li></a>
+                <a class="aLiListaHeader" href="./Cadastro.html"><li class="LiListaHeader">Cadastrar</li></a>
+                <a class="aLiListaHeader" href="./Entrar.html"><li class="LiListaHeader">Entrar</li></a>
+            </ul>
+        </div>
+
+        <div class="DivNavbarHamburguer">
+            <img onclick="TrocarIMG()" id="imgH" class="imgHamburguer" src="./assets/icon/hamburger-button.png" alt="">
         </div>
 
 
-        <div class="nav-bar">
-            <a href="./sobre.html">Sobre nós</a>
-            <a href="./cadastro.html">Cadastro</a>
-            <a href="./login.html">Login</a>
+    </Header>
 
-
-        </div>
-
+    <div id="ListaHambuerguer" class="listaMenuHamburguer">
+        <ul class="listaMenuH">
+            <a class="aLiListaHeaderHambuerguer" href="./SobreNós.html"><li class="LiListaHeaderHambuerguer">Sobre nós</li></a>
+            <a class="aLiListaHeaderHambuerguer" href="./Cadastro.html"><li class="LiListaHeaderHambuerguer">Cadastrar</li></a>
+            <a class="aLiListaHeaderHambuerguer" href="./Entrar.html"><li class="LiListaHeaderHambuerguer">Entrar</li></a>
+        </ul>
     </div>
 
+    <img class="img2MainSub" src="./assets/icon/Ellipse 1 (2).png" alt="">
+ 
+    <main>
+        
+        <div class="divMainFirst">
 
-    <div class="main">
+            <div class="img">
 
-
-        <div class="main-sobre">
-        <div class="container-main">
-            <div class="left">
-                <div class="titulo">
-                    <h1>A Cyber Watch</h1>
+                <div class="imgMainFirst">
                 </div>
-                <div class="describe">
-                    <p>Bem-vindo ao mundo da segurança aeroportuária redefinida pela Cyberwatch. Somos líderes no monitoramento de sistemas de câmeras de vigilância em aeroportos, oferecendo soluções inovadoras para garantir o funcionamento correto dos computadores nas salas de controle de câmeras. Nosso produto exclusivo, desenvolvido pela Cyberwatch, proporciona uma visão abrangente do status operacional, permitindo aos operadores agirem proativamente para manter a vigilância contínua e eficaz.</p>
-                </div>
-            </div>
-                <div class="rigth">
-
-                    <div class="conteudo-imagem">
-                        <img src="./assets/security-on-animate.svg" alt="">
+                
+                <div class="text">
+                    <div class="textDentroDoVetor">
+                        <h1 class="h1ImgmanFirst">Monitore a saúde do seu sistema de vigilância!</h1>
+                        <h2 class="TextFist">Saiba o status e receba alertas personalizados sobre instabilidades no seu sistema de câmeras.</h2>
+                        <div class="DivButonCadastroMain"><a href="./Cadastro.html"><p class="ParagrafoMainText">CADASTRE-SE</p></a></div>
                     </div>
+                    <img class="imgVector" src="./assets/imgs/Vector (1).png" alt="">
                     
-                </div>
-            </div>
-        </div>
-        
-        <div class="main-cards">
-            <div class="titulo">
-                <h1>Conheça os pilares do nosso produto</h1>
-            </div>
-            <div class="container-cards">
-                    
-                    <div class="card">
-                         <img width="100px" style="margin: 20px;" src="./assets/shield-vigilancia.svg" alt="">
-                        <div class="card-title">
-                            <h1>VIGILÂNCIA</h1>
-                        </div>
-                            <div class="card-text">
-                                Comprometidos com a excelência em vigilância, oferecemos soluções de monitoramento de última geração. Com tecnologia avançada e abordagem abrangente, garantimos segurança completa aos aeroportos que servimos, proporcionando tranquilidade aos nossos clientes.
-                            </div>
-                     </div>
-                        
-                    <div class="card">
-                         <img width="100px" style="margin: 20px;" src="./assets/shield-integridade.svg" alt="">
-                        <div class="card-title">
-                            <h1>INTEGRIDADE</h1>
-                        </div>
-                            <div class="card-text">
-                                Fundamentados na integridade, nossos serviços de monitoramento são sinônimos de confiabilidade e qualidade. Mantendo os mais altos padrões éticos, garantimos que nossos clientes possam confiar plenamente em nossos sistemas para proteger seus ativos mais valiosos.
-                            </div>
-                     </div>
-                   
-                     <div class="card">
-                         <img width="100px" style="margin: 20px;" src="./assets/shield-resposta.svg" alt="">
-                        <div class="card-title">
-                            <h1>RESPOSTA</h1>
-                        </div>
-                            <div class="card-text">
-                                Com agilidade e eficiência, asseguramos uma resposta imediata a qualquer ameaça. Nossa equipe especializada e tecnologia de ponta nos capacitam a proteger os aeroportos que servimos, garantindo sua segurança contínua.
-                            </div>
-                     </div>
-                        
-                    
-                    
-                </div>
-        </div>
-
-
-
-        
-        <div class="footer">
-
-            <div class="colunas">
-                <h1>Social Midia</h1>  
-                <div class="container-footer-in-row">
-                    <i class="fa fa-instagram"></i>
-                    <i class="fa fa-github"></i>
-                    <i class="fa  fa-envelope"></i>
-                    
-                </div>
-
-            </div>
-
-          
-
-            <div class="colunas">
-                <h1>Founders </h1>
-                <div class="container-footer-in-row">
-                <p>Conheça nossos fundadores</p>
                 </div>
                 
             </div>
+        </div>
+
+        
+        <div class="divMainFirstMobal">
+
+
+            <div class="textMobileMain">
+                <h2 class="h2mobileMain">Monitore a saúde <br> do seu sistema de <br> vigilância!</h2>
+                <p class="PMobileMain">Saiba o status e receba alertas<br>personalizados sobre instabilidades <br>no seu sistema de câmeras.</p>
+
+                <div class="DivButonCadastroMain"><a href="./Cadastro.html"><p class="ParagrafoMainText">CADASTRE-SE</p></a></div>
+            </div>
+  
+        </div>
+        <img class="img3mianSub" src="./assets/icon/Ellipse 1 (1).png" alt="">
+
+
+        <div class="mainMeio">
+            <div class="meioImg">
+                <img class="CamIndexIMG" src="./assets/imgs/CamIndex.png" alt="">
+            </div>
+
+            <div class="clasTextsMainMeio">
+                <div class="containerMeioTexto">
+                    <h1 class="h1MainMeio">Entenda como funciona!</h1>
+                    <!-- <p class="pMainMeio">Nosso software monitora o hardware do <br> computador em que está instalado seu sistema de <br> vigilância, informando sobre seu funcionamento <br> em tempo real e notificando em caso de <br> instabilidades ou incidentes.</p> -->
+                    <p class="pMainMeio">Nosso software monitora o hardware do computador em que está instalado seu sistema de vigilância, informando sobre seu funcionamento em tempo real e notificando em caso de instabilidades ou incidentes.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="MainEmpresasParceiras">
             
-
-
+        </div>
+        <div class="containerEmpresas">
+            <h1 class="h1MainEmpresas">Empresas parceiras</h1>
+    
+            <div class="imgsCadsEmpresas">
+    
+                 <div class="hvr-pulse"><img class="imgDentro" src="./assets/empresas/Elera.png" alt=""></div>
+                 <div class="hvr-pulse"><img class="imgDentro" src="./assets/empresas/Meta.png" alt=""></div>
+                 <div class="hvr-pulse"><img class="imgDentro" src="./assets/empresas/Rappi.png" alt=""></div>
+                 <div class="hvr-pulse"><img class="imgDentro" src="./assets/empresas/Atos.png" alt=""></div>
+    
+            </div>
+            
         </div>
 
 
 
+    </main>
 
-    </body>
+    <footer>
+        <img src="./assets/Logo+nome.png" alt="">
+        <p style="font-size: 20px; color: #F0FAFF; font-family:Yaldevi;">© 2024 Web Wings. Todos os direitos reservados.
+<br> Desenvolvido por alunos da SPTECH.        </p>
+        <div>
+            <a href=""><img src="./assets/icon/Instagram.png" alt=""></a>
+            <a href=""><img src="./assets//icon/git.png" alt=""></a>
+            <a href=""><img src="./assets/icon/Email.png" alt=""> </a>
+       </div>
+    </footer>
 
+</body>
+<script src="./js/Navbar.js"></script>
+</html>

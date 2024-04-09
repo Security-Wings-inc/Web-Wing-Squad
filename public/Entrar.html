@@ -53,9 +53,9 @@
                 <div class="form-login" action="">
                     <h1>Criar sua conta</h1>
                     
-                    <input type="text" placeholder="Endereço de E-mail">
-                    <input type="text" placeholder="Senha">
-                    <button>Entrar na conta</button>
+                    <input type="text" placeholder="Endereço de E-mail" id="emailIpt">
+                    <input type="text" placeholder="Senha" id="senhaIpt">
+                    <button onclick="entrar()">Entrar na conta</button>
                     <label>Não possui uma conta ? <a href="./Cadastro.html">Cadastre aqui</a></label>
 
                 </div>
@@ -83,8 +83,8 @@
 <script>
 
 function entrar() {
-  var emailVar = document.getElementById("email").value;
-  var senhaVar = document.getElementById("senha").value;
+  var emailVar = emailIpt.value
+  var senhaVar = senhaIpt.value;
 
   if (emailVar == "" || senhaVar == "") {
     alert("Preencha todos os campos");
@@ -116,9 +116,10 @@ function entrar() {
         sessionStorage.EMAIL_USUARIO = json.email;
         sessionStorage.NOME_USUARIO = json.nome;
         sessionStorage.ID_USUARIO = json.id;
+        
 
         setTimeout(function () {
-          window.location = "./Deshboard/DashPerfil.html";
+          window.location = "./Index.html";
         }, 1000); // apenas para exibir o loading
       });
     }
@@ -126,7 +127,9 @@ function entrar() {
   .catch(function (erro) {
     console.log("Erro ao autenticar:", erro);
   });
+  
 }
+
 
 
 </script>

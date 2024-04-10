@@ -42,8 +42,7 @@ Header{
     height: 54px;
     align-items: center;
     justify-content: space-between;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    margin-top: 50px;
 }
 
 .HeaderLogo{
@@ -78,7 +77,6 @@ li,a{
     height: 45px;
     width: 177px;
     margin-right: 100px;
-    transition: 0.5s;
  }
 
 .LiListaHeader:hover,  aLiListaHeader {
@@ -107,12 +105,13 @@ li,a{
 
 .img{
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     width: 100%;
     height: 661px;
 }
 
-.imgMainFirst{
-    
+/* .imgMainFirst{    
     position: absolute;
     width: 52%;
     height: 661px;
@@ -121,20 +120,39 @@ li,a{
     background-size: 100% 100%;
     background-image: url("../assets/imgs/image\ 2.png"); 
     border-radius: 30px;
+} */
+
+.imgMainFirst{
+    z-index: 1;
+    /* position: absolute; */
+    /* position:initial; */
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    /* background-size:contain; */
+    background-position: 0px -300px;
+    background-size:cover;
+    background-image: url("../assets/imgs/image\ 2.png"); 
+    border-radius: 30px;
 }
 
 .text{
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     position: absolute;
     border-radius: 30px 90px 90px 30px;
     background-color: #176B87;
-    width: 42%;
+    width: 483px;
     height: 661px;
 }
 
 .imgVector{
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    /* position: absolute; */
+    z-index: -1;
+    filter: blur(2px);
+    height: fit-content;
 }
 
 .imgMainFirst{
@@ -143,39 +161,46 @@ li,a{
 }
 
 .h1ImgmanFirst{
-    margin-left: 150px;
-    font-size: 64px;
+    /* margin-left: 150px; */
+    font-weight: 300;
+    font-size: 50px;
     font-family: viga;
     color: #E0F6F9;
 }
 
 .textDentroDoVetor{
     position: absolute;
+    align-items: center;
     width: 601px;
     height: 350px;
-    margin-top: 250px;
+    /* margin-top: 100px; */
     margin-left: 100px;
 }
 
 .TextFist{
-
+    
     letter-spacing: 5px;
     font-family: Yaldevi;
-    font-size: 25px;
+    font-size: 24px;
     width: 800px;
     font-weight: 100;
     color: #E0F6F9;
 }
 
 .DivButonCadastroMain{
+    z-index: 3;
     width: 250px;
     height: 60px;
     background-color: #A1DCE9;
-    margin-top: 50px;
+    margin-top: 100px;
     border-radius: 25px;
     display: flex;
     justify-content: center; 
     align-items: center; 
+}
+
+.DivButonCadastroMain:hover{
+    background-color: #E0F6F9;
 }
 
 .ParagrafoMainText{

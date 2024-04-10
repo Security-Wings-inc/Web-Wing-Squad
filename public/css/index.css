@@ -10,46 +10,75 @@
     align-items: center;
 }
 
+.meioImg{
+    position: absolute;
+    width:600px;
+    /* background-color: red; */
+}
+
 .clasTextsMainMeio{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: 490px;
     width: 88%;
-    margin-left: 250px;
-    border-radius: 40px;
+    margin-left: 10%;
     background-color: #A1DCE9;
-    padding: 50px;
+    border-radius: 40px 40px 40px 40px;
+    /* padding: 50px; */
 }
 
 .CamIndexIMG{
-    position: absolute;
-    width: 600px;
+    
+    width: 90%;
+}
+
+.containerMeioTexto{
+    padding-right: 100px;
+    margin-left: 400px;
+    /* background-color: purple; */
 }
 
 .h1MainMeio{
 
-    margin-top: 100px;
-    margin-left: 32%;
+    /* margin-top: 100px; */
+    /* margin-left: 32%; */
     font-size: 64px;
     font-family: Viga;
     color:#176B87;
 }
 
 .pMainMeio{
+    display: flexbox;
     text-align: justify;
     margin-top: 10px;
-    transform: scaleX(1.35);
-    margin-left: 40%;
+    /* transform: scaleX(1.35); */
+    /* margin-left: 40%; */
     font-size: 24px;
     font-family: Yaldevi;
     color:#176B87;
 }
 
+.containerEmpresas{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   height: 500px;
+   margin-bottom: 110px;
+   /* background-color: aquamarine; */
+   position: relative;
+}
 
 .MainEmpresasParceiras{
-   display: table;
-   text-align: center;
-    width: 70%;
+    position: absolute;
+    width: 80%;
     height: 510px;
     background-color: #E0F6F9;
     margin-top: 50px;
+    z-index: -1;
+    margin-bottom: 100px;
     border-radius: 0px 50px 150px 0px;
 }
 
@@ -63,33 +92,88 @@
 
 .imgsCadsEmpresas{
    display: flex;
-   width: 1583px;
-   height: 175px;
+   
+   /* width: 1583px;
+   height: 175px; */
    
 }
 
-.cardEmpresa:first-child {
-    margin-left: 150px;
+/* .cardEmpresa:first-child {
+    margin-left: 100px;
+} */
+
+.imgDentro{
+    width: 150px;
 }
 
-.cardEmpresa{
+
+
+.hvr-pulse{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: static;
     border-radius: 30px;
     margin-top: 30px;
-    width: 398px;
-    height: 175px;
+    width: 290px;
+    height: 140px;
     margin-left: 30px;
     background-color: #A1DCE9;
     padding: 10px;
+    z-index: 3;
+   
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
 }
 
 .img3mianSub{
-    position: absolute;
+   position: absolute;
    right: 0;
    top: 1600px;
+   z-index: 1;
 }
 
-@media only screen and (max-width: 1600px) {
+
+
+.footer{
+    position: fixed;
+    bottom: 0;
+}
+
+
+
+
+@keyframes hvr-pulse {
+    25% {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+    75% {
+      -webkit-transform: scale(0.9);
+      transform: scale(0.9);
+    }
+  }
+  /* .hvr-pulse {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  } */
+  .hvr-pulse:hover, .hvr-pulse:focus, .hvr-pulse:active {
+    -webkit-animation-name: hvr-pulse;
+    animation-name: hvr-pulse;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+  }
+
+
+@media only screen and (max-width: 1080px) {
 
     .img2MainSub{
         display: none;
@@ -99,7 +183,7 @@
         display: none;
     }
 
-    .cardEmpresa:first-child {
+    .hvr-pulse:first-child {
         margin: 25px auto ;
     }
 
@@ -108,7 +192,7 @@
         width: 99%;
         
      }
-     .cardEmpresa{
+     .hvr-pulse{
         border-radius: 30px;
         margin-top: 30px;
         width: 90%;

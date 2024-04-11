@@ -187,11 +187,59 @@
         margin: 25px auto ;
     }
 
+   
     .imgsCadsEmpresas{
         display: block;
         width: 99%;
+       
         
      }
+
+     .containerMeioTexto{
+        margin: 0;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+     }
+
+     .pMainMeio{
+        position: relative;
+        text-align: center;
+        font-size: 15px;
+        font-family: Yaldevi;
+        color:#176B87;
+    }
+
+    .h1MainMeio{
+        text-align: center;
+        font-size: 30px;
+        font-family: Viga;
+        color:#176B87;
+    }
+
+    .clasTextsMainMeio{
+        
+        display: flex;
+        height: 300px;
+        margin: 20px 0;
+        width: 100%;
+    }
+
+
+    .containerEmpresas{
+            display: flex;
+            margin-bottom: 150px;
+    }
+
+    .h1MainEmpresas{
+            margin-top: 150px;
+            font-size: 30px;
+    }
+
+    
+
      .hvr-pulse{
         border-radius: 30px;
         margin-top: 30px;
@@ -202,67 +250,29 @@
         padding: 10px;
     }
 
+    footer{
+        margin-top: 25px;
+    }
+
     .CamIndexIMG{
     display: none;
     }
 
-    .mainMeio{
-        margin: auto;
+
+
+   .imgFooter{
+    display: none;
+   }
+
+   .textMobileMain{
         display: flex;
-        display: block;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
-    }
-    
-    .clasTextsMainMeio{
-        width: 99%;
-        margin-top: 50px;
-        margin-left: 0px;
-        border-radius: 40px;
-        background-color: #A1DCE9;
-        padding: 0px;
-        text-align: center;
-    }
-    
-    .CamIndexIMG{
-        text-align: center;
-        position: relative;
-        width: 0px;
-    }
+   }
 
-    .h1MainMeio{
-        margin: auto 5px;
-        font-size: 30px;
-        font-family: Viga;
-        color:#176B87;
-    }
-    
-    .pMainMeio{
-        position: relative;
-        text-align: center;
-        margin-left: 0%;
-        padding: 25px;
-        width: 250px;
-        margin: auto;
-        font-size: 15px;
-        font-family: Yaldevi;
-        color:#176B87;
-    }
-
-
-    .MainEmpresasParceiras{
-        margin: auto;
-        display: table;
-        text-align: center;
-         width: 90%;
-         height: 830px;
-         background-color: #E0F6F9;
-         margin-top: 50px;
-         border-radius:50px;
-     }
-
-     .imgDentro{
-        width: 200px;
-        margin: auto;
-     }
+   .DivButonCadastroMain{
+    width: 100%;
+   }
 
 }

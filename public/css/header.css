@@ -267,6 +267,10 @@ li,a{
     margin-top: 25px;
     border-radius: 35px;
    }
+   
+   .DivButonCadastroMain{
+    margin-top: 0%;
+   }
 
    .textMobileMain{
     text-align: center;

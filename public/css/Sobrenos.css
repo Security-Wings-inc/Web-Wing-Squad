@@ -1,7 +1,37 @@
+.main{
+    margin-bottom: 100px;
+}
 .historia{
-    width: 100%;
+    /* width: 100%; */
     display: flex;
-    height: 800px;
+    
+    flex-direction: row;
+    /* height: 800px; */
+    padding: 90px;
+}
+
+
+.historiaTexto{
+    justify-content: center;
+    padding-left: 90px;
+    display: flex;
+    flex-direction: column;
+}
+.livroImg{
+    width: 584px;
+    height: 515px;
+}
+
+.h1Historia{
+    font-family: Viga;
+    color: #176B87;
+    font-size: 55px;
+}
+
+.pHistoria{
+    color: #176B87;
+font-family: Yaldevi;
+font-size: 14px;
 }
 
 .imgHistoria{
@@ -9,7 +39,15 @@
     margin: auto;
 }
 
+.retanguloSup{
+    z-index: -1;
+    position: absolute;
+    top: 20px;
+    right:0vh;
+}
+
 .img1{
+    z-index: -1;
     position: absolute;
     top: 50px;
     left: -100px;
@@ -28,6 +66,7 @@
 }
 
 .linha1{
+   
     display: flex;
 }
 
@@ -49,16 +88,17 @@
     justify-content: center;
 }
 .ClasAbsoluteIntegrante{
-display: flex;
-justify-content: center;
-align-items: center;
-height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    /* width: 90vw; */
 }
 
 .h1Fundadores{
-font-family: Viga;
-color: #176B87;
-font-size: 64px;
+    font-family: Viga;
+    color: #176B87;
+    font-size: 64px;
 }
 
 .imgAbsoluteFonder{
@@ -78,14 +118,22 @@ font-size: 30px;
 .PFounders{
 color: #176B87;
 font-family: Yaldevi;
-font-size: 24px;
+font-size: 14px;
 }
 
 .historiaMobal{
     display: none;
 }
 
+.footer{
+    position: fixed;
+    bottom: 0;
+}
 @media only screen and (max-width: 1050px) {
+
+    .retanguloSup{
+        display: none;
+    }
 
     .img1{
         display: none;
@@ -102,34 +150,52 @@ font-size: 24px;
     .historiaMobal{
         margin-top: 20px;
         margin-bottom: 50px;
-        display: block;
+        display: flex;
+        flex-direction: column;
         width: 100%;
         height: 500px;
         background-color: #176B87;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 
 
+    .pHistoria{
+        width: 70%;
+        font-size: 14px;
+        color: #F0FAFF;
+    }
 
-    
-
+    .h1Historia{
+        width: 70%;
+        font-size: 40px;
+        color: #F0FAFF;
+    }
 
 
     .Integrantes{
-        display: block;
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         height: 100%;
-        margin: auto;
+        /* margin: auto; */
         width:100% ;
     }
     
     .linha1{
-        display: block;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
     }
     
     .linha2{
-        display: block;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
     }
     
     .h1Fundadores{
@@ -137,7 +203,7 @@ font-size: 24px;
     }
     
     .Integrante{
-        width: 300px;
+        width: 80%;
         height: 250px;
         background-color: #A1DCE9;
         margin: 50px;
@@ -147,10 +213,10 @@ font-size: 24px;
     }
 
     .ClasAbsoluteIntegrante{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 250px;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        height: 250px;
     }
 
     .imgAbsoluteFonder{
@@ -166,4 +232,8 @@ font-size: 24px;
         color: #176B87;
         font-size: 50px;
         }
+
+        .imgFooter{
+            display: none;
+           }
 }

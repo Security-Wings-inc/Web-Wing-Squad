@@ -54,6 +54,11 @@ li,a{
     list-style: none;
 }
 
+.form-cadastro button:hover{
+   background-color: #A1DCE9;
+   cursor: pointer;
+}
+
 
 .listaHeader{
 

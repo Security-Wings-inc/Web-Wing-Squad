@@ -19,54 +19,14 @@
 
 <body>
 
-    <Header>
-
-        <div class="HeaderLogo">
-            <a href="./Index.html"><img class="imgLogo" src="./assets/Group 1.png" alt=""></a>
-        </div>
-
-        <div class="divList">
-            <ul class="listaHeader">
-                <a class="aLiListaHeader" href="./SobreNós.html">
-                    <li class="LiListaHeader">Sobre nós</li>
-                </a>
-                <a class="aLiListaHeader" href="./Cadastro.html">
-                    <li class="LiListaHeader">Cadastrar</li>
-                </a>
-                <a class="aLiListaHeader" href="./Entrar.html">
-                    <li class="LiListaHeader">Entrar</li>
-                </a>
-            </ul>
-        </div>
-
-        <div class="DivNavbarHamburguer">
-            <img onclick="TrocarIMG()" id="imgH" class="imgHamburguer" src="./assets/icon/hamburger-button.png" alt="">
-        </div>
-
-
-    </Header>
-
-    <div id="ListaHambuerguer" class="listaMenuHamburguer">
-        <ul class="listaMenuH">
-            <a class="aLiListaHeaderHambuerguer" href="./SobreNós.html">
-                <li class="LiListaHeaderHambuerguer">Sobre nós</li>
-            </a>
-            <a class="aLiListaHeaderHambuerguer" href="./Cadastro.html">
-                <li class="LiListaHeaderHambuerguer">Cadastrar</li>
-            </a>
-            <a class="aLiListaHeaderHambuerguer" href="./Entrar.html">
-                <li class="LiListaHeaderHambuerguer">Entrar</li>
-            </a>
-        </ul>
-    </div>
+   
 
     <main class="background-cadastro">
         <div class="container-cadastro">
             <div class="box-cadastro">
                 <div class="logo-box-cadastro">
-                    <img src="./assets/logoNome.svg " alt="">
+                    <a href="./Index.html"><img class="imgLogo" src="./assets/Group 1.png" alt=""></a>
                 </div>
-
                 <div class="form-cadastro" >
 
                     <h1>Criar sua conta</h1>
@@ -78,16 +38,16 @@
                     <input type="text" placeholder="Endereço de E-mail" id="emailIpt">
                     <input type="text" placeholder="Senha" id="senhaIpt">
                     <input type="text" placeholder="Confirmar senha" id="senhaConfirm">
-                    <button onclick="cadastrar()">Finalizar cadastro</button>
+                    <button class="buttonFinalizar" onclick="cadastrar()">Finalizar cadastro</button>
                     
                 </div>
             </div>
         </div>
     </main>
 
-    <footer>
-        <a href="./Entrar.html"></a>
-        <img src="./assets/Logo+nome.png" alt="">
+    <footer  style="margin-top: 0;">
+        <a href="./Entrar.html" style="display: none;"></a> <!-- Não sei do que se trata, mantive como diplay none-->
+        <img class="imgFooter" src="./assets/Logo+nome.png" alt="">
         <p style="font-size: 20px; color: #F0FAFF; font-family:Yaldevi;">© 2024 Web Wings. Todos os direitos reservados.
             <br> Desenvolvido por alunos da SPTECH.
         </p>

@@ -30,8 +30,8 @@
 
 .pHistoria{
     color: #176B87;
-font-family: Yaldevi;
-font-size: 14px;
+    font-family: Yaldevi;
+    font-size: 14px;
 }
 
 .imgHistoria{
@@ -42,7 +42,7 @@ font-size: 14px;
 .retanguloSup{
     z-index: -1;
     position: absolute;
-    top: 20px;
+    top: 100px;
     right:0vh;
 }
 
@@ -92,7 +92,7 @@ font-size: 14px;
     justify-content: center;
     align-items: center;
     height: 250px;
-    /* width: 90vw; */
+    /* width: 90vw;      */
 }
 
 .h1Fundadores{
@@ -129,7 +129,7 @@ font-size: 14px;
     position: fixed;
     bottom: 0;
 }
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: 1300px) {
 
     .retanguloSup{
         display: none;

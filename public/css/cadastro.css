@@ -90,7 +90,7 @@
     font-size: 25px;
 }
 
-@media only screen and (max-width: 1080px) {
+@media only screen and (max-width: 1300px) {
     .box-cadastro{
         border-radius: 0;
         width: 100%;

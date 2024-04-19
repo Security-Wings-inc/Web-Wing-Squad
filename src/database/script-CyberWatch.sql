@@ -1,4 +1,4 @@
-CREATE DATABASE CyberWatch;
+vCREATE DATABASE CyberWatch;
 
 Use CyberWatch;
 

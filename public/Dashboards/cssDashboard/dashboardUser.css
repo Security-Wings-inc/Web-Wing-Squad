@@ -13,17 +13,19 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: #E0F6F9;
+    background-color: #176B87;
     padding-left: 30px;
 }
 
 .containerEsquerdo{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 40%;
     height: 90%;
     border-radius: 30px;
     margin-right: 10px;
-    background-color: #176B87;
+    background-color: #E0F6F9;
 }
 
 .containerDireito{
@@ -32,16 +34,25 @@
     height: 90%;
     border-radius: 30px;
     margin-left: 10px;
-    background-color: #176B87;
+    background-color: #E0F6F9;
 }
 
 .titulo{
-    width: 50px;
+    width: fit-content;
+    text-align: center;
     font-family: "Viga", sans-serif;
-    color: #E0F6F9;
+    color: #176B87;
     font-size: 30px;
     font-weight: 200;
     text-align: center;
     border: solid 1px red;
     margin: 20px;
+}
+
+.botao{
+    border-radius: 30px;
+    border: none;
+    width: 350px;
+    height: 150px;
+    background-color: #176B87;
 }

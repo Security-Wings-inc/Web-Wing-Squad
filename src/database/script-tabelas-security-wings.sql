@@ -30,7 +30,6 @@ CREATE TABLE usuario(
     email varchar(255) UNIQUE,
     isAdmin boolean,
     senha varchar(255),
-    fotoPerfil varchar(255),
     fkEmpresa int,
     constraint fk_empresa_funcionario foreign key (fkEmpresa) references Empresa(idEmpresa)
 );

@@ -1,28 +1,29 @@
-CREATE DATABASE  securityWings;
+# NOSSA TABELA;
+
+
+CREATE DATABASE securityWings;
 
 USE securityWings;
+
+CREATE TABLE Empresa(
+    idEmpresa int primary key auto_increment,
+    nome varchar(45),
+    cnpj varchar(20),
+    email varchar(255),
+    telefone varchar(20),
+    senha varchar(255)
+);
 
 CREATE TABLE Endereco(
     idEndereco int primary key auto_increment,
     cidade varchar(50),
     bairro varchar(50),
-    uf char(2),
+    uf varchar(2),
     rua varchar(50),
-    cep char(8),
-    complemento char(10)
-);
-
-CREATE TABLE Empresa(
-    
-    idEmpresa int primary key auto_increment,
-    nome varchar(45),
-    cnpj char(18),
-    email varchar(255),
-    telefone char(11),
-    senha varchar(255),
-    fkEndereco int,
-    constraint fk_endereco foreign key (fkEndereco) references Endereco(idEndereco)
-
+    cep varchar(8),
+    complemento char(10),
+    fkEmpresa int,
+    constraint fk_endereco_empresa foreign key (fkEmpresa) references Empresa(idEmpresa)
 );
 
 CREATE TABLE usuario(

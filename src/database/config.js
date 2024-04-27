@@ -20,7 +20,7 @@ var sql = require('mssql');
 // CONEXÃO DO MYSQL WORKBENCH
 var mySqlConfig = {
     host: "localhost",
-    database: "SecurityWings",
+    database: "securityWings",
     user: "root",
     password: "sptech",
 };

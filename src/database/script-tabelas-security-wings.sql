@@ -13,14 +13,16 @@ CREATE TABLE Endereco(
 );
 
 CREATE TABLE Empresa(
+    
     idEmpresa int primary key auto_increment,
-    email varchar(255),
-    senha varchar(255),
     nome varchar(45),
     cnpj char(18),
+    email varchar(255),
     telefone char(11),
+    senha varchar(255),
     fkEndereco int,
     constraint fk_endereco foreign key (fkEndereco) references Endereco(idEndereco)
+
 );
 
 CREATE TABLE usuario(

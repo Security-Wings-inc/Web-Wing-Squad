@@ -35,6 +35,13 @@
                     <input type="text" placeholder="CNPJ da empresa" id="cnpjIpt">
                     <input type="text" placeholder="Endereço de E-mail" id="emailIpt">
                     <input type="text" placeholder="Telefone da empresa" id="telefoneIpt">
+                    <input type="text" placeholder="Cidade" id="cidadeIpt">
+                    <input type="text" placeholder="Bairro" id="bairroIpt">
+                    <input type="text" placeholder="Uf" id="ufIpt">
+                    <input type="text" placeholder="Rua" id="ruaIpt">
+                    <input type="text" placeholder="Cep" id="cepIpt">
+                    <input type="text" placeholder="Complemento" id="compIpt">
+
                     <input type="text" placeholder="Senha" id="senhaIpt">
                     <input type="text" placeholder="Confirmar senha" id="senhaConfirm">
                     <button class="buttonFinalizar" onclick="cadastrar()">Finalizar cadastro</button>
@@ -77,12 +84,20 @@
         return cnpj.length === 14;
     }
 
+
+
     function cadastrar() {
 
         var nomeEmpresaVar = nomeEmpresaIpt.value;
         var cnpjVar = cnpjIpt.value;
         var emailVar = emailIpt.value;
         var telefoneVar = telefoneIpt.value;
+        var cidadeVar = cidadeIpt.value;
+        var bairroVar = bairroIpt.value;
+        var ufVar = ufIpt.value
+        var ruaVar = ruaIpt.value
+        var cepVar = cepIpt.value
+        var compVar = compIpt.value
         var senhaVar = senhaIpt.value;
         var senhaConfirmVar = senhaConfirm.value;
 
@@ -95,38 +110,54 @@
         // } else if (senhaVar !== senhaConfirmVar) {
         //     alert("As senhas digitadas não correspondem. Por favor, verifique.");
         // } else {
-            console.log("entrando no fetch")
-            fetch("/empresa/cadastrar", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    nomeEmpresaServer: nomeEmpresaVar,
-                    cnpjServer: cnpjVar,
-                    emailServer: emailVar,
-                    telefoneServer: telefoneVar,
-                    senhaServer: senhaVar
-                }),
-            })
-                .then(function (resposta) {
-                    if (resposta.ok) {
+        console.log("entrando no fetch")
+        fetch("/empresa/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                nomeEmpresaServer: nomeEmpresaVar,
+                cnpjServer: cnpjVar,
+                emailServer: emailVar,
+                telefoneServer: telefoneVar,
+                cidadeServer: cidadeVar,
+                bairroServer: bairroVar,
+                ufServer: ufVar,
+                ruaServer: ruaVar,
+                cepServer: cepVar,
+                compServer: compVar,
+                senhaServer: senhaVar
+            }),
+        })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    setTimeout(() => {
+                        window.location = "./Entrar.html"
+                    }, 1000);
 
-                        setTimeout(() => {
-                            window.location = "./Entrar.html";
-                        }, 1000);
-                    } else {
-                        alert(`Houve um problema com seu cadastro. Por favor, realize-o novamente.`);
-                    }
-                })
-                .catch(function (resposta) {
-                    console.log(`#ERRO: ${resposta}`);
-                });
-        
+                } else {
+                    alert(`Houve um problema com seu cadastro. Por favor, realize-o novamente.`);
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+
 
         return false;
 
     }
+
+
+
+
+
+
+
+
+
 
 
 </script>

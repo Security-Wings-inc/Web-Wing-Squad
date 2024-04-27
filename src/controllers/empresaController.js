@@ -20,7 +20,7 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1) {
                         console.log(resultadoAutenticar);
 
-                        empresaModel.autenticar(email,senha)
+                        empresaModel.autenticar(email, senha)
                             .then((resultadoAutenticar) => {
                                 if (resultadoAutenticar.length > 0) {
                                     res.json({
@@ -28,7 +28,7 @@ function autenticar(req, res) {
                                         email: resultadoAutenticar[0].email,
                                         nome: resultadoAutenticar[0].nome,
                                         senha: resultadoAutenticar[0].senha
-                               
+
                                     });
                                 } else {
                                     res.status(204).json({ aquarios: [] });
@@ -56,31 +56,41 @@ function cadastrar(req, res) {
     var cnpj = req.body.cnpjServer;
     var email = req.body.emailServer;
     var telefone = req.body.telefoneServer;
+    var cidade = req.body.cidadeServer;
+    var bairro = req.body.bairroServer;
+    var uf = req.body.ufServer;
+    var rua = req.body.ruaServer;
+    var cep = req.body.cepServer;
+    var comp = req.body.compServer;
     var senha = req.body.senhaServer;
 
-        console.log("entrando no then da controller usuario")
+    console.log("entrando no then da controller usuario")
 
-        // Passe os valores como parâmetro e vá para o arquivo empresaModel.js
-        empresaModel.cadastrar(nomeEmpresa,cnpj,email,telefone,senha)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-        }
-    
+    // Passe os valores como parâmetro e vá para o arquivo empresaModel.js
+    empresaModel.cadastrar(nomeEmpresa, cnpj, email, telefone,cidade,bairro,uf,rua,cep,comp,senha)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
+
+
+
 
 
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    
 }

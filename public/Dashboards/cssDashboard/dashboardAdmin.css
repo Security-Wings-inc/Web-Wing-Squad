@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Yaldevi:wght@200..700&display=swap');
 
 *{
     margin: 0;
@@ -44,14 +44,21 @@
 }
 
 .titulo{
-    width: fit-content;
+    display: flex;
+    width: 400px;
+    justify-content: space-around;
+    align-items: center;
     text-align: center;
     font-family: "Viga", sans-serif;
     color: #176B87;
-    font-size: 35px;
-    font-weight: 200;
-    
     margin: 40px 20px 20px 20px;
+    /* border: 1px green solid; */
+}
+
+.iconInfo{
+    display: flex;
+    width:50px;
+    margin-left: 10px
 }
 
 .textoBtn{
@@ -80,7 +87,8 @@
     justify-content: center;
 }
 
-.buttonContaier{
+.contanierBt{
+    /* display: none; */
     display: flex;
     flex-direction: column;
     width: 80%;
@@ -92,6 +100,7 @@
 .listContainer{
     flex-direction: column;
     display: flex;
+    overflow-y: auto;
     /* justify-content: center; */
     border: #a6d0de 1px solid;
     margin-top: 3%;
@@ -103,18 +112,119 @@
     
 }
 
+.listContainer:first-child{
+    margin-top: 200px;
+}
+
 
 .contentFunc{
     display: flex;
-    flex-direction:;
+    flex-direction: column;
     border: #a6d0de 1px solid;
     background-color: white;
     border-radius: 30px;
-    width: 100%;
-    height: 20%;
+    width: auto;
+    height: fit-content;
+    padding: 10px 20px;
+    margin: 10px 0px;
+    
+    font-family: "Yaldevi", sans-serif;
+    color:  #176B87;
+    font-weight:500;
+    font-style: normal;
     
 }
 
 .botao:hover{
+    background-color:  #3e8ea9;
+}
+
+
+.containerInfo{
+    display: none;
+    flex-direction: row;
+    
+    align-items: center;
+    width: 50%;
+    /* justify-content: space-evenly; */
+    height: 90%;
+    /* border: 1px solid black; */
+}
+
+
+
+.inputInfo{
+    height: 40px;
+    border-radius: 30px;
+    border: 1px solid #3e8ea9;
+    margin: 10px 0px;
+    padding-left: 20px;
+    
+}
+
+
+.voltarBt{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    border-radius: 30px;
+    border: none;
+    width: 50%;
+    height: 40px;
+    background-color: #176B87;
+    color: #E0F6F9;
+    font-family: "Viga", sans-serif;
+    /* padding: 10px; */
+    
+}
+
+.voltarBt:hover{
+    background-color:  #3e8ea9;
+}
+
+
+.inputContainerCad{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+    /* border: 1px solid black; */
+}
+
+.inputContainerEdit{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+    /* border: 1px solid black; */
+    
+}
+
+.inputContainerExc{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+    /* border: 1px solid black; */
+    
+}
+
+.botaoInfo{
+    margin-top: 10px;
+    border-radius: 30px;
+    border: none;
+    width: 100%;
+    height: 40px;
+    background-color: #176B87;
+    color: #E0F6F9;
+    font-family: "Viga", sans-serif;
+    /* padding: 10px; */
+    
+    
+}
+
+.botaoInfo:hover{
     background-color:  #3e8ea9;
 }

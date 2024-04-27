@@ -30,12 +30,15 @@
         <div class="contentContainer">
             
             <div class="containerEsquerdo">
-                <h1 class="titulo">
-                    Tela de Cadastros
-                </h1>
                 
-                <div class="buttonContaier">
-                    <button class="botao" id="btnCadastrar">
+                <div class="titulo" id="titulo">
+                    
+                    <h1>Tela de Cadastros</h1>
+                </div>
+                
+                 <!-- Botões com todas as opções -->
+                <div class="contanierBt" id="btGerais">
+                    <button class="botao" id="btCadastrar">
                         <div class="contentBtn">
     
                             <img src="./assetsDashboard/CadFunc.svg" alt="">
@@ -46,7 +49,7 @@
                         </div>
                     </button>
 
-                    <button class="botao" id="btnCadastrar">
+                    <button class="botao" id="btEditar">
                         <div class="contentBtn">
     
                             <img src="./assetsDashboard/EditFunc.svg" alt="">
@@ -57,7 +60,7 @@
                         </div>
                     </button>
 
-                    <button class="botao" id="btnCadastrar">
+                    <button class="botao" id="btExcluir">
                         <div class="contentBtn">
     
                             <img src="./assetsDashboard/ExcFunc.svg" alt="">
@@ -69,6 +72,54 @@
                     </button>
                     
                 </div>
+                
+                
+                <!-- Tela de cadastro -->
+                <div class="containerInfo" id="cadFuncContainer">
+
+                    
+                    <div class="inputContainerCad">
+                        <input class="inputInfo" type="text" placeholder="Nome">
+                        <input class="inputInfo" type="text" placeholder="Sobrenome">
+                        <input class="inputInfo" type="text" placeholder="Email">
+                        <input class="inputInfo" type="text" placeholder="Senha">
+                        <input class="inputInfo" type="text" placeholder="Confirmar Senha"><br>
+                        <button id="cadastrarBt" class="botaoInfo"> Cadastrar</button>
+                    </div>
+
+                </div>
+                
+                <!-- Tela de Editar Usuário -->
+                <div class="containerInfo" id="editFuncContainer">
+
+                                      
+                    <div class="inputContainerEdit">
+                        <input class="inputInfo" type="text" placeholder="ID do Funcioário">
+                        <input class="inputInfo" type="text" placeholder="Nome">
+                        <input class="inputInfo" type="text" placeholder="Sobrenome">
+                        <input class="inputInfo" type="text" placeholder="Email">
+                        <input class="inputInfo" type="text" placeholder="Senha">
+                        <input class="inputInfo" type="text" placeholder="Confirmar Senha">
+                        <button id="editarBt" class="botaoInfo">Editar</button>
+                    </div>
+                    
+                </div>
+
+                <div class="containerInfo" id="excFuncContainer">
+                                      
+                    <div class="inputContainerExc">
+                        <input class="inputInfo" type="text" placeholder="ID do Funcioário">
+                       <button id="excluirBt" class="botaoInfo">Excluir</button>
+                    </div>
+                    
+                </div>
+
+
+                
+                <button id="voltar" class="voltarBt">Voltar</button>
+                
+
+
 
 
             </div>            
@@ -80,8 +131,47 @@
 
                 <div class="listContainer">
                     
-                    <div class="contentFunc">
-                        a
+                    <div class="contentFunc" >
+                        <span id="idSapn">ID: </span>
+                        <span id="nomeSpan">Nome: </span>
+                        <span id="emailSapn">Email:</span>
+                        <span id="cateSapn">Categoria:</span>
+                    </div>
+                    <div class="contentFunc" >
+                        <span id="idSapn">ID: </span>
+                        <span id="nomeSpan">Nome: </span>
+                        <span id="emailSapn">Email:</span>
+                        <span id="cateSapn">Categoria:</span>
+                    </div>
+                    <div class="contentFunc" >
+                        <span id="idSapn">ID: </span>
+                        <span id="nomeSpan">Nome: </span>
+                        <span id="emailSapn">Email:</span>
+                        <span id="cateSapn">Categoria:</span>
+                    </div>
+                    <div class="contentFunc" >
+                        <span id="idSapn">ID: </span>
+                        <span id="nomeSpan">Nome: </span>
+                        <span id="emailSapn">Email:</span>
+                        <span id="cateSapn">Categoria:</span>
+                    </div>
+                    <div class="contentFunc" >
+                        <span id="idSapn">ID: </span>
+                        <span id="nomeSpan">Nome: </span>
+                        <span id="emailSapn">Email:</span>
+                        <span id="cateSapn">Categoria:</span>
+                    </div>
+                    <div class="contentFunc" >
+                        <span id="idSapn">ID: </span>
+                        <span id="nomeSpan">Nome: </span>
+                        <span id="emailSapn">Email:</span>
+                        <span id="cateSapn">Categoria:</span>
+                    </div>
+                    <div class="contentFunc" >
+                        <span id="idSapn">ID: </span>
+                        <span id="nomeSpan">Nome: </span>
+                        <span id="emailSapn">Email:</span>
+                        <span id="cateSapn">Categoria:</span>
                     </div>
                     
 
@@ -98,3 +188,75 @@
 
 </body>
 </html>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+
+        var btCadastrar = document.getElementById("btCadastrar");
+        var btEditar = document.getElementById("btEditar");
+        var btExcluir = document.getElementById("btExcluir");
+        var voltar = document.getElementById("voltar");
+
+        btCadastrar.addEventListener("click", function() {
+         
+                btGerais.style.display = "none";
+
+                voltar.style.display = "flex";
+                cadFuncContainer.style.display = "flex";
+
+                titulo.style.textAlign = "left"
+                titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/CadFuncIcon.svg'> <h1>Cadastro de usuários</h1>"  
+        
+        });
+
+
+        btEditar.addEventListener("click", function(){
+                
+                btGerais.style.display = "none";
+
+                voltar.style.display = "flex";
+                editFuncContainer.style.display = "flex";
+                
+                titulo.style.textAlign = "left"
+                titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/EditFuncIcon.svg'> <h1>Edição de usuários</h1>"
+ 
+                
+        })
+
+
+        btExcluir.addEventListener("click", function(){
+                
+                btGerais.style.display = "none";
+
+                voltar.style.display = "flex";
+                excFuncContainer.style.display = "flex";
+                
+                titulo.style.textAlign = "left"
+                titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/ExcFuncIcon.svg'> <h1>Exlusão de usuários</h1>"
+ 
+                
+        })
+
+        voltar.addEventListener("click", function(){
+            btGerais.style.display = "flex";
+            voltar.style.display = "none";
+            editFuncContainer.style.display = "none";
+            cadFuncContainer.style.display = "none";
+            excFuncContainer.style.display = "none";
+            titulo.style.textAlign = "center"
+            titulo.innerHTML = "<h1>Tela de Cadastros</h1>"
+
+        });
+
+        
+
+        
+
+
+
+
+    
+    });
+
+
+</script>

@@ -47,9 +47,22 @@ function deletarFunc(idUser) {
 }
 
 
+function editarFunc(idUser,novoEmail,novaSenha) {
+
+    var instrucaoSql = `
+    UPDATE usuario
+    SET email = '${novoEmail}', senha = '${novaSenha}'
+    WHERE idUsuario = ${idUser};
+
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrarFunc,
     listarFunc,
-    deletarFunc
+    deletarFunc,
+    editarFunc
 };

@@ -21,8 +21,8 @@ function autenticar(req, res) {
                         email: resultadoAutenticar[0].email,
                         nome: resultadoAutenticar[0].nome,
                         senha: resultadoAutenticar[0].senha,
-                        isAdmin : resultadoAutenticar[0].isAdmin,
-                        fkEmpresa : resultadoAutenticar[0].fkEmpresa,
+                        isAdmin: resultadoAutenticar[0].isAdmin,
+                        fkEmpresa: resultadoAutenticar[0].fkEmpresa,
 
                     });
 
@@ -60,6 +60,33 @@ function listarFunc(req, res) {
 }
 
 
+
+function editarFunc(req, res) {
+    var id = req.body.idUsuarioServer;
+    var novoEmail = req.body.novoEmailServer;
+    var novaSenha = req.body.novaSenhaServer;
+
+
+
+    usuarioModel.editarFunc(id, novoEmail, novaSenha)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!")
+            }
+        }).catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+
+
+}
+
+
 function cadastrarFunc(req, res) {
 
     var nome = req.body.nomeServer;
@@ -69,7 +96,7 @@ function cadastrarFunc(req, res) {
     var isAdmin = req.body.isAdminServer;
     var cpf = req.body.cpfServer;
 
-    usuarioModel.cadastrarFunc(nome, email, senha, idEmpresa,isAdmin,cpf)
+    usuarioModel.cadastrarFunc(nome, email, senha, idEmpresa, isAdmin, cpf)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -117,6 +144,7 @@ module.exports = {
     autenticar,
     cadastrarFunc,
     listarFunc,
-    deletarFunc
+    deletarFunc,
+    editarFunc
 
 }

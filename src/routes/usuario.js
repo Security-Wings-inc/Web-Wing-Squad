@@ -25,4 +25,8 @@ router.delete("/deletarFunc/:idVar", function (req, res) {
     usuarioController.deletarFunc(req, res);
 });
 
+router.put("/editarFunc", function (req, res) {
+    usuarioController.editarFunc(req, res);
+});
+
 module.exports = router;

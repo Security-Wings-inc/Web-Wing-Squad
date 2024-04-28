@@ -96,13 +96,11 @@
 
 
                     <div class="inputContainerEdit">
-                        <input class="inputInfo" type="text" placeholder="ID do Funcioário">
-                        <input class="inputInfo" type="text" placeholder="Nome">
-                        <input class="inputInfo" type="text" placeholder="Sobrenome">
-                        <input class="inputInfo" type="text" placeholder="Email">
-                        <input class="inputInfo" type="text" placeholder="Senha">
+                        <input class="inputInfo" type="text" placeholder="ID do Funcioário" id="idUserIpt">
+                        <input class="inputInfo" type="text" placeholder="Email" id="novoEmailIpt">
+                        <input class="inputInfo" type="text" placeholder="Senha" id="novaSenhaIpt">
                         <input class="inputInfo" type="text" placeholder="Confirmar Senha">
-                        <button id="editarBt" class="botaoInfo">Editar</button>
+                        <button id="editarBt" class="botaoInfo" onclick="editarFunc()">Editar</button>
                     </div>
 
                 </div>
@@ -287,6 +285,55 @@
                 console.log(`#ERRO: ${resposta}`);
             });
     }
+
+
+    function editarFunc() {
+
+        var idUsuarioVar = idUserIpt.value;
+        var novoEmailVar = novoEmailIpt.value;
+        var novaSenhaVar = novaSenhaIpt.value;
+
+        console.log("aaaaaaaaaaaaaaaaaaa")
+
+
+        fetch("/usuario/editarFunc", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+               idUsuarioServer: idUsuarioVar,
+               novoEmailServer : novoEmailVar,
+               novaSenhaServer : novaSenhaVar
+    
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    // Exibindo Sweet Alert de sucesso
+                    Swal.fire(
+                        'Sucesso!',
+                        'Usuário editado com sucesso!',
+                        'success'
+                    ).then(() => {
+                        window.location.reload();
+                    });
+                } else {
+                    swal("Erro!", "Houve um erro ao tentar realizar o cadastro!", "error");
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    }
+
+
+
+
+
+
 
 
 

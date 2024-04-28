@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,40 +8,41 @@
     <link rel="stylesheet" href="./cssDashboard/dashboardAdmin.css">
     <link rel="stylesheet" href="./cssDashboard/dashboardSidebarAdmin.css">
 </head>
-<body>
-    
+
+<body onload="listarFunc()">
+
     <header>
 
-        
+
         <div class="lista">
-    
+
             <ul class="listaHeader">
-               <li><a href=""><img src="./assetsDashboard/PerfilIcon.svg" alt=""></a></li>
-               <li><a href=""><img src="./assetsDashboard/DashIcon.svg" alt=""></a></li>
-               <li><a href=""><img src="./assetsDashboard/ChaveIcon.svg" alt=""></a></li>
-               <li><a href=""><img src="./assetsDashboard/SairIcon.svg" alt=""></a></li>
+                <li><a href=""><img src="./assetsDashboard/PerfilIcon.svg" alt=""></a></li>
+                <li><a href=""><img src="./assetsDashboard/DashIcon.svg" alt=""></a></li>
+                <li><a href=""><img src="./assetsDashboard/ChaveIcon.svg" alt=""></a></li>
+                <li><a href=""><img src="./assetsDashboard/SairIcon.svg" alt=""></a></li>
             </ul>
-       
-               </div>
+
+        </div>
 
     </header>
 
     <main>
 
         <div class="contentContainer">
-            
+
             <div class="containerEsquerdo">
-                
+
                 <div class="titulo" id="titulo">
-                    
+
                     <h1>Tela de Cadastros</h1>
                 </div>
-                
-                 <!-- Botões com todas as opções -->
+
+                <!-- Botões com todas as opções -->
                 <div class="contanierBt" id="btGerais">
                     <button class="botao" id="btCadastrar">
                         <div class="contentBtn">
-    
+
                             <img src="./assetsDashboard/CadFunc.svg" alt="">
                             <p class="textoBtn">
                                 Cadastrar <br>
@@ -51,7 +53,7 @@
 
                     <button class="botao" id="btEditar">
                         <div class="contentBtn">
-    
+
                             <img src="./assetsDashboard/EditFunc.svg" alt="">
                             <p class="textoBtn">
                                 Editar <br>
@@ -62,7 +64,7 @@
 
                     <button class="botao" id="btExcluir">
                         <div class="contentBtn">
-    
+
                             <img src="./assetsDashboard/ExcFunc.svg" alt="">
                             <p class="textoBtn">
                                 Excluir <br>
@@ -70,29 +72,29 @@
                             </p>
                         </div>
                     </button>
-                    
+
                 </div>
-                
-                
+
+
                 <!-- Tela de cadastro -->
                 <div class="containerInfo" id="cadFuncContainer">
 
-                    
+
                     <div class="inputContainerCad">
-                        <input class="inputInfo" type="text" placeholder="Nome">
-                        <input class="inputInfo" type="text" placeholder="Sobrenome">
-                        <input class="inputInfo" type="text" placeholder="Email">
-                        <input class="inputInfo" type="text" placeholder="Senha">
+                        <input class="inputInfo" type="text" placeholder="Nome" id="nomeFunc">
+                        <input class="inputInfo" type="text" placeholder="CPF" id="cpfFunc">
+                        <input class="inputInfo" type="text" placeholder="Email" id="emailFunc">
+                        <input class="inputInfo" type="text" placeholder="Senha" id="senhaFunc">
                         <input class="inputInfo" type="text" placeholder="Confirmar Senha"><br>
-                        <button id="cadastrarBt" class="botaoInfo"> Cadastrar</button>
+                        <button id="cadastrarBt" class="botaoInfo" onclick="cadastrarFunc()"> Cadastrar</button>
                     </div>
 
                 </div>
-                
+
                 <!-- Tela de Editar Usuário -->
                 <div class="containerInfo" id="editFuncContainer">
 
-                                      
+
                     <div class="inputContainerEdit">
                         <input class="inputInfo" type="text" placeholder="ID do Funcioário">
                         <input class="inputInfo" type="text" placeholder="Nome">
@@ -102,82 +104,44 @@
                         <input class="inputInfo" type="text" placeholder="Confirmar Senha">
                         <button id="editarBt" class="botaoInfo">Editar</button>
                     </div>
-                    
+
                 </div>
 
                 <div class="containerInfo" id="excFuncContainer">
-                                      
+
                     <div class="inputContainerExc">
                         <input class="inputInfo" type="text" placeholder="ID do Funcioário">
-                       <button id="excluirBt" class="botaoInfo">Excluir</button>
+                        <button id="excluirBt" class="botaoInfo">Excluir</button>
                     </div>
-                    
+
                 </div>
 
 
-                
+
                 <button id="voltar" class="voltarBt">Voltar</button>
-                
 
 
 
 
-            </div>            
+
+            </div>
 
             <div class="containerDireito">
                 <h1 class="titulo">
                     Tela de Usuários
                 </h1>
 
-                <div class="listContainer">
-                    
-                    <div class="contentFunc" >
-                        <span id="idSapn">ID: </span>
-                        <span id="nomeSpan">Nome: </span>
-                        <span id="emailSapn">Email:</span>
-                        <span id="cateSapn">Categoria:</span>
-                    </div>
-                    <div class="contentFunc" >
-                        <span id="idSapn">ID: </span>
-                        <span id="nomeSpan">Nome: </span>
-                        <span id="emailSapn">Email:</span>
-                        <span id="cateSapn">Categoria:</span>
-                    </div>
-                    <div class="contentFunc" >
-                        <span id="idSapn">ID: </span>
-                        <span id="nomeSpan">Nome: </span>
-                        <span id="emailSapn">Email:</span>
-                        <span id="cateSapn">Categoria:</span>
-                    </div>
-                    <div class="contentFunc" >
-                        <span id="idSapn">ID: </span>
-                        <span id="nomeSpan">Nome: </span>
-                        <span id="emailSapn">Email:</span>
-                        <span id="cateSapn">Categoria:</span>
-                    </div>
-                    <div class="contentFunc" >
-                        <span id="idSapn">ID: </span>
-                        <span id="nomeSpan">Nome: </span>
-                        <span id="emailSapn">Email:</span>
-                        <span id="cateSapn">Categoria:</span>
-                    </div>
-                    <div class="contentFunc" >
-                        <span id="idSapn">ID: </span>
-                        <span id="nomeSpan">Nome: </span>
-                        <span id="emailSapn">Email:</span>
-                        <span id="cateSapn">Categoria:</span>
-                    </div>
-                    <div class="contentFunc" >
-                        <span id="idSapn">ID: </span>
-                        <span id="nomeSpan">Nome: </span>
-                        <span id="emailSapn">Email:</span>
-                        <span id="cateSapn">Categoria:</span>
-                    </div>
-                    
+                <div class="listContainer" id="listaUser">
 
+                    <!-- <div class="contentFunc" >
+                        <span id="idSpan">ID: </span>
+                        <span id="nomeSpan">Nome: </span>
+                        <span id="emailSapn">Email:</span>
+                        <span id="cateSapn">Categoria:</span>
+                    </div> -->
 
                 </div>
-            </div>            
+            </div>
 
         </div>
 
@@ -187,57 +151,59 @@
     <footer></footer>
 
 </body>
+
 </html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
 
         var btCadastrar = document.getElementById("btCadastrar");
         var btEditar = document.getElementById("btEditar");
         var btExcluir = document.getElementById("btExcluir");
         var voltar = document.getElementById("voltar");
 
-        btCadastrar.addEventListener("click", function() {
-         
-                btGerais.style.display = "none";
+        btCadastrar.addEventListener("click", function () {
 
-                voltar.style.display = "flex";
-                cadFuncContainer.style.display = "flex";
+            btGerais.style.display = "none";
 
-                titulo.style.textAlign = "left"
-                titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/CadFuncIcon.svg'> <h1>Cadastro de usuários</h1>"  
-        
+            voltar.style.display = "flex";
+            cadFuncContainer.style.display = "flex";
+
+            titulo.style.textAlign = "left"
+            titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/CadFuncIcon.svg'> <h1>Cadastro de usuários</h1>"
+
         });
 
 
-        btEditar.addEventListener("click", function(){
-                
-                btGerais.style.display = "none";
+        btEditar.addEventListener("click", function () {
 
-                voltar.style.display = "flex";
-                editFuncContainer.style.display = "flex";
-                
-                titulo.style.textAlign = "left"
-                titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/EditFuncIcon.svg'> <h1>Edição de usuários</h1>"
- 
-                
+            btGerais.style.display = "none";
+
+            voltar.style.display = "flex";
+            editFuncContainer.style.display = "flex";
+
+            titulo.style.textAlign = "left"
+            titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/EditFuncIcon.svg'> <h1>Edição de usuários</h1>"
+
+
         })
 
 
-        btExcluir.addEventListener("click", function(){
-                
-                btGerais.style.display = "none";
+        btExcluir.addEventListener("click", function () {
 
-                voltar.style.display = "flex";
-                excFuncContainer.style.display = "flex";
-                
-                titulo.style.textAlign = "left"
-                titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/ExcFuncIcon.svg'> <h1>Exlusão de usuários</h1>"
- 
-                
+            btGerais.style.display = "none";
+
+            voltar.style.display = "flex";
+            excFuncContainer.style.display = "flex";
+
+            titulo.style.textAlign = "left"
+            titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/ExcFuncIcon.svg'> <h1>Exlusão de usuários</h1>"
+
+
         })
 
-        voltar.addEventListener("click", function(){
+        voltar.addEventListener("click", function () {
             btGerais.style.display = "flex";
             voltar.style.display = "none";
             editFuncContainer.style.display = "none";
@@ -248,17 +214,147 @@
 
         });
 
-        
-
-        
-
-
-
-
-    
     });
-    var isAdmin = sessionStorage.IS_ADMIN;
-        console.log(isAdmin)
+
+    function cadastrarFunc() {
+        var nomeVar = nomeFunc.value;
+        var emailVar = emailFunc.value;
+        var senhaVar = senhaFunc.value;
+        var isAdminVar = 0;
+        var idEmpresaVar = sessionStorage.FK_EMPRESA;
+        var cpfVar = cpfFunc.value;
+
+        fetch("/usuario/cadastrarFunc", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                idEmpresaServer: idEmpresaVar,
+                isAdminServer: isAdminVar,
+                cpfServer: cpfVar
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    // Exibindo Sweet Alert de sucesso
+                    Swal.fire(
+                        'Sucesso!',
+                        'Usuário cadastrado com sucesso!',
+                        'success'
+                    ).then(() => {
+                        window.location.reload();
+                    });
+                } else {
+                    swal("Erro!", "Houve um erro ao tentar realizar o cadastro!", "error");
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    }
+
+
+    function deletarFunc(idVar) {
+        fetch(`/usuario/deletarFunc/${idVar}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    Swal.fire(
+                        'Sucesso!',
+                        'Usuário excluído com sucesso!',
+                        'success'
+                    ).then(() => {
+                        window.location.reload();
+                    });
+
+                } else {
+                    throw "ta caindo aqui";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    }
+
+
+
+    function listarFunc() {
+        var idEmpresaVar = sessionStorage.FK_EMPRESA;
+
+
+        fetch("/usuario/listarFunc", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idEmpresaServer: idEmpresaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listarFunc()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                // listaUser.innerHTML = "";
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    for (let i = 0; i < resposta.length; i++) {
+                        var usuario = resposta[i];
+
+                        var categoria = usuario.isAdmin === 1 ? "admin" : "usuário comum";
+
+                        listaUser.innerHTML += `
+                        
+                        <div class="contentFunc">
+                            <span>ID: ${usuario.idUsuario}</span>
+                            <span>Nome: ${usuario.nome}</span>
+                            <span>Email: ${usuario.email}</span>
+                            <span>Categoria : ${categoria}
+                            <button onclick="deletarFunc(${usuario.idUsuario})">Excluir usuário</button>
+                        </div>
+                    `;
+
+                    }
+
+                    // mocar o botão aqui com um onclick da func deletar e o params seria o funcionario.id
+                    setTimeout(function () {
+                        window.location.reload
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+                resposta.text().then(texto => {
+                    console.error(texto, "vai tomar no cu");
+
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+
 
 
 </script>

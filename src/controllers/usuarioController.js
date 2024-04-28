@@ -37,11 +37,11 @@ function autenticar(req, res) {
 
 function listarFunc(req, res) {
 
-    var idEmpresa = req.body.idEmpresa
+    var idEmpresa = req.body.idEmpresaServer
 
 
 
-    usuarioModel.listarFunc(idUser)
+    usuarioModel.listarFunc(idEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -65,10 +65,11 @@ function cadastrarFunc(req, res) {
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    var id = req.body.idServer
+    var idEmpresa = req.body.idEmpresaServer;
+    var isAdmin = req.body.isAdminServer;
+    var cpf = req.body.cpfServer;
 
-
-    usuarioModel.cadastrarFunc(nome, email, senha, id)
+    usuarioModel.cadastrarFunc(nome, email, senha, idEmpresa,isAdmin,cpf)
         .then(
             function (resultado) {
                 res.json(resultado);

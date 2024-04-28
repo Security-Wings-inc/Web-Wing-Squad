@@ -36,6 +36,7 @@
         </div>
     </div>
 
+
     <footer style="margin-top: 0;">
       <a href="./Index.html"><img class="imgFooter" src="./assets/logo-azul-claro.svg" alt=""></a>
       <p >© 2024 Web Wings. Todos os direitos reservados. Desenvolvido por alunos da SPTECH.</p>
@@ -51,8 +52,7 @@
 
 
 <script>
-  var testandolegal = sessionStorage.ID_Empresa ;
-  console.log(testandolegal);
+ 
 
 function entrar() {
   var emailVar = emailIpt.value
@@ -66,7 +66,7 @@ function entrar() {
   console.log("FORM LOGIN: ", emailVar);
   console.log("FORM SENHA: ", senhaVar);
 
-  fetch("/empresa/autenticar", {
+  fetch("/usuario/autenticar", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -87,12 +87,24 @@ function entrar() {
         console.log(JSON.stringify(json));
         sessionStorage.EMAIL_USUARIO = json.email;
         sessionStorage.NOME_USUARIO = json.nome;
-        sessionStorage.ID_USUARIO = json.id;
+        sessionStorage.ID_USUARIO = json.idUsuario;
+        sessionStorage.FK_EMPRESA = json.fkEmpresa;
+        sessionStorage.IS_ADMIN = json.isAdmin;
         
+        var isAdmin = sessionStorage.IS_ADMIN;
+        console.log(isAdmin)
 
-        setTimeout(function () {
-          window.location = "./Index.html";
+        if(isAdmin == 1){
+            setTimeout(function () {
+          window.location = "./Dashboards/DashboardAdmin.html";
         }, 1000); // apenas para exibir o loading
+        }else{
+          setTimeout(function () {
+          window.location = "./Dashboards/DashboardUser.html";
+        }, 1000);
+        }
+        
+      
       });
     }
   })

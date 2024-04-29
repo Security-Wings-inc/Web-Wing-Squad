@@ -26,7 +26,7 @@
           <a href="./Index.html"><img class="imgLogo" src="./assets/logo-azul-escuro.svg" alt=""></a>
         </div>
         <div class="form-login" action="">
-          <h1>Criar sua conta</h1>
+          <h1>Login</h1>
 
           <input type="text" placeholder="Endereço de E-mail" id="emailIpt">
           <input type="text" placeholder="Senha" id="senhaIpt">
@@ -63,12 +63,15 @@
     var senhaVar = senhaIpt.value;
 
     if (emailVar == "" || senhaVar == "") {
-      alert("Preencha todos os campos");
-      return false;
-    }
+      Swal.fire({
+                icon: 'error',
+                title: 'Ops...',
+                text: `preencha todos os campos`,
+    })
+    return;
+  }
 
-    console.log("FORM LOGIN: ", emailVar);
-    console.log("FORM SENHA: ", senhaVar);
+ 
 
     fetch("/usuario/autenticar", {
       method: "POST",

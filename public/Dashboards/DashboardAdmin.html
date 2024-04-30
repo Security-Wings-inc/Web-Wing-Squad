@@ -87,6 +87,7 @@
                         <input class="inputInfo" type="text" placeholder="Senha" id="senhaFunc">
                         <input class="inputInfo" type="text" placeholder="Confirmar Senha"><br>
                         <button id="cadastrarBt" class="botaoInfo" onclick="cadastrarFunc()"> Cadastrar</button>
+                        <button id="cadastrarBt" class="botaoInfo" onclick="testeDeChamarOsIds()"> teste</button>
                     </div>
 
                 </div>
@@ -96,7 +97,6 @@
 
 
                     <div class="inputContainerEdit">
-                        <input class="inputInfo" type="text" placeholder="ID do Funcioário" id="idUserIpt">
                         <input class="inputInfo" type="text" placeholder="Email" id="novoEmailIpt">
                         <input class="inputInfo" type="text" placeholder="Senha" id="novaSenhaIpt">
                         <input class="inputInfo" type="text" placeholder="Confirmar Senha">
@@ -130,14 +130,6 @@
                 </h1>
 
                 <div class="listContainer" id="listaUser">
-
-                    <!-- <div class="contentFunc" >
-                        <span id="idSpan">ID: </span>
-                        <span id="nomeSpan">Nome: </span>
-                        <span id="emailSapn">Email:</span>
-                        <span id="cateSapn">Categoria:</span>
-                    </div> -->
-
                 </div>
             </div>
 
@@ -154,6 +146,9 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script>
+
+    var userIdGlobal = "";
+    var nomeTeste = "";
     document.addEventListener("DOMContentLoaded", function () {
 
         var btCadastrar = document.getElementById("btCadastrar");
@@ -286,14 +281,24 @@
             });
     }
 
+    //passar mais 1 parametro pra preEdit(nome)->ao clicar nela abre as inputs de alteração!
+    // la terá o botão que é o que realmente vai editar o funcionarioq
+    // passa no corpo do fetch o userIdGlobal
+    // lembrar que a function editarFunc tem que estar por ultimo pra não inverter a ordem de criação das variáveis
+
+    function preEdit(idUserVar,nome) {
+        userIdGlobal = idUserVar;
+        nomeTeste = nome
+    }
+
+    function testeDeChamarOsIds(){
+        console.log(userIdGlobal,nomeTeste);
+    }
 
     function editarFunc() {
 
-        var idUsuarioVar = idUserIpt.value;
         var novoEmailVar = novoEmailIpt.value;
         var novaSenhaVar = novaSenhaIpt.value;
-
-        console.log("aaaaaaaaaaaaaaaaaaa")
 
 
         fetch("/usuario/editarFunc", {
@@ -302,17 +307,16 @@
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-               idUsuarioServer: idUsuarioVar,
-               novoEmailServer : novoEmailVar,
-               novaSenhaServer : novaSenhaVar
-    
+                idUsuarioServer: idUsuarioVar,
+                novoEmailServer: novoEmailVar,
+                novaSenhaServer: novaSenhaVar
+
             }),
         })
             .then(function (resposta) {
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    // Exibindo Sweet Alert de sucesso
                     Swal.fire(
                         'Sucesso!',
                         'Usuário editado com sucesso!',
@@ -328,13 +332,6 @@
                 console.log(`#ERRO: ${resposta}`);
             });
     }
-
-
-
-
-
-
-
 
 
     function listarFunc() {
@@ -354,8 +351,6 @@
 
             if (resposta.ok) {
                 console.log(resposta);
-                // listaUser.innerHTML = "";
-
                 resposta.json().then(function (resposta) {
                     console.log("Dados recebidos: ", JSON.stringify(resposta));
 
@@ -372,15 +367,15 @@
                             <span>Email: ${usuario.email}</span>
                             <span>Categoria : ${categoria}
                             <button onclick="deletarFunc(${usuario.idUsuario})">Excluir usuário</button>
+                            <button onclick="preEdit('${usuario.idUsuario}', '${usuario.nome}')">Editar</button>
                         </div>
                     `;
 
                     }
 
-                    // mocar o botão aqui com um onclick da func deletar e o params seria o funcionario.id
                     setTimeout(function () {
                         window.location.reload
-                    }, 1000); // apenas para exibir o loading
+                    }, 1000); 
 
                 });
 

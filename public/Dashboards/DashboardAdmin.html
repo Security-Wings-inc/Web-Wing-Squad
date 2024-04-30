@@ -51,7 +51,7 @@
                         </div>
                     </button>
 
-                    <button class="botao" id="btEditar">
+                    <!-- <button class="botao" id="btEditar">
                         <div class="contentBtn">
 
                             <img src="./assetsDashboard/EditFunc.svg" alt="">
@@ -60,9 +60,9 @@
                                 Usuário
                             </p>
                         </div>
-                    </button>
+                    </button> -->
 
-                    <button class="botao" id="btExcluir">
+                    <!-- <button class="botao" id="btExcluir">
                         <div class="contentBtn">
 
                             <img src="./assetsDashboard/ExcFunc.svg" alt="">
@@ -71,7 +71,7 @@
                                 Usuário
                             </p>
                         </div>
-                    </button>
+                    </button> -->
 
                 </div>
 
@@ -169,32 +169,21 @@
         });
 
 
-        btEditar.addEventListener("click", function () {
-
-            btGerais.style.display = "none";
-
-            voltar.style.display = "flex";
-            editFuncContainer.style.display = "flex";
-
-            titulo.style.textAlign = "left"
-            titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/EditFuncIcon.svg'> <h1>Edição de usuários</h1>"
+       
 
 
-        })
+        // btExcluir.addEventListener("click", function () {
+
+        //     btGerais.style.display = "none";
+
+        //     voltar.style.display = "flex";
+        //     excFuncContainer.style.display = "flex";
+
+        //     titulo.style.textAlign = "left"
+        //     titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/ExcFuncIcon.svg'> <h1>Exlusão de usuários</h1>"
 
 
-        btExcluir.addEventListener("click", function () {
-
-            btGerais.style.display = "none";
-
-            voltar.style.display = "flex";
-            excFuncContainer.style.display = "flex";
-
-            titulo.style.textAlign = "left"
-            titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/ExcFuncIcon.svg'> <h1>Exlusão de usuários</h1>"
-
-
-        })
+        // });
 
         voltar.addEventListener("click", function () {
             btGerais.style.display = "flex";
@@ -288,7 +277,8 @@
 
     function preEdit(idUserVar,nome) {
         userIdGlobal = idUserVar;
-        nomeTeste = nome;;;;;;;;;;;;;;;
+        nomeTeste = nome;
+        funcEditar()
     }
 
     function testeDeChamarOsIds(){
@@ -367,7 +357,7 @@
                             <span>Email: ${usuario.email}</span>
                             <span>Categoria : ${categoria}
                             <button onclick="deletarFunc(${usuario.idUsuario})">Excluir usuário</button>
-                            <button onclick="preEdit('${usuario.idUsuario}', '${usuario.nome}')">Editar</button>
+                            <button id="btEditar" onclick="preEdit('${usuario.idUsuario}', '${usuario.nome}')">Editar</button>
                         </div>
                     `;
 
@@ -383,7 +373,7 @@
 
                 console.log("Houve um erro ao tentar realizar o login!");
                 resposta.text().then(texto => {
-                    console.error(texto, "vai tomar no cu");
+                    console.error(texto, "teste");
 
                 });
             }
@@ -395,6 +385,18 @@
         return false;
     }
 
+    function funcEditar(){
+
+btGerais.style.display = "none";
+
+voltar.style.display = "flex";
+editFuncContainer.style.display = "flex";
+
+titulo.style.textAlign = "left"
+titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/EditFuncIcon.svg'> <h1>Edição de usuários</h1>"
+
+
+};
 
 
 

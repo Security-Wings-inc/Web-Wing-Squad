@@ -77,7 +77,8 @@ function editarFunc(req, res) {
             }
         }).catch(
             function (erro) {
-                console.log(erro);
+                // console.log(erro);
+                console.log("tomanocu")
                 console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
                 res.status(500).json(erro.sqlMessage);
             }

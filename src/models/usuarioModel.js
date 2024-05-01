@@ -55,7 +55,7 @@ function editarFunc(idUser,novoEmail,novaSenha) {
     WHERE idUsuario = ${idUser};
 
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    // console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 

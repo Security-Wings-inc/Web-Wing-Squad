@@ -239,8 +239,14 @@
                     ).then(() => {
                         window.location.reload();
                     });
-                } else {
-                    swal("Erro!", "Houve um erro ao tentar realizar o cadastro!", "error");
+                } else if (resposta.status == 500) {
+                    Swal.fire(
+                        "Erro",
+                        "O cpf ou email já estão em uso",
+                        "error"
+                    ).then(() => {
+                        window.location.reload();
+                    })
                 }
             })
             .catch(function (resposta) {
@@ -316,14 +322,14 @@
                     ).then(() => {
                         window.location.reload();
                     });
+               
                 } else if (resposta.status == 500) {
                     Swal.fire(
                         'erro!',
                         'Erro ao editar usuário, email já está em uso, ',
                         'error'
-                    ).then(() => {
-                        window.location.reload();
-                    });
+                    )
+                    return;
                 }
             })
             .catch(function (resposta) {
@@ -363,6 +369,7 @@
                             <span>ID: ${usuario.idUsuario}</span>
                             <span>Nome: ${usuario.nome}</span>
                             <span>Email: ${usuario.email}</span>
+                            <span>CPF: ${usuario.cpf} </span>
                             <span>Categoria : ${categoria}
                             <button onclick="deletarFunc(${usuario.idUsuario})">Excluir usuário</button>
                             <button id="btEditar" onclick="preEdit('${usuario.idUsuario}', '${usuario.nome}')">Editar</button>

@@ -87,7 +87,6 @@
                         <input class="inputInfo" type="text" placeholder="Senha" id="senhaFunc">
                         <input class="inputInfo" type="text" placeholder="Confirmar Senha"><br>
                         <button id="cadastrarBt" class="botaoInfo" onclick="cadastrarFunc()"> Cadastrar</button>
-                        <button id="cadastrarBt" class="botaoInfo" onclick="testeDeChamarOsIds()"> teste</button>
                     </div>
 
                 </div>
@@ -148,7 +147,7 @@
 <script>
 
     var userIdGlobal = "";
-    var nomeTeste = "";
+    var userNameGlobal = "";
     document.addEventListener("DOMContentLoaded", function () {
 
         var btCadastrar = document.getElementById("btCadastrar");
@@ -169,7 +168,7 @@
         });
 
 
-       
+
 
 
         // btExcluir.addEventListener("click", function () {
@@ -270,23 +269,18 @@
             });
     }
 
-    //passar mais 1 parametro pra preEdit(nome)->ao clicar nela abre as inputs de alteração!
-    // la terá o botão que é o que realmente vai editar o funcionarioq
-    // passa no corpo do fetch o userIdGlobal
-    // lembrar que a function editarFunc tem que estar por ultimo pra não inverter a ordem de criação das variáveis
 
-    function preEdit(idUserVar,nome) {
+
+    function preEdit(idUserVar, nome) {
         userIdGlobal = idUserVar;
-        nomeTeste = nome;
+        userNameGlobal = nome;
         funcEditar()
     }
 
-    function testeDeChamarOsIds(){
-        console.log(userIdGlobal,nomeTeste);
-    }
+
 
     function editarFunc() {
-
+        var idUser = userIdGlobal;
         var novoEmailVar = novoEmailIpt.value;
         var novaSenhaVar = novaSenhaIpt.value;
 
@@ -297,7 +291,7 @@
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                idUsuarioServer: idUsuarioVar,
+                idUsuarioServer: idUser,
                 novoEmailServer: novoEmailVar,
                 novaSenhaServer: novaSenhaVar
 
@@ -315,11 +309,12 @@
                         window.location.reload();
                     });
                 } else {
-                    swal("Erro!", "Houve um erro ao tentar realizar o cadastro!", "error");
+                    swal("Erro!", "Houve um erro ao tentar realizar edição, email já cadastrado", "error");
                 }
             })
             .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
+
+                console.log(`#ERRO: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`);
             });
     }
 
@@ -365,7 +360,7 @@
 
                     setTimeout(function () {
                         window.location.reload
-                    }, 1000); 
+                    }, 1000);
 
                 });
 
@@ -385,18 +380,19 @@
         return false;
     }
 
-    function funcEditar(){
+    function funcEditar() {
 
-btGerais.style.display = "none";
+        btGerais.style.display = "none";
 
-voltar.style.display = "flex";
-editFuncContainer.style.display = "flex";
+        voltar.style.display = "flex";
+        editFuncContainer.style.display = "flex";
 
-titulo.style.textAlign = "left"
-titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/EditFuncIcon.svg'> <h1>Edição de usuários</h1>"
+        titulo.style.textAlign = "left"
+        titulo.innerHTML = `<img class='iconInfo' src='./assetsDashboard/EditFuncIcon.svg'> <h1>Edição de usuários</h1>  <h1>Você está editando as informações do usuário ${userNameGlobal}`
 
 
-};
+
+    };
 
 
 

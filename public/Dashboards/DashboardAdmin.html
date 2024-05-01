@@ -50,29 +50,6 @@
                             </p>
                         </div>
                     </button>
-
-                    <!-- <button class="botao" id="btEditar">
-                        <div class="contentBtn">
-
-                            <img src="./assetsDashboard/EditFunc.svg" alt="">
-                            <p class="textoBtn">
-                                Editar <br>
-                                Usuário
-                            </p>
-                        </div>
-                    </button> -->
-
-                    <!-- <button class="botao" id="btExcluir">
-                        <div class="contentBtn">
-
-                            <img src="./assetsDashboard/ExcFunc.svg" alt="">
-                            <p class="textoBtn">
-                                Excluir <br>
-                                Usuário
-                            </p>
-                        </div>
-                    </button> -->
-
                 </div>
 
 
@@ -84,8 +61,9 @@
                         <input class="inputInfo" type="text" placeholder="Nome" id="nomeFunc">
                         <input class="inputInfo" type="text" placeholder="CPF" id="cpfFunc">
                         <input class="inputInfo" type="text" placeholder="Email" id="emailFunc">
-                        <input class="inputInfo" type="text" placeholder="Senha" id="senhaFunc">
-                        <input class="inputInfo" type="text" placeholder="Confirmar Senha"><br>
+                        <input class="inputInfo" type="password" placeholder="Senha" id="senhaFunc">
+                        <input class="inputInfo" type="password" placeholder="Confirmar Senha"
+                            id="senhaFuncConfirm"><br>
                         <button id="cadastrarBt" class="botaoInfo" onclick="cadastrarFunc()"> Cadastrar</button>
                     </div>
 
@@ -184,9 +162,56 @@
         var nomeVar = nomeFunc.value;
         var emailVar = emailFunc.value;
         var senhaVar = senhaFunc.value;
+        var senhaConfirmVar = senhaFuncConfirm.value;
         var isAdminVar = 0;
         var idEmpresaVar = sessionStorage.FK_EMPRESA;
         var cpfVar = cpfFunc.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || cpfVar == "") {
+            Swal.fire(
+                "Erro",
+                "preencha todos os campos para realizar o cadastro de um novo funcionário",
+                "error"
+            )
+            return;
+        }
+
+        if (cpfVar.length < 11) {
+            Swal.fire(
+                "Erro",
+                "O cpf tem menos de 11 dígitos",
+                "error"
+            )
+            return;
+        }
+
+        if (!emailVar.includes("@") && !emailVar.includes(".")) {
+            Swal.fire(
+                "Erro",
+                "O email deve conter '@' e '.', como neste exemplo: email@example.com ",
+                "error"
+            )
+            return;
+        }
+
+        if (senhaVar.length < 6 && senhaConfirmVar.length < 6) {
+            Swal.fire(
+                "Erro",
+                "A senha deve conter no minímo 6 dígitos",
+                "error"
+            )
+            return;
+        }
+
+        if (senhaVar != senhaConfirmVar) {
+            Swal.fire(
+                "Erro",
+                "A confirmação de senha não coincide com a senha.",
+                "error"
+            )
+            return;
+        }
+
 
         fetch("/usuario/cadastrarFunc", {
             method: "POST",
@@ -291,14 +316,14 @@
                     ).then(() => {
                         window.location.reload();
                     });
-                }else if(resposta.status == 500){
+                } else if (resposta.status == 500) {
                     Swal.fire(
-                    'erro!',
-                    'Erro ao editar usuário, email já está em uso, ',
-                    'error'
-                ).then(() => {
-                    window.location.reload();
-                });
+                        'erro!',
+                        'Erro ao editar usuário, email já está em uso, ',
+                        'error'
+                    ).then(() => {
+                        window.location.reload();
+                    });
                 }
             })
             .catch(function (resposta) {

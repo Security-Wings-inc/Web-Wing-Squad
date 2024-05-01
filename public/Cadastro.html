@@ -30,12 +30,17 @@
                 <div class="form-cadastro">
 
                     <h1>Criar sua conta</h1>
-
+                    <span>Nome da empresa</span>
                     <input type="text" placeholder="Nome da empresa" id="nomeEmpresaIpt">
+                    <span>Nome da empresa</span>
                     <input type="text" placeholder="CNPJ da empresa" id="cnpjIpt">
+                    <span>Nome da empresa</span>
                     <input type="text" placeholder="Endereço de E-mail" id="emailIpt">
+                    <span>Nome da empresa</span>
                     <input type="text" placeholder="Telefone da empresa" id="telefoneIpt">
+                    <span>Nome da empresa</span>
                     <input type="text" placeholder="Cidade" id="cidadeIpt">
+                    <span>Nome da empresa</span>
                     <input type="text" placeholder="Bairro" id="bairroIpt">
                     <span>Selecione o estado no qual sua empresa se localiza</span>
                     <select name="uf" id="valorUf">
@@ -67,12 +72,15 @@
                         <option value="SE">Sergipe</option>
                         <option value="TO">Tocantins</option>
                     </select>
-
+                    <span>Nome da empresa</span>
                     <input type="text" placeholder="Rua" id="ruaIpt">
+                    <span>Nome da empresa</span>
                     <input type="text" placeholder="Cep" id="cepIpt">
+                    <span>Nome da empresa</span>
                     <input type="text" placeholder="Complemento" id="compIpt">
-
+                    <span>Nome da empresa</span>
                     <input type="text" placeholder="Senha" id="senhaIpt">
+                    <span>Nome da empresa</span>
                     <input type="text" placeholder="Confirmar senha" id="senhaConfirm">
                     <button class="buttonFinalizar" onclick="cadastrar()">Finalizar cadastro</button>
                     <label>Já possui uma conta ? <a href="./Entrar.html">Entre por aqui</a></label>
@@ -100,22 +108,6 @@
 
 <script>
 
-    function verificarNumeros(nome) {
-        const regexNumeros = /\d/;
-        return regexNumeros.test(nome);
-    }
-
-    function verificarFormatoEmail(email) {
-        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return regexEmail.test(email);
-    }
-
-    function verificarCNPJ(cnpj) {
-        return cnpj.length === 14;
-    }
-
-
-
     function cadastrar() {
 
         var nomeEmpresaVar = nomeEmpresaIpt.value;
@@ -131,15 +123,8 @@
         var senhaVar = senhaIpt.value;
         var senhaConfirmVar = senhaConfirm.value;
 
-        // if (verificarNumeros(nomeEmpresaVar)) {
-        //     alert("O nome e sobrenome não podem conter números.");
-        // } else if (!verificarCNPJ(cnpjVar)) {
-        //     alert("Por favor, insira um CNPJ válido com 14 dígitos.");
-        // } else if (!verificarFormatoEmail(emailVar)) {
-        //     alert("Por favor, insira um endereço de email válido.");
-        // } else if (senhaVar !== senhaConfirmVar) {
-        //     alert("As senhas digitadas não correspondem. Por favor, verifique.");
-        // } else {
+
+
         console.log("entrando no fetch")
         fetch("/empresa/cadastrar", {
             method: "POST",

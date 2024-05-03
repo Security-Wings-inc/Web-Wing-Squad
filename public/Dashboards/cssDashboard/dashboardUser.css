@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Yaldevi:wght@200..700&display=swap');
 
 *{
     margin: 0;
@@ -14,28 +14,28 @@
     width: 100vw;
     height: 100vh;
     background-color: #176B87;
-    padding-left: 30px;
+    
+   
 }
 
-.containerEsquerdo{
+.containerMeio img{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 40%;
-    height: 90%;
+    /* width: 400px; */
     border-radius: 30px;
-    margin-right: 10px;
-    background-color: #E0F6F9;
+    margin: 20px;
 }
 
-.containerDireito{
+.containerMeio{
     display: flex;
-    width: 40%;
-    height: 90%;
+    flex-direction: row;
+  
+    width: 60%;
+    height: 80%;
     border-radius: 30px;
-    margin-left: 10px;
     background-color: #E0F6F9;
+
 }
+
 
 .titulo{
     width: fit-content;
@@ -45,8 +45,38 @@
     font-size: 30px;
     font-weight: 200;
     text-align: center;
-    border: solid 1px red;
-    margin: 20px;
+    margin:50px 10px;
+}
+
+.containerInfo{
+    display: flex;
+    /* border: 1px solid red; */
+    height: fit fit-content;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.labelInfo{
+    margin-left: 10px;
+    font-family: "Yaldevi", sans-serif;
+    color:  #176B87;
+    font-weight:700;
+    font-style: normal;
+}
+
+.infosBg{
+    display: flex;
+    width: 300px;
+    border: #c6e5e9 2px solid;
+    padding: 10px;
+    border-radius: 30px;
+    margin:10px 00px;
+}
+.info{
+    font-family: "Yaldevi", sans-serif;
+    color:  #989999;
+    font-weight:500;
+    font-style: normal;
 }
 
 .botao{

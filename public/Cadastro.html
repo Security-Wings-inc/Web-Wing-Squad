@@ -30,20 +30,41 @@
                 <div class="form-cadastro">
 
                     <h1>Criar sua conta</h1>
-                    <span>Nome da empresa</span>
-                    <input type="text" placeholder="Nome da empresa" id="nomeEmpresaIpt">
-                    <span>Nome da empresa</span>
-                    <input type="text" placeholder="CNPJ da empresa" id="cnpjIpt">
-                    <span>Nome da empresa</span>
-                    <input type="text" placeholder="Endereço de E-mail" id="emailIpt">
-                    <span>Nome da empresa</span>
-                    <input type="text" placeholder="Telefone da empresa" id="telefoneIpt">
-                    <span>Nome da empresa</span>
-                    <input type="text" placeholder="Cidade" id="cidadeIpt">
-                    <span>Nome da empresa</span>
-                    <input type="text" placeholder="Bairro" id="bairroIpt">
+
+                    <div class="inputContent">
+                        <span>Nome da empresa</span>
+                        <input type="text" placeholder="" id="nomeEmpresaIpt">
+                    </div>
+
+                    <div class="inputContent">
+                    <span>CNPJ</span>
+                    <input type="text" placeholder="" id="cnpjIpt">
+                        </div>
+
+                    <div class="inputContent">
+                    <span>Email</span>
+                    <input type="text" placeholder="" id="emailIpt">
+                        </div>
+
+                    <div class="inputContent">
+                    <span>Telefone</span>
+                    <input type="text" placeholder="" id="telefoneIpt">
+                        </div>
+
+                    <div class="inputContent">
+                    <span>Cidade</span>
+                    <input type="text" placeholder="" id="cidadeIpt">
+                        </div>
+
+                    <div class="inputContent">
+                    <span>Bairro</span>
+                    <input type="text" placeholder="" id="bairroIpt">
+                        </div>
+
+                    <div class="inputContent">
                     <span>Selecione o estado no qual sua empresa se localiza</span>
                     <select name="uf" id="valorUf">
+                        <option value="" disabled selected>Escolha uma opção</option>
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
                         <option value="AP">Amapá</option>
@@ -72,16 +93,33 @@
                         <option value="SE">Sergipe</option>
                         <option value="TO">Tocantins</option>
                     </select>
-                    <span>Nome da empresa</span>
-                    <input type="text" placeholder="Rua" id="ruaIpt">
-                    <span>Nome da empresa</span>
-                    <input type="text" placeholder="Cep" id="cepIpt">
-                    <span>Nome da empresa</span>
-                    <input type="text" placeholder="Complemento" id="compIpt">
-                    <span>Nome da empresa</span>
-                    <input type="text" placeholder="Senha" id="senhaIpt">
-                    <span>Nome da empresa</span>
-                    <input type="text" placeholder="Confirmar senha" id="senhaConfirm">
+                </div>
+
+                    <div class="inputContent">
+                    <span>Rua</span>
+                    <input type="text" placeholder="" id="ruaIpt">
+                        </div>
+
+                    <div class="inputContent">
+                    <span>CEP</span>
+                    <input type="text" placeholder="" id="cepIpt">
+                        </div>
+
+                    <div class="inputContent">
+                    <span>Complemento</span>
+                    <input type="text" placeholder="" id="compIpt">
+                        </div>
+
+                    <div class="inputContent">
+                    <span>Senha</span>
+                    <input type="text" placeholder="" id="senhaIpt">
+                        </div>
+
+                    <div class="inputContent">
+                    <span>Confirme sua senha</span>
+                    <input type="text" placeholder="" id="senhaConfirm">
+                        </div>
+
                     <button class="buttonFinalizar" onclick="cadastrar()">Finalizar cadastro</button>
                     <label>Já possui uma conta ? <a href="./Entrar.html">Entre por aqui</a></label>
 

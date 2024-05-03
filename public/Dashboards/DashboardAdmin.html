@@ -37,10 +37,15 @@
 
                     <h1>Tela de Cadastros</h1>
                 </div>
-
+                
+                
                 <!-- Botões com todas as opções -->
                 <div class="contanierBt" id="btGerais">
+                    <p class="texto">
+                        Bem-vindo à tela de edição de cadastro de usuários. Aqui você pode gerenciar as informações dos usuários cadastrados no sistema.
+                    </p>
                     <button class="botao" id="btCadastrar">
+
                         <div class="contentBtn">
 
                             <img src="./assetsDashboard/CadFunc.svg" alt="">
@@ -366,13 +371,17 @@
                         listaUser.innerHTML += `
                         
                         <div class="contentFunc">
-                            <span>ID: ${usuario.idUsuario}</span>
-                            <span>Nome: ${usuario.nome}</span>
-                            <span>Email: ${usuario.email}</span>
-                            <span>CPF: ${usuario.cpf} </span>
-                            <span>Categoria : ${categoria}
-                            <button onclick="deletarFunc(${usuario.idUsuario})">Excluir usuário</button>
-                            <button id="btEditar" onclick="preEdit('${usuario.idUsuario}', '${usuario.nome}')">Editar</button>
+                            <div class="contentfuncEsquerdo">
+                                <span>ID: ${usuario.idUsuario}</span>
+                                <span>Nome: ${usuario.nome}</span>
+                                <span>Email: ${usuario.email}</span>
+                                <span>CPF: ${usuario.cpf} </span>
+                                <span>Categoria : ${categoria}
+                            </div>
+                            <div class="contentfuncDireito">
+                                <button class="btFunc" onclick="deletarFunc(${usuario.idUsuario})"><img src="./assetsDashboard/Lixeira.svg">Excluir usuário</button>
+                                <button class="btFunc" id="btEditar" onclick="preEdit('${usuario.idUsuario}', '${usuario.nome}')"><img src="./assetsDashboard/Lapis.svg">Editar</button>
+                            </div>
                         </div>
                     `;
 

@@ -10,7 +10,7 @@ function autenticar(req, res) {
         .then(
             function (resultadoAutenticar) {
                 console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
-                console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
+                console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); 
 
                 if (resultadoAutenticar.length >= 1) {
                     console.log(resultadoAutenticar);
@@ -25,6 +25,8 @@ function autenticar(req, res) {
                         fkEmpresa: resultadoAutenticar[0].fkEmpresa,
 
                     });
+
+                    
 
                 } else if (resultadoAutenticar.length == 0) {
                     res.status(403).send("deu ruim, email e senhas não cadastrados")
@@ -136,6 +138,33 @@ function deletarFunc(req, res) {
         );
 }
 
+function findEmpresaById(req, res) {
+
+    var idEmpresaVar = req.body.idEmpresaServer;
+
+    usuarioModel.findEmpresaById(idEmpresaVar)
+        .then(
+            function (resultadoAutenticar) {
+
+                if (resultadoAutenticar.length >= 1) {
+                    console.log(resultadoAutenticar);
+                    res.json({     
+                        nomeEmpresa: resultadoAutenticar[0].nome
+                    });
+
+                }
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+            }
+        );
+}
+
 
 
 
@@ -146,6 +175,7 @@ module.exports = {
     cadastrarFunc,
     listarFunc,
     deletarFunc,
-    editarFunc
+    editarFunc,
+    findEmpresaById
 
 }

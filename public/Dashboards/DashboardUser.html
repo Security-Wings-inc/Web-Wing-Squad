@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,21 +8,24 @@
     <link rel="stylesheet" href="./cssDashboard/dashboardUser.css">
     <link rel="stylesheet" href="./cssDashboard/dashboardSidebarAdmin.css">
 </head>
+
 <body>
-    
+
     <header>
 
-        
+
         <div class="lista">
-    
+
             <ul class="listaHeader">
-                <li><a href="./DashboardUser.html"><img  style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);" src="./assetsDashboard/PerfilIcon.svg" alt=""></a></li>
+                <li><a href="./DashboardUser.html"><img
+                            style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                            src="./assetsDashboard/PerfilIcon.svg" alt=""></a></li>
                 <li><a href="./Dashboard.html"><img src="./assetsDashboard/DashIcon.svg" alt=""></a></li>
                 <li><a href="./DashboardAdmin.html"><img src="./assetsDashboard/ChaveIcon.svg" alt=""></a></li>
                 <li><a href="../Index.html"><img src="./assetsDashboard/SairIcon.svg" alt=""></a></li>
             </ul>
-       
-               </div>
+
+        </div>
 
     </header>
 
@@ -31,33 +35,30 @@
                 <img src="../assets/imgs/image 2.png" alt="">
 
                 <div class="containerInfo">
-                    <h1 class="titulo"> Olá, fulano de tal</h1>
-                    
+                    <h1 class="titulo"> Olá, <span id="sayHelloForName"></span></h1>
+
                     <span class="labelInfo">Nome:</span>
                     <div class="infosBg">
-                        <span class="info" id="nome">Fulano</span>
+                        <span class="info" id="nomeUser">Fulano</span>
                     </div>
-                    
-                    <span class="labelInfo">Sobrenome:</span>
-                    <div class="infosBg">
-                        <span class="info" id="nome">de Tal</span>
-                    </div>
-                    
+
+
+
                     <span class="labelInfo">E-mail:</span>
                     <div class="infosBg">
-                        <span class="info" id="nome">fulano.de@tal.com</span>
+                        <span class="info" id="emailUser">fulano.de@tal.com</span>
                     </div>
-                    
+
                     <span class="labelInfo">Nome da empresa:</span>
                     <div class="infosBg">
-                        <span class="info" id="nome">Funilaria do Fulano</span>
+                        <span class="info" id="empresaUser">Funilaria do Fulano</span>
                     </div>
-                    
+
 
                 </div>
             </div>
         </div>
-        
+
 
 
     </main>
@@ -65,4 +66,26 @@
     <footer></footer>
 
 </body>
+
 </html>
+
+
+<script>
+
+    var email = sessionStorage.EMAIL_USUARIO;
+    var nome = sessionStorage.NOME_USUARIO;
+    var empresa = sessionStorage.NOME_EMPRESA;
+
+    sayHelloForName.innerHTML = `${nome}`;
+    nomeUser.innerHTML = `${nome}` ;
+    emailUser.innerHTML = `${email}`;
+    empresaUser.innerHTML = `${empresa}` 
+    
+
+
+
+
+
+
+
+</script>

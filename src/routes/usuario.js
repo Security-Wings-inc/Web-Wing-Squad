@@ -20,6 +20,10 @@ router.post("/listarFunc", function (req, res) {
     usuarioController.listarFunc(req, res);
 });
 
+router.post("/findEmpresaById", function (req, res) {
+    usuarioController.findEmpresaById(req, res);
+});
+
 
 router.delete("/deletarFunc/:idVar", function (req, res) {
     usuarioController.deletarFunc(req, res);

@@ -147,12 +147,21 @@
         })
             .then(function (resposta) {
                 if (resposta.ok) {
+                    Swal.fire(
+                        "Sucesso",
+                        "Sua empresa foi cadastrada com sucesso, entre em contato via email para estabelecer quem serão seus admin",
+                        "sucess"
+                    )
                     setTimeout(() => {
                         window.location = "./Entrar.html"
                     }, 1000);
 
                 } else {
-                    alert(`Houve um problema com seu cadastro. Por favor, realize-o novamente.`);
+                    Swal.fire(
+                        "Ops... ocorreu um erro",
+                        "Não foi possível cadastrar sua empresa",
+                        "error"
+                    )
                 }
             })
             .catch(function (resposta) {

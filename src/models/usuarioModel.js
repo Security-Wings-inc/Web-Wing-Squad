@@ -28,9 +28,7 @@ function listarFunc(idEmpresa) {
 
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
-    var instrucaoSql = `
-       select * from usuario where fkEmpresa = '${idEmpresa}';
-    `;
+    var instrucaoSql = ` SELECT * FROM usuario WHERE fkEmpresa = '${idEmpresa}'`
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }

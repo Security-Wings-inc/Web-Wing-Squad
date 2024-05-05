@@ -35,8 +35,8 @@
         <div class="containerEsquerdo">
           <div class="containerCards">
             <div class="card">
-              <h2>Quantidade de <br> Janelas Abertas</h2>
-              <p>12 Janelas</p>
+              <h2>Em quantos dias <br> o Armazenamento lotará</h2>
+              <p>12 dias</p>
             </div>
             <div class="card">
               <h2>Recomendções</h2>
@@ -45,12 +45,12 @@
               </p>
             </div>
             <div class="card">
-              <h2>KPI</h2>
-              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br>
-                Repudiandae dolorum maxime sint dicta sit hic.
+              <h2>Velocidade da Internet</h2>
+              <p>Download: 200 Mb/s <br>
+                Upload: 150 Mb/s
             </div>
             <div class="card">
-              <h2>KPI</h2>
+              <h2>Ainda não sei</h2>
               <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. <br>
                 Repudiandae dolorum maxime sint dicta sit hic.
             </div>
@@ -98,42 +98,53 @@
             <h2 style="margin-top: 20px;">Informações</h2>
             <div class="info">
               <h2 style="font-size: 15px; margin-bottom: 10px;">Armazenamento</h2>
-              <span style="margin-bottom: 2px;"><img class="bola" src="./assetsDashboard/Verde.svg" alt=""> Uso <
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Uso <
                   x%</span>
-                  <span style="margin-bottom: 2px;"><img class="bola" src="./assetsDashboard/Amarelo.svg" alt=""> Uso <
+                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Uso <
                       x%</span>
-                      <span style="margin-bottom: 2px;"><img class="bola" src="./assetsDashboard/Vermelho.svg" alt="">
+                      <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt="">
                         Uso < x%</span>
+                        <p style="font-size: 12px;">Exio X =  Hora de captura</p>
+                        <p style="font-size: 12px;">Exio Y =  Porcentagem</p>
+    
             </div>
 
             <div class="info">
               <h2 style="font-size: 15px; margin-bottom: 10px;">Memória Ram</h2>
-              <span style="margin-bottom: 2px;"><img class="bola" src="./assetsDashboard/Verde.svg" alt=""> Uso <
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Uso <
+                x%</span>
+                <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Uso <
                   x%</span>
-                  <span style="margin-bottom: 2px;"><img class="bola" src="./assetsDashboard/Amarelo.svg" alt=""> Uso <
-                      x%</span>
-                      <span style="margin-bottom: 2px;"><img class="bola" src="./assetsDashboard/Vermelho.svg" alt="">
-                        Uso < x%</span>
+                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt="">
+                    Uso < x%</span>
+                    <p style="font-size: 12px;">Exio X =  Hora de captura</p>
+                    <p style="font-size: 12px;">Exio Y =  Porcentagem</p>
             </div>
 
             <div class="info">
               <h2 style="font-size: 15px; margin-bottom: 10px;">Processador</h2>
-              <span style="margin-bottom: 2px;"><img class="bola" src="./assetsDashboard/Verde.svg" alt=""> Uso <
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Uso <
                   x%</span>
-                  <span style="margin-bottom: 2px;"><img class="bola" src="./assetsDashboard/Amarelo.svg" alt=""> Uso <
+                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Uso <
                       x%</span>
-                      <span style="margin-bottom: 2px;"><img class="bola" src="./assetsDashboard/Vermelho.svg" alt="">
+                      <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt="">
                         Uso < x%</span>
+                        <p style="font-size: 12px;">Exio X =  Hora de captura</p>
+                        <p style="font-size: 12px;">Exio Y =  Porcentagem</p>
+    
             </div>
 
             <div class="info">
               <h2 style="font-size: 15px; margin-bottom: 10px;">Rede</h2>
-              <span style="margin-bottom: 2px;"><img class="bola" src="./assetsDashboard/Verde.svg" alt=""> Uso <
+
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Uso <
                   x%</span>
-                  <span style="margin-bottom: 2px;"><img class="bola" src="./assetsDashboard/Amarelo.svg" alt=""> Uso <
+                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Uso <
                       x%</span>
-                      <span style="margin-bottom: 2px;"><img class="bola" src="./assetsDashboard/Vermelho.svg" alt="">
+                      <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt="">
                         Uso < x%</span>
+                        <p style="font-size: 12px;">Exio X =  Hora de captura</p>
+                        <p style="font-size: 12px;">Exio Y =  Quantidade</p>
             </div>
           </div>
         </div>
@@ -161,10 +172,10 @@
   new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: ['17:00:12', '17:00:15', '17:00:18', '17:00:21', '17:00:24', '17:00:27'],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Porcentagem de armazenamento',
+        data: [30, 30, 34, 30, 32, 31],
         borderWidth: 1
       }]
     },
@@ -187,10 +198,10 @@
   new Chart(ctx2, {
     type: 'line',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: ['17:00:12', '17:00:15', '17:00:18', '17:00:21', '17:00:24', '17:00:27'],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Porcentagem uso do processador',
+        data: [88, 70, 87, 85, 93, 100],
         borderWidth: 1
       }],
 
@@ -213,10 +224,10 @@
   new Chart(ctx3, {
     type: 'line',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: ['17:00:12', '17:00:15', '17:00:18', '17:00:21', '17:00:24', '17:00:27'],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Porcentagem uso de ram',
+        data: [40, 43, 36, 42, 48, 41],
         borderWidth: 1
       }]
     },
@@ -237,7 +248,7 @@
   new Chart(ctx4, {
     type: 'line',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: ['17:00:12', '17:00:15', '17:00:18', '17:00:21', '17:00:24', '17:00:27'],
       datasets: [{
         label: 'Bytes recebidos',
         data: [132, 219, 3123, 512, 232, 322],

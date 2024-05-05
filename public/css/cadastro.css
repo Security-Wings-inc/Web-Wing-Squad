@@ -79,9 +79,7 @@ select{
     font-size: 14px;
 }
 
-select option:first-child{
 
-}
 
 select option{
     color: #176B87;

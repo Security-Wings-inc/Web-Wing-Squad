@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard user</title>
-    <link rel="stylesheet" href="./cssDashboard/dashboardUser.css">
-    <link rel="stylesheet" href="./cssDashboard/dashboardSidebarAdmin.css">
+    <link rel="stylesheet" href="../cssDashboard/dashboardUser.css">
+    <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
 </head>
 
 <body>
@@ -17,12 +17,12 @@
         <div class="lista">
 
             <ul class="listaHeader">
-                <li><a href="./DashboardUser.html"><img
+                <li><a href="./PerfilAdmin.html"><img
                             style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
-                            src="./assetsDashboard/PerfilIcon.svg" alt=""></a></li>
-                <li><a href="./Dashboard.html"><img src="./assetsDashboard/DashIcon.svg" alt=""></a></li>
-                <li><a href="./DashboardAdmin.html"><img src="./assetsDashboard/ChaveIcon.svg" alt=""></a></li>
-                <li><a href="../Index.html"><img src="./assetsDashboard/SairIcon.svg" alt=""></a></li>
+                            src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li>
+                <li><a href="./DashboardAdminAcess.html"><img src="../assetsDashboard/DashIcon.svg" alt=""></a></li>
+                <li><a href="./MenagentmentAdmin.html"><img src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
+                <li><a href="../../Index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
             </ul>
 
         </div>
@@ -32,7 +32,7 @@
     <main>
         <div class="contentContainer">
             <div class="containerMeio">
-                <img src="../assets/imgs/image 2.png" alt="">
+                <img src="../../assets/imgs/image 2.png" alt="">
 
                 <div class="containerInfo">
                     <h1 class="titulo"> Olá, <span id="sayHelloForName"></span></h1>
@@ -77,10 +77,10 @@
     var empresa = sessionStorage.NOME_EMPRESA;
 
     sayHelloForName.innerHTML = `${nome}`;
-    nomeUser.innerHTML = `${nome}` ;
+    nomeUser.innerHTML = `${nome}`;
     emailUser.innerHTML = `${email}`;
-    empresaUser.innerHTML = `${empresa}` 
-    
+    empresaUser.innerHTML = `${empresa}`
+
 
 
 

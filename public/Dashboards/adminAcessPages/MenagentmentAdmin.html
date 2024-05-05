@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard user</title>
-    <link rel="stylesheet" href="./cssDashboard/dashboardAdmin.css">
-    <link rel="stylesheet" href="./cssDashboard/dashboardSidebarAdmin.css">
+    <link rel="stylesheet" href="../cssDashboard/dashboardAdmin.css">
+    <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
 </head>
 
 <body onload="listarFunc()">
@@ -17,13 +17,15 @@
         <div class="lista">
 
             <ul class="listaHeader">
-                <li><a href="./DashboardUser.html"><img src="./assetsDashboard/PerfilIcon.svg" alt=""></a></li>
-                <li><a href="./Dashboard.html"><img src="./assetsDashboard/DashIcon.svg" alt=""></a></li>
-                <li><a href="./DashboardAdmin.html"><img style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);" src="./assetsDashboard/ChaveIcon.svg" alt=""></a></li>
-                <li><a href="../Index.html"><img src="./assetsDashboard/SairIcon.svg" alt=""></a></li>
+                <li><a href="./PerfilAdmin.html"><img
+                            style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                            src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li>
+                <li><a href="./DashboardAdminAcess.html"><img src="../assetsDashboard/DashIcon.svg" alt=""></a></li>
+                <li><a href="./MenagentmentAdmin.html"><img src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
+                <li><a href="../../Index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
             </ul>
 
-        </div>
+        </div>  
 
     </header>
 
@@ -37,12 +39,13 @@
 
                     <h1>Tela de Cadastros</h1>
                 </div>
-                
-                
+
+
                 <!-- Botões com todas as opções -->
                 <div class="contanierBt" id="btGerais">
                     <p class="texto">
-                        Bem-vindo à tela de edição de cadastro de usuários. Aqui você pode gerenciar as informações dos usuários cadastrados no sistema.
+                        Bem-vindo à tela de edição de cadastro de usuários da empresa <span id="nomeEmpresa"></span>.
+                        Aqui você pode gerenciar as informações dos usuários cadastrados no sistema.
                     </p>
                     <button class="botao" id="btCadastrar">
 
@@ -128,9 +131,14 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script>
+    var nomeEmpresaVar = sessionStorage.NOME_EMPRESA;
+    document.getElementById("nomeEmpresa").innerHTML = nomeEmpresaVar;
 
+
+    console.log(nomeEmpresaVar)
     var userIdGlobal = "";
     var userNameGlobal = "";
+
     document.addEventListener("DOMContentLoaded", function () {
 
         var btCadastrar = document.getElementById("btCadastrar");
@@ -327,7 +335,7 @@
                     ).then(() => {
                         window.location.reload();
                     });
-               
+
                 } else if (resposta.status == 500) {
                     Swal.fire(
                         'erro!',
@@ -423,7 +431,7 @@
 
     };
 
-   
+
 
 
 

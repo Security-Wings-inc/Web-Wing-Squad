@@ -29,7 +29,7 @@
           <h1>Login</h1>
 
           <input type="text" placeholder="Endereço de E-mail" id="emailIpt">
-          <input type="text" placeholder="Senha" id="senhaIpt">
+          <input type="password" placeholder="Senha" id="senhaIpt">
           <button onclick="entrar()">Entrar na conta</button>
           <label>Não possui uma conta ? <a href="./Cadastro.html">Cadastre aqui</a></label>
 
@@ -114,7 +114,7 @@
 
               }); setTimeout(function () {
                
-                window.location = "./Dashboards/DashboardAdmin.html";
+                window.location = "./Dashboards/adminAcessPages/PerfilAdmin.html";
               }, 4000);
 
             } else {
@@ -130,7 +130,7 @@
               setTimeout(function () {
               
 
-                window.location = "./Dashboards/DashboardUser.html";
+                window.location = "./Dashboards/userAcessPages/PerfilUser.html";
               }, 4000);
             }
 

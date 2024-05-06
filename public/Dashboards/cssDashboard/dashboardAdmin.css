@@ -6,6 +6,11 @@
     padding: 0;
 }
 
+body{
+    scrollbar-width: thin;          
+    scrollbar-color: #176B87 #E0F6F9 ; 
+}
+
 .contentContainer{
     display: flex;
     flex-direction: row;
@@ -80,7 +85,7 @@
     color: #E0F6F9;
     font-size: 30px;
     font-weight: 200;
-   margin-left: 10%;
+    margin-left: 10%;
    
 }
 

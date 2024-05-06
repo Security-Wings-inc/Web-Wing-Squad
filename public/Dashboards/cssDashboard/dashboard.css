@@ -7,6 +7,11 @@
     padding: 0;
 }
 
+body{
+    scrollbar-width: thin;          
+    scrollbar-color: #176B87 #E0F6F9 ; 
+}
+
 .contentContainer{
     display: flex;
     flex-direction: row;
@@ -190,12 +195,16 @@ h2{
 }
 
 .info{
+    font-family: "Yaldevi", sans-serif;
+    color:  #000000;
+    font-weight:500;
+    font-size: 14px;
     display: flex;
     flex-direction: column;
     align-items: baseline;
     border-radius: 30px;
     height: fit-content;
-    padding:15px 20px;
+    padding:0px 20px;
     margin: 10px;
     /* border: solid #a0c8d4 1px; */
 }

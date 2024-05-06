@@ -16,11 +16,10 @@
         <div class="lista">
 
             <ul class="listaHeader">
-                <li><a href="./ManagerEdit.html"><img src="../assetsDashboard/PerfilIcon.svg"
-                    alt=""></a></li>
-                    
-                    <li><a href="./ManagerPage.html"><img
-                        style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                <li><a href="./ManagerEdit.html"><img src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li>
+
+                <li><a href="./ManagerPage.html"><img
+                            style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
                             src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
                 <li><a href="../../Index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
             </ul>
@@ -36,13 +35,21 @@
                     <h1 class="titulo">Selecione a empresa</h1>
 
                     <div class="icons">
-                        <input type="text" class="inputPesquisa" id="searchIpt">
-                        <button onclick="search()"><img class="btIcon" src="../assetsDashboard/Lupa.svg" alt=""></button>
+                        <input type="text" class="inputPesquisa" id="searchIpt" onkeydown="checkBackspace(event)">
+                        <button onclick="search()"><img class="btIcon" src="../assetsDashboard/Lupa.svg"alt=""></button>
                         <button><img class="btIcon" src="../assetsDashboard/AzSort.svg" alt=""></button>
                     </div>
                 </div>
 
                 <div class="containerInfo" id="listaEmpresas">
+
+
+
+                </div>
+
+
+
+                <div class="containerInfo hide" id="listaEmpresasPesquisadas">
 
 
 
@@ -68,9 +75,9 @@
 <script>
 
 
-var arrayEmpresaGloba = [];
+    var arrayEmpresaGloba = [];
 
-    function saveIdAndLocation(idEmpresa,nomeEmpresa) {
+    function saveIdAndLocation(idEmpresa, nomeEmpresa) {
 
         sessionStorage.ID_EMPRESA_SALVO = idEmpresa;
         sessionStorage.NOME_DA_EMPRESA_SALVO = nomeEmpresa;
@@ -125,7 +132,7 @@ var arrayEmpresaGloba = [];
 
                     setTimeout(function () {
                         window.location.reload
-                    }, 1000);
+                    }, 1500);
 
                 });
 
@@ -147,24 +154,49 @@ var arrayEmpresaGloba = [];
 
 
 
-    function search(){
+    function search() {
         var pesquisa = searchIpt.value.toLowerCase();
-        console.log(pesquisa)
+        var containerAll = document.getElementById("listaEmpresas")
+        var containerSearch = document.getElementById("listaEmpresasPesquisadas")
 
-        for(let i = 0; i < arrayEmpresaGloba.length;i++){
-          
-            if(pesquisa === arrayEmpresaGloba[i]){
-                console.log(arrayEmpresaGloba[i].nome.toLowerCase());
+        containerAll.classList.add("hide")
+        containerSearch.classList.remove("hide")
+        containerSearch.innerHTML = '';
+
+
+        for (let i = 0; i < arrayEmpresaGloba.length; i++) {
+
+            if (pesquisa === arrayEmpresaGloba[i].nome.toLowerCase()) {
+
+                listaEmpresasPesquisadas.innerHTML = `   
+                        <button class="tile" onclick ="saveIdAndLocation(${arrayEmpresaGloba[i].idEmpresa},'${arrayEmpresaGloba[i].nome}')">
+                        <img src="../assetsDashboard/AirportChart.svg" alt="">
+                        <h2 id="nomeEmpresa">${arrayEmpresaGloba[i].nome}</h2>
+                        <p id="idEmpresa">ID:${arrayEmpresaGloba[i].idEmpresa} </p>
+                        </button>  `
                 return
             }
-            
+
         }
-        console.log("empresa não encontrada")
+
+        Swal.fire(
+            "Ops...",
+            "Empresa não encontrada",
+            "error"
+        );setTimeout(function(){
+            window.location.reload();
+        },2000)
+
+
     }
 
 
 
-
+    function checkBackspace(event) {
+        if (event.keyCode === 8) {
+            window.location.reload();
+        }
+    }
 
 
 

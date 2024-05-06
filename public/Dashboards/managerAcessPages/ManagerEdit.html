@@ -76,7 +76,7 @@
                         <input class="inputInfo" type="password" placeholder="Senha" id="senhaFunc">
                         <input class="inputInfo" type="password" placeholder="Confirmar Senha"
                             id="senhaFuncConfirm"><br>
-                        <button id="cadastrarBt" class="botaoInfo" onclick="cadastrarFunc()"> Cadastrar</button>
+                        <button id="cadastrarBt" class="botaoInfo" onclick="cadastrarAdmin()"> Cadastrar</button>
                     </div>
 
                 </div>
@@ -142,7 +142,7 @@ btCadastrar.addEventListener("click", function () {
     cadFuncContainer.style.display = "flex";
 
     titulo.style.textAlign = "left"
-    titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/CadFuncIcon.svg'> <h1>Cadastro de usuários</h1>"
+    titulo.innerHTML = "<img class='iconInfo' src='../assetsDashboard/CadFuncIcon.svg'> <h1>Cadastro de usuários</h1>"
 
 });
 
@@ -202,14 +202,106 @@ voltar.addEventListener("click", function () {
                     .catch(function (resposta) {
                         console.log(`#ERRO: ${resposta}`);
                     });
-            }
+            }})
+        }
 
 
+        function cadastrarAdmin() {
+        var nomeVar = nomeFunc.value;
+        var emailVar = emailFunc.value;
+        var senhaVar = senhaFunc.value;
+        var senhaConfirmVar = senhaFuncConfirm.value;
+        var isAdminVar = 1;
+        var idEmpresaVar = sessionStorage.ID_EMPRESA_SALVO;
+        var cpfVar = cpfFunc.value;
 
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || cpfVar == "") {
+            Swal.fire(
+                "Erro",
+                "preencha todos os campos para realizar o cadastro de um novo funcionário",
+                "error"
+            )
+            return;
+        }
+
+        if (cpfVar.length < 11) {
+            Swal.fire(
+                "Erro",
+                "O cpf tem menos de 11 dígitos",
+                "error"
+            )
+            return;
+        }
+
+        if (!emailVar.includes("@") && !emailVar.includes(".")) {
+            Swal.fire(
+                "Erro",
+                "O email deve conter '@' e '.', como neste exemplo: email@example.com ",
+                "error"
+            )
+            return;
+        }
+
+        if (senhaVar.length < 6 && senhaConfirmVar.length < 6) {
+            Swal.fire(
+                "Erro",
+                "A senha deve conter no minímo 6 dígitos",
+                "error"
+            )
+            return;
+        }
+
+        if (senhaVar != senhaConfirmVar) {
+            Swal.fire(
+                "Erro",
+                "A confirmação de senha não coincide com a senha.",
+                "error"
+            )
+            return;
+        }
+
+
+        fetch("/manager/cadastrarAdmin", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                idEmpresaServer: idEmpresaVar,
+                isAdminServer: isAdminVar,
+                cpfServer: cpfVar
+            }),
         })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
 
-
+                if (resposta.ok) {
+                    // Exibindo Sweet Alert de sucesso
+                    Swal.fire(
+                        'Sucesso!',
+                        'Usuário cadastrado com sucesso!',
+                        'success'
+                    ).then(() => {
+                        window.location.reload();
+                    });
+                } else if (resposta.status == 500) {
+                    Swal.fire(
+                        "Erro",
+                        "O cpf ou email já estão em uso",
+                        "error"
+                    ).then(() => {
+                        window.location.reload();
+                    })
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
     }
+
 
 
     function revogarAdmin(idUser) {

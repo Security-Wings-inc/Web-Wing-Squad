@@ -19,10 +19,11 @@
         <div class="lista">
 
             <ul class="listaHeader">
-                <li><a href="./PerfilAdmin.html"><img src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li>
-                <li><a href="./DashboardAdminAcess.html"><img src="../assetsDashboard/DashIcon.svg" alt=""></a></li>
-                <li><a href="./MenagentmentAdmin.html"><img
-                            style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                <li><a href="./ManagerEdit.html"><img src="../assetsDashboard/PerfilIcon.svg"
+                    style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                    alt=""></a></li>
+                
+                <li><a href="./ManagerPage.html"><img
                             src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
                 <li><a href="../../Index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
             </ul>
@@ -46,17 +47,16 @@
                 <!-- Botões com todas as opções -->
                 <div class="contanierBt" id="btGerais">
                     <p class="texto">
-                        Bem-vindo à tela de edição de cadastro de usuários da empresa <span id="nomeEmpresa"></span>.
+                        Bem-vindo à tela de edição de cadastro de admins da empresa <span id="nomeEmpresa"></span>.
                         Aqui você pode gerenciar as informações dos usuários cadastrados no sistema.
                     </p>
                     <button class="botao" id="btCadastrar">
 
                         <div class="contentBtn">
 
-                            <img src="./assetsDashboard/CadFunc.svg" alt="">
+                            <img src="../assetsDashboard/CadFunc.svg" alt="">
                             <p class="textoBtn">
-                                Cadastrar <br>
-                                Usuário
+                                Cadastrar Admin
                             </p>
                         </div>
                     </button>
@@ -113,10 +113,31 @@
 
             <div class="containerDireito">
                 <h1 class="titulo">
-                    Tela de Usuários
+                    Lista de Admins
                 </h1>
 
                 <div class="listContainer" id="listaUser">
+
+                    <!-- COPIAR ABAIXO! -->
+                        
+                    <div class="contentFunc">
+                        <div class="contentfuncEsquerdo">
+                            <span>ID: ${usuario.idUsuario}</span>
+                            <span>Nome: ${usuario.nome}</span>
+                            <span>Email: ${usuario.email}</span>
+                            <span>CPF: ${usuario.cpf} </span>
+                            
+                        </div>
+                        <div class="contentfuncDireito">
+                            <button class="btFunc" onclick=""><img src="../assetsDashboard/Lixeira.svg">Excluir</button>
+                            <button class="btFunc" onclick="" ><img src="../assetsDashboard/Revogar.svg">Revogar</button>
+                            <button class="btFunc" id="btEditar" onclick=""><img src="../assetsDashboard/Lapis.svg">Editar</button>
+                        </div>
+                    </div>
+
+                    <!-- FIM DA CÓPIA -->
+
+
                 </div>
             </div>
 

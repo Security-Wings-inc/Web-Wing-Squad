@@ -4,10 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Login</title>
   <link rel="stylesheet" href="./css/header.css">
   <link rel="stylesheet" href="./css/login.css">
   <link rel="stylesheet" href="./css/footer.css">
+  <link rel="shortcut icon" href="./assets/Vector Security Wings.png" type="image/x-icon">
+
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,14 +66,14 @@
 
     if (emailVar == "" || senhaVar == "") {
       Swal.fire({
-                icon: 'error',
-                title: 'Ops...',
-                text: `preencha todos os campos`,
-    })
-    return;
-  }
+        icon: 'error',
+        title: 'Ops...',
+        text: `preencha todos os campos`,
+      })
+      return;
+    }
 
- 
+
     fetch("/usuario/autenticar", {
       method: "POST",
       headers: {
@@ -99,8 +101,8 @@
 
             var isAdmin = sessionStorage.IS_ADMIN;
             var nome = sessionStorage.NOME_USUARIO;
-         
-           
+
+
 
             if (isAdmin == 1) {
               Swal.fire({
@@ -110,10 +112,13 @@
                 showConfirmButton: false,
                 didOpen: () => {
                   Swal.showLoading();
+
                 }
 
-              }); setTimeout(function () {
-               
+              });
+              findEmpresaById()
+              setTimeout(function () {
+
                 window.location = "./Dashboards/adminAcessPages/PerfilAdmin.html";
               }, 4000);
 
@@ -125,10 +130,12 @@
                 showConfirmButton: false,
                 didOpen: () => {
                   Swal.showLoading();
+
                 }
               });
+              findEmpresaById()
               setTimeout(function () {
-              
+
 
                 window.location = "./Dashboards/userAcessPages/PerfilUser.html";
               }, 4000);
@@ -149,39 +156,39 @@
       });
 
 
-      findEmpresaById()
+
   }
 
   function findEmpresaById() {
-        console.log(sessionStorage.FK_EMPRESA)
-        var idEmpresaVar = sessionStorage.FK_EMPRESA;
+    console.log(sessionStorage.FK_EMPRESA)
+    var idEmpresaVar = sessionStorage.FK_EMPRESA;
 
-        fetch("/usuario/findEmpresaById", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                idEmpresaServer: idEmpresaVar
-            })
-        })
-            .then(function (resposta) {
-                console.log("ESTOU NO THEN DO entrar()!")
+    fetch("/usuario/findEmpresaById", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        idEmpresaServer: idEmpresaVar
+      })
+    })
+      .then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
 
-                if (resposta.ok) {
-                    console.log(resposta);
+        if (resposta.ok) {
+          console.log(resposta);
 
-                    resposta.json().then(json => {
-                        console.log(JSON.stringify(json));
-                        sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
-                    });
-               
-                    
+          resposta.json().then(json => {
+            console.log(JSON.stringify(json));
+            sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
+          });
 
-                }
-            })
-    }
- 
+
+
+        }
+      })
+  }
+
 
 
 

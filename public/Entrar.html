@@ -98,11 +98,28 @@
             sessionStorage.NOME_USUARIO = json.nome;
             sessionStorage.FK_EMPRESA = json.fkEmpresa;
             sessionStorage.IS_ADMIN = json.isAdmin;
+            sessionStorage.IS_MANAGER = json.isManager;
 
             var isAdmin = sessionStorage.IS_ADMIN;
+            var isManager = sessionStorage.IS_MANAGER;
+            console.log(isManager,"aaaaaaaaaaa é manager")
             var nome = sessionStorage.NOME_USUARIO;
 
 
+            if(isManager == 1){
+              Swal.fire({
+                icon: 'success',
+                title: 'Tudo certo!',
+                text: `Olá ${nome}, estamos te redirecionando para a página de gerenciamento das empresas.`,
+                showConfirmButton: false,
+                didOpen: () => {Swal.showLoading();}
+
+              });
+
+            setTimeout(function () {window.location = "./Dashboards/managerAcessPages/ManagerPage.html";}, 4000);
+
+              return;
+            }
 
             if (isAdmin == 1) {
               Swal.fire({
@@ -122,7 +139,7 @@
                 window.location = "./Dashboards/adminAcessPages/PerfilAdmin.html";
               }, 4000);
 
-            } else {
+            } else if (isAdmin == 0) {
               Swal.fire({
                 icon: 'success',
                 title: 'Tudo certo!',
@@ -134,13 +151,8 @@
                 }
               });
               findEmpresaById()
-              setTimeout(function () {
-
-
-                window.location = "./Dashboards/userAcessPages/PerfilUser.html";
-              }, 4000);
+              setTimeout(function () {window.location = "./Dashboards/userAcessPages/PerfilUser.html";}, 3000);
             }
-
 
           });
         } else {

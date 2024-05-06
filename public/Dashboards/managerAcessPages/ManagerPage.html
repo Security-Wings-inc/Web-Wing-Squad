@@ -9,16 +9,18 @@
     <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
 </head>
 
-<body>
+<body onload="listarEmprasa()">
 
     <header>
 
         <div class="lista">
 
             <ul class="listaHeader">
-                <li><a href="../userAcessPages/PerfilUser.html"><img style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);" src="../assetsDashboard/ChaveIcon.svg" alt=""></a>
+                <li><a href="../userAcessPages/PerfilUser.html"><img
+                            style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                            src="../assetsDashboard/ChaveIcon.svg" alt=""></a>
                 </li>
-               
+
                 <li><a href="../../Index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
             </ul>
 
@@ -38,100 +40,16 @@
                         <button><img class="btIcon" src="../assetsDashboard/AzSort.svg" alt=""></button>
                     </div>
                 </div>
-               
-                <div class="containerInfo">
 
-                    <button class="tile">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">GRU Airport</h2>
-                        <p id="idEmpresa">ID: 1001 </p>
-                    </button>
+                <div class="containerInfo" id="listaEmpresas">
 
-                    <button class="tile">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">GRU Airport</h2>
-                        <p id="idEmpresa">ID: 1001 </p>
-                    </button>
 
-                    <button class="tile">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">GRU Airport</h2>
-                        <p id="idEmpresa">ID: 1001 </p>
-                    </button>
 
-                    <button class="tile">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">GRU Airport</h2>
-                        <p id="idEmpresa">ID: 1001 </p>
-                    </button>
-
-                    <button class="tile">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">GRU Airport</h2>
-                        <p id="idEmpresa">ID: 1001 </p>
-                    </button>
-
-                    <button class="tile">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">GRU Airport</h2>
-                        <p id="idEmpresa">ID: 1001 </p>
-                    </button>
-
-                    <button class="tile">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">GRU Airport</h2>
-                        <p id="idEmpresa">ID: 1001 </p>
-                    </button>
-
-                    <button class="tile">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">GRU Airport</h2>
-                        <p id="idEmpresa">ID: 1001 </p>
-                    </button>
-
-                    <button class="tile">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">GRU Airport</h2>
-                        <p id="idEmpresa">ID: 1001 </p>
-                    </button>
-
-                    <button class="tile">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">GRU Airport</h2>
-                        <p id="idEmpresa">ID: 1001 </p>
-                    </button>
-
-                    <button class="tile">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">GRU Airport</h2>
-                        <p id="idEmpresa">ID: 1001 </p>
-                    </button>
-
-                    <button class="tile">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">GRU Airport</h2>
-                        <p id="idEmpresa">ID: 1001 </p>
-                    </button>
-
-                    <button class="tile">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">GRU Airport</h2>
-                        <p id="idEmpresa">ID: 1001 </p>
-                    </button>
-
-                    <button class="tile">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">GRU Airport</h2>
-                        <p id="idEmpresa">ID: 1001 </p>
-                    </button>
-
-                   
-                    
                 </div>
-                
 
 
-                
+
+
             </div>
         </div>
 
@@ -145,17 +63,89 @@
 
 </html>
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
 
-    var email = sessionStorage.EMAIL_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
-    var empresa = sessionStorage.NOME_EMPRESA;
 
-    sayHelloForName.innerHTML = `${nome}`;
-    nomeUser.innerHTML = `${nome}`;
-    emailUser.innerHTML = `${email}`;
-    empresaUser.innerHTML = `${empresa}`
+
+    function saveIdAndLocation(idEmpresa,nomeEmpresa) {
+
+        sessionStorage.ID_EMPRESA_SALVO = idEmpresa;
+        sessionStorage.NOME_DA_EMPRESA_SALVO = nomeEmpresa;
+
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Tudo certo!',
+            text: `Você será encaminhado para tela de gerenciamento dessa empresa`,
+            showConfirmButton: false,
+            didOpen: () => {
+                Swal.showLoading();
+
+            }
+        }); setTimeout(function () {
+            window.location = "./ManagerEdit.html"
+        }, 2000)
+
+    }
+
+    function listarEmprasa() {
+
+        fetch("/manager/listarEmpresa", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listarFunc()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    for (let i = 0; i < resposta.length; i++) {
+                        var empresa = resposta[i];
+
+                        console.log(empresa)
+
+                        listaEmpresas.innerHTML += `   
+                        <button class="tile" onclick ="saveIdAndLocation(${empresa.idEmpresa},'${empresa.nome}')">
+                        <img src="../assetsDashboard/AirportChart.svg" alt="">
+                        <h2 id="nomeEmpresa">${empresa.nome}</h2>
+                        <p id="idEmpresa">ID:${empresa.idEmpresa} </p>
+                        
+                         </button>
+                         `
+
+
+                    }
+
+                    setTimeout(function () {
+                        window.location.reload
+                    }, 1000);
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+                resposta.text().then(texto => {
+                    console.error(texto, "teste");
+
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+
+
 
 
 

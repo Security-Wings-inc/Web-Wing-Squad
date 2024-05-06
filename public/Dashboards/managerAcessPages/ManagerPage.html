@@ -35,8 +35,8 @@
                     <h1 class="titulo">Selecione a empresa</h1>
 
                     <div class="icons">
-                        <input type="text" class="inputPesquisa">
-                        <button><img class="btIcon" src="../assetsDashboard/Lupa.svg" alt=""></button>
+                        <input type="text" class="inputPesquisa" id="searchIpt">
+                        <button onclick="search()"><img class="btIcon" src="../assetsDashboard/Lupa.svg" alt=""></button>
                         <button><img class="btIcon" src="../assetsDashboard/AzSort.svg" alt=""></button>
                     </div>
                 </div>
@@ -67,6 +67,7 @@
 <script>
 
 
+var arrayEmpresaGloba = [];
 
     function saveIdAndLocation(idEmpresa,nomeEmpresa) {
 
@@ -106,8 +107,8 @@
 
                     for (let i = 0; i < resposta.length; i++) {
                         var empresa = resposta[i];
-
-                        console.log(empresa)
+                        arrayEmpresaGloba.push(empresa);
+                        // console.log(empresa)
 
                         listaEmpresas.innerHTML += `   
                         <button class="tile" onclick ="saveIdAndLocation(${empresa.idEmpresa},'${empresa.nome}')">
@@ -145,8 +146,20 @@
 
 
 
+    function search(){
+        var pesquisa = searchIpt.value.toLowerCase();
+        console.log(pesquisa)
 
-
+        for(let i = 0; i < arrayEmpresaGloba.length;i++){
+          
+            if(pesquisa === arrayEmpresaGloba[i]){
+                console.log(arrayEmpresaGloba[i].nome.toLowerCase());
+                return
+            }
+            
+        }
+        console.log("empresa não encontrada")
+    }
 
 
 

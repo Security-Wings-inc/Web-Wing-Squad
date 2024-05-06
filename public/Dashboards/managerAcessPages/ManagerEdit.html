@@ -135,6 +135,42 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script>
+     document.addEventListener("DOMContentLoaded", function () {
+
+var btCadastrar = document.getElementById("btCadastrar");
+var btEditar = document.getElementById("btEditar");
+var btExcluir = document.getElementById("btExcluir");
+var voltar = document.getElementById("voltar");
+
+btCadastrar.addEventListener("click", function () {
+
+    btGerais.style.display = "none";
+
+    voltar.style.display = "flex";
+    cadFuncContainer.style.display = "flex";
+
+    titulo.style.textAlign = "left"
+    titulo.innerHTML = "<img class='iconInfo' src='./assetsDashboard/CadFuncIcon.svg'> <h1>Cadastro de usuários</h1>"
+
+});
+
+voltar.addEventListener("click", function () {
+    btGerais.style.display = "flex";
+    voltar.style.display = "none";
+    editFuncContainer.style.display = "none";
+    cadFuncContainer.style.display = "none";
+    excFuncContainer.style.display = "none";
+    titulo.style.textAlign = "center"
+    titulo.innerHTML = "<h1>Tela de Cadastros</h1>"
+
+});
+
+});
+</script>
+
+
+
+<script>
 
     var nomeEmpresaSalvo = sessionStorage.NOME_DA_EMPRESA_SALVO;
     nomeEmpresa.innerHTML = `${nomeEmpresaSalvo}`;

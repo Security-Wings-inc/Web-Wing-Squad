@@ -9,18 +9,16 @@
     <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
 </head>
 
-<body onload="listarEmprasa()">
+<body onload="listarEmpresa()">
 
     <header>
 
         <div class="lista">
 
             <ul class="listaHeader">
-                <li><a href="./ManagerEdit.html"><img src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li>
+                <!-- <li><a href="./ManagerEdit.html"><img src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li> -->
 
-                <li><a href="./ManagerPage.html"><img
-                            style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
-                            src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
+                <li><a href="./ManagerPage.html"><img src="../assetsDashboard/ChaveIcon.svg" alt=""style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"></a></li>
                 <li><a href="../../Index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
             </ul>
 
@@ -98,7 +96,7 @@
 
     }
 
-    function listarEmprasa() {
+    function listarEmpresa() {
 
         fetch("/manager/listarEmpresa", {
             method: "POST",
@@ -106,7 +104,7 @@
                 "Content-Type": "application/json"
             },
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO listarFunc()!")
+            console.log("ESTOU NO THEN DO listarEmpresa()!")
 
             if (resposta.ok) {
                 console.log(resposta);

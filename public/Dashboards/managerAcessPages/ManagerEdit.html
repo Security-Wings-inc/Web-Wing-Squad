@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body onload="listarAdmin()">
 
     <header>
 
@@ -19,13 +19,14 @@
         <div class="lista">
 
             <ul class="listaHeader">
-                <li><a href="./ManagerEdit.html"><img src="../assetsDashboard/PerfilIcon.svg"
+                <!-- <li><a href="./ManagerEdit.html"><img src="../assetsDashboard/PerfilIcon.svg"
                     style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
-                    alt=""></a></li>
-                
-                <li><a href="./ManagerPage.html"><img
-                            src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
-                <li><a href="../../Index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
+                    alt=""></a></li> -->
+
+                <!-- <li><a href="./ManagerPage.html"><img
+                            src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li> -->
+                <li><a href="../managerAcessPages/ManagerPage.html"><img src="../assetsDashboard/SairIcon.svg"
+                            alt=""></a></li>
             </ul>
 
         </div>
@@ -47,8 +48,9 @@
                 <!-- Botões com todas as opções -->
                 <div class="contanierBt" id="btGerais">
                     <p class="texto">
-                        Bem-vindo à tela de edição de cadastro de admins da empresa <span id="nomeEmpresa"></span>.
-                        Aqui você pode gerenciar as informações dos usuários cadastrados no sistema.
+                        Bem vindo, você está no gerenciamento de permissões de usuários da empresa <span
+                            id="nomeEmpresa" style="font-weight: bold;"></span>.
+
                     </p>
                     <button class="botao" id="btCadastrar">
 
@@ -113,31 +115,10 @@
 
             <div class="containerDireito">
                 <h1 class="titulo">
-                    Lista de Admins
+                    Lista de Admins da empresa <span id="nomeEmpresaLeftSide" style="font-weight:bold;"></span>
                 </h1>
 
                 <div class="listContainer" id="listaUser">
-
-                    <!-- COPIAR ABAIXO! -->
-                        
-                    <div class="contentFunc">
-                        <div class="contentfuncEsquerdo">
-                            <span>ID: ${usuario.idUsuario}</span>
-                            <span>Nome: ${usuario.nome}</span>
-                            <span>Email: ${usuario.email}</span>
-                            <span>CPF: ${usuario.cpf} </span>
-                            
-                        </div>
-                        <div class="contentfuncDireito">
-                            <button class="btFunc" onclick=""><img src="../assetsDashboard/Lixeira.svg">Excluir</button>
-                            <button class="btFunc" onclick="" ><img src="../assetsDashboard/Revogar.svg">Revogar</button>
-                            <button class="btFunc" id="btEditar" onclick=""><img src="../assetsDashboard/Lapis.svg">Editar</button>
-                        </div>
-                    </div>
-
-                    <!-- FIM DA CÓPIA -->
-
-
                 </div>
             </div>
 
@@ -154,7 +135,179 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script>
-    var idEmpresa = sessionStorage.ID_EMPRESA_SALVO;
-    var nomeEmpresa = sessionStorage.NOME_DA_EMPRESA_SALVO;
-    console.log(idEmpresa,nomeEmpresa)
+
+    var nomeEmpresaSalvo = sessionStorage.NOME_DA_EMPRESA_SALVO;
+    nomeEmpresa.innerHTML = `${nomeEmpresaSalvo}`;
+    nomeEmpresaLeftSide.innerHTML = `${nomeEmpresaSalvo}`;
+
+    function deletarAdmin(idUser) {
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: 'Ao prosseguir você excluirá permanentemente o usuário',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, excluir!',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+                fetch(`/manager/deletarAdmin/${idUser}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                })
+                    .then(function (resposta) {
+                        console.log("resposta: ", resposta);
+
+                        if (resposta.ok) {
+                            Swal.fire(
+                                'Sucesso!',
+                                'Usuário excluído com sucesso!',
+                                'success'
+                            ).then(() => {
+                                window.location.reload();
+                            });
+
+                        } else {
+                            throw "ta caindo aqui";
+                        }
+                    })
+                    .catch(function (resposta) {
+                        console.log(`#ERRO: ${resposta}`);
+                    });
+            }
+
+
+
+        })
+
+
+    }
+
+
+    function revogarAdmin(idUser) {
+
+
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: 'Ao prosseguir você revogará a permissão de admin do funcionário. Clique em "Cancelar" para cancelar a operação.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, revogar!',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+                fetch(`/manager/revogarAdmin/${idUser}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+
+                })
+                    .then(function (resposta) {
+                        console.log("resposta: ", resposta);
+
+                        if (resposta.ok) {
+                            Swal.fire(
+                                'Sucesso!',
+                                'permissão de ADMIN revogada com sucesso',
+                                'success'
+                            ).then(() => {
+                                window.location.reload();
+                            });
+
+                        } else if (resposta.status == 500) {
+                            Swal.fire(
+                                'erro!',
+                                'Erro ao editar usuário, email já está em uso, ',
+                                'error'
+                            )
+                            return;
+                        }
+                    })
+                    .catch(function (resposta) {
+                        console.log(resposta)
+                    });
+            }
+        })
+
+
+
+
+    }
+
+
+
+    function listarAdmin() {
+
+        var idEmpresaVar = sessionStorage.ID_EMPRESA_SALVO;
+
+        fetch("/manager/listarAdmin", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idEmpresaServer: idEmpresaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listarFunc()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    for (let i = 0; i < resposta.length; i++) {
+                        var usuario = resposta[i];
+
+                        var categoria = usuario.isAdmin === 1 ? "admin" : "usuário comum";
+
+                        listaUser.innerHTML += `
+                        
+                        <div class="contentFunc">
+                            <div class="contentfuncEsquerdo">
+                                <span>ID: ${usuario.idUsuario}</span>
+                                <span>Nome: ${usuario.nome}</span>
+                                <span>Email: ${usuario.email}</span>
+                                <span>CPF: ${usuario.cpf} </span>
+                                <span>Permissão : ${categoria} </span>
+                            </div>
+                            <div class="contentfuncDireito">
+                                <button class="btFunc" onclick="deletarAdmin('${usuario.idUsuario}')"><img src="../assetsDashboard/Lixeira.svg">Excluir</button>
+                                <button class="btFunc" onclick="revogarAdmin('${usuario.idUsuario}')"><img src="../assetsDashboard/Revogar.svg">Revogar permissão</button>
+
+
+                            </div>
+                        </div>
+                    `;
+
+                    }
+
+                    setTimeout(function () {
+                        window.location.reload
+                    }, 1000);
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+                resposta.text().then(texto => {
+                    console.error(texto, "teste");
+
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+
+
 </script>

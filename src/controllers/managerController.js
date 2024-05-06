@@ -1,11 +1,8 @@
 var managerModel = require("../models/managerModel");
-// var aquarioModel = require("../models/aquarioModel");
 
+function listarEmpresa(req, res) {
 
-
-function listarEmpresas(req, res) {
-
-    managerModel.listarEmpresas()
+    managerModel.listarEmpresa()
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -23,14 +20,11 @@ function listarEmpresas(req, res) {
 
 }
 
+function listarAdmin(req, res) {
 
+    var idEmpresa = req.body.idEmpresaServer;
 
-function editarFunc(req, res) {
-    var id = req.body.idUsuarioServer;
-    var novoEmail = req.body.novoEmailServer;
-    var novaSenha = req.body.novaSenhaServer;
-
-    managerModel.editarFunc(id, novoEmail, novaSenha)
+    managerModel.listarAdmin(idEmpresa)
         .then(function (resultado) {
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
@@ -39,8 +33,7 @@ function editarFunc(req, res) {
             }
         }).catch(
             function (erro) {
-                // console.log(erro);
-                console.log("tomanocu")
+                console.log(erro);
                 console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
                 res.status(500).json(erro.sqlMessage);
             }
@@ -48,6 +41,7 @@ function editarFunc(req, res) {
 
 
 }
+
 
 
 function cadastrarFunc(req, res) {
@@ -76,11 +70,11 @@ function cadastrarFunc(req, res) {
         );
 }
 
-function deletarManager(req, res) {
+function deletarAdmin(req, res) {
 
-    var id = req.params.idVar;
+    var idVar = req.params.idVar;
 
-    managerModel.deletarManager(id)
+    managerModel.deletarAdmin(idVar)
         .then(
             function (resultado) {
                 res.json(resultado);
@@ -96,43 +90,35 @@ function deletarManager(req, res) {
         );
 }
 
-// function findEmpresaById(req, res) {
 
-//     var idEmpresaVar = req.body.idEmpresaServer;
+function revogarAdmin(req, res) {
 
-//     managerModel.findEmpresaById(idEmpresaVar)
-//         .then(
-//             function (resultadoAutenticar) {
+    var idVar = req.params.idVar;
 
-//                 if (resultadoAutenticar.length >= 1) {
-//                     console.log(resultadoAutenticar);
-//                     res.json({
-//                         nomeEmpresa: resultadoAutenticar[0].nome
-//                     });
-
-//                 }
-//             }
-//         ).catch(
-//             function (erro) {
-//                 console.log(erro);
-//                 console.log(
-//                     "\nHouve um erro ao realizar o cadastro! Erro: ",
-//                     erro.sqlMessage
-//                 );
-//             }
-//         );
-// }
-
-
-
+    managerModel.revogarAdmin(idVar)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        ).catch(
+            function (erro) {
+                console.log(erro);
+                console.log(
+                    "\nHouve um erro ao realizar o cadastro! Erro: ",
+                    erro.sqlMessage
+                );
+            }
+        );
+}
 
 
 
 module.exports = {
-    // cadastrarFunc,
-    listarEmpresas,
-    // deletarManager,
-    // editarFunc,
-    // findEmpresaById
+
+    listarEmpresa,
+    listarAdmin,
+    deletarAdmin,
+    revogarAdmin
+
 
 }

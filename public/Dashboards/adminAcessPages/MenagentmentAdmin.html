@@ -21,11 +21,13 @@
             <ul class="listaHeader">
                 <li><a href="./PerfilAdmin.html"><img src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li>
                 <li><a href="./DashboardAdminAcess.html"><img src="../assetsDashboard/DashIcon.svg" alt=""></a></li>
-                <li><a href="./MenagentmentAdmin.html"><img style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);" src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
+                <li><a href="./MenagentmentAdmin.html"><img
+                            style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                            src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
                 <li><a href="../../Index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
             </ul>
 
-        </div>  
+        </div>
 
     </header>
 
@@ -110,9 +112,9 @@
             </div>
 
             <div class="containerDireito">
-                <h1 class="titulo">
-                    Tela de Usuários
-                </h1>
+                <p class="titulo" style="font-size: 25px;">
+                    Lista de Usuários da empresa <span id="nomeEmpresaLeft" style="font-weight: bold;"></span>
+                </p>
 
                 <div class="listContainer" id="listaUser">
                 </div>
@@ -133,6 +135,7 @@
 <script>
     var nomeEmpresaVar = sessionStorage.NOME_EMPRESA;
     document.getElementById("nomeEmpresa").innerHTML = nomeEmpresaVar;
+    nomeEmpresaLeft.innerHTML = `${nomeEmpresaVar}`; 
 
 
     console.log(nomeEmpresaVar)
@@ -269,31 +272,42 @@
 
 
     function deletarFunc(idVar) {
-        fetch(`/usuario/deletarFunc/${idVar}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
+
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: 'Ao prosseguir você excluirá permanentemente o usuário. Clique em "Cancelar" para cancelar a operação.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, exlcuir usuário!',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`/usuario/deletarFunc/${idVar}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                })
+                    .then(function (resposta) {
+                        console.log("resposta: ", resposta);
+
+                        if (resposta.ok) {
+                            Swal.fire(
+                                'Sucesso!',
+                                'Usuário excluído com sucesso!',
+                                'success'
+                            ).then(() => {
+                                window.location.reload();
+                            });
+
+                        }
+                    })
+                    .catch(function (resposta) {
+                        console.log(`#ERRO: ${resposta}`);
+                    });
             }
         })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
 
-                if (resposta.ok) {
-                    Swal.fire(
-                        'Sucesso!',
-                        'Usuário excluído com sucesso!',
-                        'success'
-                    ).then(() => {
-                        window.location.reload();
-                    });
-
-                } else {
-                    throw "ta caindo aqui";
-                }
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
     }
 
 
@@ -339,7 +353,7 @@
                 } else if (resposta.status == 500) {
                     Swal.fire(
                         'erro!',
-                        'Erro ao editar usuário, email já está em uso, ',
+                        'Erro ao editar usuário, cpf já está em uso ou email já cadastrado ',
                         'error'
                     )
                     return;
@@ -384,11 +398,11 @@
                                 <span>Nome: ${usuario.nome}</span>
                                 <span>Email: ${usuario.email}</span>
                                 <span>CPF: ${usuario.cpf} </span>
-                                <span>Categoria : ${categoria} </span>
+                                <span>Permissão: ${categoria} </span>
                             </div>
                             <div class="contentfuncDireito">
-                                <button class="btFunc" onclick="deletarFunc(${usuario.idUsuario})"><img src="./assetsDashboard/Lixeira.svg">Excluir</button>
-                                <button class="btFunc" id="btEditar" onclick="preEdit('${usuario.idUsuario}', '${usuario.nome}')"><img src="./assetsDashboard/Lapis.svg">Editar</button>
+                                <button class="btFunc" onclick="deletarFunc(${usuario.idUsuario})"><img src="../assetsDashboard/Lixeira.svg">Excluir</button>
+                                <button class="btFunc" id="btEditar" onclick="preEdit('${usuario.idUsuario}', '${usuario.nome}')"><img src="../assetsDashboard/Lapis.svg">Editar</button>
                             </div>
                         </div>
                     `;
@@ -424,9 +438,9 @@
         voltar.style.display = "flex";
         editFuncContainer.style.display = "flex";
 
-        titulo.style.textAlign = "left"
-        titulo.innerHTML = `<img class='iconInfo' src='./assetsDashboard/EditFuncIcon.svg'> <h1>Edição de usuários</h1>  <h1>Você está editando as informações do usuário ${userNameGlobal}`
-
+        titulo.style.textAlign = "center"
+        titulo.innerHTML = `<img class='iconInfo' src='../assetsDashboard/EditFuncIcon.svg'> <h1>Edição de usuários</h1>  <p id = "paragrafName">Você está editando as informações do usuário ${userNameGlobal}</p>`
+        paragrafName.style.textAlign = "center"
 
 
     };

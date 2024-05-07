@@ -2,7 +2,7 @@ var database = require("../database/config")
 
 
 function listarEmpresa() {
-    var instrucaoSql = `SELECT * FROM empresa`
+    var instrucaoSql = `SELECT * FROM Empresa`
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }

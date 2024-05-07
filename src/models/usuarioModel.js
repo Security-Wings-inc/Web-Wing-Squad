@@ -58,7 +58,7 @@ function editarFunc(idUser,novoEmail,novaSenha) {
 }
 
 function findEmpresaById(idEmpresaVar){
-    var instrucaoSql = `SELECT nome FROM empresa WHERE idEmpresa = '${idEmpresaVar}'`
+    var instrucaoSql = `SELECT nome FROM Empresa WHERE idEmpresa = '${idEmpresaVar}'`
     return database.executar(instrucaoSql);
 }
 

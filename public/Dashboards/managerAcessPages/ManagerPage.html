@@ -33,9 +33,9 @@
                     <h1 class="titulo">Selecione a empresa</h1>
 
                     <div class="icons">
-                        <input type="text" class="inputPesquisa" id="searchIpt" onkeydown="checkBackspace(event)">
+                        <input type="text" class="inputPesquisa" id="searchIpt" onkeydown="checkBackspace(event)" placeholder="pesquisar">
                         <button onclick="search()"><img class="btIcon" src="../assetsDashboard/Lupa.svg"alt=""></button>
-                        <button><img class="btIcon" src="../assetsDashboard/AzSort.svg" alt=""></button>
+                         <!-- <button><img class="btIcon" src="../assetsDashboard/AzSort.svg" alt=""></button>  -->
                     </div>
                 </div>
 
@@ -114,6 +114,7 @@
                     for (let i = 0; i < resposta.length; i++) {
                         var empresa = resposta[i];
                         arrayEmpresaGloba.push(empresa);
+                        console.log(resposta);
                         // console.log(empresa)
 
                         listaEmpresas.innerHTML += `   
@@ -121,6 +122,7 @@
                         <img src="../assetsDashboard/AirportChart.svg" alt="">
                         <h2 id="nomeEmpresa">${empresa.nome}</h2>
                         <p id="idEmpresa">ID:${empresa.idEmpresa} </p>
+                        <p id="idEmpresa">${empresa.email} </p>
                         
                          </button>
                          `
@@ -164,13 +166,14 @@
 
         for (let i = 0; i < arrayEmpresaGloba.length; i++) {
 
-            if (pesquisa === arrayEmpresaGloba[i].nome.toLowerCase()) {
+            if (pesquisa == arrayEmpresaGloba[i].nome.toLowerCase() || pesquisa == arrayEmpresaGloba[i].email || pesquisa == arrayEmpresaGloba[i].idEmpresa) {
 
                 listaEmpresasPesquisadas.innerHTML = `   
                         <button class="tile" onclick ="saveIdAndLocation(${arrayEmpresaGloba[i].idEmpresa},'${arrayEmpresaGloba[i].nome}')">
                         <img src="../assetsDashboard/AirportChart.svg" alt="">
                         <h2 id="nomeEmpresa">${arrayEmpresaGloba[i].nome}</h2>
                         <p id="idEmpresa">ID:${arrayEmpresaGloba[i].idEmpresa} </p>
+                        <p id="idEmpresa">${arrayEmpresaGloba[i].email} </p>
                         </button>  `
                 return
             }
@@ -193,7 +196,7 @@
     function checkBackspace(event) {
         if (event.keyCode === 8) {
             window.location.reload();
-        }
+        } 
     }
 
 

@@ -285,3 +285,7 @@ body{
 .botaoInfo:hover{
     background-color:  #3e8ea9;
 }
+
+.hide{
+    display: none;
+}

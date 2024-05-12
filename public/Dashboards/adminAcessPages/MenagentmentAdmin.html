@@ -83,6 +83,8 @@
                 <div class="containerInfo" id="editFuncContainer">
 
 
+
+
                     <div class="inputContainerEdit">
                         <input class="inputInfo" type="text" placeholder="Email" id="novoEmailIpt">
                         <input class="inputInfo" type="text" placeholder="Senha" id="novaSenhaIpt">
@@ -115,8 +117,15 @@
                 <p class="titulo" style="font-size: 25px;">
                     Lista de Usuários da empresa <span id="nomeEmpresaLeft" style="font-weight: bold;"></span>
                 </p>
+                <input type="text" placeholder="pesquisar users" oninput="search()" id="searchIpt">
+
 
                 <div class="listContainer" id="listaUser">
+
+                </div>
+
+                <div class="listContainer hide" id="listaPesquisa">
+
                 </div>
             </div>
 
@@ -135,8 +144,8 @@
 <script>
     var nomeEmpresaVar = sessionStorage.NOME_EMPRESA;
     document.getElementById("nomeEmpresa").innerHTML = nomeEmpresaVar;
-    nomeEmpresaLeft.innerHTML = `${nomeEmpresaVar}`; 
-
+    nomeEmpresaLeft.innerHTML = `${nomeEmpresaVar}`;
+    var arrayGlobal = [];
 
     console.log(nomeEmpresaVar)
     var userIdGlobal = "";
@@ -383,11 +392,11 @@
             if (resposta.ok) {
                 console.log(resposta);
                 resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+                    // console.log("Dados recebidos: ", JSON.stringify(resposta));
 
                     for (let i = 0; i < resposta.length; i++) {
                         var usuario = resposta[i];
-
+                        arrayGlobal.push(usuario);
                         var categoria = usuario.isAdmin === 1 ? "admin" : "usuário comum";
 
                         listaUser.innerHTML += `
@@ -431,6 +440,52 @@
         return false;
     }
 
+
+    function search() {
+        var pesquisa = searchIpt.value.toLowerCase();
+        var containerAll = document.getElementById("listaUser");
+        var containerSearch = document.getElementById("listaPesquisa");
+
+        containerAll.classList.add("hide");
+        containerSearch.classList.remove("hide");
+        containerSearch.innerHTML = '';
+
+        var userFiltrados = arrayGlobal.filter(function (usuario) {
+            return (
+                usuario.nome.toLowerCase().includes(pesquisa)
+            );
+        });
+
+        userFiltrados.forEach(function (usuario) {
+            var categoria = usuario.isAdmin === 1 ? "admin" : "usuário comum";
+            listaPesquisa.innerHTML += `   
+        <div class="contentFunc">
+                            <div class="contentfuncEsquerdo">
+                                <span>ID: ${usuario.idUsuario}</span>
+                                <span>Nome: ${usuario.nome}</span>
+                                <span>Email: ${usuario.email}</span>
+                                <span>CPF: ${usuario.cpf} </span>
+                                <span>Categoria: ${categoria} </span>
+                              
+                            </div>
+                            <div class="contentfuncDireito">
+                                <button class="btFunc" onclick="deletarFunc(${usuario.idUsuario})"><img src="../assetsDashboard/Lixeira.svg">Excluir</button>
+                                <button class="btFunc" id="btEditar" onclick="preEdit('${usuario.idUsuario}', '${usuario.nome}')"><img src="../assetsDashboard/Lapis.svg">Editar</button>
+                            </div>
+                        </div>
+                    `;
+        });
+
+        if (userFiltrados.length === 0) {
+            listaPesquisa.innerHTML += `   
+           usuario não encontrada`;
+        }
+    }
+
+
+
+
+
     function funcEditar() {
 
         btGerais.style.display = "none";
@@ -444,6 +499,10 @@
 
 
     };
+
+
+
+    console.log("ARRAY GLOBAL", arrayGlobal);
 
 
 

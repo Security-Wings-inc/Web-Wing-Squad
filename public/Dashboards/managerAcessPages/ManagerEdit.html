@@ -110,7 +110,13 @@
                     Lista de Admins da empresa <span id="nomeEmpresaLeftSide" style="font-weight:bold;"></span>
                 </h1>
 
+                <input type="text" placeholder="pesquisar admins" oninput="search()" id="searchIpt">
+
+
                 <div class="listContainer" id="listaUser">
+                </div>
+
+                <div class="listContainer hide" id="listaPesquisa">
                 </div>
             </div>
 
@@ -127,6 +133,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script>
+    arrayGlobal = [];
      document.addEventListener("DOMContentLoaded", function () {
 
 var btCadastrar = document.getElementById("btCadastrar");
@@ -373,8 +380,8 @@ voltar.addEventListener("click", function () {
 
                     for (let i = 0; i < resposta.length; i++) {
                         var usuario = resposta[i];
-
-                        var categoria = usuario.isAdmin === 1 ? "admin" : "usuário comum";
+                        arrayGlobal.push(usuario);
+                        var categoria = "admin"
 
                         listaUser.innerHTML += `
                         
@@ -419,6 +426,49 @@ voltar.addEventListener("click", function () {
         return false;
     }
 
+    function search() {
+        var pesquisa = searchIpt.value.toLowerCase();
+        var containerAll = document.getElementById("listaUser");
+        var containerSearch = document.getElementById("listaPesquisa");
+
+        containerAll.classList.add("hide");
+        containerSearch.classList.remove("hide");
+        containerSearch.innerHTML = '';
+
+        var userFiltrados = arrayGlobal.filter(function (usuario) {
+            return (
+                usuario.nome.toLowerCase().includes(pesquisa)
+            );
+        });
+
+        userFiltrados.forEach(function (usuario) {
+            var categoria = "admin"
+            listaPesquisa.innerHTML += `   
+        <div class="contentFunc">
+                            <div class="contentfuncEsquerdo">
+                                <span>ID: ${usuario.idUsuario}</span>
+                                <span>Nome: ${usuario.nome}</span>
+                                <span>Email: ${usuario.email}</span>
+                                <span>CPF: ${usuario.cpf} </span>
+                                <span>Categoria: ${categoria} </span>
+                              
+                            </div>
+                            <div class="contentfuncDireito">
+                                <button class="btFunc" onclick="deletarAdmin('${usuario.idUsuario}')"><img src="../assetsDashboard/Lixeira.svg">Excluir</button>
+                                <button class="btFunc" onclick="revogarAdmin('${usuario.idUsuario}')"><img src="../assetsDashboard/Revogar.svg">Revogar permissão</button>
+
+
+                            </div>
+                        </div>
+                    `;
+        });
+
+        if (userFiltrados.length === 0) {
+            listaPesquisa.innerHTML += `   
+           usuario não encontrada`;
+        }
+    }
+console.log(arrayGlobal);
 
 
 </script>

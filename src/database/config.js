@@ -12,12 +12,12 @@ var sql = require('mssql');
 
 
 // CONEXÃO DO MYSQL DEV EDUARDO MELO(BACK-END)
-// var mySqlConfig = {
-//     host: "localhost",
-//     database: "securityWings",
-//     user: "root",
-//     password: "sptech",  
-// };
+var mySqlConfig = {
+    host: "localhost",
+    database: "securityWings",
+    user: "root",
+    password: "sptech",  
+};
 
 
 

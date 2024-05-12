@@ -1,29 +1,54 @@
 var mysql = require("mysql2");
 var sql = require('mssql');
 
-// CONEXÃO DO SQL SERVER - AZURE (NUVEM)
-// var sqlServerConfig = {
-//     server: "SEU_SERVIDOR",
-//     database: "SEU_BANCO_DE_DADOS",
-//     user: "SEU_USUARIO",
-//     password: "SUA_SENHA",
-//     pool: {
-//         max: 10,
-//         min: 0,
-//         idleTimeoutMillis: 30000
-//     },
-//     options: {
-//         encrypt: true, // for azure
-//     }
-// }
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
 
-// CONEXÃO DO MYSQL WORKBENCH
-var mySqlConfig = {
-    host: "52.90.66.83",
-    database: "securityWings",
-    user: "aluno",
-    password: "Urubu@100", //  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina 
-};
+
+// CONEXÃO DO MYSQL DEV EDUARDO MELO(BACK-END)
+// var mySqlConfig = {
+//     host: "localhost",
+//     database: "securityWings",
+//     user: "root",
+//     password: "sptech",  
+// };
+
+
+
+// CONEXÃO DO MYSQL DEV LUCA SENA(FRONT-END)
+// var mySqlConfig = {
+//     host: "localhost",
+//     database: "securityWings",
+//     user: "",
+//     password: "", 
+// };
+
+
+// CONEXÃO DO MYSQL NA NUVEM AWS
+// var mySqlConfig = {
+//     host: "",
+//     database: "",
+//     user: "",
+//     password: "", 
+// };
+
+
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+//  ATENÇÃ ATENÇÃ ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
+
+
 
 function executar(instrucao) {
     // VERIFICA A VARIÁVEL DE AMBIENTE SETADA EM app.js

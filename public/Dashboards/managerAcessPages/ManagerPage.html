@@ -33,8 +33,8 @@
                     <h1 class="titulo">Selecione a empresa</h1>
 
                     <div class="icons">
-                        <input type="text" class="inputPesquisa" id="searchIpt" onkeydown="checkBackspace(event)" placeholder="pesquisar">
-                        <button onclick="search()"><img class="btIcon" src="../assetsDashboard/Lupa.svg"alt=""></button>
+                        <input type="text" class="inputPesquisa" id="searchIpt" oninput="search()" placeholder="pesquisar">
+                        <!-- <button onclick="search()"><img class="btIcon" src="../assetsDashboard/Lupa.svg"alt=""></button> -->
                          <!-- <button><img class="btIcon" src="../assetsDashboard/AzSort.svg" alt=""></button>  -->
                     </div>
                 </div>
@@ -155,49 +155,37 @@
 
 
     function search() {
-        var pesquisa = searchIpt.value.toLowerCase();
-        var containerAll = document.getElementById("listaEmpresas")
-        var containerSearch = document.getElementById("listaEmpresasPesquisadas")
+    var pesquisa = searchIpt.value.toLowerCase();
+    var containerAll = document.getElementById("listaEmpresas");
+    var containerSearch = document.getElementById("listaEmpresasPesquisadas");
 
-        containerAll.classList.add("hide")
-        containerSearch.classList.remove("hide")
-        containerSearch.innerHTML = '';
+    containerAll.classList.add("hide");
+    containerSearch.classList.remove("hide");
+    containerSearch.innerHTML = '';
 
+    var empresasFiltradas = arrayEmpresaGloba.filter(function(empresa) {
+        return (
+            empresa.nome.toLowerCase().includes(pesquisa)
+        );
+    });
 
-        for (let i = 0; i < arrayEmpresaGloba.length; i++) {
+    empresasFiltradas.forEach(function(empresa) {
+        listaEmpresasPesquisadas.innerHTML += `   
+            <button class="tile" onclick ="saveIdAndLocation(${empresa.idEmpresa},'${empresa.nome}')">
+                <img src="../assetsDashboard/AirportChart.svg" alt="">
+                <h2 id="nomeEmpresa">${empresa.nome}</h2>
+            </button>`;
+    });
 
-            if (pesquisa == arrayEmpresaGloba[i].nome.toLowerCase() || pesquisa == arrayEmpresaGloba[i].email || pesquisa == arrayEmpresaGloba[i].idEmpresa) {
-
-                listaEmpresasPesquisadas.innerHTML = `   
-                        <button class="tile" onclick ="saveIdAndLocation(${arrayEmpresaGloba[i].idEmpresa},'${arrayEmpresaGloba[i].nome}')">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">${arrayEmpresaGloba[i].nome}</h2>
-                        <p id="idEmpresa">ID:${arrayEmpresaGloba[i].idEmpresa} </p>
-                        <p id="idEmpresa">${arrayEmpresaGloba[i].email} </p>
-                        </button>  `
-                return
-            }
-
-        }
-
-        Swal.fire(
-            "Ops...",
-            "Empresa não encontrada",
-            "error"
-        );setTimeout(function(){
-            window.location.reload();
-        },2000)
-
-
+    if (empresasFiltradas.length === 0) {
+        listaEmpresasPesquisadas.innerHTML += `   
+           empresa não encontrada`;
     }
+}
 
 
 
-    function checkBackspace(event) {
-        if (event.keyCode === 8) {
-            window.location.reload();
-        } 
-    }
+
 
 
 

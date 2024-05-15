@@ -102,21 +102,21 @@
 
             var isAdmin = sessionStorage.IS_ADMIN;
             var isManager = sessionStorage.IS_MANAGER;
-            console.log(isManager,"aaaaaaaaaaa é manager")
+            console.log(isManager, "aaaaaaaaaaa é manager")
             var nome = sessionStorage.NOME_USUARIO;
 
 
-            if(isManager == 1){
+            if (isManager == 1) {
               Swal.fire({
                 icon: 'success',
                 title: 'Tudo certo!',
                 text: `Olá ${nome}, estamos te redirecionando para a página de gerenciamento das empresas.`,
                 showConfirmButton: false,
-                didOpen: () => {Swal.showLoading();}
+                didOpen: () => { Swal.showLoading(); }
 
               });
 
-            setTimeout(function () {window.location = "./Dashboards/managerAcessPages/ManagerPage.html";}, 4000);
+              setTimeout(function () { window.location = "./Dashboards/managerAcessPages/ManagerPage.html"; }, 3000);
 
               return;
             }
@@ -137,7 +137,7 @@
               setTimeout(function () {
 
                 window.location = "./Dashboards/adminAcessPages/PerfilAdmin.html";
-              }, 4000);
+              }, 3000);
 
             } else if (isAdmin == 0) {
               Swal.fire({
@@ -151,7 +151,7 @@
                 }
               });
               findEmpresaById()
-              setTimeout(function () {window.location = "./Dashboards/userAcessPages/PerfilUser.html";}, 3000);
+              setTimeout(function () { window.location = "./Dashboards/userAcessPages/PerfilUser.html"; }, 3000);
             }
 
           });

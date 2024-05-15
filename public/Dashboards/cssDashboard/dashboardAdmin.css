@@ -289,3 +289,23 @@ body{
 .hide{
     display: none;
 }
+
+.inputPesquisa{
+    height: 40px;
+    border-radius: 30px;
+    border: none;
+    background-color:  #176B87;
+    width: 300px;
+    font-family: "Yaldevi", sans-serif;
+    color:  #E0F6F9;
+    font-size: 14px;
+    text-align: center;
+
+  
+    
+}
+
+.inputPesquisa::placeholder {
+    color: #E0F6F9;
+    text-align: center;
+}

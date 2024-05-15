@@ -114,8 +114,7 @@
                     for (let i = 0; i < resposta.length; i++) {
                         var empresa = resposta[i];
                         arrayEmpresaGloba.push(empresa);
-                        console.log(resposta);
-                        // console.log(empresa)
+                        
 
                         listaEmpresas.innerHTML += `   
                         <button class="tile" onclick ="saveIdAndLocation(${empresa.idEmpresa},'${empresa.nome}')">

@@ -69,7 +69,7 @@
 
                     <div class="inputContainerCad">
                         <input class="inputInfo" type="text" placeholder="Nome" id="nomeFunc">
-                        <input class="inputInfo" type="text" placeholder="CPF" id="cpfFunc">
+                        <input class="inputInfo" type="text" placeholder="CPF" id="cpfFunc" oninput="formatarCPF(cpfFunc)" maxlength="14" minlength="14">
                         <input class="inputInfo" type="text" placeholder="Email" id="emailFunc">
                         <input class="inputInfo" type="password" placeholder="Senha" id="senhaFunc">
                         <input class="inputInfo" type="password" placeholder="Confirmar Senha"
@@ -183,6 +183,13 @@
 
     });
 
+    function formatarCPF(cpfFunc) {
+    let cpf = cpfFunc.value; 
+    cpf = cpf.replace(/\D/g, ''); 
+    cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4'); 
+    cpfFunc.value = cpf; 
+}
+
     function cadastrarFunc() {
         var nomeVar = nomeFunc.value;
         var emailVar = emailFunc.value;
@@ -201,7 +208,7 @@
             return;
         }
 
-        if (cpfVar.length < 11) {
+        if (cpfVar.length !== 14) {
             Swal.fire(
                 "Erro",
                 "O cpf tem menos de 11 dígitos",

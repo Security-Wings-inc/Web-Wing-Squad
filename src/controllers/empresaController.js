@@ -53,7 +53,6 @@ function autenticar(req, res) {
 function cadastrar(req, res) {
     var nomeEmpresa = req.body.nomeEmpresaServer;
     var cnpj = req.body.cnpjServer;
-    var email = req.body.emailServer;
     var telefone = req.body.telefoneServer;
     var cidade = req.body.cidadeServer;
     var bairro = req.body.bairroServer;
@@ -61,12 +60,12 @@ function cadastrar(req, res) {
     var rua = req.body.ruaServer;
     var cep = req.body.cepServer;
     var comp = req.body.compServer;
-    var senha = req.body.senhaServer;
+  
 
     console.log("entrando no then da controller usuario")
 
     // Passe os valores como parâmetro e vá para o arquivo empresaModel.js
-    empresaModel.cadastrar(nomeEmpresa, cnpj, email, telefone,cidade,bairro,uf,rua,cep,comp,senha)
+    empresaModel.cadastrar(nomeEmpresa, cnpj,telefone,cidade,bairro,uf,rua,cep,comp)
         .then(
             function (resultado) {
                 res.json(resultado);

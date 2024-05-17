@@ -12,6 +12,8 @@ var indexRouter = require("./src/routes/index");
 var empresaRouter = require("./src/routes/empresa");
 var usuarioRouter = require("./src/routes/usuario");
 var managerRouter = require("./src/routes/manager");
+var metricaRouter = require("./src/routes/metrica");
+
 const { Console } = require("console");
 
 
@@ -24,7 +26,8 @@ app.use(cors());
 app.use("/", indexRouter);
 app.use("/empresa", empresaRouter);
 app.use("/usuario", usuarioRouter);
-app.use("/manager", managerRouter)
+app.use("/manager", managerRouter);
+app.use("/metrica", metricaRouter )
 
 app.listen(PORTA, function () {
     console.log(`É A TROPA DO WEB-WING-SQUAD NÃO TEM JEITOOOOOOO: http://localhost:${PORTA}`);

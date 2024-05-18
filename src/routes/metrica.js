@@ -3,8 +3,8 @@ var router = express.Router();
 
 var empresaController = require("../controllers/metricaController");
 
-router.post("/cadastrar", function (req, res) {
-    empresaController.cadastrar(req, res);
+router.post("/findDataMachineById", function (req, res) {
+    empresaController.findDataMachineById(req, res);
 })
 
 

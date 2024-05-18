@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de usuários</title>
+    <!-- <link rel="stylesheet" href="../cssDashboard/dashboardAdmin.css"> -->
+    <link rel="stylesheet" href="../cssDashboard/managerPage.css">
+    <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
+    <link rel="shortcut icon" href="../../assets/Vector Security Wings.png" type="image/x-icon">
+
+</head>
+
+<body onload="listarAdmin()">
+
+    <header>
+
+
+        <div class="lista">
+
+            <ul class="listaHeader">
+                <!-- <li><a href="./ManagerEdit.html"><img src="../assetsDashboard/PerfilIcon.svg"
+                    style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                    alt=""></a></li> -->
+
+                <!-- <li><a href="./ManagerPage.html"><img
+                            src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li> -->
+                <li><a href="../managerAcessPages/ManagerPage.html"><img src="../assetsDashboard/SairIcon.svg"
+                            alt=""></a></li>
+            </ul>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <div class="contentContainer">
+
+            <div class="containerMeio">
+                <div class="containerTitle">
+                    <div class="titulo">Lista de Usuários <img src="./../../assets/logo-azul-claro.svg" alt=""> </div>
+                    
+                    
+                    <div class="containerPesquisa">                 
+                          <input type="text" class="inputPesquisa" id="searchIpt" oninput="search()" placeholder="Pesquisar Empresas">                   
+                        </div>
+                    </div>
+                    <div class="containerInfo" id="listaEmpresas">
+                       
+                            
+
+                                                
+                    </div>
+
+
+
+                <div class="containerInfo hide" id="listaEmpresasPesquisadas">
+
+                    <div class="listContainer" id="listaUser">
+                    </div>
+    
+                    <div class="listContainer hide" id="listaPesquisa">
+                    </div>
+
+                </div>
+
+
+
+
+            </div>
+
+
+    </main>
+
+    <footer></footer>
+
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<script>
+    arrayGlobal = [];
+     document.addEventListener("DOMContentLoaded", function () {
+
+var btCadastrar = document.getElementById("btCadastrar");
+var btEditar = document.getElementById("btEditar");
+var btExcluir = document.getElementById("btExcluir");
+var voltar = document.getElementById("voltar");
+
+btCadastrar.addEventListener("click", function () {
+
+    btGerais.style.display = "none";
+
+    voltar.style.display = "flex";
+    cadFuncContainer.style.display = "flex";
+
+    titulo.style.textAlign = "left"
+    titulo.innerHTML = "<img class='iconInfo' src='../assetsDashboard/CadFuncIcon.svg'> <h1>Cadastro de usuários</h1>"
+
+});
+
+voltar.addEventListener("click", function () {
+    btGerais.style.display = "flex";
+    voltar.style.display = "none";
+    editFuncContainer.style.display = "none";
+    cadFuncContainer.style.display = "none";
+    excFuncContainer.style.display = "none";
+    titulo.style.textAlign = "center"
+    titulo.innerHTML = "<h1>Tela de Cadastros</h1>"
+
+});
+
+});
+
+
+    var nomeEmpresaSalvo = sessionStorage.NOME_DA_EMPRESA_SALVO;
+    nomeEmpresa.innerHTML = `${nomeEmpresaSalvo}`;
+    nomeEmpresaLeftSide.innerHTML = `${nomeEmpresaSalvo}`;
+
+    function formatarCPF(cpfFunc) {
+    let cpf = cpfFunc.value; 
+    cpf = cpf.replace(/\D/g, ''); 
+    cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4'); 
+    cpfFunc.value = cpf; 
+}
+
+
+    function deletarAdmin(idUser) {
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: 'Ao prosseguir você excluirá permanentemente o usuário',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, excluir usuário!',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+
+            if (result.isConfirmed) {
+                fetch(`/manager/deletarAdmin/${idUser}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                })
+                    .then(function (resposta) {
+                        console.log("resposta: ", resposta);
+
+                        if (resposta.ok) {
+                            Swal.fire(
+                                'Sucesso!',
+                                'Usuário excluído com sucesso!',
+                                'success'
+                            ).then(() => {
+                                window.location.reload();
+                            });
+
+                        } 
+                    })
+                    .catch(function (resposta) {
+                        console.log(`#ERRO: ${resposta}`);
+                    });
+            }})
+        }
+
+
+        function cadastrarAdmin() {
+        var nomeVar = nomeFunc.value;
+        var emailVar = emailFunc.value;
+        var senhaVar = senhaFunc.value;
+        var senhaConfirmVar = senhaFuncConfirm.value;
+        var isAdminVar = 1;
+        var idEmpresaVar = sessionStorage.ID_EMPRESA_SALVO;
+        var cpfVar = cpfFunc.value;
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || cpfVar == "") {
+            Swal.fire(
+                "Erro",
+                "preencha todos os campos para realizar o cadastro de um novo funcionário",
+                "error"
+            )
+            return;
+        }
+
+        if (cpfVar.length !=14) {
+            Swal.fire(
+                "Erro",
+                "O cpf tem menos de 11 dígitos",
+                "error"
+            )
+            return;
+        }
+
+        if (!emailVar.includes("@") && !emailVar.includes(".")) {
+            Swal.fire(
+                "Erro",
+                "O email deve conter '@' e '.', como neste exemplo: email@example.com ",
+                "error"
+            )
+            return;
+        }
+
+        if (senhaVar.length < 6 && senhaConfirmVar.length < 6) {
+            Swal.fire(
+                "Erro",
+                "A senha deve conter no minímo 6 dígitos",
+                "error"
+            )
+            return;
+        }
+
+        if (senhaVar != senhaConfirmVar) {
+            Swal.fire(
+                "Erro",
+                "A confirmação de senha não coincide com a senha.",
+                "error"
+            )
+            return;
+        }
+
+
+        fetch("/manager/cadastrarAdmin", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                idEmpresaServer: idEmpresaVar,
+                isAdminServer: isAdminVar,
+                cpfServer: cpfVar
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    // Exibindo Sweet Alert de sucesso
+                    Swal.fire(
+                        'Sucesso!',
+                        'Usuário cadastrado com sucesso!',
+                        'success'
+                    ).then(() => {
+                        window.location.reload();
+                    });
+                } else if (resposta.status == 500) {
+                    Swal.fire(
+                        "Erro",
+                        "O cpf ou email já estão em uso",
+                        "error"
+                    ).then(() => {
+                        window.location.reload();
+                    })
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+    }
+
+
+
+    function revogarAdmin(idUser) {
+
+        Swal.fire({
+            title: 'Tem certeza?',
+            text: 'Ao prosseguir você revogará a permissão de admin do funcionário. Clique em "Cancelar" para cancelar a operação.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, revogar!',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+
+                fetch(`/manager/revogarAdmin/${idUser}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+
+                })
+                    .then(function (resposta) {
+                        console.log("resposta: ", resposta);
+
+                        if (resposta.ok) {
+                            Swal.fire(
+                                'Sucesso!',
+                                'permissão de ADMIN revogada com sucesso',
+                                'success'
+                            ).then(() => {
+                                window.location.reload();
+                            });
+
+                        } 
+                    })
+                    .catch(function (resposta) {
+                        console.log(resposta)
+                    });
+            }
+        })
+
+
+
+
+    }
+
+
+
+    function listarAdmin() {
+
+        var idEmpresaVar = sessionStorage.ID_EMPRESA_SALVO;
+
+        fetch("/manager/listarAdmin", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                idEmpresaServer: idEmpresaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO listarFunc()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    for (let i = 0; i < resposta.length; i++) {
+                        var usuario = resposta[i];
+                        arrayGlobal.push(usuario);
+                        var categoria = "admin"
+
+                        listaUser.innerHTML += `
+                        
+                        <div class="contentFunc">
+                            <div class="contentfuncEsquerdo">
+                                <span>ID: ${usuario.idUsuario}</span>
+                                <span>Nome: ${usuario.nome}</span>
+                                <span>Email: ${usuario.email}</span>
+                                <span>CPF: ${usuario.cpf} </span>
+                                <span>Permissão: ${categoria} </span>
+                            </div>
+                            <div class="contentfuncDireito">
+                                <button class="btFunc" onclick="deletarAdmin('${usuario.idUsuario}')"><img src="../assetsDashboard/Lixeira.svg">Excluir</button>
+                                <button class="btFunc" onclick="revogarAdmin('${usuario.idUsuario}')"><img src="../assetsDashboard/Revogar.svg">Revogar permissão</button>
+
+
+                            </div>
+                        </div>
+                    `;
+
+                    }
+
+                    setTimeout(function () {
+                        window.location.reload
+                    }, 1000);
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+                resposta.text().then(texto => {
+                    console.error(texto, "teste");
+
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+    function search() {
+        var pesquisa = searchIpt.value.toLowerCase();
+        var containerAll = document.getElementById("listaUser");
+        var containerSearch = document.getElementById("listaPesquisa");
+
+        containerAll.classList.add("hide");
+        containerSearch.classList.remove("hide");
+        containerSearch.innerHTML = '';
+
+        var userFiltrados = arrayGlobal.filter(function (usuario) {
+            return (
+                usuario.nome.toLowerCase().includes(pesquisa)
+            );
+        });
+
+        userFiltrados.forEach(function (usuario) {
+            var categoria = "admin"
+            listaPesquisa.innerHTML += `   
+        <div class="contentFunc">
+                            <div class="contentfuncEsquerdo">
+                                <span>ID: ${usuario.idUsuario}</span>
+                                <span>Nome: ${usuario.nome}</span>
+                                <span>Email: ${usuario.email}</span>
+                                <span>CPF: ${usuario.cpf} </span>
+                                <span>Categoria: ${categoria} </span>
+                              
+                            </div>
+                            <div class="contentfuncDireito">
+                                <button class="btFunc" onclick="deletarAdmin('${usuario.idUsuario}')"><img src="../assetsDashboard/Lixeira.svg">Excluir</button>
+                                <button class="btFunc" onclick="revogarAdmin('${usuario.idUsuario}')"><img src="../assetsDashboard/Revogar.svg">Revogar permissão</button>
+
+
+                            </div>
+                        </div>
+                    `;
+        });
+
+        if (userFiltrados.length === 0) {
+            listaPesquisa.innerHTML += `   
+           usuario não encontrada`;
+        }
+    }
+
+    var cpf = "541.249.558-39"
+    console.log(cpf.length)
+
+</script>

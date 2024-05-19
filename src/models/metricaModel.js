@@ -9,14 +9,14 @@ function findMachineId(fkEmpresa,fkUsuario) {
     return database.executar(instrucao);
 }
 
-function idMachine(idMachine){
-    var instrucao = `Select * from Monitoramento WHERE fkComputador = '${idMachine};'`
+function getMachineData(idMachine){
+    var instrucao = `SELECT * FROM Monitoramento WHERE fkComputador = '${idMachine}' ORDER BY idMonitoramento DESC LIMIT 1;`
     return database.executar(instrucao);
 }
 
 
 module.exports = {
     findMachineId,
-    idMachine
+    getMachineData
     
 };

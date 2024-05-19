@@ -71,7 +71,7 @@ function editarFunc(req, res) {
     console.log("como as inputs chegam pro back-end" , id,novoEmail,novaSenha, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 
     usuarioModel.editarFunc(id, novoEmail, novaSenha)
-        .then(function (resultado) {
+        .then(function (resultado) { 
             if (resultado.length > 0) {
                 res.status(200).json(resultado);
             } else {

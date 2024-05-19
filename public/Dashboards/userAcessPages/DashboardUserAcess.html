@@ -11,7 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="findMachineId()">
+<body onload="getMachineData()">
 
   <header>
 
@@ -169,36 +169,41 @@
 </html>
 
 <script>
-  var idUser = sessionStorage.ID_USUARIO;
-  var idEmpresa = sessionStorage.FK_EMPRESA;
 
- 
+  
+  
+  setTimeout(()=>{
+    window.location.reload()
+  },3000)
+  
+  var idMachine = sessionStorage.ID_COMPUTADOR;
+  console.log(idMachine)
 
-  function findMachineId(empresa,user) {
+  
+  function getMachineData(id) {
 
-    fetch(`/metrica/findMachineId/${idEmpresa}/${idUser}`, {
+    fetch(`/metrica/getMachineData/${idMachine}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      
     }).then(function (resposta) {
-            if (resposta.ok) {
-                resposta.json().then(json=>{
-                  sessionStorage.ID_COMPUTADOR = json.idComputador
-                })
+      if (resposta.ok) {
+          
+        resposta.json().then(function (resposta) {
 
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
+       console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-        var idMachine = sessionStorage.ID_COMPUTADOR;
-        console.log(idMachine,"id da maquina")
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+
+
   }
 
 
-  
 
 
 

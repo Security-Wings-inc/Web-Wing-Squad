@@ -25,10 +25,10 @@ function findMachineId(req, res) {
 function getMachineData(req, res) {
     var idMachine = req.params.idMachine;
 
-    metricaModel.findMachineId(idMachine)
+    metricaModel.getMachineData(idMachine)
         .then(function (resultado) {
             if (resultado.length > 0) {
-                res.json(resultado);
+                res.json(resultado[0]);
             } else {
                 res.status(204).send("Nenhum resultado encontrado!")
             }

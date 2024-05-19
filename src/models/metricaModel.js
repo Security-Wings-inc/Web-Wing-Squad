@@ -1,6 +1,6 @@
 var database = require("../database/config")
 
-function findMachineByIdEmpresaAndIdUser(fkEmpresa,fkUsuario) {
+function findMachineId(fkEmpresa,fkUsuario) {
     
     
     var instrucao = `SELECT idComputador from ComputadorEspec WHERE fkEmpresa = '${fkEmpresa}' and fkUsuario = '${fkUsuario}'; `;
@@ -13,6 +13,6 @@ function findMachineByIdEmpresaAndIdUser(fkEmpresa,fkUsuario) {
 
 
 module.exports = {
-    findMachineByIdEmpresaAndIdUser,
+    findMachineId,
     
 };

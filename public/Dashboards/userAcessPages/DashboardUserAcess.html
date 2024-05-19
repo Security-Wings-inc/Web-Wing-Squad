@@ -11,7 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body>
+<body onload="findMachineId()">
 
   <header>
 
@@ -50,7 +50,7 @@
               <p>Download: 200 Mb/s <br>
                 Upload: 150 Mb/s
 
-                
+
             </div>
             <div class="card">
               <h2>Armazenamento em Gigabytes</h2>
@@ -102,41 +102,53 @@
             <h2 style="margin-top: 20px;">Informações</h2>
             <div class="info">
               <h2 style="font-size: 15px; margin-bottom: 10px;">Armazenamento</h2>
-              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> 70% ou menos </span>
-                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> 71% até 80%</span>
-                      <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> 81% ou mais</span>
-                        <p style="font-size: 12px;">Exio X =  Hora de captura</p>
-                        <p style="font-size: 12px;">Exio Y =  Porcentagem</p>
-    
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> 70% ou
+                menos </span>
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> 71% até
+                80%</span>
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> 81% ou
+                mais</span>
+              <p style="font-size: 12px;">Exio X = Hora de captura</p>
+              <p style="font-size: 12px;">Exio Y = Porcentagem</p>
+
             </div>
 
             <div class="info">
               <h2 style="font-size: 15px; margin-bottom: 10px;">Memória Ram</h2>
-              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> 50% ou menos </span>
-              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> 51% até 80%</span>
-                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> 81% ou mais</span>
-                    <p style="font-size: 12px;">Exio X =  Hora de captura</p>
-                    <p style="font-size: 12px;">Exio Y =  Porcentagem</p>
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> 50% ou
+                menos </span>
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> 51% até
+                80%</span>
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> 81% ou
+                mais</span>
+              <p style="font-size: 12px;">Exio X = Hora de captura</p>
+              <p style="font-size: 12px;">Exio Y = Porcentagem</p>
             </div>
 
             <div class="info">
               <h2 style="font-size: 15px; margin-bottom: 10px;">Processador</h2>
-              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> 70% ou menos </span>
-              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> 71% até 80%</span>
-                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> 81% ou mais</span>
-                        <p style="font-size: 12px;">Exio X =  Hora de captura</p>
-                        <p style="font-size: 12px;">Exio Y =  Porcentagem</p>
-    
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> 70% ou
+                menos </span>
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> 71% até
+                80%</span>
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> 81% ou
+                mais</span>
+              <p style="font-size: 12px;">Exio X = Hora de captura</p>
+              <p style="font-size: 12px;">Exio Y = Porcentagem</p>
+
             </div>
 
             <div class="info">
               <h2 style="font-size: 15px; margin-bottom: 10px;">Rede</h2>
 
-              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> U↑ > 100Mb/s & D↓  > 150Mb/s </span>
-                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> U↑  < 50Mb/s & D↓  < 100Mb/s  </span>
-                      <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> U↑ < 20Mb/s & D↓  < 60Mb/s  <span>
-                        <p style="font-size: 12px;">Exio X =  Hora de captura</p>
-                        <p style="font-size: 12px;">Exio Y =  Quantidade</p>
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> U↑ >
+                100Mb/s & D↓ > 150Mb/s </span>
+              <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> U↑ <
+                  50Mb/s & D↓ < 100Mb/s </span>
+                  <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> U↑ <
+                      20Mb/s & D↓ < 60Mb/s <span>
+                      <p style="font-size: 12px;">Exio X = Hora de captura</p>
+                      <p style="font-size: 12px;">Exio Y = Quantidade</p>
             </div>
           </div>
         </div>
@@ -157,6 +169,46 @@
 </html>
 
 <script>
+  var idUser = sessionStorage.ID_USUARIO;
+  var idEmpresa = sessionStorage.FK_EMPRESA;
+
+ 
+
+  function findMachineId(empresa,user) {
+
+    fetch(`/metrica/findMachineId/${idEmpresa}/${idUser}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      
+    }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(json=>{
+                  sessionStorage.ID_COMPUTADOR = json.idComputador
+                })
+
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+
+        var idMachine = sessionStorage.ID_COMPUTADOR;
+        console.log(idMachine,"id da maquina")
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   //Gráfico 1---------------------------------------------------------
   const ctx = document.getElementById('myChart');

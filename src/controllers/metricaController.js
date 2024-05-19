@@ -1,10 +1,11 @@
 var metricaModel = require("../models/metricaModel");
 
-function findDataMachineById(req, res) {
-    var IdEmpresa = req.body.emailServer;
+function findMachineByIdEmpresaAndIdUser(req, res) {
+    var IdEmpresa = req.params.idEmpresaServer;
+    var idUser = req.params.idUserServer;
    
 
-    metricaModel.findDataMachineById(IdEmpresa).then(function (resultado) {
+    metricaModel.findMachineByIdEmpresaAndIdUser(IdEmpresa,idUser).then(function (resultado) {
         if (resultado.length > 0) {
             res.status(200).json(resultado);
         } else {
@@ -23,6 +24,6 @@ function findDataMachineById(req, res) {
 
 module.exports = {
     
-    findDataMachineById,
+    findMachineByIdEmpresaAndIdUser,
     
 }

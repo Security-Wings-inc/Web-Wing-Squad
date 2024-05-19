@@ -75,15 +75,6 @@
                 <div class="containerInfo" id="editFuncContainer">
 
 
-
-
-                    <div class="inputContainerEdit">
-                        <input class="inputInfo" type="text" placeholder="Email" id="novoEmailIpt">
-                        <input class="inputInfo" type="text" placeholder="Senha" id="novaSenhaIpt">
-                        <input class="inputInfo" type="text" placeholder="Confirmar Senha">
-                        <button id="editarBt" class="botaoInfo" onclick="editarFunc()">Editar</button>
-                    </div>
-
                 </div>
 
                 <div class="containerInfo" id="excFuncContainer">
@@ -411,6 +402,8 @@
         var idUser = userIdGlobal;
         var novoEmailVar = novoEmailIpt.value;
         var novaSenhaVar = novaSenhaIpt.value;
+
+        
 
 
         fetch("/usuario/editarFunc", {

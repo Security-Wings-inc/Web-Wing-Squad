@@ -68,7 +68,7 @@ function editarFunc(req, res) {
     var novoEmail = req.body.novoEmailServer;
     var novaSenha = req.body.novaSenhaServer;
 
-
+    console.log("como as inputs chegam pro back-end" , id,novoEmail,novaSenha, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 
     usuarioModel.editarFunc(id, novoEmail, novaSenha)
         .then(function (resultado) {

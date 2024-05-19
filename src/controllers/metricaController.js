@@ -1,13 +1,15 @@
 var metricaModel = require("../models/metricaModel");
 
-function findMachineByIdEmpresaAndIdUser(req, res) {
-    var IdEmpresa = req.params.idEmpresaServer;
-    var idUser = req.params.idUserServer;
+function findMachineId(req, res) {
+    var IdEmpresa = req.params.idEmpresa;
+    var idUser = req.params.idUser;
    
 
-    metricaModel.findMachineByIdEmpresaAndIdUser(IdEmpresa,idUser).then(function (resultado) {
+    metricaModel.findMachineId(IdEmpresa,idUser).then(function (resultado) {
         if (resultado.length > 0) {
-            res.status(200).json(resultado);
+         res.json({
+            idComputador: resultado[0].idComputador
+         })
         } else {
             res.status(204).send("Nenhum resultado encontrado!")
         }
@@ -24,6 +26,6 @@ function findMachineByIdEmpresaAndIdUser(req, res) {
 
 module.exports = {
     
-    findMachineByIdEmpresaAndIdUser,
+    findMachineId,
     
 }

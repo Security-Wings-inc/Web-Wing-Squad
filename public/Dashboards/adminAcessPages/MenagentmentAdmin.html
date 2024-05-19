@@ -63,37 +63,6 @@
                 </div>
 
 
-                <!-- Tela de cadastro -->
-                <div class="containerInfo" id="cadFuncContainer">
-
-
-                   
-
-                </div>
-
-                <!-- Tela de Editar Usuário -->
-                <div class="containerInfo" id="editFuncContainer">
-
-
-                </div>
-
-                <div class="containerInfo" id="excFuncContainer">
-
-                    <div class="inputContainerExc">
-                        <input class="inputInfo" type="text" placeholder="ID do Funcioário">
-                        <button id="excluirBt" class="botaoInfo">Excluir</button>
-                    </div>
-
-                </div>
-
-
-
-                
-
-
-
-
-
             </div>
 
 
@@ -213,38 +182,7 @@
     var userIdGlobal = "";
     var userNameGlobal = "";
 
-    document.addEventListener("DOMContentLoaded", function () {
-
-        var btCadastrar = document.getElementById("btCadastrar");
-        var btEditar = document.getElementById("btEditar");
-        var btExcluir = document.getElementById("btExcluir");
-        var voltar = document.getElementById("voltar");
-
-        btCadastrar.addEventListener("click", function () {
-
-            btGerais.style.display = "none";
-
-            voltar.style.display = "flex";
-            cadFuncContainer.style.display = "flex";
-
-            titulo.style.textAlign = "left"
-            titulo.innerHTML = "<img class='iconInfo' src='../assetsDashboard/CadFuncIcon.svg'> <h1>Cadastro de usuários</h1>"
-
-        });
-
-        voltar.addEventListener("click", function () {
-            btGerais.style.display = "flex";
-            voltar.style.display = "none";
-            editFuncContainer.style.display = "none";
-            cadFuncContainer.style.display = "none";
-            excFuncContainer.style.display = "none";
-            titulo.style.textAlign = "center"
-            titulo.innerHTML = "<h1>Tela de Cadastros</h1>"
-
-        });
-
-    });
-
+    
     function formatarCPF(cpfFunc) {
     let cpf = cpfFunc.value; 
     cpf = cpf.replace(/\D/g, ''); 
@@ -580,8 +518,7 @@
 
         barraPesquisa.innerHTML = `<p class="titulo">Editar Usuário</p>`
 
-        voltar.style.display = "flex";
-        editFuncContainer.style.display = "flex";
+       
 
         titulo.style.textAlign = "center"
         titulo.innerHTML = `<img class='iconInfo' src='../assetsDashboard/EditFuncIcon.svg'> <h1>Edição de usuários</h1>  <p id = "paragrafName">Você está editando as informações do usuário ${userNameGlobal}</p>`
@@ -624,9 +561,7 @@
         
         barraPesquisa.innerHTML = `<p class="titulo">Cadastrar Usuário</p>`
 
-        voltar.style.display = "flex";
-        editFuncContainer.style.display = "flex";
-
+       
         titulo.style.textAlign = "center"
         titulo.innerHTML = `<img class='iconInfo' src='../assetsDashboard/EditFuncIcon.svg'> <h1>Edição de usuários</h1>  <p id = "paragrafName">Você está editando as informações do usuário ${userNameGlobal}</p>`
         paragrafName.style.textAlign = "center"

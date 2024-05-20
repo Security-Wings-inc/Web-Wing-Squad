@@ -170,16 +170,16 @@
 
 <script>
 
-    setTimeout(() => {
-      window.location.reload();
-    }, 5000);
+  setTimeout(() => {
+    window.location.reload();
+  }, 5000);
   
   
   var idMachine = sessionStorage.ID_COMPUTADOR;
-
+  
   
   function getMachineData(id) {
-
+  
     fetch(`/metrica/getMachineData/${idMachine}`, {
       method: "POST",
       headers: {
@@ -187,152 +187,153 @@
       },
     }).then(function (resposta) {
       if (resposta.ok) {
-          
+  
         resposta.json().then(function (resposta) {
-
-
-       console.log("Ultimo dado: ", resposta[resposta.length -1])
-
-       armazenamento(resposta)
-       processador(resposta)
-       ram(resposta)
-       rede(resposta)
-       
-
+  
+  
+          console.log("Ultimo dado: ", resposta[resposta.length - 1])
+  
+          armazenamento(resposta)
+          processador(resposta)
+          ram(resposta)
+          rede(resposta)
+  
+  
         });
       } else {
         console.error('Nenhum dado encontrado ou erro na API');
       }
     })
-
-
+  
+  
   }
-
-
+  
+  
   function armazenamento(dados) {
-
-  const ctx = document.getElementById('myChart');
-  const labels = dados.map(dado => dado.dataCaptura); 
-  const dataPoints = dados.map(dado => dado.discoUso); 
-
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [{
-        label: 'Porcentagem de armazenamento',
-        data: dataPoints,
-        borderWidth: 1,
-        borderColor: 'rgba(75, 192, 192, 1)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-}
-
-function processador(dados){
-
-  const ctx2 = document.getElementById('myChart2');
-  const labels = dados.map(dado => dado.dataCaptura); 
-  const dataPoints = dados.map(dado => dado.processadorUso); 
-
-  new Chart(ctx2, {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [{
-        label: 'Porcentagem de utilização do processador',
-        data: dataPoints,
-        borderWidth: 1,
-        borderColor: 'rgba(75, 192, 192, 1)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-      }]
-    },
-    options: {
-
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-}
-
-
-
-function ram(dados){
-
-  const ctx3 = document.getElementById('myChart3');
-  const labels = dados.map(dado => dado.dataCaptura); 
-  const dataPoints = dados.map(dado => dado.ramUso); 
-
-  new Chart(ctx3, {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [{
-        label: 'Porcentagem de ram em uso',
-        data: dataPoints,
-        borderWidth: 1,
-        borderColor: 'rgba(75, 192, 192, 1)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-      }]
-    },
-    options: {
-
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-}
-
-function rede(dados) {
-
-  const ctx4 = document.getElementById('myChart4');
-  const labels = dados.map(dado => dado.dataCaptura); 
-  const dataBytesRecebidos = dados.map(dado => dado.bytesRecebidos); 
-  const dataBytesEnviados = dados.map(dado => dado.bytesEnviados); 
-
-  new Chart(ctx4, {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [{
-        label: 'Bytes recebidos',
-        data: dataBytesRecebidos,
-        borderWidth: 1,
-        borderColor: 'rgba(75, 192, 192, 1)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+  
+    const ctx = document.getElementById('myChart');
+    const labels = dados.slice(-8).map(dado => dado.dataCaptura);
+    const dataPoints = dados.slice(-8).map(dado => dado.discoUso);
+  
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Porcentagem de armazenamento',
+          data: dataPoints,
+          borderWidth: 1,
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        }]
       },
-      {
-        label: 'Bytes enviados',
-        data: dataBytesEnviados,
-        borderWidth: 1,
-        borderColor: 'rgba(192, 75, 75, 1)',
-        backgroundColor: 'rgba(192, 75, 75, 0.2)',
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         }
       }
-    }
-  });
-}
-
-
-
-</script>
+    });
+  }
+  
+  function processador(dados) {
+  
+    const ctx2 = document.getElementById('myChart2');
+    const labels = dados.slice(-8).map(dado => dado.dataCaptura);
+    const dataPoints = dados.slice(-8).map(dado => dado.processadorUso);
+  
+    new Chart(ctx2, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Porcentagem de utilização do processador',
+          data: dataPoints,
+          borderWidth: 1,
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        }]
+      },
+      options: {
+  
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+  
+  
+  
+  function ram(dados) {
+  
+    const ctx3 = document.getElementById('myChart3');
+    const labels = dados.slice(-8).map(dado => dado.dataCaptura);
+    const dataPoints = dados.slice(-8).map(dado => dado.ramUso);
+  
+    new Chart(ctx3, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Porcentagem de ram em uso',
+          data: dataPoints,
+          borderWidth: 1,
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        }]
+      },
+      options: {
+  
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+  
+  function rede(dados) {
+  
+    const ctx4 = document.getElementById('myChart4');
+    const labels = dados.slice(-8).map(dado => dado.dataCaptura);
+    const dataBytesRecebidos = dados.slice(-8).map(dado => dado.bytesRecebidos);
+    const dataBytesEnviados = dados.slice(-8).map(dado => dado.bytesEnviados);
+  
+    new Chart(ctx4, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Bytes recebidos',
+          data: dataBytesRecebidos,
+          borderWidth: 1,
+          borderColor: 'rgba(75, 192, 192, 1)',
+          backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        },
+        {
+          label: 'Bytes enviados',
+          data: dataBytesEnviados,
+          borderWidth: 1,
+          borderColor: 'rgba(192, 75, 75, 1)',
+          backgroundColor: 'rgba(192, 75, 75, 0.2)',
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  }
+  
+  
+  
+  </script>
+  

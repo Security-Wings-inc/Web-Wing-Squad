@@ -11,6 +11,8 @@ function findMachineId(req, res) {
                 res.json({
                     idComputador: resultado[0].idComputador
                 })
+
+                console.log("dados do id da maquina: " + resultado)
             } else {
                 res.status(204).send("Nenhum resultado encontrado!")
             }
@@ -28,7 +30,7 @@ function getMachineData(req, res) {
     metricaModel.getMachineData(idMachine)
         .then(function (resultado) {
             if (resultado.length > 0) {
-                res.json(resultado[0]);
+              res.status(200).json(resultado);
             } else {
                 res.status(204).send("Nenhum resultado encontrado!")
             }

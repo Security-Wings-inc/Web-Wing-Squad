@@ -10,7 +10,7 @@ function findMachineId(fkEmpresa,fkUsuario) {
 }
 
 function getMachineData(idMachine){
-    var instrucao = `SELECT * FROM Monitoramento WHERE fkComputador = '${idMachine}' ORDER BY idMonitoramento DESC LIMIT 1;`
+    var instrucao = `SELECT * FROM Monitoramento WHERE fkComputador = '${idMachine}';`
     return database.executar(instrucao);
 }
 

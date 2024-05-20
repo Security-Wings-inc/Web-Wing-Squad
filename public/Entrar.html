@@ -85,14 +85,11 @@
       })
     })
       .then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
-
+   
         if (resposta.ok) {
-          console.log(resposta);
 
           resposta.json().then(json => {
-            console.log(json);
-            console.log(JSON.stringify(json));
+
             sessionStorage.ID_USUARIO = json.idUsuario;
             sessionStorage.EMAIL_USUARIO = json.email;
             sessionStorage.NOME_USUARIO = json.nome;
@@ -102,7 +99,6 @@
 
             var isAdmin = sessionStorage.IS_ADMIN;
             var isManager = sessionStorage.IS_MANAGER;
-            console.log(isManager, "aaaaaaaaaaa é manager")
             var nome = sessionStorage.NOME_USUARIO;
 
 
@@ -171,10 +167,10 @@
 
   }
 
-  
+
 
   function findEmpresaById() {
-    console.log(sessionStorage.FK_EMPRESA)
+
     var idEmpresaVar = sessionStorage.FK_EMPRESA;
 
     fetch("/usuario/findEmpresaById", {
@@ -187,13 +183,9 @@
       })
     })
       .then(function (resposta) {
-        console.log("ESTOU NO THEN DO entrar()!")
 
         if (resposta.ok) {
-          console.log(resposta);
-
           resposta.json().then(json => {
-            console.log(JSON.stringify(json));
             sessionStorage.NOME_EMPRESA = json.nomeEmpresa;
           });
 
@@ -202,9 +194,9 @@
         }
       })
   }
-  
 
-  
+
+
 
 
 

@@ -11,7 +11,7 @@
 
 </head>
 
-<body>
+<body onload="findMachineId()">
 
     <header>
 
@@ -84,10 +84,10 @@
     empresaUser.innerHTML = `${empresa}`
 
 
-    var idUser = sessionStorage.ID_USUARIO;
+var idUser = sessionStorage.ID_USUARIO;
   var idEmpresa = sessionStorage.FK_EMPRESA;
 
-  console.log(`id ${idUser} ; idEmpresa: ${idEmpresa}`)
+  
 
 
 function findMachineId(empresa,user) {
@@ -103,6 +103,7 @@ fetch(`/metrica/findMachineId/${idEmpresa}/${idUser}`, {
             resposta.json().then(json=>{
               sessionStorage.ID_COMPUTADOR = json.idComputador
             })
+            var idMaquina = sessionStorage.ID_COMPUTADOR;
 
         } else {
             console.error('Nenhum dado encontrado ou erro na API');

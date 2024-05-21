@@ -1,10 +1,10 @@
-process.env.AMBIENTE_PROCESSO = "desenvolvimento";
+//process.env.AMBIENTE_PROCESSO = "desenvolvimento";
 // process.env.AMBIENTE_PROCESSO = "producao";
 
 var express = require("express");
 var cors = require("cors");
 var path = require("path");
-var PORTA = process.env.AMBIENTE_PROCESSO == "desenvolvimento" ? 3333 : 80;
+//var PORTA = process.env.AMBIENTE_PROCESSO == "desenvolvimento" ? 3333 : 80;
 
 var app = express();
 
@@ -29,6 +29,6 @@ app.use("/usuario", usuarioRouter);
 app.use("/manager", managerRouter);
 app.use("/metrica", metricaRouter )
 
-app.listen(PORTA, function () {
+app.listen(80, function () {
     console.log(`É A TROPA DO WEB-WING-SQUAD NÃO TEM JEITOOOOOOO: http://localhost:${PORTA}`);
 });

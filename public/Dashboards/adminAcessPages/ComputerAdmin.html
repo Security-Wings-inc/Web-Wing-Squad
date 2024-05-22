@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
 </head>
 
-<body onload="listarEmpresa()">
+<body>
 
     <header>
 
@@ -31,16 +31,30 @@
         <div class="contentContainer">
             <div class="containerMeio">
                 <div class="containerTitle">
-                    <div class="titulo">Lista de Empresas <img src="./../../assets/logo-azul-claro.svg" alt=""> </div>
+                    <div class="titulo">Lista de Computadores<img src="./../../assets/logo-azul-claro.svg" alt=""> </div>
                     
                     
                     <div class="containerPesquisa">                 
-                          <input type="text" class="inputPesquisa" id="searchIpt" oninput="search()" placeholder="Pesquisar Empresas">                   
+                          <input type="text" class="inputPesquisa" id="searchIpt" oninput="search()" placeholder="Pesquisar Computadores">                   
                         </div>
                     </div>
                     <div class="containerInfo" id="listaEmpresas">
                        
-                            
+                        <button class="tile">
+                            <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
+                            <h2 id="nomeMaquina">${empresa.nome}</h2>
+                            <p id="ipMaquina">ID:${empresa.idEmpresa} </p>                           
+                        </button>
+                        <button class="tile">
+                            <img style="margin-right: 0px;" src="../assetsDashboard/PCYellow.svg" alt="">
+                            <h2 id="nomeMaquina">${empresa.nome}</h2>
+                            <p id="ipMaquina">ID:${empresa.idEmpresa} </p>                           
+                        </button>
+                        <button class="tile">
+                            <img style="margin-right: 0px;" src="../assetsDashboard/PCRed.svg" alt="">
+                            <h2 id="nomeMaquina">${empresa.nome}</h2>
+                            <p id="ipMaquina">ID:${empresa.idEmpresa} </p>                           
+                        </button>
 
                                                 
                     </div>
@@ -49,7 +63,7 @@
 
                 <div class="containerInfo hide" id="listaEmpresasPesquisadas">
 
-
+                   
 
                 </div>
 
@@ -120,11 +134,8 @@
                         <button class="tile" onclick ="saveIdAndLocation(${empresa.idEmpresa},'${empresa.nome}')">
                         <img src="../assetsDashboard/AirportChart.svg" alt="">
                         <h2 id="nomeEmpresa">${empresa.nome}</h2>
-<<<<<<< HEAD
-=======
                         <p id="idEmpresa">ID:${empresa.idEmpresa} </p>
                         <p id="idEmpresa">${empresa.email} </p>
->>>>>>> 6a2cfa5249f3b822de84695f9859296d732b5ab5
                         
                          </button>
                          `

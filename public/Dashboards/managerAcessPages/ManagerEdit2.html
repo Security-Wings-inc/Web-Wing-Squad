@@ -12,6 +12,7 @@
 
 </head>
 
+<!-- <body onload="listarFunc()"> -->
 <body onload="listarFunc()">
 
     <header>
@@ -72,7 +73,7 @@
 
             <div class="abas">
                 
-                <div class="aba"> Gerenciar Usuários</div>
+                <div class="aba"> Gerenciar Admins</div>
          
                 
             </div>
@@ -84,7 +85,7 @@
                     <div class="containerPesquisa" id="pesquisaBar">                 
                         <input type="text" placeholder="Pesquisar Nome" oninput="search()" id="searchIpt" class="inputPesquisa">
                     
-                        <button class="cadastrar" id="btCadastrar" onclick="funcaoCadastrar()">Cadastrar novo Usuário</button>
+                        <button class="cadastrar" id="btCadastrar" onclick="funcaoCadastrar()">Cadastrar novo Admin</button>
 
                         
                     </div>
@@ -96,6 +97,8 @@
 
                 <div class="containerAll"  id="listaUser">
 
+                    
+       
                     
             
                 </div>
@@ -183,7 +186,7 @@
 
     var nomeEmpresaSalvo = sessionStorage.NOME_DA_EMPRESA_SALVO;
     nomeEmpresa.innerHTML = `${nomeEmpresaSalvo}`;
-    nomeEmpresaLeftSide.innerHTML = `${nomeEmpresaSalvo}`;
+    // nomeEmpresaLeftSide.innerHTML = `${nomeEmpresaSalvo}`;
 
     function formatarCPF(cpfFunc) {
     let cpf = cpfFunc.value; 
@@ -489,5 +492,47 @@
 
     var cpf = "541.249.558-39"
     console.log(cpf.length)
+
+    function funcaoCadastrar(){
+
+var containerAll = document.getElementById("listaUser");
+var containerSearch = document.getElementById("listaPesquisa");
+var containerGeral = document.getElementById("listaGeral");
+var containerCad = document.getElementById("conCad");
+var barraPesquisa = document.getElementById("pesquisaBar");
+
+containerCad.style.display = "flex";
+containerGeral.style.display = "none";
+containerAll.style.display = "none";
+containerSearch.style.display = "none";
+
+barraPesquisa.innerHTML = `<p class="titulo">Cadastrar Usuário</p>`
+
+
+titulo.style.textAlign = "center"
+titulo.innerHTML = `<img class='iconInfo' src='../assetsDashboard/EditFuncIcon.svg'> <h1>Edição de usuários</h1>  <p id = "paragrafName">Você está editando as informações do usuário ${userNameGlobal}</p>`
+paragrafName.style.textAlign = "center"
+
+}
+
+function voltarFunc(){
+
+// tituloPagina.innerHTML = `Lista de Usuários <img src="./../../assets/logo-azul-claro.svg" alt="">`
+
+var containerAll = document.getElementById("listaUser");
+var containerSearch = document.getElementById("listaPesquisa");
+var containerGeral = document.getElementById("listaGeral");
+var barraPesquisa = document.getElementById("pesquisaBar");
+var containerCad = document.getElementById("conCad");
+
+containerCad.style.display = "none";
+containerGeral.style.display = "none";
+containerAll.style.display = "flex";
+containerSearch.style.display = "none";
+barraPesquisa.innerHTML = ` <input type="text" placeholder="Pesquisar Nome" oninput="search()" id="searchIpt"       class="inputPesquisa">
+            
+            <button class="cadastrar" id="btCadastrar" onclick="funcaoCadastrar()">Cadastrar novo Usuário</button>`
+        
+        }
 
 </script>

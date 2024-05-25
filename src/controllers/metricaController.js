@@ -42,12 +42,51 @@ function getMachineData(req, res) {
 
 }
 
+function getAllMachinesByIdEmpresa(req,res){
+    var idEmpresa = req.params.idEmpresa;
+
+    console.log(idEmpresa, "id da empresa")
+   
+    metricaModel.getAllMachinesByIdEmpresa(idEmpresa)
+    .then(function (resultado) {
+        if (resultado.length > 0) {
+          res.status(200).json(resultado);
+        } else {
+            res.status(204).send("Nenhum resultado encontrado!")
+        }
+    }).catch(function (erro) {
+        console.log(erro);
+        console.log("Houve um erro ao buscar as ultimas medidas.", erro.sqlMessage);
+        res.status(500).json(erro.sqlMessage);
+    });
+ 
+}
+
+function dataCompair(req, res) {
+    var idMaquinasArray = req.params.ids
+    console.log(idMaquinasArray, "IDs das máquinas");
+
+    metricaModel.dataCompair(idMaquinasArray)
+        .then(function (resultado) {
+            if (resultado.length > 0) {
+                res.status(200).json(resultado);
+            } else {
+                res.status(204).send("Nenhum resultado encontrado!");
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao buscar as últimas medidas.", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
 
 
 
 module.exports = {
 
     findMachineId,
-    getMachineData
+    getMachineData,
+    getAllMachinesByIdEmpresa,
+    dataCompair
 
 }

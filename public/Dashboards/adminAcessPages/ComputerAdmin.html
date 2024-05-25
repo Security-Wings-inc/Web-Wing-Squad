@@ -8,62 +8,57 @@
     <link rel="stylesheet" href="../cssDashboard/managerPage.css">
     <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
 </head>
-  
-<body>
+
+<body onload="getAllMachinesByIdEmpresa()">
 
     <header>
 
         <div class="lista">
 
             <ul class="listaHeader">
-                <!-- <li><a href="./ManagerEdit.html"><img src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li> -->
-
-                <li><a href="./ManagerPage.html"><img src="../assetsDashboard/ChaveIcon.svg" alt=""style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"></a></li>
+                <li><a href="./PerfilAdmin.html"><img src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li>
+                <li><a href="./ComputerAdmin.html"><img
+                            style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                            src="../assetsDashboard/DashIcon.svg" alt=""></a></li>
+                <li><a href="./MenagentmentAdmin.html"><img src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
                 <li><a href="../../index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
             </ul>
+
 
         </div>
 
     </header>
 
     <main>
-       
+
         <div class="contentContainer">
             <div class="containerMeio">
                 <div class="containerTitle">
-                    <div class="titulo">Lista de Computadores<img src="./../../assets/logo-azul-claro.svg" alt=""> </div>
-                    
-                    
-                    <div class="containerPesquisa">                 
-                          <input type="text" class="inputPesquisa" id="searchIpt" oninput="search()" placeholder="Pesquisar Computadores">                   
-                        </div>
-                    </div>
-                    <div class="containerInfo" id="listaEmpresas">
-                       
-                        <button class="tile">
-                            <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
-                            <h2 id="nomeMaquina">${empresa.nome}</h2>
-                            <p id="ipMaquina">ID:${empresa.idEmpresa} </p>                           
-                        </button>
-                        <button class="tile">
-                            <img style="margin-right: 0px;" src="../assetsDashboard/PCYellow.svg" alt="">
-                            <h2 id="nomeMaquina">${empresa.nome}</h2>
-                            <p id="ipMaquina">ID:${empresa.idEmpresa} </p>                           
-                        </button>
-                        <button class="tile">
-                            <img style="margin-right: 0px;" src="../assetsDashboard/PCRed.svg" alt="">
-                            <h2 id="nomeMaquina">${empresa.nome}</h2>
-                            <p id="ipMaquina">ID:${empresa.idEmpresa} </p>                           
-                        </button>
-
-                                                
+                    <div class="titulo">Lista de Computadores<img src="./../../assets/logo-azul-claro.svg" alt="">
                     </div>
 
 
+                    <div class="containerPesquisa">
+                        <input type="text" class="inputPesquisa" id="searchIpt" oninput="search()"
+                            placeholder="Pesquisar Computadores">
+                    </div>
+                </div>
+                <div class="containerInfo" id="listaMaquinas">
+                    <!-- 
+                    <button class="tile">
+                        <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
+                        <h2 id="nomeMaquina">${empresa.nome}</h2>
+                        <p id="ipMaquina">ID:${empresa.idEmpresa} </p>
+                    </button> -->
 
-                <div class="containerInfo hide" id="listaEmpresasPesquisadas">
 
-                   
+                </div>
+
+
+
+                <div class="containerInfo hide" id="listaMaquinasPesquisadas">
+
+
 
                 </div>
 
@@ -84,120 +79,108 @@
 </html>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+
 <script>
 
-
-    var arrayEmpresaGloba = [];
-
-    function saveIdAndLocation(idEmpresa, nomeEmpresa) {
-
-        sessionStorage.ID_EMPRESA_SALVO = idEmpresa;
-        sessionStorage.NOME_DA_EMPRESA_SALVO = nomeEmpresa;
+    var idEmpresaVar = sessionStorage.FK_EMPRESA;
 
 
-        Swal.fire({
-            icon: 'success',
-            title: 'Tudo certo!',
-            text: `Você será encaminhado para tela de gerenciamento dessa empresa`,
-            showConfirmButton: false,
-            didOpen: () => {
-                Swal.showLoading();
+    function getAllMachinesByIdEmpresa(id) {
 
-            }
-        }); setTimeout(function () {
-            window.location = "./ManagerEdit.html"
-        }, 2000)
-
-    }
-
-    function listarEmpresa() {
-
-        fetch("/manager/listarEmpresa", {
+        fetch(`/metrica/getAllMachinesByIdEmpresa/${idEmpresaVar}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO listarEmpresa()!")
-
             if (resposta.ok) {
-                console.log(resposta);
+
                 resposta.json().then(function (resposta) {
-                    console.log("Dados recebidos: ", JSON.stringify(resposta));
-
-                    for (let i = 0; i < resposta.length; i++) {
-                        var empresa = resposta[i];
-                        arrayEmpresaGloba.push(empresa);
-                        
-
-                        listaEmpresas.innerHTML += `   
-                        <button class="tile" onclick ="saveIdAndLocation(${empresa.idEmpresa},'${empresa.nome}')">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
-                        <h2 id="nomeEmpresa">${empresa.nome}</h2>
-                        <p id="idEmpresa">ID:${empresa.idEmpresa} </p>
-                        <p id="idEmpresa">${empresa.email} </p>
-                        
-                         </button>
-                         `
 
 
+
+                    console.log(resposta);
+
+                    for (c = 0; c < resposta.length; c++) {
+                        dataCompair(resposta[c].idComputador)
                     }
-
-                    setTimeout(function () {
-                        window.location.reload
-                    }, 1500);
-
                 });
+
 
             } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-                resposta.text().then(texto => {
-                    console.error(texto, "teste");
-
-                });
+                console.error('Nenhum dado encontrado ou erro na API');
             }
-
-        }).catch(function (erro) {
-            console.log(erro);
         })
 
-        return false;
+
     }
 
 
 
-    function search() {
-    var pesquisa = searchIpt.value.toLowerCase();
-    var containerAll = document.getElementById("listaEmpresas");
-    var containerSearch = document.getElementById("listaEmpresasPesquisadas");
 
-    containerAll.classList.add("hide");
-    containerSearch.classList.remove("hide");
-    containerSearch.innerHTML = '';
+    function dataCompair(ids) {
 
-    var empresasFiltradas = arrayEmpresaGloba.filter(function(empresa) {
-        return (
-            empresa.nome.toLowerCase().includes(pesquisa)
-        );
-    });
 
-    empresasFiltradas.forEach(function(empresa) {
-        listaEmpresasPesquisadas.innerHTML += `   
-            <button class="tile" onclick ="saveIdAndLocation(${empresa.idEmpresa},'${empresa.nome}')">
-                <img src="../assetsDashboard/AirportChart.svg" alt="">
-                <h2 id="nomeEmpresa">${empresa.nome}</h2>
-                <p>CNPJ: ${empresa.cnpj}</p> 
-            </button>`;
-    });
+        fetch(`/metrica/dataCompair/${ids}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+        }).then(function (resposta) {
+            if (resposta.ok) {
+                resposta.json().then(function (resposta) {
 
-    if (empresasFiltradas.length === 0) {
-        listaEmpresasPesquisadas.innerHTML += `   
-           empresa não encontrada`;
+                    for (let i = 0; i < resposta.length; i++) {
+                        var dadosMaquina = resposta[i]
+                        console.log(dadosMaquina)
+                    }
+
+                    listarMaquinas(resposta)
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        });
     }
-}
 
 
+
+    function listarMaquinas(dados) {
+
+        var warnigRam = 89.9;
+        var dangerRam = 90
+        console.log(dados, "dados do listarrrr")
+        dados.sort((a, b) => a.fkComputador - b.fkComputador);
+        for (let i = 0; i < dados.length; i++) {
+            var dadosMaquina = dados[i]
+
+            if (dadosMaquina.ramUso < warnigRam) {
+
+                listaMaquinas.innerHTML += `
+                        <button class="tile">
+                        <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
+                        <p>  código de identificação da máquina: ${dadosMaquina.fkComputador}
+                        <p>Uso de ram: ${dadosMaquina.ramUso.toFixed(2)}%</p>
+                    </button>`
+            } else if (dadosMaquina.ramUso >= warnigRam && dadosMaquina.ramUso < dangerRam) {
+                listaMaquinas.innerHTML += `
+                        <button class="tile">
+                        <img style="margin-right: 0px;" src="../assetsDashboard/PCYellow.svg" alt="">
+                        <p>  código de identificação da máquina: ${dadosMaquina.fkComputador}
+                        <p> Uso de ram: ${dadosMaquina.ramUso.toFixed(2)}%</p>
+                    </button>`
+            } else {
+                listaMaquinas.innerHTML += `
+                        <button class="tile">
+                        <img style="margin-right: 0px;" src="../assetsDashboard/PCRed.svg" alt="">
+                        <p> código de identificação da máquina: ${dadosMaquina.fkComputador}
+                        <p> Uso de ram: ${dadosMaquina.ramUso.toFixed(2)}%</p>
+                    </button>`
+            }
+
+        }
+    }
 
 
 

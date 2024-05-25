@@ -1,15 +1,24 @@
 var express = require("express");
 var router = express.Router();
 
-var empresaController = require("../controllers/metricaController");
+var metricaController = require("../controllers/metricaController");
 
 router.post("/findMachineId/:idEmpresa/:idUser", function (req, res) {
-    empresaController.findMachineId(req, res);
+    metricaController.findMachineId(req, res);
 })
 
 router.post("/getMachineData/:idMachine", function (req, res) {
-    empresaController.getMachineData(req, res);
+    metricaController.getMachineData(req, res);
 })
+
+
+router.post("/getAllMachinesByIdEmpresa/:idEmpresa" , function (req,res) {
+    metricaController.getAllMachinesByIdEmpresa(req,res);
+})
+
+router.post("/dataCompair/:ids", function (req, res) {
+    metricaController.dataCompair(req, res);
+});
 
 
 

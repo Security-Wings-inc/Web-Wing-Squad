@@ -77,124 +77,165 @@
                                         <div class="inputLine">
                                             <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
                                             <p class="label">Risco: </p>
-                                            <input type="number" id="redCPU">
+                                            <div id="cpuRedDiv" class="redCPU label">
+                                                <div class="spanLabel" id="cpuValueRed">90%</div> 
+                                            </div>
+                                           
+                                            
                                         </div>
                                         
                                         <div class="inputLine">
                                             <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
                                             <p class="label">Alerta: </p>
-                                            <input type="number" id="yellowCPU">
+                                            <div id="cpuYellowDiv" class="yellowCPU label">
+                                                <div class="spanLabel" id="cpuValueYellow">60%</div> 
+                                            </div>
+
+                                            
                                         </div>
                                         
                                         <div class="inputLine">
                                         <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
                                             <p class="label">Normal: </p>
-                                            <input type="number" id="greenCPU">
+                                            <div id="cpuGreenDiv" class="greenCPU label">
+                                                <div class="spanLabel" id="cpuValueGreen">10%</div> 
+                                            </div>
+                                           
                                         </div>                                    
                                     </div>
     
                                 </div>
+
+                                <div class="botoesC" id="botoesCpuDiv">                                    
+                                    <button class="exc" id="deleteCPU" onclick="excluirCPU()" >Excluir</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
+                                    <button id="editCPU" onclick="editarCPU()" >Editar</button>
+                                    
+                                </div>
     
-                                <button>Aplicar</button>
+                                
     
                             </div>
                             
                             <div class="param">
 
-                                <p class="titleParam">ARMAZENAMENTO</p>
+                                <p class="titleParam">HD</p>
                                 <div class="paramMid">
-                                <img class="icon" src="../assetsDashboard/HD.svg" alt="">
-                                        
-                                
+                                    <img class="icon" src="../assetsDashboard/HD.svg" alt="">
+                            
                                     <div class="paramInputs">
                                         <div class="inputLine">
                                             <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
                                             <p class="label">Risco: </p>
-                                            <input type="number" id="redHD">
+                                            <div id="hdRedDiv" class="redHD label">
+                                                <div class="spanLabel" id="hdValueRed">90%</div> 
+                                            </div>
                                         </div>
-                                        
+                            
                                         <div class="inputLine">
                                             <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
                                             <p class="label">Alerta: </p>
-                                            <input type="number" id="yellowHD">
+                                            <div id="hdYellowDiv" class="yellowHD label">
+                                                <div class="spanLabel" id="hdValueYellow">60%</div> 
+                                            </div>
                                         </div>
-                                        
+                            
                                         <div class="inputLine">
-                                        <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
+                                            <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
                                             <p class="label">Normal: </p>
-                                            <input type="number" id="greenHD">
+                                            <div id="hdGreenDiv" class="greenHD label">
+                                                <div class="spanLabel" id="hdValueGreen">10%</div> 
+                                            </div>
                                         </div>                                    
                                     </div>
-    
                                 </div>
-    
-                                <button>Aplicar</button>
-    
+                            
+                                <div class="botoesC" id="botoesHdDiv">                                    
+                                    <button class="exc" id="deleteHD" onclick="excluirHD()" >Excluir</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
+                                    <button id="editHD" onclick="editarHD()" >Editar</button>
+                                </div>
                             </div>
+                        
+                        
+                        
                             <div class="param">
 
                                 <p class="titleParam">REDE</p>
                                 <div class="paramMid">
-                                <img class="icon" src="../assetsDashboard/REDE.svg" alt="">
-                                        
-                                
+                                    <img class="icon" src="../assetsDashboard/CPU.svg" alt="">
+                            
                                     <div class="paramInputs">
                                         <div class="inputLine">
                                             <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
                                             <p class="label">Risco: </p>
-                                            <input type="number" id="redREDE">
+                                            <div id="redeRedDiv" class="redREDE label">
+                                                <div class="spanLabel" id="redeValueRed">90%</div> 
+                                            </div>
                                         </div>
-                                        
+                            
                                         <div class="inputLine">
                                             <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
                                             <p class="label">Alerta: </p>
-                                            <input type="number" id="yellowREDE">
+                                            <div id="redeYellowDiv" class="yellowREDE label">
+                                                <div class="spanLabel" id="redeValueYellow">60%</div> 
+                                            </div>
                                         </div>
-                                        
+                            
                                         <div class="inputLine">
-                                        <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
+                                            <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
                                             <p class="label">Normal: </p>
-                                            <input type="number" id="greenREDE">
+                                            <div id="redeGreenDiv" class="greenREDE label">
+                                                <div class="spanLabel" id="redeValueGreen">10%</div> 
+                                            </div>
                                         </div>                                    
                                     </div>
-    
                                 </div>
-    
-                                <button>Aplicar</button>
-    
+                            
+                                <div class="botoesC" id="botoesRedeDiv">                                    
+                                    <button class="exc" id="deleteREDE" onclick="excluirREDE()" >Excluir</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
+                                    <button id="editREDE" onclick="editarREDE()" >Editar</button>
+                                </div>
                             </div>
+                           
+                           
                             <div class="param">
 
                                 <p class="titleParam">RAM</p>
                                 <div class="paramMid">
-                                <img class="icon" src="../assetsDashboard/RAM.svg" alt="">
-                                        
-                                
+                                    <img class="icon" src="../assetsDashboard/CPU.svg" alt="">
+                            
                                     <div class="paramInputs">
                                         <div class="inputLine">
                                             <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
                                             <p class="label">Risco: </p>
-                                            <input type="number" id="redRAM">
+                                            <div id="ramRedDiv" class="redRAM label">
+                                                <div class="spanLabel" id="ramValueRed">90%</div> 
+                                            </div>
                                         </div>
-                                        
+                            
                                         <div class="inputLine">
                                             <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
                                             <p class="label">Alerta: </p>
-                                            <input type="number" id="yellowRAM">
+                                            <div id="ramYellowDiv" class="yellowRAM label">
+                                                <div class="spanLabel" id="ramValueYellow">60%</div> 
+                                            </div>
                                         </div>
-                                        
+                            
                                         <div class="inputLine">
-                                        <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
+                                            <img class="bolinha" src="../assetsDashboard/Verde.svg" alt="">
                                             <p class="label">Normal: </p>
-                                            <input type="number" id="greenRAM">
+                                            <div id="ramGreenDiv" class="greenRAM label">
+                                                <div class="spanLabel" id="ramValueGreen">10%</div> 
+                                            </div>
                                         </div>                                    
                                     </div>
-    
                                 </div>
-    
-                                <button>Aplicar</button>
-    
+                            
+                                <div class="botoesC" id="botoesRamDiv">                                    
+                                    <button class="exc" id="deleteRAM" onclick="excluirRAM()" >Excluir</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
+                                    <button id="editRAM" onclick="editarRAM()" >Editar</button>
+                                </div>
                             </div>
+                            
                       
                       
                         </div>
@@ -220,3 +261,134 @@
     <footer></footer>
 
 </body>
+
+<script>
+
+// ------------------------------------- FUNÇÕES CPU -------------------------
+
+    function editarCPU(){
+
+        var cpuGreen = document.getElementById('cpuGreenDiv')
+        var cpuYellow = document.getElementById('cpuYellowDiv')
+        var cpuRed = document.getElementById('cpuRedDiv')
+        var cpuBotoes = document.getElementById('botoesCpuDiv')
+
+        cpuGreen.innerHTML = `<input type="number" id="greenCPU">`
+        cpuYellow.innerHTML = `<input type="number" id="yellowCPU">`
+        cpuRed.innerHTML = `<input type="number" id="redCPU">`
+        cpuBotoes.innerHTML = `<button id="applyCPU" onclick="aplicarCPU()">Aplicar</button>
+                                <button id="backCPU" onclick="voltarCPU()">voltar</button>`
+
+    }
+
+    function voltarCPU(){
+        var cpuGreen = document.getElementById('cpuGreenDiv')
+        var cpuYellow = document.getElementById('cpuYellowDiv')
+        var cpuRed = document.getElementById('cpuRedDiv')
+        var cpuBotoes = document.getElementById('botoesCpuDiv')
+
+        cpuGreen.innerHTML = `<div class="spanLabel" id="cpuValueGreen">10%</div>`
+        cpuYellow.innerHTML = `<div class="spanLabel" id="cpuValueYellow">60%</div>`
+        cpuRed.innerHTML = `<div class="spanLabel" id="cpuValueRed">90%</div>`
+        cpuBotoes.innerHTML = `<button class="exc" id="deleteCPU" onclick="excluirCPU()" >Excluir</button>
+                                <button id="editCPU" onclick="editarCPU()" >Editar</button>`
+
+    }
+
+
+// ------------------------------------- FUNÇÕES HD -------------------------
+
+    function editarHD(){
+
+        var hdGreen = document.getElementById('hdGreenDiv')
+        var hdYellow = document.getElementById('hdYellowDiv')
+        var hdRed = document.getElementById('hdRedDiv')
+        var hdBotoes = document.getElementById('botoesHdDiv')
+
+        hdGreen.innerHTML = `<input type="number" id="greenHD">`
+        hdYellow.innerHTML = `<input type="number" id="yellowHD">`
+        hdRed.innerHTML = `<input type="number" id="redHD">`
+        hdBotoes.innerHTML = `<button id="applyHD" onclick="aplicarHD()">Aplicar</button>
+                                <button id="backHD" onclick="voltarHD()">voltar</button>`
+
+        }
+
+    function voltarHD(){
+        var hdGreen = document.getElementById('hdGreenDiv')
+        var hdYellow = document.getElementById('hdYellowDiv')
+        var hdRed = document.getElementById('hdRedDiv')
+        var hdBotoes = document.getElementById('botoesHdDiv')
+
+        hdGreen.innerHTML = `<div class="spanLabel" id="hdValueGreen">10%</div>`
+        hdYellow.innerHTML = `<div class="spanLabel" id="hdValueYellow">60%</div>`
+        hdRed.innerHTML = `<div class="spanLabel" id="hdValueRed">90%</div>`
+        hdBotoes.innerHTML = `<button class="exc" id="deleteHD" onclick="excluirHD()" >Excluir</button>
+                                <button id="editHD" onclick="editarHD()" >Editar</button>`
+
+    }
+
+// ------------------------------------- FUNÇÕES REDE -------------------------
+
+    function editarREDE(){
+
+        var redeGreen = document.getElementById('redeGreenDiv')
+        var redeYellow = document.getElementById('redeYellowDiv')
+        var redeRed = document.getElementById('redeRedDiv')
+        var redeBotoes = document.getElementById('botoesRedeDiv')
+
+        redeGreen.innerHTML = `<input type="number" id="greenREDE">`
+        redeYellow.innerHTML = `<input type="number" id="yellowREDE">`
+        redeRed.innerHTML = `<input type="number" id="redREDE">`
+        redeBotoes.innerHTML = `<button id="applyREDE" onclick="aplicarREDE()">Aplicar</button>
+                                <button id="backREDE" onclick="voltarREDE()">voltar</button>`
+
+    }
+
+    function voltarREDE(){
+        var redeGreen = document.getElementById('redeGreenDiv')
+        var redeYellow = document.getElementById('redeYellowDiv')
+        var redeRed = document.getElementById('redeRedDiv')
+        var redeBotoes = document.getElementById('botoesRedeDiv')
+
+        redeGreen.innerHTML = `<div class="spanLabel" id="redeValueGreen">10%</div>`
+        redeYellow.innerHTML = `<div class="spanLabel" id="redeValueYellow">60%</div>`
+        redeRed.innerHTML = `<div class="spanLabel" id="redeValueRed">90%</div>`
+        redeBotoes.innerHTML = `<button class="exc" id="deleteREDE" onclick="excluirREDE()" >Excluir</button>
+                            <button id="editREDE" onclick="editarREDE()" >Editar</button>`
+
+    }
+
+
+// ------------------------------------- FUNÇÕES RAM -------------------------
+
+    function editarRAM(){
+
+        var ramGreen = document.getElementById('ramGreenDiv')
+        var ramYellow = document.getElementById('ramYellowDiv')
+        var ramRed = document.getElementById('ramRedDiv')
+        var ramBotoes = document.getElementById('botoesRamDiv')
+
+        ramGreen.innerHTML = `<input type="number" id="greenRAM">`
+        ramYellow.innerHTML = `<input type="number" id="yellowRAM">`
+        ramRed.innerHTML = `<input type="number" id="redRAM">`
+        ramBotoes.innerHTML = `<button id="applyRAM" onclick="aplicarRAM()">Aplicar</button>
+                                <button id="backRAM" onclick="voltarRAM()">voltar</button>`
+
+    }
+
+    function voltarRAM(){
+        var ramGreen = document.getElementById('ramGreenDiv')
+        var ramYellow = document.getElementById('ramYellowDiv')
+        var ramRed = document.getElementById('ramRedDiv')
+        var ramBotoes = document.getElementById('botoesRamDiv')
+
+        ramGreen.innerHTML = `<div class="spanLabel" id="ramValueGreen">10%</div>`
+        ramYellow.innerHTML = `<div class="spanLabel" id="ramValueYellow">60%</div>`
+        ramRed.innerHTML = `<div class="spanLabel" id="ramValueRed">90%</div>`
+        ramBotoes.innerHTML = `<button class="exc" id="deleteRAM" onclick="excluirRAM()" >Excluir</button>
+                                <button id="editRAM" onclick="editarRAM()" >Editar</button>`
+
+    }
+
+
+</script>

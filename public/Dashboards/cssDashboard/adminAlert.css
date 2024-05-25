@@ -5,11 +5,11 @@
     border-radius: 30px;
     box-shadow: -3px 3px 5px #c0d4d7;
     border: solid #a0c8d4 1px;
-    height: fit-content;
+    height: 200px;
     align-items: center;
     justify-content: center;
     width: 400px;
-    padding: 10px;
+    /* padding: 10px; */
 }
 
 .titleParam{
@@ -44,6 +44,14 @@ button:hover{
 
 }
 
+.exc{
+    background-color: #053a4b;
+}
+.exc:hover{
+    background-color: #52a0ba;
+
+}
+
 .paramMid{
     display: flex;
     padding: 10px;
@@ -71,6 +79,11 @@ button:hover{
     font-weight: 700;
     font-size: 14px;
     font-style: normal;
+}
+
+.spanLabel{
+    margin: 5px 0;
+
 }
 
 .bolinha{
@@ -110,4 +123,12 @@ button:hover{
     width: 100%;
     height: 95%;
     /* border: 1px solid red; */
+}
+
+.botoesC{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 50%;
+    /* border: 1px red solid */
 }

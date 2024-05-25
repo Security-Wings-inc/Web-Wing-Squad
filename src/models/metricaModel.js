@@ -14,9 +14,28 @@ function getMachineData(idMachine){
     return database.executar(instrucao);
 }
 
+function getAllMachinesByIdEmpresa(idEmpresa){
+    var instrucao = `SELECT * FROM ComputadorESpec where fkEmpresa = '${idEmpresa}';`
+    return database.executar(instrucao);
+
+}
+
+
+function dataCompair(idMaquinas){
+    var instrucao = `SELECT * FROM monitoramento where fkComputador = '${idMaquinas}' ORDER BY idMonitoramento DESC LIMIT 1;`
+    return database.executar(instrucao);
+
+}
+
+
+
+
 
 module.exports = {
     findMachineId,
-    getMachineData
+    getMachineData,
+    getAllMachinesByIdEmpresa,
+    dataCompair
+
     
 };

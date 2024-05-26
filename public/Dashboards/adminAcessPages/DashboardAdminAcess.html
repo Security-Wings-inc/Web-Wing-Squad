@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body onload="getMachineData()">
 
   <header>
 
@@ -21,7 +21,7 @@
     <div class="lista">
 
       <ul class="listaHeader">
-        <li><a href="../../index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
+        <li><a href="./ComputerAdmin.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
     </ul>
 
 
@@ -157,21 +157,59 @@
 
 <script>
 
-  //Gráfico 1---------------------------------------------------------
+var idMachine = sessionStorage.MAQUINA_SELECIONADA;
+
+
+ function getMachineData(id) {
+  
+  fetch(`/metrica/getMachineData/${idMachine}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+  }).then(function (resposta) {
+    if (resposta.ok) {
+
+      resposta.json().then(function (resposta) {
+
+
+        console.log("Ultimo dado: ", resposta[resposta.length - 1])
+
+        armazenamento(resposta)
+        processador(resposta)
+        ram(resposta)
+        rede(resposta)
+
+
+      });
+    } else {
+      console.error('Nenhum dado encontrado ou erro na API');
+    }
+  })
+
+
+}
+
+
+function armazenamento(dados) {
+
   const ctx = document.getElementById('myChart');
+  const labels = dados.slice(-8).map(dado => dado.dataCaptura);
+  const dataPoints = dados.slice(-8).map(dado => dado.discoUso);
 
   new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['17:00:12', '17:00:15', '17:00:18', '17:00:21', '17:00:24', '17:00:27'],
+      labels: labels,
       datasets: [{
         label: 'Porcentagem de armazenamento',
-        data: [30, 30, 34, 30, 32, 31],
-        borderWidth: 1
+        data: dataPoints,
+        borderWidth: 1,
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
       }]
     },
     options: {
-
       scales: {
         y: {
           beginAtZero: true
@@ -179,23 +217,25 @@
       }
     }
   });
+}
 
+function processador(dados) {
 
-
-
-  //Gráfico 3---------------------------------------------------------
   const ctx2 = document.getElementById('myChart2');
+  const labels = dados.slice(-8).map(dado => dado.dataCaptura);
+  const dataPoints = dados.slice(-8).map(dado => dado.processadorUso);
 
   new Chart(ctx2, {
     type: 'line',
     data: {
-      labels: ['17:00:12', '17:00:15', '17:00:18', '17:00:21', '17:00:24', '17:00:27'],
+      labels: labels,
       datasets: [{
-        label: 'Porcentagem uso do processador',
-        data: [88, 70, 87, 85, 93, 100],
-        borderWidth: 1
-      }],
-
+        label: 'Porcentagem de utilização do processador',
+        data: dataPoints,
+        borderWidth: 1,
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+      }]
     },
     options: {
 
@@ -206,20 +246,26 @@
       }
     }
   });
+}
 
 
 
-  //Gráfico 3---------------------------------------------------------
+function ram(dados) {
+
   const ctx3 = document.getElementById('myChart3');
+  const labels = dados.slice(-8).map(dado => dado.dataCaptura);
+  const dataPoints = dados.slice(-8).map(dado => dado.ramUso);
 
   new Chart(ctx3, {
     type: 'line',
     data: {
-      labels: ['17:00:12', '17:00:15', '17:00:18', '17:00:21', '17:00:24', '17:00:27'],
+      labels: labels,
       datasets: [{
-        label: 'Porcentagem uso de ram',
-        data: [40, 43, 36, 42, 48, 41],
-        borderWidth: 1
+        label: 'Porcentagem de ram em uso',
+        data: dataPoints,
+        borderWidth: 1,
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
       }]
     },
     options: {
@@ -231,28 +277,35 @@
       }
     }
   });
+}
 
+function rede(dados) {
 
-  //Gráfico 4---------------------------------------------------------
   const ctx4 = document.getElementById('myChart4');
+  const labels = dados.slice(-8).map(dado => dado.dataCaptura);
+  const dataBytesRecebidos = dados.slice(-8).map(dado => dado.bytesRecebidos);
+  const dataBytesEnviados = dados.slice(-8).map(dado => dado.bytesEnviados);
 
   new Chart(ctx4, {
     type: 'line',
     data: {
-      labels: ['17:00:12', '17:00:15', '17:00:18', '17:00:21', '17:00:24', '17:00:27'],
+      labels: labels,
       datasets: [{
         label: 'Bytes recebidos',
-        data: [132, 219, 3123, 512, 232, 322],
-        borderWidth: 1
+        data: dataBytesRecebidos,
+        borderWidth: 1,
+        borderColor: 'rgba(75, 192, 192, 1)',
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
       },
       {
-        label: 'Bytes Enviados',
-        data: [232, 323, 32, 1, 2123, 123],
-        borderWidth: 1
+        label: 'Bytes enviados',
+        data: dataBytesEnviados,
+        borderWidth: 1,
+        borderColor: 'rgba(192, 75, 75, 1)',
+        backgroundColor: 'rgba(192, 75, 75, 0.2)',
       }]
     },
     options: {
-
       scales: {
         y: {
           beginAtZero: true
@@ -260,4 +313,7 @@
       }
     }
   });
+}
+
+
 </script>

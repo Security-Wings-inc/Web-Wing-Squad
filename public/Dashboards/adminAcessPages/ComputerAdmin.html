@@ -63,8 +63,6 @@
                 </div>
 
 
-
-
             </div>
         </div>
 
@@ -84,7 +82,8 @@
 <script>
 
     var idEmpresaVar = sessionStorage.FK_EMPRESA;
-
+    var nome = sessionStorage.NOME_USUARIO;
+    console.log(nome)
 
     function getAllMachinesByIdEmpresa(id) {
 
@@ -158,21 +157,21 @@
             if (dadosMaquina.ramUso < warnigRam) {
 
                 listaMaquinas.innerHTML += `
-                        <button class="tile">
+                        <button class="tile" onclick="goToDash('${dadosMaquina.fkComputador}')">
                         <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
                         <p>  código de identificação da máquina: ${dadosMaquina.fkComputador}
                         <p>Uso de ram: ${dadosMaquina.ramUso.toFixed(2)}%</p>
                     </button>`
             } else if (dadosMaquina.ramUso >= warnigRam && dadosMaquina.ramUso < dangerRam) {
                 listaMaquinas.innerHTML += `
-                        <button class="tile">
+                        <button class="tile" onclick="goToDash('${dadosMaquina.fkComputador}')">
                         <img style="margin-right: 0px;" src="../assetsDashboard/PCYellow.svg" alt="">
                         <p>  código de identificação da máquina: ${dadosMaquina.fkComputador}
                         <p> Uso de ram: ${dadosMaquina.ramUso.toFixed(2)}%</p>
                     </button>`
             } else {
                 listaMaquinas.innerHTML += `
-                        <button class="tile">
+                        <button class="tile" onclick="goToDash('${dadosMaquina.fkComputador}')">
                         <img style="margin-right: 0px;" src="../assetsDashboard/PCRed.svg" alt="">
                         <p> código de identificação da máquina: ${dadosMaquina.fkComputador}
                         <p> Uso de ram: ${dadosMaquina.ramUso.toFixed(2)}%</p>
@@ -183,7 +182,21 @@
     }
 
 
+function goToDash(id){
+    sessionStorage.MAQUINA_SELECIONADA = id;
 
+    
+    Swal.fire({
+                icon: 'success',
+                title: 'Tudo certo!',
+                text: `Olá ${nome}, estamos te redirecionando para a visulização da máquina com ID: ${id}`,
+                showConfirmButton: false,
+                didOpen: () => { Swal.showLoading(); }
+
+              });
+
+              setTimeout(function () { window.location = "./DashboardAdminAcess.html"; }, 3000);
+}
 
 
 </script>

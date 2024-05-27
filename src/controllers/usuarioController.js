@@ -68,7 +68,6 @@ function editarFunc(req, res) {
     var novoEmail = req.body.novoEmailServer;
     var novaSenha = req.body.novaSenhaServer;
 
-    console.log("como as inputs chegam pro back-end" , id,novoEmail,novaSenha, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 
     usuarioModel.editarFunc(id, novoEmail, novaSenha)
         .then(function (resultado) { 
@@ -79,8 +78,7 @@ function editarFunc(req, res) {
             }
         }).catch(
             function (erro) {
-                // console.log(erro);
-                console.log("tomanocu")
+               
                 console.log("Houve um erro ao realizar a consulta! Erro: ", erro.sqlMessage);
                 res.status(500).json(erro.sqlMessage);
             }
@@ -147,7 +145,7 @@ function findEmpresaById(req, res) {
             function (resultadoAutenticar) {
 
                 if (resultadoAutenticar.length >= 1) {
-                    console.log(resultadoAutenticar);
+                  
                     res.json({     
                         nomeEmpresa: resultadoAutenticar[0].nome
                     });

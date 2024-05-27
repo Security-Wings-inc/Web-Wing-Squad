@@ -15,7 +15,17 @@ function getMachineData(idMachine){
 }
 
 function getAllMachinesByIdEmpresa(idEmpresa){
-    var instrucao = `SELECT * FROM ComputadorESpec where fkEmpresa = '${idEmpresa}';`
+    var instrucao = `SELECT CE.*, M.*
+    FROM ComputadorESpec CE
+    INNER JOIN (
+        SELECT fkComputador, MAX(dataCaptura) AS ultimaCaptura
+        FROM Monitoramento
+        GROUP BY fkComputador
+    ) ultimaMonitoramento ON CE.idComputador = ultimaMonitoramento.fkComputador
+    INNER JOIN Monitoramento M ON ultimaMonitoramento.fkComputador = M.fkComputador 
+                                AND ultimaMonitoramento.ultimaCaptura = M.dataCaptura
+    WHERE CE.fkEmpresa = '${idEmpresa}';
+    `
     return database.executar(instrucao);
 
 }

@@ -13,6 +13,7 @@ var empresaRouter = require("./src/routes/empresa");
 var usuarioRouter = require("./src/routes/usuario");
 var managerRouter = require("./src/routes/manager");
 var metricaRouter = require("./src/routes/metrica");
+var alertaRouter = require("./src/routes/alerta")
 
 const { Console } = require("console");
 
@@ -27,7 +28,8 @@ app.use("/", indexRouter);
 app.use("/empresa", empresaRouter);
 app.use("/usuario", usuarioRouter);
 app.use("/manager", managerRouter);
-app.use("/metrica", metricaRouter )
+app.use("/metrica", metricaRouter);
+app.use("/alerta" , alertaRouter);
 
 app.listen(PORTA, function () {
     console.log(`É A TROPA DO WEB-WING-SQUAD NÃO TEM JEITOOOOOOO: http://localhost:${PORTA}`);

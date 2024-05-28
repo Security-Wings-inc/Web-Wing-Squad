@@ -35,28 +35,32 @@
       <div class="containerPrincipal">
         <div class="containerEsquerdo">
           <div class="containerCards">
+
+            <div class="card">
+              <h2>Armazenamento</h2>
+              <span> Ocupado: 300,23 Gb </span>
+              <span> Livre: 699,23 Gb </span>
+              <span> Porcentagem: 80%</span>
+              
+            </div>
+
             <div class="card">
               <h2>Em quantos dias <br> o Armazenamento <Br> lotará</h2>
-              <p>12 dias</p>
+              <span>12 dias</span>
             </div>
-            <div class="card">
-              <h2>Recomendções</h2>
-              <p>Reduzir quantidade de processos abertos <br>
-                ou aumentar a quantidade de RAM.
-              </p>
-            </div>
+            
             <div class="card">
               <h2>Velocidade da Internet</h2>
-              <p>Download: 200 Mb/s <br>
-                Upload: 150 Mb/s
+              <span> Download: 200 Mb/s </span>
+              <span> Upload: 150 Mb/s </span>
 
 
             </div>
-            <div class="card">
-              <h2>Armazenamento em Gigabytes</h2>
-              <p>Ocupado: 300,23 Gb <br>
-                Livre: 699,23 Gb
-              </p>
+            
+            <div class="card" style="background-color: #A9DADD;">
+              <h2>Recomendações</h2>
+              <span>Reduzir quantidade de processos abertos <br>
+                ou aumentar a quantidade de RAM.</span>
             </div>
 
           </div>
@@ -66,14 +70,14 @@
             <div class="graficoLinha">
               <div class="grafico">
                 <div>
-                  <h2 style="margin-top: 15px;">Armazenamento</h2>
+                  <h2 style="margin-top: 15px;">Armazenamento <img width="15px" src="../assetsDashboard/Amarelo.svg" alt=""></h2>
                   <canvas id="myChart" style="width: 512px; height: 140px;"></canvas>
                 </div>
 
 
               </div>
               <div class="grafico2">
-                <h2> Uso de Ram</h2>
+                <h2> Uso de Ram <img width="15px" src="../assetsDashboard/Verde.svg" alt=""></h2>
                 <canvas id="myChart3" style="width: 460px; height: 130px;"></canvas>
               </div>
             </div>
@@ -81,7 +85,7 @@
 
             <div class="graficoLinha">
               <div class="grafico">
-                <h2 style="margin-top: 15px;"> Utilização do processador</h2>
+                <h2 style="margin-top: 15px;"> Utilização do processador <img width="15px" src="../assetsDashboard/Vermelho.svg" alt=""></h2>
                 <div>
                   <canvas id="myChart2" style="width: 512px; height: 140px;"></canvas>
                 </div>
@@ -89,7 +93,7 @@
 
               </div>
               <div class="grafico2">
-                <h2> Status de Rede</h2>
+                <h2> Status de Rede <img width="15px" src="../assetsDashboard/Verde.svg" alt=""></h2>
                 <canvas id="myChart4" style="width: 460px; height: 130px;"></canvas>
               </div>
             </div>
@@ -108,8 +112,8 @@
                 80%</span>
               <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> 81% ou
                 mais</span>
-              <p style="font-size: 12px;">Exio X = Hora de captura</p>
-              <p style="font-size: 12px;">Exio Y = Porcentagem</p>
+              <p style="font-size: 12px;">Eixo X = Hora de captura</p>
+              <p style="font-size: 12px;">Eixo Y = Porcentagem</p>
 
             </div>
 
@@ -121,8 +125,8 @@
                 80%</span>
               <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> 81% ou
                 mais</span>
-              <p style="font-size: 12px;">Exio X = Hora de captura</p>
-              <p style="font-size: 12px;">Exio Y = Porcentagem</p>
+              <p style="font-size: 12px;">Eixo X = Hora de captura</p>
+              <p style="font-size: 12px;">Eixo Y = Porcentagem</p>
             </div>
 
             <div class="info">
@@ -133,8 +137,8 @@
                 80%</span>
               <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> 81% ou
                 mais</span>
-              <p style="font-size: 12px;">Exio X = Hora de captura</p>
-              <p style="font-size: 12px;">Exio Y = Porcentagem</p>
+              <p style="font-size: 12px;">Eixo X = Hora de captura</p>
+              <p style="font-size: 12px;">Eixo Y = Porcentagem</p>
 
             </div>
 
@@ -147,8 +151,8 @@
                   50Mb/s & D↓ < 100Mb/s </span>
                   <span style="margin-bottom: 2px;"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> U↑ <
                       20Mb/s & D↓ < 60Mb/s <span>
-                      <p style="font-size: 12px;">Exio X = Hora de captura</p>
-                      <p style="font-size: 12px;">Exio Y = Quantidade</p>
+                      <p style="font-size: 12px;">Eixo X = Hora de captura</p>
+                      <p style="font-size: 12px;">Eixo Y = Quantidade</p>
             </div>
           </div>
         </div>

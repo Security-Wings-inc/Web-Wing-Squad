@@ -193,10 +193,9 @@
       if (resposta.ok) {
   
         resposta.json().then(function (resposta) {
+          
   
-  
-          console.log("Ultimo dado: ", resposta[resposta.length - 1])
-  
+          
           armazenamento(resposta)
           processador(resposta)
           ram(resposta)

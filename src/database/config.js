@@ -16,7 +16,7 @@ var mySqlConfig = {
     host: "localhost",
     database: "securityWings",
     user: "root",
-    password: "sptech",  
+    password: "1033",  
 };
 
 

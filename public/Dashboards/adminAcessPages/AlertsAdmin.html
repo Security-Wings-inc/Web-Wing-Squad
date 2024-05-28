@@ -65,6 +65,21 @@
                 
                         <div class="inputContainerParam">
 
+                            <div class="param" id="paramCPUfirst">
+                                <p class="titleParam" style="margin-right: 8px">CPU</p>
+                                <div class="paramMid">
+                                <img class="icon" style="margin-right: 2px" src="../assetsDashboard/CPU.svg" alt="">
+                                        
+                                
+                                </div>
+
+                                <div class="botoesC" id="botoesCpuDiv">                                    
+                                    <button class="exc" id="criarCPU" onclick="criarCPU()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
+                                    
+                                    
+                                </div>
+                            </div>
+
 
                             <div class="param" id="paramCPU">
 
@@ -116,6 +131,21 @@
     
                             </div>
                             
+                            <div class="param" id="paramHDfirst">
+                                <p class="titleParam" style="margin-right: 8px">HD</p>
+                                <div class="paramMid">
+                                <img class="icon" style="margin-right: 2px" src="../assetsDashboard/HD.svg" alt="">
+                                        
+                                
+                                </div>
+        
+                                <div class="botoesC" id="botoesHdDiv">                                    
+                                    <button class="exc" id="criarHD" onclick="criarHD()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
+                                    
+                                    
+                                </div>
+                            </div>                          
+                            
                             <div class="param" id="paramHD">
 
                                 <p class="titleParam">HD</p>
@@ -153,6 +183,21 @@
                                     <button class="exc" id="deleteHD" onclick="excluirHD(), firstHD()" >Excluir</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
                                     <button id="editHD" onclick="editarHD()" >Editar</button>
                                 </div>
+                            </div>
+
+                            <div class="param" id="paramREDEfirst">
+                                <p class="titleParam" style="margin-right: 8px">REDE</p>
+                        <div class="paramMid">
+                        <img class="icon" style="margin-right: 2px" src="../assetsDashboard/REDE.svg" alt="">
+                                
+                        
+                        </div>
+
+                        <div class="botoesC" id="botoesRedeDiv">                                    
+                            <button class="exc" id="criarREDE" onclick="criarREDE()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
+                            
+                            
+                        </div>
                             </div>
                         
                             <div class="param" id="paramREDE">
@@ -195,6 +240,21 @@
                             </div>
                            
                            
+                            <div class="param" id="paramRAMfirst">
+                                <p class="titleParam" style="margin-right: 8px">RAM</p>
+                        <div class="paramMid">
+                        <img class="icon" style="margin-right: 2px" src="../assetsDashboard/RAM.svg" alt="">
+                                
+                        
+                        </div>
+
+                        <div class="botoesC" id="botoesRamDiv">                                    
+                            <button class="exc" id="criarRAM" onclick="criarRAM()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
+                            
+                            
+                        </div>
+                            </div>
+
                             <div class="param" id="paramRAM">
 
                                 <p class="titleParam">RAM</p>
@@ -266,25 +326,25 @@
 
 // ------------------------------------- FUNÇÕES CPU -------------------------
 
-    function firstCPU(){
+    // function firstCPU(){
 
-        var cpuDiv = document.getElementById('paramCPU')
+    //     var cpuDiv = document.getElementById('paramCPU')
         
-        cpuDiv.innerHTML = `<p class="titleParam" style="margin-right: 8px">CPU</p>
-                                <div class="paramMid">
-                                <img class="icon" style="margin-right: 2px" src="../assetsDashboard/CPU.svg" alt="">
+    //     cpuDiv.innerHTML = `<p class="titleParam" style="margin-right: 8px">CPU</p>
+    //                             <div class="paramMid">
+    //                             <img class="icon" style="margin-right: 2px" src="../assetsDashboard/CPU.svg" alt="">
                                         
                                 
-                                </div>
+    //                             </div>
 
-                                <div class="botoesC" id="botoesCpuDiv">                                    
-                                    <button class="exc" id="criarCPU" onclick="criarCPU()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
+    //                             <div class="botoesC" id="botoesCpuDiv">                                    
+    //                                 <button class="exc" id="criarCPU" onclick="criarCPU()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
                                     
                                     
-                                </div>`
+    //                             </div>`
     
 
-    }
+    // }
 
 
     function criarCPU(){
@@ -386,25 +446,25 @@ function teste(){
     console.log("teste")
 }
 
-function firstHD(){
+// function firstHD(){
 
-var hdDiv = document.getElementById('paramHD')
+// var hdDiv = document.getElementById('paramHD')
 
-hdDiv.innerHTML = `<p class="titleParam" style="margin-right: 8px">HD</p>
-                        <div class="paramMid">
-                        <img class="icon" style="margin-right: 2px" src="../assetsDashboard/HD.svg" alt="">
+// hdDiv.innerHTML = `<p class="titleParam" style="margin-right: 8px">HD</p>
+//                         <div class="paramMid">
+//                         <img class="icon" style="margin-right: 2px" src="../assetsDashboard/HD.svg" alt="">
                                 
                         
-                        </div>
+//                         </div>
 
-                        <div class="botoesC" id="botoesHdDiv">                                    
-                            <button class="exc" id="criarHD" onclick="criarHD()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
+//                         <div class="botoesC" id="botoesHdDiv">                                    
+//                             <button class="exc" id="criarHD" onclick="criarHD()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
                             
                             
-                        </div>`
+//                         </div>`
 
 
-}
+// }
 
 
 function criarHD(){
@@ -500,25 +560,25 @@ function excluirHD(){
 
 // ------------------------------------- FUNÇÕES REDE -------------------------
 
-function firstREDE(){
+// function firstREDE(){
 
-var redeDiv = document.getElementById('paramREDE')
+// var redeDiv = document.getElementById('paramREDE')
 
-redeDiv.innerHTML = `<p class="titleParam" style="margin-right: 8px">REDE</p>
-                        <div class="paramMid">
-                        <img class="icon" style="margin-right: 2px" src="../assetsDashboard/REDE.svg" alt="">
+// redeDiv.innerHTML = `<p class="titleParam" style="margin-right: 8px">REDE</p>
+//                         <div class="paramMid">
+//                         <img class="icon" style="margin-right: 2px" src="../assetsDashboard/REDE.svg" alt="">
                                 
                         
-                        </div>
+//                         </div>
 
-                        <div class="botoesC" id="botoesRedeDiv">                                    
-                            <button class="exc" id="criarREDE" onclick="criarREDE()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
+//                         <div class="botoesC" id="botoesRedeDiv">                                    
+//                             <button class="exc" id="criarREDE" onclick="criarREDE()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
                             
                             
-                        </div>`
+//                         </div>`
 
 
-}
+// }
 
 
 function criarREDE(){
@@ -615,25 +675,25 @@ function excluirREDE(){
 
 // ------------------------------------- FUNÇÕES RAM -------------------------
 
-function firstRAM(){
+// function firstRAM(){
 
-var ramDiv = document.getElementById('paramRAM')
+// var ramDiv = document.getElementById('paramRAM')
 
-ramDiv.innerHTML = `<p class="titleParam" style="margin-right: 8px">RAM</p>
-                        <div class="paramMid">
-                        <img class="icon" style="margin-right: 2px" src="../assetsDashboard/RAM.svg" alt="">
+// ramDiv.innerHTML = `<p class="titleParam" style="margin-right: 8px">RAM</p>
+//                         <div class="paramMid">
+//                         <img class="icon" style="margin-right: 2px" src="../assetsDashboard/RAM.svg" alt="">
                                 
                         
-                        </div>
+//                         </div>
 
-                        <div class="botoesC" id="botoesRamDiv">                                    
-                            <button class="exc" id="criarRAM" onclick="criarRAM()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
+//                         <div class="botoesC" id="botoesRamDiv">                                    
+//                             <button class="exc" id="criarRAM" onclick="criarRAM()" >Criar Alerta</button> <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR --> 
                             
                             
-                        </div>`
+//                         </div>`
 
 
-}
+// }
 
 
 function criarRAM(){

@@ -20,22 +20,45 @@ router.post("/paramsRede/:idEmpresa", (req,res)=>{
 })
 
 
-router.get("/getRam/:idEmpresa" , (req,res) =>{
-    alertaController.getRam(req,res);
+router.get("/getAllparams/:idEmpresa" , (req,res) =>{
+    alertaController.getAllparams(req,res);
+})
+
+router.delete("/deleteRam/:idEmpresa" , (req,res) =>{
+    alertaController.deleteRam(req,res);
+})
+
+router.delete("/deleteProcessador/:idEmpresa" , (req,res)=>{
+    alertaController.deleteProcessador(req,res);
+})
+
+router.delete("/deleteRede/:idEmpresa" , (req,res)=>{
+    alertaController.deleteRede(req,res);
 })
 
 
-router.get("/getProcessador/:idEmpresa" , (req,res)=>{
-    alertaController.getProcessador(req,res);
+router.delete("/deleteDisco/:idEmpresa" , (req,res)=>{
+    alertaController.deleteDisco(req,res);
 })
 
-router.get("/getDisco/:idEmpresa", (req,res)=>{
-    alertaController.getDisco(req,res);
+router.put("/putRam/:idEmpresa" ,(req,res)=>{
+    alertaController.putRam(req,res);
 })
 
-router.get("/getRede/:idEmpresa" , (req,res)=>{
-    alertaController.getRede(req,res);
+router.put("/putProcessador/:idEmpresa" ,(req,res)=>{
+    alertaController.putProcessador(req,res);
 })
+
+router.put("/putRede/:idEmpresa" ,(req,res)=>{
+    alertaController.putRede(req,res);
+})
+
+router.put("/putDisco/:idEmpresa" ,(req,res)=>{
+    alertaController.putDisco(req,res);
+})
+
+
+
 
 
 

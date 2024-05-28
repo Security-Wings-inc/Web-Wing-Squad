@@ -66,7 +66,7 @@
                         <div class="inputContainerParam">
 
 
-                            <div class="param" id="paramCPU">
+                            <div class="param hide" id="paramCPU">
 
                                 <p class="titleParam">CPU</p>
                                 <div class="paramMid">
@@ -261,6 +261,8 @@
 </body>
 
 <script>
+
+    var idEmpresa = sessionStorage.FK_EMPRESA;
 
 // ------------------------------------- FUNÇÕES CPU -------------------------
 
@@ -686,7 +688,27 @@ ramDiv.innerHTML = `<p class="titleParam">RAM</p>
 
 function confirmarRAM(){
 
-    //Função do create
+var warning = yellowRAM.value;
+var danger = redRAM.value
+
+
+  fetch(`/alerta/paramsRam/${idEmpresa}`, {
+    method : "POST",
+    headers:{
+        "Content-type" : "application/json"
+    },
+    body : JSON.stringify({
+        warningServer : warning,
+        dangerServer : danger
+    })
+  }).then((resposta)=>{
+    if(resposta){
+        console.log("parameto cadastrado");
+        res.json(resposta);
+    }
+  }).catch((erro)=>{
+    console.log("erro" , erro)
+  })
 
 }
 
@@ -704,6 +726,8 @@ function excluirRAM(){
         var ramYellow = document.getElementById('ramYellowDiv')
         var ramRed = document.getElementById('ramRedDiv')
         var ramBotoes = document.getElementById('botoesRamDiv')
+
+   
 
         ramGreen.innerHTML = `<input type="number" id="greenRAM">`
         ramYellow.innerHTML = `<input type="number" id="yellowRAM">`

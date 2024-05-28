@@ -134,3 +134,8 @@ button:hover{
     width: 50%;
     /* border: 1px red solid */
 }
+
+
+.hide{
+    display: none;
+}

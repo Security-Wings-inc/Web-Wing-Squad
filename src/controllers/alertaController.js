@@ -3,9 +3,10 @@ var alertaModel = require("../models/alertaModel");
 
 
 function paramsRam(req, res) {
-    var idEmpresa = req.params.idEmpresaServer;
+    var idEmpresa = req.params.idEmpresa;
     var warning = req.body.warningServer;
     var danger = req.body.dangerServer
+
 
     alertaModel.paramsRam(idEmpresa, warning, danger)
         .then((resultado) => {
@@ -17,7 +18,7 @@ function paramsRam(req, res) {
 }
 
 function paramsProcessador(req, res) {
-    var idEmpresa = req.params.idEmpresaServer;
+    var idEmpresa = req.params.idEmpresa;
     var warning = req.body.warningServer;
     var danger = req.body.dangerServer
 
@@ -31,7 +32,7 @@ function paramsProcessador(req, res) {
 
 
 function paramsDisco(req, res) {
-    var idEmpresa = req.params.idEmpresaServer;
+    var idEmpresa = req.params.idEmpresa;
     var warning = req.body.warningServer;
     var danger = req.body.dangerServer
 
@@ -47,7 +48,7 @@ function paramsDisco(req, res) {
 
 
 function paramsRede(req, res) {
-    var idEmpresa = req.params.idEmpresaServer;
+    var idEmpresa = req.params.idEmpresa;
     var warning = req.body.warningServer;
     var danger = req.body.dangerServer
     var overFlow = req.body.overFlowServer
@@ -62,7 +63,7 @@ function paramsRede(req, res) {
 
 
 function getAllparams(req, res) {
-    var IdEmpresa = req.params.idEmpresaServer;
+    var IdEmpresa = req.params.idEmpresa;
 
     alertaModel.getAllparams(IdEmpresa)
         .then((resposta) => {
@@ -79,7 +80,7 @@ function getAllparams(req, res) {
 
 function deleteRam(req, res) {
 
-    var idEmpresa = req.params.idEmpresaServer
+    var idEmpresa = req.params.idEmpresa
     alertaModel.deleteRam(idEmpresa)
         .then((resposta) => {
             res.status(200).json(resposta)
@@ -200,7 +201,11 @@ module.exports = {
     deleteRam,
     deleteProcessador,
     deleteRede,
-    deleteDisco
+    deleteDisco,
+    putRede,
+    putDisco,
+    putRam,
+    putProcessador
 
 
 }

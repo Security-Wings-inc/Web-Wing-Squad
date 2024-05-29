@@ -1,31 +1,35 @@
+const { rmSync } = require("fs");
 var database = require("../database/config");
 
-
 function paramsRam(idEmpresa, warning, danger) {
-    var instrucao = `INSERT INTO parametrosDeAlerta (ramWarning , ramDanger,fkEmpresa) values ('${warning}' , '${danger}', '${idEmpresa}');`
-    return database.executar(instrucao);
-
+    const instrucao = `UPDATE parametrosDeAlerta SET ramWarning = '${warning}', ramDanger = '${danger}' WHERE idEmpresa = '${idEmpresa}'`;
+    return database.executar(instrucao).then(() => {
+        console.log(instrucao);
+    });
 }
-
 
 function paramsProcessador(idEmpresa, warning, danger) {
-    var instrucao = `INSERT INTO parametrosDeAlerta (processadorWarning , processadorDanger,fkEmpresa) values ('${warning}' , '${danger}', '${idEmpresa}');`
-    return database.executar(instrucao);
-
+    const instrucao = `insert into parametrosDeAlerta (processadorWarning, processadorDanger, idEmpresa) values ('${warning}', '${danger}', '${idEmpresa}')`;
+    return database.executar(instrucao).then(() => {
+        console.log(instrucao);
+    });
 }
 
-function paramsRede(idEmpresa, warning, danger,overFlow) {
-    var instrucao = `INSERT INTO parametrosDeAlerta (internetWarning , internetDanger,internetOverFlow,fkEmpresa) values ('${warning}' , '${danger}','${overFlow}' ,'${idEmpresa}');`
+function paramsRede(idEmpresa, warning, danger, overFlow) {
+    const instrucao = `UPDATE parametrosDeAlerta SET internetWarning = '${warning}', internetDanger = '${danger}', internetOverFlow = '${overFlow}' WHERE idEmpresa = '${idEmpresa}'`;
     return database.executar(instrucao);
-
 }
 
 function paramsDisco(idEmpresa, warning, danger) {
-    var instrucao = `INSERT INTO parametrosDeAlerta (discoWarning , discoDanger,fkEmpresa) values ('${warning}' , '${danger}', '${idEmpresa}');`
+    const instrucao = `UPDATE parametrosDeAlerta SET discoWarning = '${warning}', discoDanger = '${danger}' WHERE idEmpresa = '${idEmpresa}'`;
     return database.executar(instrucao);
-
 }
 
+function getAllparams(idEmpresa){
+    var instrucao = `SELECT * from parametrosDeAlerta where idEmpresa = '${idEmpresa}';`
+    return database.executar(instrucao)
+
+}rmSync
 
 
 
@@ -41,6 +45,7 @@ module.exports = {
     paramsRam,
     paramsRede,
     paramsProcessador,
-    paramsDisco
+    paramsDisco,
+    getAllparams
 
 }

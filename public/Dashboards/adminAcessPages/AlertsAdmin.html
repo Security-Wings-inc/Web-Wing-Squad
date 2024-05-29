@@ -128,7 +128,7 @@
                                     <div class="botoesC" id="botoesCpuDiv">
                                         <button class="exc" id="deleteCPU" onclick="excluirCPU()">Excluir</button>
                                         <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR -->
-                                        <button id="editCPU" onclick="editarCPU()">Editar</button>
+                                        <button id="editCPU" onclick="editarCpu()">Editar</button>
 
                                     </div>
 
@@ -189,7 +189,7 @@
                                     <div class="botoesC" id="botoesHdDiv">
                                         <button class="exc" id="deleteHD" onclick="excluirHD()">Excluir</button>
                                         <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR -->
-                                        <button id="editHD" onclick="editarHD()">Editar</button>
+                                        <button id="editHD" onclick="editarHd()">Editar</button>
                                     </div>
                                 </div>
 
@@ -246,7 +246,7 @@
                                     <div class="botoesC" id="botoesRedeDiv">
                                         <button class="exc" id="deleteREDE" onclick="excluirREDE()">Excluir</button>
                                         <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR -->
-                                        <button id="editREDE" onclick="editarREDE()">Editar</button>
+                                        <button id="editREDE" onclick="editarRede()">Editar</button>
                                     </div>
                                 </div>
 
@@ -304,7 +304,7 @@
                                     <div class="botoesC" id="botoesRamDiv">
                                         <button class="exc" id="deleteRAM" onclick="excluirRAM()">Excluir</button>
                                         <!-- COLOCAR SWEET ALERT PERGUNTANDO SE REALMENTE DESEJA EXCLUIR -->
-                                        <button id="editRAM" onclick="editarRAM()">Editar</button>
+                                        <button id="editRAM" onclick="editarRam()">Editar</button>
                                     </div>
                                 </div>
 
@@ -338,6 +338,7 @@
 <script>
     var idEmpresa = sessionStorage.FK_EMPRESA;
 
+
     function getAllParams() {
 
         console.log(idEmpresa, "ta chegando aqui")
@@ -351,6 +352,24 @@
             if (resposta) {
                 resposta.json().then((resposta) => {
                     console.log(resposta)
+
+                    for (let i = 0; i < resposta.length; i++) {
+                        var rep = resposta[i]
+
+                        cpuValueRed.innerHTML = `${rep.processadorDanger}%`;
+                        cpuValueYellow.innerHTML = `${rep.processadorWarning}%`;
+                        cpuValueGreen.innerHTML = `${rep.processadorWarning - 1}%`
+                        ramValueRed.innerHTML = `${rep.ramDanger}%`;
+                        ramValueYellow.innerHTML = `${rep.ramWarning}%`;
+                        ramValueGreen.innerHTML = `${rep.ramWarning - 1}%`;
+                        hdValueRed.innerHTML = `${rep.discoDanger}%`;
+                        hdValueYellow.innerHTML = `${rep.discoWarning}%`;
+                        hdValueGreen.innerHTML = `${rep.discoWarning - 1}%`;
+                        redeValueRed.innerHTML = `${rep.internetDanger}%`;
+                        redeValueYellow.innerHTML = `${rep.internetWarning}%`;
+                        redeValueGreen.innerHTML = `${rep.internetWarning - 1}%`;
+                    }
+
                     showOrNot(resposta)
                 })
             }
@@ -358,6 +377,7 @@
             console.log("erro", erro)
         })
     }
+
 
     function unHideCpu() {
 
@@ -399,10 +419,14 @@
         functionsRam.classList.remove("hide")
     }
 
+
+
     function showOrNot(lista) {
 
         for (let i = 0; i < lista.length; i++) {
             var alerta = lista[i];
+
+
 
             if (alerta.ramDanger != null && alerta.ramWarning != null) {
                 unHideRam();
@@ -416,11 +440,13 @@
                 unHideDisco();
             }
 
-            if (alerta.internetDanger != null && alerta.internetWarning != null && alerta.internetOverFlow != null) {
+            if (alerta.internetDanger != null && alerta.internetWarning != null) {
                 unHideRede();
             }
         }
     }
+
+
 
     function criarCpu() {
         var divCpuPre = document.getElementById("paramCPUfirst")
@@ -672,24 +698,218 @@
 
         console.log(warning, danger)
 
-        fetch(`/alerta/ParamsRam/${idEmpresa}`,{
-            method : "POST",
-            headers : {
-                "Content-type" : "application/json"
+        fetch(`/alerta/ParamsRam/${idEmpresa}`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
             },
-            body : JSON.stringify({
-                warningServer : warning,
-                dangerServer : danger
+            body: JSON.stringify({
+                warningServer: warning,
+                dangerServer: danger
             })
-        }).then((resposta)=>{
-            if(resposta){
+        }).then((resposta) => {
+            if (resposta) {
                 window.location.reload()
                 console.log("cadastrado com sucesso")
             }
-        }).catch((erro)=>{
-            console.log("erro" , erro)
+        }).catch((erro) => {
+            console.log("erro", erro)
         })
 
 
     }
+
+    function editarRam() {
+        console.log("ram")
+        var param = document.getElementById("paramRAM")
+
+        param.innerHTML = `<p class="titleParam">RAM</p>
+                                <div class="paramMid">
+                                <img class="icon" src="../assetsDashboard/RAM.svg" alt="">
+                                        
+                                
+                                    <div class="paramInputs">
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
+                                            <p class="label">Risco: </p>
+                                            <div id="cpuRedDiv" class="redCPU label">
+                                                <input type="number" id="redRam" style="text-align: center; height : 20px;">
+                                            </div>
+                                           
+                                            
+                                        </div>
+                                        
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
+                                            <p class="label">Alerta: </p>
+                                            <div id="cpuYellowDiv" class="yellowCPU label">
+                                                <input type="number" id="yellowRam" style="text-align: center; height : 20px;">
+                                            </div>
+
+                                            
+                                        </div>
+                                                                    
+                                    </div>
+    
+                                </div>
+
+                                <div class="botoesC" id="botoesCpuDiv">                                    
+                                    <button id="applyCPU" onclick="setRam()"">Confirmar</button>
+                                    <button id="backCPU" onclick="cancelar()">Cancelar</button>
+                                    
+                                </div>`
+    }
+
+    function editarHd() {
+        var param = document.getElementById("paramHD")
+        param.innerHTML = `<p class="titleParam">HD</p>
+                                <div class="paramMid">
+                                <img class="icon" src="../assetsDashboard/HD.svg" alt="">
+                                        
+                                
+                                    <div class="paramInputs">
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
+                                            <p class="label">Risco: </p>
+                                            <div id="cpuRedDiv" class="redCPU label">
+                                                <input type="number" id="redHd" style="text-align: center; height : 20px;">
+                                            </div>
+                                           
+                                            
+                                        </div>
+                                        
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
+                                            <p class="label">Alerta: </p>
+                                            <div id="cpuYellowDiv" class="yellowCPU label">
+                                                <input type="number" id="yellowHd" style="text-align: center; height : 20px;">
+                                            </div>
+
+                                            
+                                        </div>
+                                                                    
+                                    </div>
+    
+                                </div>
+
+                                <div class="botoesC" id="botoesCpuDiv">                                    
+                                    <button id="applyCPU" onclick="setHd()"">Confirmar</button>
+                                    <button id="backCPU" onclick="cancelar()">Cancelar</button>
+                                    
+                                </div>`
+
+
+
+
+    }
+
+    function editarRede() {
+        var param = document.getElementById("paramREDE");
+
+        param.innerHTML = `<p class="titleParam">REDE</p>
+                                <div class="paramMid">
+                                <img class="icon" src="../assetsDashboard/CPU.svg" alt="">
+                                        
+                                
+                                    <div class="paramInputs">
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
+                                            <p class="label">Risco: </p>
+                                            <div id="cpuRedDiv" class="redCPU label">
+                                                <input type="number" id="redRede" style="text-align: center; height : 20px;">
+                                            </div>
+                                           
+                                            
+                                        </div>
+                                        
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
+                                            <p class="label">Alerta: </p>
+                                            <div id="cpuYellowDiv" class="yellowCPU label">
+                                                <input type="number" id="yellowRede" style="text-align: center; height : 20px;">
+                                            </div>
+
+                                            
+                                            
+                                        </div>
+                                                                    
+                                    </div>
+    
+                                </div>
+
+                                <div class="botoesC" id="botoesCpuDiv">                                    
+                                    <button id="applyCPU" onclick="setRede()"">Confirmar</button>
+                                    <button id="backCPU" onclick="cancelar()">Cancelar</button>
+                                    
+                                </div>`
+
+    }
+
+    function editarCpu() {
+        var param = document.getElementById("paramCPU")
+
+        param.innerHTML = `<p class="titleParam">REDE</p>
+                                <div class="paramMid">
+                                <img class="icon" src="../assetsDashboard/CPU.svg" alt="">
+                                        
+                                
+                                    <div class="paramInputs">
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Vermelho.svg" alt="">
+                                            <p class="label">Risco: </p>
+                                            <div id="cpuRedDiv" class="redCPU label">
+                                                <input type="number" id="redCpu" style="text-align: center; height : 20px;">
+                                            </div>
+                                           
+                                            
+                                        </div>
+                                        
+                                        <div class="inputLine">
+                                            <img class="bolinha" src="../assetsDashboard/Amarelo.svg" alt="">
+                                            <p class="label">Alerta: </p>
+                                            <div id="cpuYellowDiv" class="yellowCPU label">
+                                                <input type="number" id="yellowCpu" style="text-align: center; height : 20px;">
+                                            </div>
+
+                                            
+                                            
+                                        </div>
+                                                                    
+                                    </div>
+    
+                                </div>
+
+                                <div class="botoesC" id="botoesCpuDiv">                                    
+                                    <button id="applyCPU" onclick="putCpu()"">Confirmar</button>
+                                    <button id="backCPU" onclick="cancelar()">Cancelar</button>
+                                    
+                                </div>`
+
+    }
+
+    function putCpu() {
+        var warning = yellowCpu.value;
+        var danger = redCpu.value;
+
+        fetch(`/alerta/putProcessador/${idEmpresa}`, {
+            method: "PUT",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                warningServer: warning,
+                dangerServer: danger
+
+            })
+        }).then((resposta) => {
+            if (resposta) {
+                window.location.reload()
+                console.log("editado com sucesso")
+            }
+        }).catch((erro) => {
+            console.log("erro", erro)
+        })
+    }
+
+
 </script>

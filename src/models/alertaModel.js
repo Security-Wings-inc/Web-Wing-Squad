@@ -16,7 +16,7 @@ function paramsProcessador(idEmpresa, warning, danger) {
 }
 
 function paramsRede(idEmpresa, warning, danger, overFlow) {
-    const instrucao = `UPDATE parametrosDeAlerta SET internetWarning = '${warning}', internetDanger = '${danger}', internetOverFlow = '${overFlow}' WHERE idEmpresa = '${idEmpresa}'`;
+    const instrucao = `UPDATE parametrosDeAlerta SET internetWarning = '${warning}', internetDanger = '${danger}' WHERE idEmpresa = '${idEmpresa}'`;
     return database.executar(instrucao);
 }
 
@@ -29,7 +29,12 @@ function getAllparams(idEmpresa){
     var instrucao = `SELECT * from parametrosDeAlerta where idEmpresa = '${idEmpresa}';`
     return database.executar(instrucao)
 
-}rmSync
+}
+
+function putProcessador(idEmpresa,warning,danger){
+    const instrucao = `UPDATE parametrosDeAlerta SET processadorWarning = '${warning}', processadorDanger = '${danger}' WHERE idEmpresa = '${idEmpresa}'`;
+    return database.executar(instrucao);
+}
 
 
 
@@ -46,6 +51,7 @@ module.exports = {
     paramsRede,
     paramsProcessador,
     paramsDisco,
-    getAllparams
+    getAllparams,
+    putProcessador
 
 }

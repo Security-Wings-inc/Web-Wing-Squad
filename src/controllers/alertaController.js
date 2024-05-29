@@ -51,9 +51,8 @@ function paramsRede(req, res) {
     var idEmpresa = req.params.idEmpresa;
     var warning = req.body.warningServer;
     var danger = req.body.dangerServer
-    var overFlow = req.body.overFlowServer
 
-    alertaModel.paramsRede(idEmpresa, warning, danger, overFlow)
+    alertaModel.paramsRede(idEmpresa, warning, danger)
         .then((resultado) => {
             res.status(200).json(resultado)
         }).catch((erro) => {
@@ -147,9 +146,11 @@ function putRam(req, res) {
 
 function putProcessador(req, res) {
 
-    var idEmpresa = req.params.idEmpresaServer
+    var idEmpresa = req.params.idEmpresa
     var warning = req.body.warningServer;
     var danger = req.body.dangerServer
+
+    console.log(`dado da empresa ${idEmpresa}, perigo: ${danger}, alerta : ${warning}`)
 
     alertaModel.putProcessador(idEmpresa, warning, danger)
         .then((resposta) => {
@@ -162,7 +163,7 @@ function putProcessador(req, res) {
 
 function putDisco(req, res) {
 
-    var idEmpresa = req.params.idEmpresaServer
+    var idEmpresa = req.params.idEmpresa
     var warning = req.body.warningServer;
     var danger = req.body.dangerServer
 
@@ -180,9 +181,8 @@ function putRede(req, res) {
     var idEmpresa = req.params.idEmpresaServer
     var warning = req.body.warningServer;
     var danger = req.body.dangerServer
-    var overFlow = req.body.overFlowServer
 
-    alertaModel.putRede(idEmpresa, warning, danger, overFlow)
+    alertaModel.putRede(idEmpresa, warning, danger)
         .then((resposta) => {
             res.status(200).json(resposta)
         }).catch((erro) => {

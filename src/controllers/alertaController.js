@@ -145,7 +145,7 @@ function getAllParamsJSON(req, res) {
                     internetWarning: resposta[0].internetWarning,
                     internetDanger: resposta[0].internetDanger,
                     discoWarning: resposta[0].discoWarning,
-                    discoDanger: resposta[0].discoWarning
+                    discoDanger: resposta[0].discoDanger
 
                 })
             }

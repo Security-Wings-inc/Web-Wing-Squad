@@ -66,13 +66,14 @@ function getAllparams(req, res) {
 
     alertaModel.getAllparams(IdEmpresa)
         .then((resposta) => {
+            
             if (resposta.length > 0) {
                 res.status(200).json(resposta)
             } else {
                 res.status(204).json(resposta)
             }
         }).catch((erro) => {
-            console.log(erro ,"erro ao pegar todos parametros");
+            console.log(erro, "erro ao pegar todos parametros");
         })
 
 }
@@ -128,6 +129,31 @@ function deleteDisco(req, res) {
 
 }
 
+function getAllParamsJSON(req, res) {
+    var idEmpresa = req.params.idEmpresa
+
+    alertaModel.getAllparams(idEmpresa)
+        .then((resposta) => {
+            if (resposta.length > 0) {
+               console.log(resposta)
+                res.json({
+                 
+                    ramWarning: resposta[0].ramWarning,
+                    ramDanger: resposta[0].ramDanger,
+                    processadorWarning: resposta[0].processadorWarning,
+                    processadorDanger: resposta[0].processadorDanger,
+                    internetWarning: resposta[0].internetWarning,
+                    internetDanger: resposta[0].internetDanger,
+                    discoWarning: resposta[0].discoWarning,
+                    discoDanger: resposta[0].discoWarning
+
+                })
+            }
+        }).catch((erro)=>{
+            console.log("deu erro" , erro)
+        })
+}
+
 
 
 
@@ -141,7 +167,8 @@ module.exports = {
     deleteProcessador,
     deleteRede,
     deleteDisco,
-   
+    getAllParamsJSON
+
 
 
 }

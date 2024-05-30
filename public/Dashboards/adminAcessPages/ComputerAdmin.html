@@ -58,8 +58,6 @@
 
                 <div class="containerInfo hide" id="listaMaquinasPesquisadas">
 
-
-
                 </div>
 
 
@@ -127,7 +125,7 @@
                         if (maquinas.ramUso < ramWarning && maquinas.processadorUso < cpuWarning && maquinas.discoUso < discoWarning && maquinas.bytesEnviados < redeWarning) {
                             listaMaquinas.innerHTML += `
                         
-                        <button class="tile">
+                        <button class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
                         <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
                         <h2>Computador do ${maquinas.nomeUsuario}</h2>
                         <p>Modelo do processador: ${maquinas.processadorModelo}</p>
@@ -138,7 +136,7 @@
 
                         } else if (maquinas.ramUso == ramWarning && maquinas.processadorUso == cpuWarning && maquinas.discoUso == discoWarning && maquinas.bytesEnviados == redeWarning) {
 
-                            listaMaquinas.innerHTML += ` <button class="tile">
+                            listaMaquinas.innerHTML += ` <button class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
                         <img style="margin-right: 0px;" src="../assetsDashboard/PCYellow.svg" alt="">
                         <h2>Computador do ${maquinas.nomeUsuario}</h2>
                         <p>Modelo do processador: ${maquinas.processadorModelo}</p>
@@ -147,7 +145,7 @@
                         <p> taxa de bits de upload: ${maquinas.bytesEnviados}
                         </button> `
                         } else {
-                            listaMaquinas.innerHTML += `<button class="tile">
+                            listaMaquinas.innerHTML += `<button class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
                         <img style="margin-right: 0px;" src="../assetsDashboard/PCRed.svg" alt="">
                         <h2>Computador do ${maquinas.nomeUsuario}</h2>
                         <p>Modelo do processador: ${maquinas.processadorModelo}</p>
@@ -175,7 +173,11 @@
 
 
 
+function transporterIdToDash(id){
 
+    sessionStorage.MAQUINA_SELECIONADA = id;
+    window.location = "./DashboardAdminAcess.html";
+}
 
 
 

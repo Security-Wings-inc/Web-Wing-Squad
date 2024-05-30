@@ -338,6 +338,32 @@
 <script>
     var idEmpresa = sessionStorage.FK_EMPRESA;
 
+    function getAllParamsJson(id){
+        fetch(`/alerta/getAllParamsJSON/${id}`,{
+            method : "GET",
+            headers : {
+                "Content-type" : "application/json"
+            }
+        }).then((resposta)=>{
+            if(resposta.ok){
+         
+                resposta.json().then(json =>{
+
+                    sessionStorage.RAM_DANGER = json.ramDanger;
+                    sessionStorage.RAM_WARNING = json.ramWarning;
+                    sessionStorage.CPU_DANGER = json.processadorDanger;
+                    sessionStorage.CPU_WARNING = json.processadorWarning;
+                    sessionStorage.REDE_DANGER = json.internetDanger;
+                    sessionStorage.REDE_WARNIG = json.internetWarning;
+                    sessionStorage.HD_DANGER = json.discoDanger;
+                    sessionStorage.HD_WARNING = json.discoWarning;
+
+                })
+            }
+        }).catch((erro)=>{
+            console.log("deu erro" , erro)
+        })
+    }
 
     function getAllParams() {
 
@@ -350,9 +376,10 @@
             },
         }).then((resposta) => {
             if (resposta) {
+                getAllParamsJson(idEmpresa)
                 resposta.json().then((resposta) => {
                     console.log(resposta)
-
+                   
                     for (let i = 0; i < resposta.length; i++) {
                         var rep = resposta[i]
 
@@ -955,6 +982,10 @@
             console.log("erro", erro)
         })
     }
+
+  
+
+
 
 
 </script>

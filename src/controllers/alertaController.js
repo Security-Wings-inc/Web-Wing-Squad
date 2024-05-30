@@ -51,9 +51,8 @@ function paramsRede(req, res) {
     var idEmpresa = req.params.idEmpresa;
     var warning = req.body.warningServer;
     var danger = req.body.dangerServer
-    var overFlow = req.body.overFlowServer
 
-    alertaModel.paramsRede(idEmpresa, warning, danger, overFlow)
+    alertaModel.paramsRede(idEmpresa, warning, danger)
         .then((resultado) => {
             res.status(200).json(resultado)
         }).catch((erro) => {
@@ -92,7 +91,7 @@ function deleteRam(req, res) {
 
 function deleteProcessador(req, res) {
 
-    var idEmpresa = req.params.idEmpresaServer
+    var idEmpresa = req.params.idEmpresa
     alertaModel.deleteProcessador(idEmpresa)
         .then((resposta) => {
             res.status(200).json(resposta)
@@ -105,8 +104,8 @@ function deleteProcessador(req, res) {
 
 function deleteRede(req, res) {
 
-    var idEmpresa = req.params.idEmpresaServer
-    alertaModel.deleteRam(idEmpresa)
+    var idEmpresa = req.params.idEmpresa
+    alertaModel.deleteRede(idEmpresa)
         .then((resposta) => {
             res.status(200).json(resposta)
         }).catch((erro) => {
@@ -119,7 +118,7 @@ function deleteRede(req, res) {
 
 function deleteDisco(req, res) {
 
-    var idEmpresa = req.params.idEmpresaServer
+    var idEmpresa = req.params.idEmpresa
     alertaModel.deleteDisco(idEmpresa)
         .then((resposta) => {
             res.status(200).json(resposta)
@@ -129,67 +128,7 @@ function deleteDisco(req, res) {
 
 }
 
-function putRam(req, res) {
 
-    var idEmpresa = req.params.idEmpresaServer
-    var warning = req.body.warningServer;
-    var danger = req.body.dangerServer
-
-    alertaModel.putRam(idEmpresa, warning, danger)
-        .then((resposta) => {
-            res.status(200).json(resposta)
-        }).catch((erro) => {
-            console.log(erro, "erro ao atualizar parametro")
-        })
-
-}
-
-
-function putProcessador(req, res) {
-
-    var idEmpresa = req.params.idEmpresaServer
-    var warning = req.body.warningServer;
-    var danger = req.body.dangerServer
-
-    alertaModel.putProcessador(idEmpresa, warning, danger)
-        .then((resposta) => {
-            res.status(200).json(resposta)
-        }).catch((erro) => {
-            console.log(erro, "erro ao atualizar parametro")
-        })
-
-}
-
-function putDisco(req, res) {
-
-    var idEmpresa = req.params.idEmpresaServer
-    var warning = req.body.warningServer;
-    var danger = req.body.dangerServer
-
-    alertaModel.putDisco(idEmpresa, warning, danger)
-        .then((resposta) => {
-            res.status(200).json(resposta)
-        }).catch((erro) => {
-            console.log(erro, "erro ao atualizar parametro")
-        })
-
-}
-
-function putRede(req, res) {
-
-    var idEmpresa = req.params.idEmpresaServer
-    var warning = req.body.warningServer;
-    var danger = req.body.dangerServer
-    var overFlow = req.body.overFlowServer
-
-    alertaModel.putRede(idEmpresa, warning, danger, overFlow)
-        .then((resposta) => {
-            res.status(200).json(resposta)
-        }).catch((erro) => {
-            console.log(erro, "erro ao atualizar parametro")
-        })
-
-}
 
 
 module.exports = {
@@ -202,10 +141,7 @@ module.exports = {
     deleteProcessador,
     deleteRede,
     deleteDisco,
-    putRede,
-    putDisco,
-    putRam,
-    putProcessador
+   
 
 
 }

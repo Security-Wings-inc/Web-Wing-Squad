@@ -81,13 +81,17 @@
 
 <script>
 
-    var idEmpresaVar = sessionStorage.FK_EMPRESA;
+  var globalArrayMachineInfo = [];
+  var globalAlertParams = [];
+
+
+    var idEmpresa = sessionStorage.FK_EMPRESA;
     var nome = sessionStorage.NOME_USUARIO;
     console.log(nome)
 
     function getAllMachinesByIdEmpresa(id) {
 
-        fetch(`/metrica/getAllMachinesByIdEmpresa/${idEmpresaVar}`, {
+        fetch(`/metrica/getAllMachinesByIdEmpresa/${idEmpresa}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -95,12 +99,13 @@
         }).then(function (resposta) {
             if (resposta.ok) {
                 resposta.json().then(function (resposta) {
-
-                    for(let i = 0 ;i < resposta.length;i++){
-                        let maquina = resposta[i];
-
-                        console.log(maquina)
+                    for(let i = 0; i < resposta.length; i++){
+                        var machineInfo = resposta[i];
+                        globalArrayMachineInfo.push(machineInfo)
                     }
+                    getAllParams(idEmpresa);
+
+                    console.log(resposta)
                     });
 
 
@@ -108,9 +113,27 @@
                 console.error('Nenhum dado encontrado ou erro na API');
             }
         })
-
-
     }
+
+    function getAllParams(id){
+        fetch(`/alerta/getAllParams/${id}`,{
+            method : "GET",
+            headers : {
+                "Content-type" : "application/json"
+            },
+        }).then((resposta)=>{
+
+            resposta.json().then((resposta)=>{
+                for(let i = 0; i < resposta.length;i++){
+                    var dado = resposta[i];
+                    globalAlertParams.push(dado);
+
+                }
+            })
+        })
+    }
+
+  
 
 
 

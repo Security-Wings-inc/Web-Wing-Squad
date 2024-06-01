@@ -44,12 +44,12 @@
                     </div>
                 </div>
                 <div class="containerInfo" id="listaMaquinas">
-                    
+<!-- 
                     <button class="tile">
                         <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
                         <h2 id="nomeMaquina">${empresa.nome}</h2>
                         <p id="ipMaquina">ID:${empresa.idEmpresa} </p>
-                    </button> 
+                    </button> -->
 
 
                 </div>
@@ -57,8 +57,6 @@
 
 
                 <div class="containerInfo hide" id="listaMaquinasPesquisadas">
-
-
 
                 </div>
 
@@ -81,13 +79,33 @@
 
 <script>
 
-  var globalArrayMachineInfo = [];
-  var globalAlertParams = [];
-
 
     var idEmpresa = sessionStorage.FK_EMPRESA;
     var nome = sessionStorage.NOME_USUARIO;
-    console.log(nome)
+
+
+
+
+
+
+
+    var ramDanger = sessionStorage.RAM_DANGER;
+    var ramWarning = sessionStorage.RAM_WARNING;
+    var cpuDanger = sessionStorage.CPU_DANGER;
+    var cpuWarning = sessionStorage.CPU_WARNING;
+    var redeDanger = sessionStorage.REDE_DANGER;
+    var redeWarning = sessionStorage.REDE_WARNIG;
+    var discoDanger = sessionStorage.HD_DANGER;
+    var discoWarning = sessionStorage.HD_WARNING;
+
+    console.log(`ram danger (${ramDanger}) , ram warning (${ramWarning}) , cpu danger(${cpuDanger}) , cpu warning (${cpuWarning}) , rede danger (${redeDanger}) , rede warning (${redeWarning}) , disco danger (${discoDanger}) , disco warning (${discoWarning})`);
+
+
+
+
+
+
+
 
     function getAllMachinesByIdEmpresa(id) {
 
@@ -99,14 +117,49 @@
         }).then(function (resposta) {
             if (resposta.ok) {
                 resposta.json().then(function (resposta) {
-                    for(let i = 0; i < resposta.length; i++){
-                        var machineInfo = resposta[i];
-                        globalArrayMachineInfo.push(machineInfo)
+                    for (let i = 0; i < resposta.length; i++) {
+                        maquinas = resposta[i];
+
+                        console.log(maquinas)
+
+                        if (maquinas.ramUso < ramWarning && maquinas.processadorUso < cpuWarning && maquinas.discoUso < discoWarning && maquinas.bytesEnviados < redeWarning) {
+                            listaMaquinas.innerHTML += `
+                        
+                        <button class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
+                        <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
+                        <h2>Computador do ${maquinas.nomeUsuario}</h2>
+                        <p>Modelo do processador: ${maquinas.processadorModelo}</p>
+                        <p>Uso do processador: ${maquinas.processadorUso}%</p>
+                        <p>Uso de memória RAM: ${maquinas.ramUso}%</p>
+                        <p> taxa de bits de upload: ${maquinas.bytesEnviados}
+                        </button> `
+
+                        } else if (maquinas.ramUso == ramWarning && maquinas.processadorUso == cpuWarning && maquinas.discoUso == discoWarning && maquinas.bytesEnviados == redeWarning) {
+
+                            listaMaquinas.innerHTML += ` <button class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
+                        <img style="margin-right: 0px;" src="../assetsDashboard/PCYellow.svg" alt="">
+                        <h2>Computador do ${maquinas.nomeUsuario}</h2>
+                        <p>Modelo do processador: ${maquinas.processadorModelo}</p>
+                        <p>Uso do processador: ${maquinas.processadorUso}%</p>
+                        <p>Uso de memória RAM: ${maquinas.ramUso}%</p>
+                        <p> taxa de bits de upload: ${maquinas.bytesEnviados}
+                        </button> `
+                        } else {
+                            listaMaquinas.innerHTML += `<button class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
+                        <img style="margin-right: 0px;" src="../assetsDashboard/PCRed.svg" alt="">
+                        <h2>Computador do ${maquinas.nomeUsuario}</h2>
+                        <p>Modelo do processador: ${maquinas.processadorModelo}</p>
+                        <p>Uso do processador: ${maquinas.processadorUso}%</p>
+                        <p>Uso de memória RAM: ${maquinas.ramUso}%</p>
+                        <p> taxa de bits de upload: ${maquinas.bytesEnviados}
+                        </button> `
+                        }
+
                     }
-                    getAllParams(idEmpresa);
+
 
                     console.log(resposta)
-                    });
+                });
 
 
             } else {
@@ -115,36 +168,22 @@
         })
     }
 
-    function getAllParams(id){
-        fetch(`/alerta/getAllParams/${id}`,{
-            method : "GET",
-            headers : {
-                "Content-type" : "application/json"
-            },
-        }).then((resposta)=>{
-
-            resposta.json().then((resposta)=>{
-                for(let i = 0; i < resposta.length;i++){
-                    var dado = resposta[i];
-                    globalAlertParams.push(dado);
-
-                }
-            })
-        })
-    }
-
-  
 
 
 
 
 
-    
+function transporterIdToDash(id){
+
+    sessionStorage.MAQUINA_SELECIONADA = id;
+    window.location = "./DashboardAdminAcess.html";
+}
 
 
 
 
-    
+
+
 
 
 

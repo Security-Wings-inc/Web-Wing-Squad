@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de usuários</title>
+    <!-- <link rel="stylesheet" href="../cssDashboard/dashboardAdmin.css"> -->
+    <link rel="stylesheet" href="../cssDashboard/dashboardTeste.css">
+    <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
+    <link rel="stylesheet" href="../cssDashboard/adminAlert.css">
+    <link rel="shortcut icon" href="../../assets/Vector Security Wings.png" type="image/x-icon">
+
+</head>
+
+<body>
+
+    <header>
+
+
+        <div class="lista">
+
+            <ul class="listaHeader">
+                <li><a href="./PerfilAdmin.html"><img src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li>
+                <li><a href="./ComputerAdmin.html"><img src="../assetsDashboard/DashIcon.svg" alt=""></a></li>
+                <li><a href="./MenagentmentAdmin.html"><img
+                            style="filter: brightness(0) saturate(100%) invert(59%) sepia(44%) saturate(422%) hue-rotate(149deg) brightness(86%) contrast(86%);"
+                            src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
+                <li><a href="../../index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
+            </ul>
+
+
+        </div>
+
+    </header>
+
+    <main>
+
+
+
+
+
+        <div class="contentContainer">
+
+            <div class="abaContent">
+
+                <div class="abas">
+
+                    <div class="aba" style="background-color: #426572"><a style="color: #8bacb8" href="./MenagentmentAdmin.html">Gerenciar Usuários</a></div>
+                    <div class="aba"style="background-color: #426572"><a style="color: #8bacb8" href="./AlertsAdmin.html">Gerenciar Alertas</a></div>
+                    <div class="aba">Gerenciar Processos</div>
+
+
+                </div>
+                <div class="containerMeio">
+                    <div class="containerTitle">
+                        <div class="titulo" id="tituloPagina"> Gerenciar permissões de processos 
+                            <button class="confirmar" id="btCadastrar" onclick="funcaoConfirmar()"><img style="width: 20px; margin: 0 10px 0 0;" src="../assetsDashboard/Certin.svg" alt="">Confirmar Modificações</button>
+
+                        </div>
+                        <p style="color: #E0F6F9;">Os processos selecionados não serão permitidos a execução</p>
+
+                    </div>
+
+
+
+
+                    <div class="containerGeral" style="display: flex;" id="listaUser">
+
+                        <div class="content">
+
+                            <div class="inputContainerProcess">
+
+                                <div class="processCategory">
+
+                                    <h1 style="margin-left: 10px; font-size: 30px;">Navegadores</h1>
+
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="idEdge">
+                                        <p>Microsoft Edge</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="idOpera">
+                                        <p>Opera</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="idOperaGx">
+                                        <p>Opera GX</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="idChrome">
+                                        <p>Google Chrome</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="idBrave">
+                                        <p>Brave</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="idFirefox">
+                                        <p>Firefox</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="idSafari">
+                                        <p>Safari</p>
+                                    </div>
+
+
+                                </div>
+                     
+                                <div class="processCategory">
+
+                                    <h1 style="margin-left: 10px; font-size: 30px;">Titulo</h1>
+
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="id">
+                                        <p>Inserir Nome</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="id">
+                                        <p>Inserir Nome</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="id">
+                                        <p>Inserir Nome</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="id">
+                                        <p>Inserir Nome</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="id">
+                                        <p>Inserir Nome</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="id">
+                                        <p>Inserir Nome</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="id">
+                                        <p>Inserir Nome</p>
+                                    </div>
+                                    
+
+                                </div>
+ 
+                                <div class="processCategory">
+
+                                    <h1 style="margin-left: 10px; font-size: 30px;">Utilitários</h1>
+
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="id">
+                                        <p>Inserir Nome</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="id">
+                                        <p>Inserir Nome</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="id">
+                                        <p>Inserir Nome</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="id">
+                                        <p>Inserir Nome</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="id">
+                                        <p>Inserir Nome</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="id">
+                                        <p>Inserir Nome</p>
+                                    </div>
+                                    <div class="process">
+                                        <input type="checkbox" name="" id="id">
+                                        <p>Inserir Nome</p>
+                                    </div>
+
+                                </div>
+                            
+                            
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
+
+
+</body>
+
+
+<script>
+
+// ".checked" acessa a checkbox e retorna um booleano
+// ".checked =" altera o estado da checkbox
+
+
+function funcaoConfirmar(){
+         var cbEdge = document.getElementById('idEdge');
+         var cbOpera = document.getElementById('idOpera');
+         var cbOperaGx = document.getElementById('idOperaGx');
+         var cbChrome = document.getElementById('idChrome');
+         var cbBrave = document.getElementById('idBrave');
+         var cbFirefox = document.getElementById('idFirefox');
+         var cbSafari = document.getElementById('idSafari');
+
+               //Exemplo de como se comporta:
+        
+            console.log('A checkbox do MicrosoftEdge está: ' + cbEdge.checked);
+            console.log('A checkbox do Opera está: ' + cbOpera.checked);
+            console.log('A checkbox do OperaGx está: ' + cbOperaGx.checked);
+            console.log('A checkbox do Google Chrome está: ' + cbChrome.checked);
+            console.log('A checkbox do Brave está: ' + cbBrave.checked);
+            console.log('A checkbox do Firefox está: ' + cbFirefox.checked);
+            console.log('A checkbox do Safari está: ' + cbSafari.checked);
+        
+            
+       
+    }
+
+
+    // Como fazer para alterar o estado da checkbox, no caso aqui será uma verificação no
+    // banco de dados para saber quais dos processos já estão marcados
+
+    function alterarEstadoDaCheckBox(){
+        var cbEdge = document.getElementById('idEdge');
+
+        idEdge.checked = true;
+
+    }
+
+
+</script>

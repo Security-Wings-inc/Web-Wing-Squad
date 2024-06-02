@@ -45,30 +45,7 @@
                 </div>
                 <div class="containerInfo" id="listaMaquinas">
                     
-                    <div class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
-                        <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
-                        <h2>Computador do  Roberto Augusto</h2>
-                        <p>Modelo do processador:i7 12ª gen</p>
-                        <p>Uso do processador: 50%</p>
-                        <p>Uso de memória RAM: 70%</p>
-                        <p> taxa de bits de upload: 12000
-                        </div> 
-                    <div class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
-                        <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
-                        <h2>Computador do  Roberto Augusto</h2>
-                        <p>Modelo do processador:i7 12ª gen</p>
-                        <p>Uso do processador: 50%</p>
-                        <p>Uso de memória RAM: 70%</p>
-                        <p> taxa de bits de upload: 12000
-                        </div> 
-                    <div class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
-                        <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
-                        <h2>Computador do  Roberto Augusto</h2>
-                        <p>Modelo do processador:i7 12ª gen</p>
-                        <p>Uso do processador: 50%</p>
-                        <p>Uso de memória RAM: 70%</p>
-                        <p> taxa de bits de upload: 12000
-                        </div> 
+                    
 
 
                 </div>
@@ -137,34 +114,34 @@
                         if (maquinas.ramUso < ramWarning && maquinas.processadorUso < cpuWarning && maquinas.discoUso < discoWarning && maquinas.bytesEnviados < redeWarning) {
                             listaMaquinas.innerHTML += `
                         
-                        <button class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
+                        <div class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
                         <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
                         <h2>Computador do ${maquinas.nomeUsuario}</h2>
                         <p>Modelo do processador: ${maquinas.processadorModelo}</p>
                         <p>Uso do processador: ${maquinas.processadorUso}%</p>
                         <p>Uso de memória RAM: ${maquinas.ramUso}%</p>
                         <p> taxa de bits de upload: ${maquinas.bytesEnviados}
-                        </button> `
+                        </div> `
 
                         } else if (maquinas.ramUso == ramWarning && maquinas.processadorUso == cpuWarning && maquinas.discoUso == discoWarning && maquinas.bytesEnviados == redeWarning) {
 
-                            listaMaquinas.innerHTML += ` <button class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
+                            listaMaquinas.innerHTML += ` <div class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
                         <img style="margin-right: 0px;" src="../assetsDashboard/PCYellow.svg" alt="">
                         <h2>Computador do ${maquinas.nomeUsuario}</h2>
                         <p>Modelo do processador: ${maquinas.processadorModelo}</p>
                         <p>Uso do processador: ${maquinas.processadorUso}%</p>
                         <p>Uso de memória RAM: ${maquinas.ramUso}%</p>
                         <p> taxa de bits de upload: ${maquinas.bytesEnviados}
-                        </button> `
+                        </div> `
                         } else {
-                            listaMaquinas.innerHTML += `<button class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
+                            listaMaquinas.innerHTML += `<div class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
                         <img style="margin-right: 0px;" src="../assetsDashboard/PCRed.svg" alt="">
                         <h2>Computador do ${maquinas.nomeUsuario}</h2>
                         <p>Modelo do processador: ${maquinas.processadorModelo}</p>
                         <p>Uso do processador: ${maquinas.processadorUso}%</p>
                         <p>Uso de memória RAM: ${maquinas.ramUso}%</p>
                         <p> taxa de bits de upload: ${maquinas.bytesEnviados}
-                        </button> `
+                        </div> `
                         }
 
                     }

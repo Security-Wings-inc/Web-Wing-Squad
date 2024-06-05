@@ -38,6 +38,18 @@ var mySqlConfig = {
 //     password: "", 
 // };
 
+/// conexão com o banco SQL 
+// var sqlServerConfig = {
+//     user: 'sa',
+//     password: 'Urubu.100',
+//     server: '52.20.245.218', // endereço do servidor SQL
+//     database: 'securityWings',
+//     options: {
+//         encrypt: true, // Use true se você estiver conectando ao Azure SQL
+//         trustServerCertificate: true // Use true se você estiver conectando a um servidor local e precisar confiar no certificado
+//     }
+// };
+
 
 //  ATENÇÃO ATENÇÃO ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //
 //  ATENÇÃO ATENÇÃO ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //

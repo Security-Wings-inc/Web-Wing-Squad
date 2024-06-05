@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body onload="processos()">
 
     <header>
 
@@ -46,16 +46,20 @@
 
                 <div class="abas">
 
-                    <div class="aba" style="background-color: #426572"><a style="color: #8bacb8" href="./MenagentmentAdmin.html">Gerenciar Usuários</a></div>
-                    <div class="aba"style="background-color: #426572"><a style="color: #8bacb8" href="./AlertsAdmin.html">Gerenciar Alertas</a></div>
+                    <div class="aba" style="background-color: #426572"><a style="color: #8bacb8"
+                            href="./MenagentmentAdmin.html">Gerenciar Usuários</a></div>
+                    <div class="aba" style="background-color: #426572"><a style="color: #8bacb8"
+                            href="./AlertsAdmin.html">Gerenciar Alertas</a></div>
                     <div class="aba">Gerenciar Processos</div>
 
 
                 </div>
                 <div class="containerMeio">
                     <div class="containerTitle">
-                        <div class="titulo" id="tituloPagina"> Gerenciar permissões de processos 
-                            <button class="confirmar" id="btCadastrar" onclick="funcaoConfirmar()"><img style="width: 20px; margin: 0 10px 0 0;" src="../assetsDashboard/Certin.svg" alt="">Confirmar Modificações</button>
+                        <div class="titulo" id="tituloPagina"> Gerenciar permissões de processos
+                            <button class="confirmar" id="btCadastrar" onclick="funcaoConfirmar()"><img
+                                    style="width: 20px; margin: 0 10px 0 0;" src="../assetsDashboard/Certin.svg"
+                                    alt="">Confirmar Modificações</button>
 
                         </div>
                         <p style="color: #E0F6F9;">Os processos selecionados não serão permitidos a execução</p>
@@ -71,114 +75,44 @@
 
                             <div class="inputContainerProcess">
 
-                                <div class="processCategory">
+                                <div class="processCategory" id="navegation">
 
                                     <h1 style="margin-left: 10px; font-size: 30px;">Navegadores</h1>
 
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="idEdge">
-                                        <p>Microsoft Edge</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="idOpera">
-                                        <p>Opera</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="idOperaGx">
-                                        <p>Opera GX</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="idChrome">
-                                        <p>Google Chrome</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="idBrave">
-                                        <p>Brave</p>
-                                    </div>
-                                    <div class="process">
+
+
+
+                                    <!-- <div class="process">
                                         <input type="checkbox" name="" id="idFirefox">
                                         <p>Firefox</p>
                                     </div>
                                     <div class="process">
                                         <input type="checkbox" name="" id="idSafari">
                                         <p>Safari</p>
-                                    </div>
+                                    </div> -->
 
 
                                 </div>
-                     
-                                <div class="processCategory">
 
-                                    <h1 style="margin-left: 10px; font-size: 30px;">Titulo</h1>
+                                <div class="processCategory" id="utils">
 
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="id">
-                                        <p>Inserir Nome</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="id">
-                                        <p>Inserir Nome</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="id">
-                                        <p>Inserir Nome</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="id">
-                                        <p>Inserir Nome</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="id">
-                                        <p>Inserir Nome</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="id">
-                                        <p>Inserir Nome</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="id">
-                                        <p>Inserir Nome</p>
-                                    </div>
-                                    
+                                    <h1 style="margin-left: 10px; font-size: 30px;">Úteis</h1>
+
+
+
 
                                 </div>
- 
-                                <div class="processCategory">
 
-                                    <h1 style="margin-left: 10px; font-size: 30px;">Utilitários</h1>
+                                <div class="processCategory" id="others">
 
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="id">
-                                        <p>Inserir Nome</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="id">
-                                        <p>Inserir Nome</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="id">
-                                        <p>Inserir Nome</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="id">
-                                        <p>Inserir Nome</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="id">
-                                        <p>Inserir Nome</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="id">
-                                        <p>Inserir Nome</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="id">
-                                        <p>Inserir Nome</p>
-                                    </div>
+                                    <h1 style="margin-left: 10px; font-size: 30px;">Outros</h1>
+
+
+
 
                                 </div>
-                            
-                            
+
+
                             </div>
 
 
@@ -204,44 +138,105 @@
 
 
 <script>
+    var idEmpresaVar = sessionStorage.FK_EMPRESA;
+    console.log(idEmpresaVar)
+    var globalArray = []
 
-// ".checked" acessa a checkbox e retorna um booleano
-// ".checked =" altera o estado da checkbox
 
-
-function funcaoConfirmar(){
-         var cbEdge = document.getElementById('idEdge');
-         var cbOpera = document.getElementById('idOpera');
-         var cbOperaGx = document.getElementById('idOperaGx');
-         var cbChrome = document.getElementById('idChrome');
-         var cbBrave = document.getElementById('idBrave');
-         var cbFirefox = document.getElementById('idFirefox');
-         var cbSafari = document.getElementById('idSafari');
-
-               //Exemplo de como se comporta:
-        
-            console.log('A checkbox do MicrosoftEdge está: ' + cbEdge.checked);
-            console.log('A checkbox do Opera está: ' + cbOpera.checked);
-            console.log('A checkbox do OperaGx está: ' + cbOperaGx.checked);
-            console.log('A checkbox do Google Chrome está: ' + cbChrome.checked);
-            console.log('A checkbox do Brave está: ' + cbBrave.checked);
-            console.log('A checkbox do Firefox está: ' + cbFirefox.checked);
-            console.log('A checkbox do Safari está: ' + cbSafari.checked);
-        
-            
-       
+    async function allowed(idEmpresa) {
+        try {
+            const resposta = await fetch(`/processos/getAllAllowed/${idEmpresa}`, {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json"
+                }
+            });
+            if (resposta.ok) {
+                const dados = await resposta.json();
+                globalArray = dados;
+                console.log(globalArray, "array global")
+            }
+        } catch (erro) {
+            console.log(erro);
+        }
     }
 
 
-    // Como fazer para alterar o estado da checkbox, no caso aqui será uma verificação no
-    // banco de dados para saber quais dos processos já estão marcados
+    async function processos() {
+    try {
+        const resposta = await fetch("/processos/getAllProcess", {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
+            }
+        });
+        if (resposta.ok) {
+            const processos = await resposta.json();
+            await allowed(idEmpresaVar);
 
-    function alterarEstadoDaCheckBox(){
-        var cbEdge = document.getElementById('idEdge');
+            for (let i = 0; i < processos.length; i++) {
+                const processo = processos[i];
+                
+                const isChecked = globalArray.some(p => p.fkProcesso === processo.idProcesso && p.isAllowed === 1);
 
-        idEdge.checked = true;
+                const checkbox = `<input type="checkbox" id="checkIpt_${processo.idProcesso}" ${isChecked ? 'checked' : ''} onclick="insertToDataBase('${processo.idProcesso}')">`;
 
+                if (processo.categoria_do_processo === "navegador") {
+                    navegation.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p></div>`;
+                } else if (processo.categoria_do_processo === "utils") {
+                    utils.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p></div>`;
+                } else if (processo.categoria_do_processo === "outros") {
+                    others.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p></div>`;
+                }
+            }
+        }
+    } catch (erro) {
+        console.log("deu erro:", erro);
     }
+}
+
+
+
+function insertToDataBase(idProcess) {
+    var checkbox = document.getElementById(`checkIpt_${idProcess}`);
+    var isAllowedValue = checkbox.checked ? 1 : 0; 
+    console.log(isAllowedValue);
+    var created_atVar =  new Date().toISOString().slice(0, 19).replace('T', ' ');
+    console.log(created_atVar)
+
+    fetch(`/processos/settingProcess/${idProcess}`, {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify({
+            isAllowed: isAllowedValue, 
+            idEmpresa: idEmpresaVar,
+            created_at : created_atVar
+
+        })
+    }).then((resposta) => {
+        if (resposta.ok) {
+            console.log("Processo inserido/atualizado com sucesso.");
+            checkbox.checked = isAllowedValue;
+
+            window.location.reload()
+        } else {
+            console.log("Erro ao inserir/atualizar o processo.");
+        }
+    }).catch((erro) => {
+        console.log("Erro ao inserir/atualizar o processo:", erro);
+    });
+}
+
+
+
+
+
+
+
+
+
 
 
 </script>

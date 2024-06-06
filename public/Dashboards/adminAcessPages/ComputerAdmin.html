@@ -77,7 +77,7 @@
 
 
     var idEmpresa = sessionStorage.FK_EMPRESA;
-    
+
     var nome = sessionStorage.NOME_USUARIO;
     var ramDanger = sessionStorage.RAM_DANGER;
     var ramWarning = sessionStorage.RAM_WARNING;
@@ -113,50 +113,55 @@
                         console.log(maquinas)
 
 
-                        if (maquinas.ramUso > ramWarning) {
-                            listaMaquinas.innerHTML += `
-                        
-                        <div class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
-                        <h2>Computador do ${maquinas.nomeUsuario}</h2>
-                        <p>Modelo do processador: ${maquinas.processadorModelo}</p>
-                        <p>Uso do processador: ${maquinas.processadorUso}%</p>
-                        <p>Uso de memória RAM: ${maquinas.ramUso}%</p>
-                        <p> taxa de bits de upload: ${maquinas.bytesEnviados}
-                        </div> `
-                        }
-
-                        if (maquinas.ramUso < ramWarning && maquinas.processadorUso < cpuWarning && maquinas.discoUso < discoWarning && maquinas.bytesEnviados < redeWarning) {
-                            listaMaquinas.innerHTML += `
+                        listaMaquinas.innerHTML += `
                         
                         <div class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
                         <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
                         <h2>Computador do ${maquinas.nomeUsuario}</h2>
                         <p>Modelo do processador: ${maquinas.processadorModelo}</p>
-                        <p>Uso do processador: ${maquinas.processadorUso}%</p>
-                        <p>Uso de memória RAM: ${maquinas.ramUso}%</p>
-                        <p> taxa de bits de upload: ${maquinas.bytesEnviados}
+                        <p id= "cpuP">Uso do processador: ${maquinas.processadorUso}%</p>
+                        <p id="ramP">Uso de memória RAM: ${maquinas.ramUso}%</p>
+                        <p id = "redeP"> taxa de bits de upload: ${maquinas.bytesEnviados}</p>
                         </div> `
+                        if (maquinas.ramUso > ramWarning) {
+                            ramP.innerHTML = `🔴Uso de memória RAM: ${maquinas.ramUso}%`
+                        } 
+                        if (maquinas.ramUso == ramWarning) {
+                            ramP.innerHTML = `🟡Uso de memória RAM: ${maquinas.ramUso}%`
 
-                        } else if (maquinas.ramUso == ramWarning && maquinas.processadorUso == cpuWarning && maquinas.discoUso == discoWarning && maquinas.bytesEnviados == redeWarning) {
+                        } 
+                        if(maquinas.ramUso < ramWarning){
+                            ramP.innerHTML = `🟢Uso de memória RAM: ${maquinas.ramUso}%`
 
-                            listaMaquinas.innerHTML += ` <div class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
-                        <img style="margin-right: 0px;" src="../assetsDashboard/PCYellow.svg" alt="">
-                        <h2>Computador do ${maquinas.nomeUsuario}</h2>
-                        <p>Modelo do processador: ${maquinas.processadorModelo}</p>
-                        <p>Uso do processador: ${maquinas.processadorUso}%</p>
-                        <p>Uso de memória RAM: ${maquinas.ramUso}%</p>
-                        <p> taxa de bits de upload: ${maquinas.bytesEnviados}
-                        </div> `
-                        } else {
-                            listaMaquinas.innerHTML += `<div class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
-                        <img style="margin-right: 0px;" src="../assetsDashboard/PCRed.svg" alt="">
-                        <h2>Computador do ${maquinas.nomeUsuario}</h2>
-                        <p>Modelo do processador: ${maquinas.processadorModelo}</p>
-                        <p>Uso do processador: ${maquinas.processadorUso}%</p>
-                        <p>Uso de memória RAM: ${maquinas.ramUso}%</p>
-                        <p> taxa de bits de upload: ${maquinas.bytesEnviados}
-                        </div> `
                         }
+
+                        if(maquinas.processadorUso > cpuWarning){
+                            cpuP.innerHTML = `🔴Uso do processador: ${maquinas.processadorUso}%`
+                        }
+
+                        if(maquinas.processadorUso == cpuWarning){
+                            cpuP.innerHTML = `🟡Uso do processador: ${maquinas.processadorUso}%`
+                        }
+
+                        if(maquinas.processadorUso < cpuWarning){
+                            cpuP.innerHTML = `🟢Uso do processador: ${maquinas.processadorUso}%`
+
+                        }
+
+                        if(maquinas.bytesEnviados > redeWarning){
+                            redeP.innerHTML = `🔴taxa de bits de upload: ${maquinas.bytesEnviados}` 
+                        }
+
+                        if(maquinas.bytesEnviados == redeWarning){
+                            redeP.innerHTML = `🟡taxa de bits de upload: ${maquinas.bytesEnviados}` 
+
+                        }
+
+                        if(maquinas.bytesEnviados < redeWarning){
+                            redeP.innerHTML = `🟢taxa de bits de upload: ${maquinas.bytesEnviados}` 
+
+                        }
+
 
                     }
 

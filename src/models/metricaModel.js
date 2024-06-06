@@ -1,23 +1,23 @@
 var database = require("../database/config")
 
-function findMachineId(fkEmpresa,fkUsuario) {
-    
-    
+function findMachineId(fkEmpresa, fkUsuario) {
+
+
     var instrucao = `SELECT idComputador from ComputadorEspec WHERE fkEmpresa = '${fkEmpresa}' and fkUsuario = '${fkUsuario}'; `;
 
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function getMachineData(idMachine){
-    var instrucao = `SELECT * FROM Monitoramento WHERE fkComputador = '${idMachine}' ORDER BY idMonitoramento DESC LIMIT 8;`
+function getMachineData(idMachine) {
+    var instrucao = `SELECT * FROM Monitoramento WHERE fkComputador = '${idMachine}' ORDER BY idMonitoramento;`
     return database.executar(instrucao);
 }
 
-function getAllMachinesByIdEmpresa(idEmpresa){
+function getAllMachinesByIdEmpresa(idEmpresa) {
     var instrucao = `SELECT CE.idComputador, CE.processadorModelo, CE.processadorNucleosFisicos, CE.processadorNucleosLógicos,
        CE.processadorFrequencia, CE.discoTotal, CE.ramTotal,
-       M.processadorUso, M.ramUso, M.discoUso, M.bytesEnviados, M.bytesRecebidos, M.dataCaptura,
+       M.processadorUso, M.ramUso, M.discoUso, M.bytesEnviados, M.dataCaptura,
        PA.ramWarning, PA.ramDanger, PA.processadorWarning, PA.processadorDanger,
        PA.internetWarning, PA.internetDanger, PA.discoWarning, PA.discoDanger,
        U.nome AS nomeUsuario
@@ -49,5 +49,5 @@ module.exports = {
     getMachineData,
     getAllMachinesByIdEmpresa,
 
-    
+
 };

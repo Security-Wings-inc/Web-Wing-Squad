@@ -38,7 +38,7 @@
 
 
 
-
+        
 
         <div class="contentContainer">
 
@@ -78,26 +78,13 @@
                                     <h1 style="margin-left: 10px; font-size: 30px;">Navegadores</h1>
 
 
-
-
-                                    <!-- <div class="process">
-                                        <input type="checkbox" name="" id="idFirefox">
-                                        <p>Firefox</p>
-                                    </div>
-                                    <div class="process">
-                                        <input type="checkbox" name="" id="idSafari">
-                                        <p>Safari</p>
-                                    </div> -->
-
-
                                 </div>
 
                                 <div class="processCategory" id="utils">
 
                                     <h1 style="margin-left: 10px; font-size: 30px;">Úteis</h1>
 
-
-
+                                                                                                                                                                                                                                                            
 
                                 </div>
 
@@ -180,11 +167,11 @@
                 const checkbox = `<input type="checkbox" id="checkIpt_${processo.idProcesso}" ${isChecked ? 'checked' : ''} onclick="insertToDataBase('${processo.idProcesso}')">`;
 
                 if (processo.categoria_do_processo === "navegador") {
-                    navegation.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p></div>`;
+                    navegation.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p><img class="lixo" src="../assetsDashboard/Lixeira.svg" alt=""></div>`;
                 } else if (processo.categoria_do_processo === "utils") {
-                    utils.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p></div>`;
+                    utils.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p><img class="lixo" src="../assetsDashboard/Lixeira.svg" alt=""></div>`;
                 } else if (processo.categoria_do_processo === "outros") {
-                    others.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p></div>`;
+                    others.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p><img class="lixo" src="../assetsDashboard/Lixeira.svg" alt=""></div>`;
                 }
             }
         }

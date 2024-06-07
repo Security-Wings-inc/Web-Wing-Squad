@@ -140,10 +140,22 @@ button:hover{
     display: none;
 }
 
+.lixo{
+    width: 20px;
+    filter: brightness(80%);
+    margin-left: 10px;
+}
+
+.lixo:hover{
+    filter: brightness(100%);
+    cursor: pointer;
+}
+
+
 .process{
     display: flex;
     flex-direction: row;
-    width: 150px;
+    width: fit-content;
     border-radius: 30px;
     padding: 10px;
     /* border: 1px solid red; */
@@ -159,10 +171,10 @@ button:hover{
 .processCategory{
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    /* justify-content: space-around; */
 
     width:300px;
-    height: 500px;
+    height: fit-content;
     border-radius: 30px;
     padding: 10px;
     box-shadow: -3px 3px 5px #c0d4d7;

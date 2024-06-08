@@ -19,8 +19,8 @@ JOIN
 
 async function setProcess(idProcesso, isAllowed, idEmpresa, created_at) {
     const instrucao = `
-        INSERT INTO permissoes (fkEmpresa, fkProcesso, isAllowed, created_at) 
-        VALUES ('${idEmpresa}', '${idProcesso}', '${isAllowed}', '${created_at}')
+        INSERT INTO permissoes (fkEmpresa, fkProcesso, isAllowed, isVisible, created_at) 
+        VALUES ('${idEmpresa}', '${idProcesso}', '${isAllowed}','1', '${created_at}')
         ON DUPLICATE KEY UPDATE 
         isAllowed = VALUES(isAllowed);`;
     try {
@@ -35,7 +35,7 @@ async function setProcess(idProcesso, isAllowed, idEmpresa, created_at) {
 
 
 
-function allowed(idEmpresa){
+function allowed(idEmpresa) {
     var instrucao = `
         SELECT *
         FROM permissoes
@@ -50,12 +50,21 @@ function allowed(idEmpresa){
     return database.executar(instrucao);
 }
 
+function ocult(idEmpresa, idProcesso) {
+    var instrucao = `UPDATE permissoes
+SET isVisible = 0
+WHERE fkProcesso = '${idProcesso}' AND fkEmpresa = '${idEmpresa}';
+`
 
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
 
 
 
 module.exports = {
     getAllProcess,
     setProcess,
-    allowed
+    allowed,
+    ocult
 }

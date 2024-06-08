@@ -18,7 +18,9 @@ router.get("/getAllAllowed/:idEmpresa" , (req,res)=>{
     processoController.allowed(req,res)
 })
 
-
+router.put("/setVisible/:idEmpresa/:idProcesso" , (req,res)=>{
+    processoController.ocult(req,res)
+})
 
 
 

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
     <link rel="stylesheet" href="../cssDashboard/adminAlert.css">
     <link rel="shortcut icon" href="../../assets/Vector Security Wings.png" type="image/x-icon">
-
+  
 </head>
 
 <body onload="processos()">
@@ -38,7 +38,7 @@
 
 
 
-        
+
 
         <div class="contentContainer">
 
@@ -57,10 +57,10 @@
                 <div class="containerMeio">
                     <div class="containerTitle">
                         <div class="titulo" id="tituloPagina"> Gerenciar permissões de processos
-                      
+
 
                         </div>
-                        <p style="color: #E0F6F9;">Os processos selecionados  serão permitidos a execução</p>
+                        <p style="color: #E0F6F9;">Os processos selecionados serão permitidos a execução</p>
 
                     </div>
 
@@ -84,7 +84,7 @@
 
                                     <h1 style="margin-left: 10px; font-size: 30px;">Úteis</h1>
 
-                                                                                                                                                                                                                                                            
+
 
                                 </div>
 
@@ -148,77 +148,93 @@
 
 
     async function processos() {
-    try {
-        const resposta = await fetch("/processos/getAllProcess", {
-            method: "GET",
-            headers: {
-                "Content-type": "application/json"
-            }
-        });
-        if (resposta.ok) {
-            const processos = await resposta.json();
-            await allowed(idEmpresaVar);
+        try {
+            const resposta = await fetch("/processos/getAllProcess", {
+                method: "GET",
+                headers: {
+                    "Content-type": "application/json"
+                }
+            });
+            if (resposta.ok) {
+                const processos = await resposta.json();
+                await allowed(idEmpresaVar);
 
-            for (let i = 0; i < processos.length; i++) {
-                const processo = processos[i];
-                
-                const isChecked = globalArray.some(p => p.fkProcesso === processo.idProcesso && p.isAllowed === 1);
+                for (let i = 0; i < processos.length; i++) {
+                    const processo = processos[i];
 
-                const checkbox = `<input type="checkbox" id="checkIpt_${processo.idProcesso}" ${isChecked ? 'checked' : ''} onclick="insertToDataBase('${processo.idProcesso}')">`;
 
-                if (processo.categoria_do_processo === "navegador") {
-                    navegation.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p><img class="lixo" src="../assetsDashboard/Lixeira.svg" alt=""></div>`;
-                } else if (processo.categoria_do_processo === "utils") {
-                    utils.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p><img class="lixo" src="../assetsDashboard/Lixeira.svg" alt=""></div>`;
-                } else if (processo.categoria_do_processo === "outros") {
-                    others.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p><img class="lixo" src="../assetsDashboard/Lixeira.svg" alt=""></div>`;
+                    const isChecked = globalArray.some(p => p.fkProcesso === processo.idProcesso && p.isAllowed === 1);                    
+                    const checkbox = `<input type="checkbox" id="checkIpt_${processo.idProcesso}" ${isChecked ? 'checked' : ''} onclick="insertToDataBase('${processo.idProcesso}')">`;
+
+                    if (processo.categoria_do_processo === "navegador") {
+                        navegation.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p><img class="lixo" onclick = "ocult('${idEmpresaVar}','${processo.idProcesso}')"src="../assetsDashboard/Lixeira.svg" alt=""></div>`;
+                    } else if (processo.categoria_do_processo === "utils") {
+                        utils.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p><img class="lixo" onclick = "ocult('${idEmpresaVar}','${processo.idProcesso}')"src="../assetsDashboard/Lixeira.svg" alt=""></div>`;
+                    } else if (processo.categoria_do_processo === "outros") {
+                        others.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p><img class="lixo" onclick = "ocult('${idEmpresaVar}','${processo.idProcesso}')"src="../assetsDashboard/Lixeira.svg" alt=""></div>`;
+                    }
                 }
             }
+        } catch (erro) {
+            console.log("deu erro:", erro);
         }
-    } catch (erro) {
-        console.log("deu erro:", erro);
     }
-}
 
 
 
-function insertToDataBase(idProcess) {
-    var checkbox = document.getElementById(`checkIpt_${idProcess}`);
-    var isAllowedValue = checkbox.checked ? 1 : 0; 
-    console.log(isAllowedValue);
-    var created_atVar =  new Date().toISOString().slice(0, 19).replace('T', ' ');
-    console.log(created_atVar)
+    function insertToDataBase(idProcess) {
+        var checkbox = document.getElementById(`checkIpt_${idProcess}`);
+        var isAllowedValue = checkbox.checked ? 1 : 0;
+        console.log(isAllowedValue);
+        var created_atVar = new Date().toISOString().slice(0, 19).replace('T', ' ');
+        console.log(created_atVar)
 
-    fetch(`/processos/settingProcess/${idProcess}`, {
-        method: "POST",
-        headers: {
-            "Content-type": "application/json"
-        },
-        body: JSON.stringify({
-            isAllowed: isAllowedValue, 
-            idEmpresa: idEmpresaVar,
-            created_at : created_atVar
+        fetch(`/processos/settingProcess/${idProcess}`, {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                isAllowed: isAllowedValue,
+                idEmpresa: idEmpresaVar,
+                created_at: created_atVar
 
+            })
+        }).then((resposta) => {
+            if (resposta.ok) {
+                console.log("Processo inserido/atualizado com sucesso.");
+                checkbox.checked = isAllowedValue;
+
+                window.location.reload()
+            } else {
+                console.log("Erro ao inserir/atualizar o processo.");
+            }
+        }).catch((erro) => {
+            console.log("Erro ao inserir/atualizar o processo:", erro);
+        });
+    }
+
+
+
+
+
+    function ocult(idEmpresa, idProcesso) {
+        console.log(idEmpresa, idProcesso)
+
+        fetch(`/processos/setVisible/${idEmpresa}/${idProcesso}` , {
+            method : "PUT",
+            headers : {
+                "Content-type" : "application/json"
+            }
+        }).then((resposta)=>{
+            if(resposta.ok){
+                
+             console.log(resposta)  
+            }
+        }).catch((erro)=>{
+            console.log("deu erro" ,erro )
         })
-    }).then((resposta) => {
-        if (resposta.ok) {
-            console.log("Processo inserido/atualizado com sucesso.");
-            checkbox.checked = isAllowedValue;
-
-            window.location.reload()
-        } else {
-            console.log("Erro ao inserir/atualizar o processo.");
-        }
-    }).catch((erro) => {
-        console.log("Erro ao inserir/atualizar o processo:", erro);
-    });
-}
-
-
-
-
-
-
+    }
 
 
 

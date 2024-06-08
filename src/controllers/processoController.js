@@ -56,10 +56,23 @@ function allowed(req,res){
 }
 
 
+function ocult(req,res){
+    var idEmpresa = req.params.idEmpresa;
+    var idProcesso = req.params.idProcesso
+
+    processoModel.ocult(idEmpresa,idProcesso)
+    .then((resposta)=>{
+        res.status(200).json(resposta)
+    }).catch((erro)=>{
+        console.log("deu erro" , erro)
+    })
+}
+
 
 module.exports = {
     getAllProcess,
     setProcess,
-    allowed
+    allowed,
+    ocult
 
 }

@@ -173,7 +173,8 @@
                     } else if (processo.categoria_do_processo === "outros") {
                         others.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p><img class="lixo" onclick = "ocult('${idEmpresaVar}','${processo.idProcesso}')"src="../assetsDashboard/Lixeira.svg" alt=""></div>`;
                     }
-                }
+
+                }   
             }
         } catch (erro) {
             console.log("deu erro:", erro);

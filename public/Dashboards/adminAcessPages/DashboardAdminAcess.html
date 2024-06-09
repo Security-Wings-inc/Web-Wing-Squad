@@ -178,7 +178,7 @@ var nome = sessionStorage.NOME_USUARIO;
 var idMachine = sessionStorage.MAQUINA_SELECIONADA;
 setTimeout(() => {
   window.location.reload()
-}, 5000);
+}, 3000);
 
  function getMachineData() {
   
@@ -275,7 +275,7 @@ function armazenamento(dados) {
     data: {
       labels: labels,
       datasets: [{
-        label: 'Porcentagem de armazenamento',
+        label: 'Porcentagem de uso de armazenamento',
         data: dataPoints,
         borderWidth: 1,
         borderColor: 'rgba(75, 192, 192, 1)',
@@ -354,39 +354,32 @@ function ram(dados) {
 
 function rede(dados) {
 
-  const ctx4 = document.getElementById('myChart4');
-  const labels = dados.slice(-8).map(dado => dado.dataCaptura);
-  const dataBytesRecebidos = dados.slice(-8).map(dado => dado.bytesRecebidos);
-  const dataBytesEnviados = dados.slice(-8).map(dado => dado.bytesEnviados);
+const ctx4 = document.getElementById('myChart4');
+const labels = dados.slice(-8).map(dado => dado.dataCaptura);
+const dataBytesRecebidos = dados.slice(-8).map(dado => dado.bytesRecebidos);
+const dataBytesEnviados = dados.slice(-8).map(dado => dado.bytesEnviados);
 
-  new Chart(ctx4, {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [{
-        label: 'Bytes recebidos',
-        data: dataBytesRecebidos,
-        borderWidth: 1,
-        borderColor: 'rgba(75, 192, 192, 1)',
-        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-      },
-      {
-        label: 'Bytes enviados',
-        data: dataBytesEnviados,
-        borderWidth: 1,
-        borderColor: 'rgba(192, 75, 75, 1)',
-        backgroundColor: 'rgba(192, 75, 75, 0.2)',
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
+new Chart(ctx4, {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [
+    {
+      label: 'Bytes enviados',
+      data: dataBytesEnviados,
+      borderWidth: 1,
+      borderColor: 'rgba(192, 75, 75, 1)',
+      backgroundColor: 'rgba(192, 75, 75, 0.2)',
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
       }
     }
-  });
+  }
+});
 }
-
 
 </script>

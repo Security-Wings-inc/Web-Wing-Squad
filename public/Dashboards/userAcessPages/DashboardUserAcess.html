@@ -6,9 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
   <link rel="stylesheet" href="../cssDashboard/dashboard.css">
-  <link rel="shortcut icon" href="../../assets/Vector Security Wings.png" type="image/x-icon">
   <link rel="stylesheet" href="../cssDashboard/dashboardSidebarAdmin.css">
+  <link rel="shortcut icon" href="../../assets/Vector Security Wings.png" type="image/x-icon">
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 
 <body onload="getMachineData()">
@@ -35,20 +37,19 @@
       <div class="containerPrincipal">
         <div class="containerEsquerdo">
           <div class="containerCards">
-
             <div class="card">
               <h2>Armazenamento</h2>
               <span> Ocupado: 300,23 Gb </span>
               <span> Livre: 699,23 Gb </span>
               <span> Porcentagem: 80%</span>
-              
+
             </div>
 
             <div class="card">
               <h2>Em quantos dias <br> o Armazenamento <Br> lotará</h2>
               <span>12 dias</span>
             </div>
-            
+
             <div class="card">
               <h2>Velocidade da Internet</h2>
               <span> Download: 200 Mb/s </span>
@@ -56,13 +57,12 @@
 
 
             </div>
-            
+
             <div class="card" style="background-color: #A9DADD;">
               <h2>Recomendações</h2>
               <span>Reduzir quantidade de processos abertos <br>
                 ou aumentar a quantidade de RAM.</span>
             </div>
-
           </div>
 
           <div class="containerGraficos">
@@ -70,14 +70,15 @@
             <div class="graficoLinha">
               <div class="grafico">
                 <div>
-                  <h2 style="margin-top: 15px;">Armazenamento <img width="15px" src="../assetsDashboard/Amarelo.svg" alt=""></h2>
+                  <h2 style="margin-top: 15px;" id="discoH2">Armazenamento <img width="15px"
+                      src="../assetsDashboard/Amarelo.svg" alt=""></h2>
                   <canvas id="myChart" style="width: 512px; height: 140px;"></canvas>
                 </div>
 
 
               </div>
               <div class="grafico2">
-                <h2> Uso de Ram <img width="15px" src="../assetsDashboard/Verde.svg" alt=""></h2>
+                <h2 id="ramH2"> Uso de Ram <img width="15px" src="../assetsDashboard/Verde.svg" alt=""></h2>
                 <canvas id="myChart3" style="width: 460px; height: 130px;"></canvas>
               </div>
             </div>
@@ -85,7 +86,8 @@
 
             <div class="graficoLinha">
               <div class="grafico">
-                <h2 style="margin-top: 15px;"> Utilização do processador <img width="15px" src="../assetsDashboard/Vermelho.svg" alt=""></h2>
+                <h2 style="margin-top: 15px;" id="cpuH2"> Utilização do processador <img width="15px"
+                    src="../assetsDashboard/Verde.svg" alt=""></h2>
                 <div>
                   <canvas id="myChart2" style="width: 512px; height: 140px;"></canvas>
                 </div>
@@ -93,7 +95,7 @@
 
               </div>
               <div class="grafico2">
-                <h2> Status de Rede <img width="15px" src="../assetsDashboard/Verde.svg" alt=""></h2>
+                <h2 id="redeH2"> Status de Rede <img width="15px" src="../assetsDashboard/Vermelho.svg" alt=""></h2>
                 <canvas id="myChart4" style="width: 460px; height: 130px;"></canvas>
               </div>
             </div>
@@ -174,16 +176,29 @@
 
 <script>
 
+
+
+
+  var nome = sessionStorage.NOME_USUARIO;
+  var ramDanger = sessionStorage.RAM_DANGER;
+  var ramWarning = sessionStorage.RAM_WARNING;
+  var cpuDanger = sessionStorage.CPU_DANGER;
+  var cpuWarning = sessionStorage.CPU_WARNING;
+  var redeDanger = sessionStorage.REDE_DANGER;
+  var redeWarning = sessionStorage.REDE_WARNIG;
+  var discoDanger = sessionStorage.HD_DANGER;
+  var discoWarning = sessionStorage.HD_WARNING;
+
+  console.log(`ram danger (${ramDanger}) , ram warning (${ramWarning}) , cpu danger(${cpuDanger}) , cpu warning (${cpuWarning}) , rede danger (${redeDanger}) , rede warning (${redeWarning}) , disco danger (${discoDanger}) , disco warning (${discoWarning})`);
+
+
+  var idMachine = sessionStorage.MAQUINA_SELECIONADA;
   setTimeout(() => {
-    window.location.reload();
+    window.location.reload()
   }, 5000);
-  
-  
-  var idMachine = sessionStorage.ID_COMPUTADOR;
-  
-  
-  function getMachineData(id) {
-  
+
+  function getMachineData() {
+
     fetch(`/metrica/getMachineData/${idMachine}`, {
       method: "POST",
       headers: {
@@ -191,39 +206,93 @@
       },
     }).then(function (resposta) {
       if (resposta.ok) {
-  
+
         resposta.json().then(function (resposta) {
-          
-  
-          
+          console.log(resposta[resposta.length - 1])
+
+
+          for (let i = 0; i < resposta.length; i++) {
+            var capturas = resposta[resposta.length - 1]
+
+            if (capturas.discoUso > discoWarning) {
+              discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Vermelho.svg">`
+            }
+
+            if (capturas.discoUso == discoWarning) {
+              discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
+            }
+
+            if (capturas.discoUso < discoWarning) {
+              discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Verde.svg">`
+
+            }
+
+            if (capturas.processadorUso > cpuWarning) {
+              cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
+            }
+            if (capturas.processadorUso == cpuWarning) {
+              cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
+
+            }
+            if (capturas.processadorUso < cpuWarning) {
+              cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
+
+            }
+
+            if (capturas.ramUso > ramWarning) {
+              ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
+            }
+            if (capturas.ramUso == ramWarning) {
+              ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
+            }
+            if (capturas.ramUso < ramWarning) {
+              ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
+            }
+
+            if (capturas.bytesEnviados > redeWarning) {
+              redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
+            }
+
+            if (capturas.bytesEnviados == redeWarning) {
+              redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
+            }
+
+            if (capturas.bytesEnviados < redeWarning) {
+              redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
+            }
+
+
+          }
+
+
           armazenamento(resposta)
           processador(resposta)
           ram(resposta)
           rede(resposta)
-  
-  
+
+
         });
       } else {
         console.error('Nenhum dado encontrado ou erro na API');
       }
     })
-  
-  
+
+
   }
-  
-  
+
+
   function armazenamento(dados) {
-  
+
     const ctx = document.getElementById('myChart');
     const labels = dados.slice(-8).map(dado => dado.dataCaptura);
     const dataPoints = dados.slice(-8).map(dado => dado.discoUso);
-  
+
     new Chart(ctx, {
       type: 'line',
       data: {
         labels: labels,
         datasets: [{
-          label: 'Porcentagem de armazenamento',
+          label: 'Porcentagem de uso de armazenamento',
           data: dataPoints,
           borderWidth: 1,
           borderColor: 'rgba(75, 192, 192, 1)',
@@ -239,13 +308,13 @@
       }
     });
   }
-  
+
   function processador(dados) {
-  
+
     const ctx2 = document.getElementById('myChart2');
     const labels = dados.slice(-8).map(dado => dado.dataCaptura);
     const dataPoints = dados.slice(-8).map(dado => dado.processadorUso);
-  
+
     new Chart(ctx2, {
       type: 'line',
       data: {
@@ -259,7 +328,7 @@
         }]
       },
       options: {
-  
+
         scales: {
           y: {
             beginAtZero: true
@@ -268,15 +337,15 @@
       }
     });
   }
-  
-  
-  
+
+
+
   function ram(dados) {
-  
+
     const ctx3 = document.getElementById('myChart3');
     const labels = dados.slice(-8).map(dado => dado.dataCaptura);
     const dataPoints = dados.slice(-8).map(dado => dado.ramUso);
-  
+
     new Chart(ctx3, {
       type: 'line',
       data: {
@@ -290,7 +359,7 @@
         }]
       },
       options: {
-  
+
         scales: {
           y: {
             beginAtZero: true
@@ -299,25 +368,19 @@
       }
     });
   }
-  
+
   function rede(dados) {
-  
+
     const ctx4 = document.getElementById('myChart4');
     const labels = dados.slice(-8).map(dado => dado.dataCaptura);
     const dataBytesRecebidos = dados.slice(-8).map(dado => dado.bytesRecebidos);
     const dataBytesEnviados = dados.slice(-8).map(dado => dado.bytesEnviados);
-  
+
     new Chart(ctx4, {
       type: 'line',
       data: {
         labels: labels,
-        datasets: [{
-          label: 'Bytes recebidos',
-          data: dataBytesRecebidos,
-          borderWidth: 1,
-          borderColor: 'rgba(75, 192, 192, 1)',
-          backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        },
+        datasets: [
         {
           label: 'Bytes enviados',
           data: dataBytesEnviados,
@@ -335,8 +398,6 @@
       }
     });
   }
-  
-  
-  
-  </script>
-  
+
+
+</script>

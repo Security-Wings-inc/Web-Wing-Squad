@@ -158,8 +158,12 @@
 
                         listaEmpresas.innerHTML += `   
                         <div class="tile" onclick ="saveIdAndLocation(${empresa.idEmpresa},'${empresa.nome}')">
-                        <img class="lixo" onclik="FUNCAOEXCLUIR" src="../assetsDashboard/Lixeira.svg" alt="">
-                       <img src="../assetsDashboard/AirportChart.svg" alt="">
+                               <div class="iconTile">
+                                <img class="lixo" style="width: 30px; height: 30px;" onclick="" src="../assetsDashboard/Lixeira.svg" alt="">
+                                <img class="lixo" style="width: 30px; height: 30px;" onclick="funcaoEditar()" src="../assetsDashboard/Lapis.svg" alt="">
+                            </div>
+
+                            <img src="../assetsDashboard/AirportChart.svg" alt="">
                         <h2 id="nomeEmpresa">${empresa.nome}</h2>
                          </div>
                          `

@@ -112,14 +112,41 @@ function revogarAdmin(req, res) {
 }
 
 
+function updateCnpjAndTel(req, res) {
+    var cnpj = req.body.cnpjServer;
+    var tel = req.body.telServer;
+    var idEmpresa = req.params.id;
+
+    managerModel.updateCnpjAndTel(cnpj, tel, idEmpresa)
+        .then((resposta) => {
+            res.status(200).json(resposta)
+        }).catch((erro) => {
+            console.log("houve um erro ao atualizar os dados da empresa", erro)
+        })
+
+
+}
+
+
+function deleteEmpresa(req, res) {
+    var id = req.params.id;
+
+    managerModel.deleteEmpresa(id)
+        .then((resposta) => {
+            res.status(200).json(resposta)
+        }).catch((erro) => {
+            console.log("Houve um erro ao excluir a empresa" , erro)
+        })
+}
+
+
 
 module.exports = {
-
     listarEmpresa,
     listarAdmin,
     deletarAdmin,
     revogarAdmin,
-    cadastrarAdmin
-
-
+    cadastrarAdmin,
+    updateCnpjAndTel,
+    deleteEmpresa,
 }

@@ -22,11 +22,18 @@ body{
  
 }
 
+.iconTile{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    margin-left: 90px;
+}
+
 .lixo{
     filter: brightness(60%) saturate(3);
     width: 30px; 
     height: 30px; 
-    margin: 0 0 0 150px;
+    margin: 0px 5px ;
     padding: 0 0;
 }
 
@@ -116,6 +123,23 @@ body{
     gap: 20px;
     padding: 30px;
     overflow-y: auto;
+
+    /* border: 1px red solid; */
+}
+
+.containerEditar{
+    
+    border-radius: 30px;
+    background-color: #E0F6F9;
+    height: 60%;
+    width: 93%;
+    display: none;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 30px;
+    overflow-y: auto;
+
+    /* border: 1px red solid; */
 }
 
 .icons{
@@ -204,3 +228,95 @@ img{
 .hide{
     display: none;
 }
+
+.textoLateral{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+    
+    text-align: center;
+    width: 40%;
+}
+
+.contentOpt{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    height: fit-content;
+
+    /* border: 1px green solid; */
+}
+
+.inputContainerCad{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+    /* border: 1px solid black; */
+}
+
+
+.forms{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 1120px;
+    /* border: 1px magenta solid; */
+}
+.inputInfo{
+    width: 100%;
+    height: 40px;
+    border-radius: 30px;
+    border: 1px solid #3e8ea9;
+    margin: 10px 0px;
+    padding-left: 20px;
+    
+}
+
+.botaoInfo{
+    margin-top: 10px;
+    border-radius: 30px;
+    border: none;
+    width: 104%;
+    height: 40px;
+    background-color: #176B87;
+    color: #E0F6F9;
+    font-family: "Viga", sans-serif;
+    /* padding: 10px; */  
+}
+
+.botaoInfo:hover{
+    background-color:  #3e8ea9;
+}
+
+p{
+    font-family: "Viga", sans-serif;
+    color: #3e8ea9;
+}
+
+.voltarBt{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 30px;
+    border: 5px #3e8ea9 solid;
+    
+    margin-top: 20px;
+    width: 104%;
+    height: 10%;
+    background-color: #E0F6F9;
+    color: #3e8ea9;
+    font-family: "Viga", sans-serif;
+    /* padding: 10px; */
+    
+}
+
+.voltarBt:hover{
+    background-color:  #3e8ea9;
+    color:#E0F6F9;
+}
+

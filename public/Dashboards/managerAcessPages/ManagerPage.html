@@ -31,7 +31,7 @@
         <div class="contentContainer">
             <div class="containerMeio">
                 <div class="containerTitle">
-                    <div class="titulo">Lista de Empresas <img src="./../../assets/logo-azul-claro.svg" alt=""> </div>
+                    <div class="titulo" id="tituloDaPagina">Lista de Empresas <img src="./../../assets/logo-azul-claro.svg" alt=""> </div>
                     
                     
                     <div class="containerPesquisa">                 
@@ -40,13 +40,49 @@
                     </div>
                     <div class="containerInfo" id="listaEmpresas">
                        
+                   
                         <div class="tile" onclick ="">
-                            <img class="lixo" onclik="FUNCAOEXCLUIR" src="../assetsDashboard/Lixeira.svg" alt="">
+                            <div class="iconTile">
+                                <img class="lixo" style="width: 30px; height: 30px;" onclick="" src="../assetsDashboard/Lixeira.svg" alt="">
+                                <img class="lixo" style="width: 30px; height: 30px;" onclick="funcaoEditar()" src="../assetsDashboard/Lapis.svg" alt="">
+                            </div>
+
                             <img src="../assetsDashboard/AirportChart.svg" alt="">
                             <h2 id="nomeEmpresa">${empresa.nome}</h2>
-                             </div>
+                        </div>
 
                                                 
+                    </div>
+
+
+                    <div class="containerEditar" id="editarForm">
+
+                        <div class="forms" id="editarForm">
+
+                    
+                            <div class="textoLateral">
+                                    <img style="margin: 0; width: 100px; height: 100px;" src="../assetsDashboard/Info.svg" alt="">
+                                    <p style="font-size: 40px; padding-left: 0; ">Instruções</p> <br>
+                                    <p style="padding: 0; width: 400px;"> Nesta tela, o administrador pode editar os dados de uma empresa cadastrada no sistema. Utilize os campos fornecidos para atualizar as informações necessárias, como razão social, CNPJ, endereço, e telefone. Após realizar as alterações desejadas, clique em "Salvar" para confirmar e atualizar os dados da empresa. Se decidir não prosseguir com a edição, clique em "Cancelar" para retornar à tela anterior sem salvar as modificações.</p>
+                            </div>
+            
+                            <div class="contentOpt">
+                            
+                                
+                                    <p>Insira o Email:</p>
+                                    <input class="inputInfo" type="text" placeholder="xxxx@yyyy.com" id="novoEmailIpt">
+                                    <p>Insira a Senha</p>
+                                    <input class="inputInfo" type="password" placeholder="6 ou mais caracteres" id="novaSenhaIpt">
+                                    <p>Confirme a Senha:</p>
+                                    <input class="inputInfo" type="password" placeholder="Certifique-se que está igual">
+                                    <button id="editarBt" class="botaoInfo" onclick="editarFunc()">Editar</button>
+                                
+            
+                                <button id="voltar1" class="voltarBt" onclick="voltarFunc()">Voltar</button>
+                            </div>
+                    </div>     
+
+
                     </div>
 
 
@@ -187,7 +223,40 @@
 
 
 
+//-----------------------------------
 
+function voltarFunc(){
+
+
+    var containerAll = document.getElementById("listaEmpresas");
+    var containerForm = document.getElementById("editarForm");
+    var titulo = document.getElementById("tituloDaPagina");
+    var barraPesquisa= document.getElementById("searchIpt");
+    
+
+    containerAll.style.display = "grid";
+    containerForm.style.display = "none";
+    barraPesquisa.style.display = "flex"
+
+     titulo.innerHTML = `Lista de Empresas <img src="./../../assets/logo-azul-claro.svg" alt=""> `
+}
+
+function funcaoEditar(){
+
+    var containerAll = document.getElementById("listaEmpresas");
+    var containerForm = document.getElementById("editarForm");
+    var titulo = document.getElementById("tituloDaPagina");
+    var barraPesquisa= document.getElementById("searchIpt");
+    
+
+    containerAll.style.display = "none";
+    containerForm.style.display = "grid";
+    barraPesquisa.style.display = "none"
+
+    titulo.innerHTML = `Editar Empresa <img src="./../../assets/logo-azul-claro.svg" alt=""> `
+     
+
+}
 
 
 

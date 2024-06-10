@@ -36,6 +36,19 @@ function cadastrarAdmin(nome, email, senha, idEmpresa, isAdmin, cpf) {
 }
 
 
+function updateCnpjAndTel(cnpj, tel, id) {
+    var instrucaoSql = `UPDATE empresa set cnpj = '${cnpj}' ,telefone  = '${tel}' where idEmpresa = '${id}'`
+    return database.executar(instrucaoSql)
+}
+
+
+function deleteEmpresa(id) {
+    var instrucaoSql = `DELETE from empresa where idEmpresa = ${id}`
+
+    return database.executar(instrucaoSql)
+}
+
+
 
 
 
@@ -44,6 +57,8 @@ module.exports = {
     listarAdmin,
     deletarAdmin,
     revogarAdmin,
-    cadastrarAdmin
+    cadastrarAdmin,
+    updateCnpjAndTel,
+    deleteEmpresa
 
 };

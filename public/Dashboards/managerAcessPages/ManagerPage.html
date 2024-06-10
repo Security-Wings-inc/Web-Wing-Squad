@@ -40,7 +40,11 @@
                     </div>
                     <div class="containerInfo" id="listaEmpresas">
                        
-                            
+                        <div class="tile" onclick ="">
+                            <img class="lixo" onclik="FUNCAOEXCLUIR" src="../assetsDashboard/Lixeira.svg" alt="">
+                            <img src="../assetsDashboard/AirportChart.svg" alt="">
+                            <h2 id="nomeEmpresa">${empresa.nome}</h2>
+                             </div>
 
                                                 
                     </div>
@@ -49,7 +53,7 @@
 
                 <div class="containerInfo hide" id="listaEmpresasPesquisadas">
 
-
+                    
 
                 </div>
 
@@ -117,10 +121,11 @@
                         
 
                         listaEmpresas.innerHTML += `   
-                        <button class="tile" onclick ="saveIdAndLocation(${empresa.idEmpresa},'${empresa.nome}')">
-                        <img src="../assetsDashboard/AirportChart.svg" alt="">
+                        <div class="tile" onclick ="saveIdAndLocation(${empresa.idEmpresa},'${empresa.nome}')">
+                        <img class="lixo" onclik="FUNCAOEXCLUIR" src="../assetsDashboard/Lixeira.svg" alt="">
+                       <img src="../assetsDashboard/AirportChart.svg" alt="">
                         <h2 id="nomeEmpresa">${empresa.nome}</h2>
-                         </button>
+                         </div>
                          `
 
 

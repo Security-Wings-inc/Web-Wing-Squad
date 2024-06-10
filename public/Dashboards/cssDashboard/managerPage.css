@@ -22,6 +22,19 @@ body{
  
 }
 
+.lixo{
+    filter: brightness(60%) saturate(3);
+    width: 30px; 
+    height: 30px; 
+    margin: 0 0 0 150px;
+    padding: 0 0;
+}
+
+.lixo:hover{
+    filter: brightness(70%) saturate(4);
+    cursor: pointer;
+}
+
 
 .containerMeio{
     display: flex;
@@ -131,7 +144,7 @@ img{
 .tile{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     padding: 20px 20px;
     /* margin: 30px; */

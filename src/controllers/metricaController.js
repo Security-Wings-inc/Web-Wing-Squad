@@ -4,6 +4,8 @@ function findMachineId(req, res) {
     var IdEmpresa = req.params.idEmpresa;
     var idUser = req.params.idUser;
 
+    console.log("to na controller do find")
+
 
     metricaModel.findMachineId(IdEmpresa, idUser)
         .then(function (resultado) {

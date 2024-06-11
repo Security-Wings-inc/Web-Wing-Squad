@@ -81,10 +81,10 @@
 
                             <p>Insira o CNPJ mais atual:</p>
                             <input class="inputInfo" type="text" placeholder="CNPJ" id="novoCnpjIpt" maxlength="18"
-                                minlength="18">
+                                minlength="18" oninput="formatarCNPJ(novoCnpjIpt)">
                             <p>Insira a o número de telefone mais recente</p>
                             <input class="inputInfo" type="tel" placeholder="(xx)xxxxxxxxx" id="novoTelIpt"
-                                maxlength="15" minlength="15">
+                                maxlength="15" minlength="15" oninput="formatarTelefone(novoTelIpt)">
                             <button id="editarBt" class="botaoInfo" onclick="editarFunc()">Editar</button>
 
 
@@ -194,6 +194,8 @@
 
                             <img src="../assetsDashboard/AirportChart.svg" alt="">
                         <h2 id="nomeEmpresa">${empresa.nome}</h2>
+                        <p> CNPJ: ${empresa.cnpj} </p>
+                        <p> Telefone: ${empresa.telefone}
                          </button>
                          `
 
@@ -239,11 +241,21 @@
 
         empresasFiltradas.forEach(function (empresa) {
             listaEmpresasPesquisadas.innerHTML += `   
-            <button class="tile" onclick ="saveIdAndLocation(${empresa.idEmpresa},'${empresa.nome}')">
-                <img src="../assetsDashboard/AirportChart.svg" alt="">
-                <h2 id="nomeEmpresa">${empresa.nome}</h2>
-                <p>CNPJ: ${empresa.cnpj}</p> 
-            </button>`;
+                            <button class="tile">
+                                <div class="iconTile">
+
+                                    <img class="lixo" onclick="saveIdAndLocation(${empresa.idEmpresa},'${empresa.nome}')" style="width: 30px; height: 30px;"  src="../assetsDashboard/Engrenagem.svg" alt="">
+                                    <img class="lixo" onclick="funcaoEditar('${empresa.idEmpresa}')" style="width: 30px; height: 30px;"  src="../assetsDashboard/Lapis.svg" alt="">
+                                    <img class="lixo" onclick="endEmpresa('${empresa.idEmpresa}')" style="width: 30px; height: 30px;" src="../assetsDashboard/Lixeira.svg" alt="">
+                                   
+                                </div>
+
+                            <img src="../assetsDashboard/AirportChart.svg" alt="">
+                        <h2 id="nomeEmpresa">${empresa.nome}</h2>
+                        <p> CNPJ: ${empresa.cnpj} </p>
+                        <p> Telefone: ${empresa.telefone}
+                         </button>
+                         `
         });
 
         if (empresasFiltradas.length === 0) {
@@ -298,8 +310,21 @@
     function editarFunc() {
 
 
+
         var cnpj = novoCnpjIpt.value;
         var tel = novoTelIpt.value;
+
+        if (cnpj == '' || tel == '') {
+            Swal.fire({
+                icon: 'error',
+                title: 'ops...',
+                text: `os campos não podem estar vazios`,
+                showConfirmButton: false,
+
+            })
+
+            return
+        }
 
         console.log(idGlobal)
 
@@ -326,6 +351,14 @@
                     window.location.reload();
 
                 }, 2000);
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'ops...',
+                    text: `Erro ao atualizar informações cadastrais`,
+                    showConfirmButton: false,
+
+                })
             }
         }).catch((erro) => {
             console.log("Houve um erro ao atualizar", erro)
@@ -352,9 +385,10 @@
 
                 })
                 setTimeout(() => {
-                        window.location.reload();
-                        
-                    }, 2000);            }
+                    window.location.reload();
+
+                }, 2000);
+            }
         }).catch((erro) => {
             console.log("houve um erro ao exlcuir empresa")
         })

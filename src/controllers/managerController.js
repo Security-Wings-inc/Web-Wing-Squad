@@ -115,7 +115,10 @@ function revogarAdmin(req, res) {
 function updateCnpjAndTel(req, res) {
     var cnpj = req.body.cnpjServer;
     var tel = req.body.telServer;
-    var idEmpresa = req.params.id;
+    var idEmpresa = req.params.idGlobal;
+
+    console.log(idEmpresa)
+
 
     managerModel.updateCnpjAndTel(cnpj, tel, idEmpresa)
         .then((resposta) => {

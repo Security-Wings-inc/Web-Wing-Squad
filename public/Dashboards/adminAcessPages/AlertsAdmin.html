@@ -46,9 +46,11 @@
 
                 <div class="abas">
 
-                    <div class="aba" style="background-color: #426572"><a style="color: #8bacb8" href="./MenagentmentAdmin.html">Gerenciar Usuários</a></div>
+                    <div class="aba" style="background-color: #426572"><a style="color: #8bacb8"
+                            href="./MenagentmentAdmin.html">Gerenciar Usuários</a></div>
                     <div class="aba">Gerenciar Alertas</div>
-                    <div class="aba"style="background-color: #426572"><a style="color: #8bacb8" href="./ProcessAdmin.html">Gerenciar Processos</a></div>
+                    <div class="aba" style="background-color: #426572"><a style="color: #8bacb8"
+                            href="./ProcessAdmin.html">Gerenciar Processos</a></div>
 
 
                 </div>
@@ -213,7 +215,7 @@
 
                                 <div class="param hide" id="paramREDE">
 
-                                    <p class="titleParam">REDE</p>
+                                    <p class="titleParam">REDE (em Gigabytes)</p>
                                     <div class="paramMid">
                                         <img class="icon" src="../assetsDashboard/REDE.svg" alt="">
 
@@ -339,31 +341,35 @@
 <script>
     var idEmpresa = sessionStorage.FK_EMPRESA;
 
-    function getAllParamsJson(id){
-        fetch(`/alerta/getAllParamsJSON/${id}`,{
-            method : "GET",
-            headers : {
-                "Content-type" : "application/json"
+    function getAllParamsJson(id) {
+        fetch(`/alerta/getAllParamsJSON/${id}`, {
+            method: "GET",
+            headers: {
+                "Content-type": "application/json"
             }
-        }).then((resposta)=>{
-            if(resposta.ok){
-         
-                resposta.json().then(json =>{
-
-                    sessionStorage.RAM_DANGER = json.ramDanger;
-                    sessionStorage.RAM_WARNING = json.ramWarning;
-                    sessionStorage.CPU_DANGER = json.processadorDanger;
-                    sessionStorage.CPU_WARNING = json.processadorWarning;
-                    sessionStorage.REDE_DANGER = json.internetDanger;
-                    sessionStorage.REDE_WARNIG = json.internetWarning;
-                    sessionStorage.HD_DANGER = json.discoDanger;
-                    sessionStorage.HD_WARNING = json.discoWarning;
-
+        }).then((resposta) => {
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    sessionStorage.RAM_DANGER = bytesToGB(json.ramDanger);
+                    sessionStorage.RAM_WARNING = bytesToGB(json.ramWarning);
+                    sessionStorage.CPU_DANGER = bytesToGB(json.processadorDanger);
+                    sessionStorage.CPU_WARNING = bytesToGB(json.processadorWarning);
+                    sessionStorage.REDE_DANGER = bytesToGB(json.internetDanger);
+                    sessionStorage.REDE_WARNING = bytesToGB(json.internetWarning);
+                    sessionStorage.HD_DANGER = bytesToGB(json.discoDanger);
+                    sessionStorage.HD_WARNING = bytesToGB(json.discoWarning);
                 })
             }
-        }).catch((erro)=>{
-            console.log("deu erro" , erro)
+        }).catch((erro) => {
+            console.log("deu erro", erro)
         })
+    }
+
+    function bytesToGB(bytes) {
+        if (bytes == 0) return '0 GB';
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+        return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
     }
 
     function getAllParams() {
@@ -380,7 +386,7 @@
                 getAllParamsJson(idEmpresa)
                 resposta.json().then((resposta) => {
                     console.log(resposta)
-                   
+
                     for (let i = 0; i < resposta.length; i++) {
                         var rep = resposta[i]
 
@@ -393,9 +399,9 @@
                         hdValueRed.innerHTML = `a partir de: ${rep.discoDanger}%`;
                         hdValueYellow.innerHTML = `a partir de: ${rep.discoWarning}%`;
                         hdValueGreen.innerHTML = `até: ${rep.discoWarning - 1}%`;
-                        redeValueRed.innerHTML = `a partir de: ${rep.internetDanger}%`;
-                        redeValueYellow.innerHTML = `a partir de: ${rep.internetWarning}%`;
-                        redeValueGreen.innerHTML = `até: ${rep.internetWarning - 1}%`;
+                        redeValueRed.innerHTML = `a partir de: ${rep.internetDanger} GB`;
+                        redeValueYellow.innerHTML = `a partir de: ${rep.internetWarning} GB`;
+                        redeValueGreen.innerHTML = `até: ${rep.internetWarning - 1} GB`;
                     }
 
                     showOrNot(resposta)
@@ -984,7 +990,7 @@
         })
     }
 
-  
+
 
 
 

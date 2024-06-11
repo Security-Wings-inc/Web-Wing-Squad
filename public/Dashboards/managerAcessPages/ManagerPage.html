@@ -80,9 +80,11 @@
 
 
                             <p>Insira o CNPJ mais atual:</p>
-                            <input class="inputInfo" type="text" placeholder="CNPJ" id="novoCnpjIpt" maxlength="18" minlength="18">
+                            <input class="inputInfo" type="text" placeholder="CNPJ" id="novoCnpjIpt" maxlength="18"
+                                minlength="18">
                             <p>Insira a o número de telefone mais recente</p>
-                            <input class="inputInfo" type="tel" placeholder="(xx)xxxxxxxxx" id="novoTelIpt" maxlength="15"  minlength="15">
+                            <input class="inputInfo" type="tel" placeholder="(xx)xxxxxxxxx" id="novoTelIpt"
+                                maxlength="15" minlength="15">
                             <button id="editarBt" class="botaoInfo" onclick="editarFunc()">Editar</button>
 
 
@@ -121,12 +123,12 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
 
-var idGlobal;
-function formatarTelefone(novoTelIpt) {
-        let telefone = novoTelIpt.value; 
-        telefone = telefone.replace(/\D/g, ''); 
-        telefone = telefone.replace(/^(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'); 
-        novoTelIpt.value = telefone; 
+    var idGlobal;
+    function formatarTelefone(novoTelIpt) {
+        let telefone = novoTelIpt.value;
+        telefone = telefone.replace(/\D/g, '');
+        telefone = telefone.replace(/^(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+        novoTelIpt.value = telefone;
     }
 
 
@@ -134,7 +136,7 @@ function formatarTelefone(novoTelIpt) {
         let cnpj = novoCnpjIpt.value;
         cnpj = cnpj.replace(/\D/g, '');
         cnpj = cnpj.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5');
-        novoCnpjIpt.value = cnpj; 
+        novoCnpjIpt.value = cnpj;
     }
 
     var arrayEmpresaGloba = [];
@@ -186,7 +188,8 @@ function formatarTelefone(novoTelIpt) {
 
                                     <img class="lixo" onclick="saveIdAndLocation(${empresa.idEmpresa},'${empresa.nome}')" style="width: 30px; height: 30px;"  src="../assetsDashboard/Engrenagem.svg" alt="">
                                     <img class="lixo" onclick="funcaoEditar('${empresa.idEmpresa}')" style="width: 30px; height: 30px;"  src="../assetsDashboard/Lapis.svg" alt="">
-                                    <img class="lixo" onclick="" style="width: 30px; height: 30px;" src="../assetsDashboard/Lixeira.svg" alt="">
+                                    <img class="lixo" onclick="endEmpresa('${empresa.idEmpresa}')" style="width: 30px; height: 30px;" src="../assetsDashboard/Lixeira.svg" alt="">
+                                   
                                 </div>
 
                             <img src="../assetsDashboard/AirportChart.svg" alt="">
@@ -197,9 +200,7 @@ function formatarTelefone(novoTelIpt) {
 
                     }
 
-                    setTimeout(function () {
-                        window.location.reload
-                    }, 1500);
+
 
                 });
 
@@ -286,7 +287,7 @@ function formatarTelefone(novoTelIpt) {
 
         titulo.innerHTML = `Editar Empresa <img src="./../../assets/logo-azul-claro.svg" alt=""> `
 
-        
+
 
 
 
@@ -296,7 +297,7 @@ function formatarTelefone(novoTelIpt) {
 
     function editarFunc() {
 
- 
+
         var cnpj = novoCnpjIpt.value;
         var tel = novoTelIpt.value;
 
@@ -321,8 +322,10 @@ function formatarTelefone(novoTelIpt) {
                     showConfirmButton: false,
 
                 })
+                setTimeout(() => {
+                    window.location.reload();
 
-                window.location.reload();
+                }, 2000);
             }
         }).catch((erro) => {
             console.log("Houve um erro ao atualizar", erro)
@@ -331,4 +334,29 @@ function formatarTelefone(novoTelIpt) {
 
     }
 
+
+    function endEmpresa(id) {
+        console.log(id)
+        fetch(`/manager/deleteEmpresa/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json"
+            }
+        }).then((resposta) => {
+            if (resposta.ok) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Tudo certo!',
+                    text: `Empresa excluída  com sucesso`,
+                    showConfirmButton: false,
+
+                })
+                setTimeout(() => {
+                        window.location.reload();
+                        
+                    }, 2000);            }
+        }).catch((erro) => {
+            console.log("houve um erro ao exlcuir empresa")
+        })
+    }
 </script>

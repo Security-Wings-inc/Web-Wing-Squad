@@ -27,7 +27,7 @@ router.put("/revogarAdmin/:idVar", function (req, res) {
 });
 
 
-router.put("/updateEmpresa/:id", (req, res) => {
+router.put("/updateEmpresa/:idGlobal", (req, res) => {
   managerController.updateCnpjAndTel(req, res)
 })
 

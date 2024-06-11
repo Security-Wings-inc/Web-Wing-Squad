@@ -13,9 +13,10 @@
 
 </head>
 
-<body onload="getMachineData()">
+<body onload="findMachineId()">
 
   <header>
+
 
     <div class="lista">
 
@@ -200,100 +201,113 @@
   cpuAmarelo.innerHTML = `<img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Alerta a partir de ${cpuWarning}%`;
   cpuVermelho.innerHTML = `<img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> Alerta a partir de ${cpuDanger}%`;
 
-  redeVerde.innerHTML = `<img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Normal até ${redeWarning -1} bytes`
-  redeAmarelo.innerHTML = `<img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Alertar a partir de ${redeWarning} bytes`
-  redeVermelho.innerHTML = `<img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> Risco a partir de ${redeDanger} bytes`
+  redeVerde.innerHTML = `<img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Normal até ${redeWarning -1} Gigabytes`
+  redeAmarelo.innerHTML = `<img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Alertar a partir de ${redeWarning} Gigabytes`
+  redeVermelho.innerHTML = `<img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> Risco a partir de ${redeDanger} Gigabytes`
 
 
 
-  var idMachine = sessionStorage.MAQUINA_SELECIONADA;
+var idUser = sessionStorage.ID_USUARIO;
+var idEmpresa =  sessionStorage.FK_EMPRESA;
+
+
+
   setTimeout(() => {
     window.location.reload()
   }, 3000);
 
-  function getMachineData() {
 
-    fetch(`/metrica/getMachineData/${idMachine}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-    }).then(function (resposta) {
-      if (resposta.ok) {
-
-        resposta.json().then(function (resposta) {
-          console.log(resposta[resposta.length - 1])
-
-
-          for (let i = 0; i < resposta.length; i++) {
-            var capturas = resposta[resposta.length - 1]
-
-            if (capturas.discoUso > discoWarning) {
-              discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Vermelho.svg">`
-            }
-
-            if (capturas.discoUso == discoWarning) {
-              discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
-            }
-
-            if (capturas.discoUso < discoWarning) {
-              discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Verde.svg">`
-
-            }
-
-            if (capturas.processadorUso > cpuWarning) {
-              cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
-            }
-            if (capturas.processadorUso == cpuWarning) {
-              cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
-
-            }
-            if (capturas.processadorUso < cpuWarning) {
-              cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
-
-            }
-
-            if (capturas.ramUso > ramWarning) {
-              ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
-            }
-            if (capturas.ramUso == ramWarning) {
-              ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
-            }
-            if (capturas.ramUso < ramWarning) {
-              ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
-            }
-
-            if (capturas.bytesEnviados > redeWarning) {
-              redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
-            }
-
-            if (capturas.bytesEnviados == redeWarning) {
-              redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
-            }
-
-            if (capturas.bytesEnviados < redeWarning) {
-              redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
-            }
-
-
-          }
-
-
-          armazenamento(resposta)
-          processador(resposta)
-          ram(resposta)
-          rede(resposta)
-
-
-        });
-      } else {
-        console.error('Nenhum dado encontrado ou erro na API');
+  function findMachineId(){
+    fetch(`/metrica/findMachineId/${idEmpresa}/${idUser}`, {
+      method : "POST",
+      headers : {
+        "Content-type" : "application/json"
       }
+    }).then((resposta)=>{
+      if(resposta.ok){
+        resposta.json().then(json =>{
+          sessionStorage.ID_MAQUINA_USER = json.idComputador;
+          var idMachine = sessionStorage.ID_MAQUINA_USER;
+          console.log(idMachine)
+          getMachineData(idMachine)
+        })
+      }
+    }).catch((erro)=>{
+      console.log("Houve um erro ao procurar o id da maquina")
     })
-
-
   }
 
+
+  function getMachineData(id) {
+    fetch(`/metrica/getMachineData/${id}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+    }).then(function (resposta) {
+        if (resposta.ok) {
+            resposta.json().then(function (resposta) {
+                console.log(resposta[resposta.length - 1])
+
+                for (let i = 0; i < resposta.length; i++) {
+                    var capturas = resposta[resposta.length - 1];
+
+                    if (capturas.discoUso > discoWarning) {
+                        discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Vermelho.svg">`
+                    }
+
+                    if (capturas.discoUso == discoWarning) {
+                        discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
+                    }
+
+                    if (capturas.discoUso < discoWarning) {
+                        discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Verde.svg">`
+                    }
+
+                    if (capturas.processadorUso > cpuWarning) {
+                        cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
+                    }
+                    if (capturas.processadorUso == cpuWarning) {
+                        cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
+                    }
+                    if (capturas.processadorUso < cpuWarning) {
+                        cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
+                    }
+
+                    if (capturas.ramUso > ramWarning) {
+                        ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
+                    }
+                    if (capturas.ramUso == ramWarning) {
+                        ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
+                    }
+                    if (capturas.ramUso < ramWarning) {
+                        ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
+                    }
+
+                    let bytesEnviadosGB = (capturas.bytesEnviados / (1024 ** 3)).toFixed(2);
+
+                    // Comparando os dados de bytes enviados
+                    if (bytesEnviadosGB > redeWarning) {
+                        redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
+                    } else if (bytesEnviadosGB == redeWarning) {
+                        redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
+                    } else {
+                        redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
+                    }
+
+                }
+
+                armazenamento(resposta);
+                processador(resposta);
+                ram(resposta);
+                rede(resposta);
+
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+}
 
   function armazenamento(dados) {
 
@@ -384,33 +398,32 @@
   }
 
   function rede(dados) {
-
     const ctx4 = document.getElementById('myChart4');
     const labels = dados.slice(-8).map(dado => dado.dataCaptura);
-    const dataBytesRecebidos = dados.slice(-8).map(dado => dado.bytesRecebidos);
-    const dataBytesEnviados = dados.slice(-8).map(dado => dado.bytesEnviados);
+    const dataBytesRecebidos = dados.slice(-8).map(dado => (dado.bytesRecebidos / (1024 ** 3)).toFixed(2));
+    const dataBytesEnviados = dados.slice(-8).map(dado => (dado.bytesEnviados / (1024 ** 3)).toFixed(2));
 
     new Chart(ctx4, {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [
-          {
-            label: 'Bytes enviados',
-            data: dataBytesEnviados,
-            borderWidth: 1,
-            borderColor: 'rgba(192, 75, 75, 1)',
-            backgroundColor: 'rgba(192, 75, 75, 0.2)',
-          }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'GB enviados',
+                    data: dataBytesEnviados,
+                    borderWidth: 1,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
         }
-      }
     });
-  }
+}
 
 </script>

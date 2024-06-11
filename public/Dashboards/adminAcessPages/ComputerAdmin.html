@@ -12,9 +12,7 @@
 <body onload="getAllMachinesByIdEmpresa()">
 
     <header>
-
         <div class="lista">
-
             <ul class="listaHeader">
                 <li><a href="./PerfilAdmin.html"><img src="../assetsDashboard/PerfilIcon.svg" alt=""></a></li>
                 <li><a href="./ComputerAdmin.html"><img
@@ -23,45 +21,24 @@
                 <li><a href="./MenagentmentAdmin.html"><img src="../assetsDashboard/ChaveIcon.svg" alt=""></a></li>
                 <li><a href="../../index.html"><img src="../assetsDashboard/SairIcon.svg" alt=""></a></li>
             </ul>
-
-
         </div>
-
     </header>
 
     <main>
-
         <div class="contentContainer">
             <div class="containerMeio">
                 <div class="containerTitle">
                     <div class="titulo">Lista de Computadores<img src="./../../assets/logo-azul-claro.svg" alt="">
                     </div>
-
-
                     <div class="containerPesquisa">
                         <input type="text" class="inputPesquisa" id="searchIpt" oninput="search()"
                             placeholder="Pesquisar Computadores">
                     </div>
                 </div>
-                <div class="containerInfo" id="listaMaquinas">
-
-
-
-
-                </div>
-
-
-
-                <div class="containerInfo hide" id="listaMaquinasPesquisadas">
-
-                </div>
-
-
+                <div class="containerInfo" id="listaMaquinas"></div>
+                <div class="containerInfo hide" id="listaMaquinasPesquisadas"></div>
             </div>
         </div>
-
-
-
     </main>
 
     <footer></footer>
@@ -72,127 +49,45 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-
 <script>
+    const idEmpresa = sessionStorage.FK_EMPRESA;
+    const ramWarning = sessionStorage.RAM_WARNING;
+    const cpuWarning = sessionStorage.CPU_WARNING;
+    const redeWarning = sessionStorage.REDE_WARNIG;
 
-
-    var idEmpresa = sessionStorage.FK_EMPRESA;
-
-    var nome = sessionStorage.NOME_USUARIO;
-    var ramDanger = sessionStorage.RAM_DANGER;
-    var ramWarning = sessionStorage.RAM_WARNING;
-    var cpuDanger = sessionStorage.CPU_DANGER;
-    var cpuWarning = sessionStorage.CPU_WARNING;
-    var redeDanger = sessionStorage.REDE_DANGER;
-    var redeWarning = sessionStorage.REDE_WARNIG;
-    var discoDanger = sessionStorage.HD_DANGER;
-    var discoWarning = sessionStorage.HD_WARNING;
-
-    console.log(`ram danger (${ramDanger}) , ram warning (${ramWarning}) , cpu danger(${cpuDanger}) , cpu warning (${cpuWarning}) , rede danger (${redeDanger}) , rede warning (${redeWarning}) , disco danger (${discoDanger}) , disco warning (${discoWarning})`);
-
-
-
-
-
-
-
+    const bytesToGB = bytes => (bytes / (1024 * 1024 * 1024)).toFixed(2);
 
     function getAllMachinesByIdEmpresa(id) {
-
         fetch(`/metrica/getAllMachinesByIdEmpresa/${idEmpresa}`, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-        }).then(function (resposta) {
-            if (resposta.ok) {
-                resposta.json().then(function (resposta) {
-                    for (let i = 0; i < resposta.length; i++) {
-                        maquinas = resposta[i];
-
-                        console.log(maquinas)
-
+            headers: { "Content-Type": "application/json" },
+        }).then(response => {
+            if (response.ok) {
+                response.json().then(maquinas => {
+                    maquinas.forEach(maquina => {
+                        const { idComputador, nomeUsuario, processadorModelo, processadorUso, ramUso, bytesEnviados } = maquina;
+                        const gbEnviados = bytesToGB(bytesEnviados);
+                        const redeStatus = gbEnviados > redeWarning ? "🔴" : gbEnviados == redeWarning ? "🟡" : "🟢";
 
                         listaMaquinas.innerHTML += `
-                        
-                        <div class="tile" onclick="transporterIdToDash('${maquinas.idComputador}')">
-                        <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
-                        <h2>Computador do ${maquinas.nomeUsuario}</h2>
-                        <p>Modelo do processador: ${maquinas.processadorModelo}</p>
-                        <p id= "cpuP">Uso do processador: ${maquinas.processadorUso}%</p>
-                        <p id="ramP">Uso de memória RAM: ${maquinas.ramUso}%</p>
-                        <p id = "redeP"> taxa de bits de upload: ${maquinas.bytesEnviados}</p>
-                        </div> `
-                        if (maquinas.ramUso > ramWarning) {
-                            ramP.innerHTML = `🔴Uso de memória RAM: ${maquinas.ramUso}%`
-                        } 
-                        if (maquinas.ramUso == ramWarning) {
-                            ramP.innerHTML = `🟡Uso de memória RAM: ${maquinas.ramUso}%`
-
-                        } 
-                        if(maquinas.ramUso < ramWarning){
-                            ramP.innerHTML = `🟢Uso de memória RAM: ${maquinas.ramUso}%`
-
-                        }
-
-                        if(maquinas.processadorUso > cpuWarning){
-                            cpuP.innerHTML = `🔴Uso do processador: ${maquinas.processadorUso}%`
-                        }
-
-                        if(maquinas.processadorUso == cpuWarning){
-                            cpuP.innerHTML = `🟡Uso do processador: ${maquinas.processadorUso}%`
-                        }
-
-                        if(maquinas.processadorUso < cpuWarning){
-                            cpuP.innerHTML = `🟢Uso do processador: ${maquinas.processadorUso}%`
-
-                        }
-
-                        if(maquinas.bytesEnviados > redeWarning){
-                            redeP.innerHTML = `🔴taxa de bits de upload: ${maquinas.bytesEnviados}` 
-                        }
-
-                        if(maquinas.bytesEnviados == redeWarning){
-                            redeP.innerHTML = `🟡taxa de bits de upload: ${maquinas.bytesEnviados}` 
-
-                        }
-
-                        if(maquinas.bytesEnviados < redeWarning){
-                            redeP.innerHTML = `🟢taxa de bits de upload: ${maquinas.bytesEnviados}` 
-
-                        }
-
-
-                    }
-
-
-                    console.log(resposta)
+                        <div class="tile" onclick="transporterIdToDash('${idComputador}')">
+                            <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
+                            <h2>Computador do ${nomeUsuario}</h2>
+                            <p>Modelo do processador: ${processadorModelo}</p>
+                            <p id="cpuP">${processadorUso > cpuWarning ? "🔴" : processadorUso == cpuWarning ? "🟡" : "🟢"}Uso do processador: ${processadorUso}%</p>
+                            <p id="ramP">${ramUso > ramWarning ? "🔴" : ramUso == ramWarning ? "🟡" : "🟢"}Uso de memória RAM: ${ramUso}%</p>
+                            <p id="redeP">${redeStatus}taxa de bits de upload: ${gbEnviados} GB</p>
+                        </div>`;
+                    });
                 });
-
-
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
             }
-        })
+        });
     }
 
-
-
-
-
-
     function transporterIdToDash(id) {
-
         sessionStorage.MAQUINA_SELECIONADA = id;
         window.location = "./DashboardAdminAcess.html";
     }
-
-
-
-
-
-
-
-
-
 </script>

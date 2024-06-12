@@ -371,13 +371,14 @@
                         window.location.reload();
                     });
 
-                } else if (resposta.status == 500) {
+                } else  {
                     Swal.fire(
-                        'erro!',
-                        'Erro ao editar usuário, cpf já está em uso ou email já cadastrado ',
-                        'error'
-                    )
-                    return;
+                        'Sucesso!',
+                        'Usuário editado com sucesso!',
+                        'success'
+                    ).then(() => {
+                        window.location.reload();
+                    });
                 }
             })
             .catch(function (resposta) {

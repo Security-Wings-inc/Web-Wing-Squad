@@ -39,21 +39,19 @@
           <div class="containerCards">
             <div class="card">
               <h2>Armazenamento</h2>
-              <span> Ocupado: 300,23 Gb </span>
-              <span> Livre: 699,23 Gb </span>
-              <span> Porcentagem: 80%</span>
+              <span id="infosArma"></span>
+
 
             </div>
 
             <div class="card">
               <h2>Em quantos dias <br> o Armazenamento <Br> lotará</h2>
-              <span>12 dias</span>
+              <span id="diasArm">12 dias</span>
             </div>
 
             <div class="card">
               <h2>Velocidade da Internet</h2>
-              <span> Download: 200 Mb/s </span>
-              <span> Upload: 150 Mb/s </span>
+         <span id="redeEnviado"></span>
 
 
             </div>
@@ -247,53 +245,70 @@ var idEmpresa =  sessionStorage.FK_EMPRESA;
             resposta.json().then(function (resposta) {
                 console.log(resposta[resposta.length - 1])
 
-                for (let i = 0; i < resposta.length; i++) {
-                    var capturas = resposta[resposta.length - 1];
+              
+          for (let i = 0; i < resposta.length; i++) {
+            var capturas = resposta[resposta.length - 1];
 
-                    if (capturas.discoUso >= discoDanger) {
-                        discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Vermelho.svg">`
-                    }
 
-                    if (capturas.discoUso >= discoWarning && capturas.discoUso < discoDanger) {
-                        discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
-                    }
+            if (capturas.discoUso >= discoDanger) {
+              discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Vermelho.svg">`
+              infosArma.innerHTML = `Referente aos dados coletados sobre seu armazenamento (${capturas.discoUso}% ocupado) recomendamos que faça um backup dentro do período de 1 dia`
+              diasArm.innerHTML = `1 dia`
 
-                    if (capturas.discoUso < discoWarning) {
-                        discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Verde.svg">`
-                    }
+            }
 
-                    if (capturas.processadorUso >= cpuDanger) {
-                        cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
-                    }
-                    if (capturas.processadorUso >= cpuWarning && capturas.processadorUso < cpuDanger) {
-                        cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
-                    }
-                    if (capturas.processadorUso < cpuWarning) {
-                        cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
-                    }
+            if (capturas.discoUso >= discoWarning && capturas.discoUso < discoDanger) {
+              discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
+              infosArma.innerHTML = `Referente aos dados coletados sobre seu armazenamento (${capturas.discoUso}% ocupado) recomendamos que faça um backup dentro do período de 8 dias`
+              diasArm.innerHTML = `8 dias`
 
-                    if (capturas.ramUso >= ramDanger) {
-                        ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
-                    }
-                    if (capturas.ramUso >= ramWarning && capturas.ramUso < ramDanger) {
-                        ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
-                    }
-                    if (capturas.ramUso < ramWarning) {
-                        ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
-                    }
+            }
 
-                    let bytesEnviadosGB = (capturas.bytesEnviados / (1024 ** 3)).toFixed(2);
+            if (capturas.discoUso < discoWarning) {
+              discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Verde.svg">`
+              infosArma.innerHTML = `Referente aos dados coletados sobre seu armazenamento (${capturas.discoUso}% ocupado) recomendamos que faça um backup dentro do período de 12 dias`
+              diasArm.innerHTML = `12 dias`
 
-                    // Comparando os dados de bytes enviados
-                    if (bytesEnviadosGB >= redeDanger) {
-                        redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
-                    } else if (bytesEnviadosGB >= redeWarning && bytesEnviadosGB < redeDanger) {
-                        redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
-                    } else {
-                        redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
-                    }
+            }
 
-                }
+            if (capturas.processadorUso >= cpuDanger) {
+              cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
+            }
+            if (capturas.processadorUso >= cpuWarning && capturas.processadorUso < cpuDanger) {
+              cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
+            }
+            if (capturas.processadorUso < cpuWarning) {
+              cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
+            }
+
+            if (capturas.ramUso >= ramDanger) {
+              ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
+            }
+            if (capturas.ramUso >= ramWarning && capturas.ramUso < ramDanger) {
+              ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
+            }
+            if (capturas.ramUso < ramWarning) {
+              ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
+            }
+
+            let bytesEnviadosGB = (capturas.bytesEnviados / (1024 ** 3)).toFixed(2);
+
+            // Comparando os dados de bytes enviados
+            if (bytesEnviadosGB >= redeDanger) {
+              redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
+              redeEnviado.innerHTML = `${bytesEnviadosGB} GB`
+            } else if (bytesEnviadosGB >= redeWarning && bytesEnviadosGB < redeDanger) {
+              redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
+              redeEnviado.innerHTML = `${bytesEnviadosGB} GB`
+
+            } else {
+              redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
+              redeEnviado.innerHTML = `${bytesEnviadosGB} GB`
+
+            }
+
+          }
+
 
                 armazenamento(resposta);
                 processador(resposta);

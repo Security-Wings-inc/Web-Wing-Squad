@@ -36,21 +36,20 @@
           <div class="containerCards">
             <div class="card">
               <h2>Armazenamento</h2>
-              <span> Ocupado: 300,23 Gb </span>
-              <span> Livre: 699,23 Gb </span>
-              <span> Porcentagem: 80%</span>
+              <span id="infosArma"></span>
+
 
             </div>
 
             <div class="card">
               <h2>Em quantos dias <br> o Armazenamento <Br> lotará</h2>
-              <span>12 dias</span>
+              <span id="diasArm">12 dias</span>
             </div>
 
             <div class="card">
-              <h2>Velocidade da Internet</h2>
-              <span> Download: 200 Mb/s </span>
-              <span> Upload: 150 Mb/s </span>
+              <h2>Gigas enviados</h2>
+              <span id="redeEnviado"> </span>
+
 
 
             </div>
@@ -118,11 +117,14 @@
 
             <div class="info">
               <h2 style="font-size: 15px; margin-bottom: 10px;">Memória Ram</h2>
-              <span style="margin-bottom: 2px;" id="ramVerde"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> 50% ou
+              <span style="margin-bottom: 2px;" id="ramVerde"><img class="bola" src="../assetsDashboard/Verde.svg"
+                  alt=""> 50% ou
                 menos </span>
-              <span style="margin-bottom: 2px;" id="ramAmarelo"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> 51% até
+              <span style="margin-bottom: 2px;" id="ramAmarelo"><img class="bola" src="../assetsDashboard/Amarelo.svg"
+                  alt=""> 51% até
                 80%</span>
-              <span style="margin-bottom: 2px;" id="ramVermelho"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> 81% ou
+              <span style="margin-bottom: 2px;" id="ramVermelho"><img class="bola" src="../assetsDashboard/Vermelho.svg"
+                  alt=""> 81% ou
                 mais</span>
               <p style="font-size: 12px;">Eixo X = Hora de captura</p>
               <p style="font-size: 12px;">Eixo Y = Porcentagem</p>
@@ -130,11 +132,14 @@
 
             <div class="info">
               <h2 style="font-size: 15px; margin-bottom: 10px;">Processador</h2>
-              <span style="margin-bottom: 2px;" id="cpuVerde"><img class="bola" src="../assetsDashboard/Verde.svg" alt=""> 70% ou
+              <span style="margin-bottom: 2px;" id="cpuVerde"><img class="bola" src="../assetsDashboard/Verde.svg"
+                  alt=""> 70% ou
                 menos </span>
-              <span style="margin-bottom: 2px;" id="cpuAmarelo"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> 71% até
+              <span style="margin-bottom: 2px;" id="cpuAmarelo"><img class="bola" src="../assetsDashboard/Amarelo.svg"
+                  alt=""> 71% até
                 80%</span>
-              <span style="margin-bottom: 2px;" id="cpuVermelho"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> 81% ou
+              <span style="margin-bottom: 2px;" id="cpuVermelho"><img class="bola" src="../assetsDashboard/Vermelho.svg"
+                  alt=""> 81% ou
                 mais</span>
               <p style="font-size: 12px;">Eixo X = Hora de captura</p>
               <p style="font-size: 12px;">Eixo Y = Porcentagem</p>
@@ -144,11 +149,14 @@
             <div class="info">
               <h2 style="font-size: 15px; margin-bottom: 10px;">Rede</h2>
 
-              <span style="margin-bottom: 2px;" id="redeVerde"><img class="bola" src="../assetsDashboard/Verde.svg" alt="" > rede</span>
-              <span style="margin-bottom: 2px;" id="redeAmarelo"><img class="bola" src="../assetsDashboard/Amarelo.svg" alt="" >rede</span>
-                  <span style="margin-bottom: 2px;" id="redeVermelho"><img class="bola" src="../assetsDashboard/Vermelho.svg" alt="" >rede<span>
-                      <p style="font-size: 12px;">Eixo X = Hora de captura</p>
-                      <p style="font-size: 12px;">Eixo Y = Quantidade</p>
+              <span style="margin-bottom: 2px;" id="redeVerde"><img class="bola" src="../assetsDashboard/Verde.svg"
+                  alt=""> rede</span>
+              <span style="margin-bottom: 2px;" id="redeAmarelo"><img class="bola" src="../assetsDashboard/Amarelo.svg"
+                  alt="">rede</span>
+              <span style="margin-bottom: 2px;" id="redeVermelho"><img class="bola"
+                  src="../assetsDashboard/Vermelho.svg" alt="">rede<span>
+                  <p style="font-size: 12px;">Eixo X = Hora de captura</p>
+                  <p style="font-size: 12px;">Eixo Y = Quantidade</p>
             </div>
           </div>
         </div>
@@ -184,21 +192,21 @@
   var discoWarning = sessionStorage.HD_WARNING;
 
   console.log(`ram danger (${ramDanger}) , ram warning (${ramWarning}) , cpu danger(${cpuDanger}) , cpu warning (${cpuWarning}) , rede danger (${redeDanger}) , rede warning (${redeWarning}) , disco danger (${discoDanger}) , disco warning (${discoWarning})`);
-  
+
   armazenamentoVerde.innerHTML = `<img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Normal até ${discoWarning - 1}%`;
   armazenamentoAmarelo.innerHTML = `<img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Alerta a partir de ${discoWarning}%`;
   armazenamentoVermelho.innerHTML = `<img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> Risco a partir de ${discoDanger}%`;
 
-  ramVerde.innerHTML = `<img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Normal até ${ramWarning-1}%`; 
-  ramAmarelo.innerHTML = `<img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Alerta a partir de ${ramWarning}%`; 
-  ramVermelho.innerHTML = `<img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> Risco a partir de ${ramDanger}%`; 
+  ramVerde.innerHTML = `<img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Normal até ${ramWarning - 1}%`;
+  ramAmarelo.innerHTML = `<img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Alerta a partir de ${ramWarning}%`;
+  ramVermelho.innerHTML = `<img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> Risco a partir de ${ramDanger}%`;
 
 
   cpuVerde.innerHTML = `<img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Normal até ${cpuWarning}%`;
   cpuAmarelo.innerHTML = `<img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Alerta a partir de ${cpuWarning}%`;
   cpuVermelho.innerHTML = `<img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> Alerta a partir de ${cpuDanger}%`;
 
-  redeVerde.innerHTML = `<img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Normal até ${redeWarning -1} Gigabytes`
+  redeVerde.innerHTML = `<img class="bola" src="../assetsDashboard/Verde.svg" alt=""> Normal até ${redeWarning - 1} Gigabytes`
   redeAmarelo.innerHTML = `<img class="bola" src="../assetsDashboard/Amarelo.svg" alt=""> Alertar a partir de ${redeWarning} Gigabytes`
   redeVermelho.innerHTML = `<img class="bola" src="../assetsDashboard/Vermelho.svg" alt=""> Risco a partir de ${redeDanger} Gigabytes`
 
@@ -211,74 +219,89 @@
 
   function getMachineData() {
     fetch(`/metrica/getMachineData/${idMachine}`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
     }).then(function (resposta) {
-        if (resposta.ok) {
-            resposta.json().then(function (resposta) {
-                console.log(resposta[resposta.length - 1])
+      if (resposta.ok) {
+        resposta.json().then(function (resposta) {
+          console.log(resposta[resposta.length - 1])
 
-                for (let i = 0; i < resposta.length; i++) {
-                    var capturas = resposta[resposta.length - 1];
+          for (let i = 0; i < resposta.length; i++) {
+            var capturas = resposta[resposta.length - 1];
 
-                    if (capturas.discoUso >= discoDanger) {
-                        discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Vermelho.svg">`
-                    }
 
-                    if (capturas.discoUso >= discoWarning && capturas.discoUso < discoDanger) {
-                        discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
-                    }
+            if (capturas.discoUso >= discoDanger) {
+              discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Vermelho.svg">`
+              infosArma.innerHTML = `Referente aos dados coletados sobre seu armazenamento (${capturas.discoUso}% ocupado) recomendamos que faça um backup dentro do período de 1 dia`
+              diasArm.innerHTML = `1 dia`
 
-                    if (capturas.discoUso < discoWarning) {
-                        discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Verde.svg">`
-                    }
+            }
 
-                    if (capturas.processadorUso >= cpuDanger) {
-                        cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
-                    }
-                    if (capturas.processadorUso >= cpuWarning && capturas.processadorUso < cpuDanger) {
-                        cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
-                    }
-                    if (capturas.processadorUso < cpuWarning) {
-                        cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
-                    }
+            if (capturas.discoUso >= discoWarning && capturas.discoUso < discoDanger) {
+              discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
+              infosArma.innerHTML = `Referente aos dados coletados sobre seu armazenamento (${capturas.discoUso}% ocupado) recomendamos que faça um backup dentro do período de 8 dias`
+              diasArm.innerHTML = `8 dias`
 
-                    if (capturas.ramUso >= ramDanger) {
-                        ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
-                    }
-                    if (capturas.ramUso >= ramWarning && capturas.ramUso <ramDanger) {
-                        ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
-                    }
-                    if (capturas.ramUso < ramWarning) {
-                        ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
-                    }
+            }
 
-                    let bytesEnviadosGB = (capturas.bytesEnviados / (1024 ** 3)).toFixed(2);
+            if (capturas.discoUso < discoWarning) {
+              discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Verde.svg">`
+              infosArma.innerHTML = `Referente aos dados coletados sobre seu armazenamento (${capturas.discoUso}% ocupado) recomendamos que faça um backup dentro do período de 12 dias`
+              diasArm.innerHTML = `12 dias`
 
-                    // Comparando os dados de bytes enviados
-                    if (bytesEnviadosGB >= redeDanger) {
-                        redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
-                    } else if (bytesEnviadosGB >= redeWarning && bytesEnviadosGB < redeDanger) {
-                        redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
-                    } else {
-                        redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
-                    }
+            }
 
-                }
+            if (capturas.processadorUso >= cpuDanger) {
+              cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
+            }
+            if (capturas.processadorUso >= cpuWarning && capturas.processadorUso < cpuDanger) {
+              cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
+            }
+            if (capturas.processadorUso < cpuWarning) {
+              cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
+            }
 
-                armazenamento(resposta);
-                processador(resposta);
-                ram(resposta);
-                rede(resposta);
+            if (capturas.ramUso >= ramDanger) {
+              ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
+            }
+            if (capturas.ramUso >= ramWarning && capturas.ramUso < ramDanger) {
+              ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
+            }
+            if (capturas.ramUso < ramWarning) {
+              ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
+            }
 
-            });
-        } else {
-            console.error('Nenhum dado encontrado ou erro na API');
-        }
+            let bytesEnviadosGB = (capturas.bytesEnviados / (1024 ** 3)).toFixed(2);
+
+            // Comparando os dados de bytes enviados
+            if (bytesEnviadosGB >= redeDanger) {
+              redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
+              redeEnviado.innerHTML = `${bytesEnviadosGB} GB`
+            } else if (bytesEnviadosGB >= redeWarning && bytesEnviadosGB < redeDanger) {
+              redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
+              redeEnviado.innerHTML = `${bytesEnviadosGB} GB`
+
+            } else {
+              redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
+              redeEnviado.innerHTML = `${bytesEnviadosGB} GB`
+
+            }
+
+          }
+
+          armazenamento(resposta);
+          processador(resposta);
+          ram(resposta);
+          rede(resposta);
+
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
     })
-}
+  }
 
   function armazenamento(dados) {
 
@@ -375,26 +398,26 @@
     const dataBytesEnviados = dados.slice(-8).map(dado => (dado.bytesEnviados / (1024 ** 3)).toFixed(2));
 
     new Chart(ctx4, {
-        type: 'line',
-        data: {
-            labels: labels,
-            datasets: [
-                {
-                    label: 'GB enviados',
-                    data: dataBytesEnviados,
-                    borderWidth: 1,
-                    borderColor: 'rgba(75, 192, 192, 1)',
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: 'GB enviados',
+            data: dataBytesEnviados,
+            borderWidth: 1,
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         }
+      }
     });
-}
+  }
 
 </script>

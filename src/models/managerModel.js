@@ -27,9 +27,10 @@ function deletarAdmin(idVar) {
 }
 
 function revogarAdmin(idVar) {
-    var instrucaoSql = `UPDATE usuario SET isAdmin = false WHERE idUsuario = '${idVar}';`
+    var instrucaoSql = `UPDATE usuario SET isAdmin = 0 WHERE idUsuario = ${idVar};`;
     return database.executar(instrucaoSql);
 }
+
 
 function cadastrarAdmin(nome, email, senha, idEmpresa, isAdmin, cpf) {
 

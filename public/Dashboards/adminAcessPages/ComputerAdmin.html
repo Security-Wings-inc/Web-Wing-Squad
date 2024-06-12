@@ -51,9 +51,14 @@
 
 <script>
     const idEmpresa = sessionStorage.FK_EMPRESA;
-    const ramWarning = sessionStorage.RAM_WARNING;
-    const cpuWarning = sessionStorage.CPU_WARNING;
-    const redeWarning = sessionStorage.REDE_WARNIG;
+    var ramDanger = sessionStorage.RAM_DANGER;
+    var ramWarning = sessionStorage.RAM_WARNING;
+    var cpuDanger = sessionStorage.CPU_DANGER;
+    var cpuWarning = sessionStorage.CPU_WARNING;
+    var redeDanger = sessionStorage.REDE_DANGER;
+    var redeWarning = sessionStorage.REDE_WARNING;
+    var discoDanger = sessionStorage.HD_DANGER;
+    var discoWarning = sessionStorage.HD_WARNING;
 
     const bytesToGB = bytes => (bytes / (1024 * 1024 * 1024)).toFixed(2);
 
@@ -65,18 +70,20 @@
             if (response.ok) {
                 response.json().then(maquinas => {
                     maquinas.forEach(maquina => {
-                        const { idComputador, nomeUsuario, processadorModelo, processadorUso, ramUso, bytesEnviados } = maquina;
+                        const { idComputador, nomeUsuario, processadorModelo, processadorUso, ramUso, bytesEnviados, discoUso } = maquina;
                         const gbEnviados = bytesToGB(bytesEnviados);
-                        const redeStatus = gbEnviados > redeWarning ? "🔴" : gbEnviados == redeWarning ? "🟡" : "🟢";
-
+                        const redeStatus = gbEnviados >= redeDanger ? "🔴" : gbEnviados >= redeWarning && gbEnviados < redeDanger ? "🟡" : "🟢";
+                        console.log(maquina)
+                        console.log(discoUso)
                         listaMaquinas.innerHTML += `
                         <div class="tile" onclick="transporterIdToDash('${idComputador}')">
                             <img style="margin-right: 0px;" src="../assetsDashboard/PCGreen.svg" alt="">
                             <h2>Computador do ${nomeUsuario}</h2>
                             <p>Modelo do processador: ${processadorModelo}</p>
-                            <p id="cpuP">${processadorUso > cpuWarning ? "🔴" : processadorUso == cpuWarning ? "🟡" : "🟢"}Uso do processador: ${processadorUso}%</p>
-                            <p id="ramP">${ramUso > ramWarning ? "🔴" : ramUso == ramWarning ? "🟡" : "🟢"}Uso de memória RAM: ${ramUso}%</p>
+                            <p id="cpuP">${processadorUso >= cpuDanger ? "🔴" : processadorUso >= cpuWarning && processadorUso < cpuDanger ? "🟡" : "🟢"}Uso do processador: ${processadorUso}%</p>
+                            <p id="ramP">${ramUso >= ramDanger ? "🔴" : ramUso >= ramWarning && ramUso < ramDanger ? "🟡" : "🟢"}Uso de memória RAM: ${ramUso}%</p>
                             <p id="redeP">${redeStatus}taxa de GB de upload: ${gbEnviados} GB</p>
+                            <p>${discoUso >= discoDanger ? "🔴" : discoUso >= discoWarning && discoUso < discoDanger ? "🟡" : "🟢"} Uso de armazenamento: ${discoUso}</p>
                             
                         </div>`;
                     });

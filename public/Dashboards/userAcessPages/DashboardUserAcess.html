@@ -250,7 +250,7 @@ var idEmpresa =  sessionStorage.FK_EMPRESA;
                 for (let i = 0; i < resposta.length; i++) {
                     var capturas = resposta[resposta.length - 1];
 
-                    if (capturas.discoUso > discoWarning) {
+                    if (capturas.discoUso >= discoDanger) {
                         discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Vermelho.svg">`
                     }
 
@@ -262,7 +262,7 @@ var idEmpresa =  sessionStorage.FK_EMPRESA;
                         discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Verde.svg">`
                     }
 
-                    if (capturas.processadorUso > cpuWarning) {
+                    if (capturas.processadorUso >= cpuDanger) {
                         cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
                     }
                     if (capturas.processadorUso >= cpuWarning && capturas.processadorUso < cpuDanger) {
@@ -272,7 +272,7 @@ var idEmpresa =  sessionStorage.FK_EMPRESA;
                         cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
                     }
 
-                    if (capturas.ramUso > ramWarning) {
+                    if (capturas.ramUso >= ramDanger) {
                         ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
                     }
                     if (capturas.ramUso >= ramWarning && capturas.ramUso < ramDanger) {
@@ -285,7 +285,7 @@ var idEmpresa =  sessionStorage.FK_EMPRESA;
                     let bytesEnviadosGB = (capturas.bytesEnviados / (1024 ** 3)).toFixed(2);
 
                     // Comparando os dados de bytes enviados
-                    if (bytesEnviadosGB > redeWarning) {
+                    if (bytesEnviadosGB >= redeDanger) {
                         redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
                     } else if (bytesEnviadosGB >= redeWarning && bytesEnviadosGB < redeDanger) {
                         redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`

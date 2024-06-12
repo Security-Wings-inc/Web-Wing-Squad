@@ -12,12 +12,12 @@ var sql = require('mssql');
 
 
 // CONEXÃO DO MYSQL DEV EDUARDO MELO(BACK-END)
-var mySqlConfig = {
-    host: "localhost",
-    database: "securityWings",
-    user: "root",
-    password: "1033",  
-};
+// var mySqlConfig = {
+//     host: "localhost",
+//     database: "securityWings",
+//     user: "root",
+//     password: "1033",  
+// };
 
 
 
@@ -39,16 +39,16 @@ var mySqlConfig = {
 // };
 
 /// conexão com o banco SQL 
-// var sqlServerConfig = {
-//     user: 'sa',
-//     password: 'Urubu.100',
-//     server: '52.20.245.218', // endereço do servidor SQL
-//     database: 'securityWings',
-//     options: {
-//         encrypt: true, // Use true se você estiver conectando ao Azure SQL
-//         trustServerCertificate: true // Use true se você estiver conectando a um servidor local e precisar confiar no certificado
-//     }
-// };
+var sqlServerConfig = {
+    user: 'sa',
+    password: 'Urubu.100',
+    server: '52.20.245.218', // endereço do servidor SQL
+    database: 'securityWings',
+    options: {
+        encrypt: true, // Use true se você estiver conectando ao Azure SQL
+        trustServerCertificate: true // Use true se você estiver conectando a um servidor local e precisar confiar no certificado
+    }
+};
 
 
 //  ATENÇÃO ATENÇÃO ATENÇÃO !!!!!!!!!!altere pra senha do mysql da sua maquina //

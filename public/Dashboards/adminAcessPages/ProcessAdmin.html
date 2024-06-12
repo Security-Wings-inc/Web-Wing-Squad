@@ -167,11 +167,11 @@
                     const checkbox = `<input type="checkbox" id="checkIpt_${processo.idProcesso}" ${isChecked ? 'checked' : ''} onclick="insertToDataBase('${processo.idProcesso}')">`;
 
                     if (processo.categoria_do_processo === "navegador") {
-                        navegation.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p><img class="lixo" onclick = "ocult('${idEmpresaVar}','${processo.idProcesso}')"src="../assetsDashboard/Lixeira.svg" alt=""></div>`;
+                        navegation.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p></div>`;
                     } else if (processo.categoria_do_processo === "utils") {
-                        utils.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p><img class="lixo" onclick = "ocult('${idEmpresaVar}','${processo.idProcesso}')"src="../assetsDashboard/Lixeira.svg" alt=""></div>`;
+                        utils.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p></div>`;
                     } else if (processo.categoria_do_processo === "outros") {
-                        others.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p><img class="lixo" onclick = "ocult('${idEmpresaVar}','${processo.idProcesso}')"src="../assetsDashboard/Lixeira.svg" alt=""></div>`;
+                        others.innerHTML += `<div class="process">${checkbox}<p>${processo.nomeAmigavel}</p></div>`;
                     }
 
                 }   

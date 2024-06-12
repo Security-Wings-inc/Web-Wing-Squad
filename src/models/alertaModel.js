@@ -2,75 +2,71 @@ const database = require("../database/config");
 
 function paramsRam(idEmpresa, warning, danger) {
     const instrucao = `
-        INSERT INTO parametrosDeAlerta (ramWarning, ramDanger, idEmpresa) 
-        SELECT '${warning}', '${danger}', '${idEmpresa}' 
-        FROM dual
-        WHERE NOT EXISTS (SELECT * FROM parametrosDeAlerta WHERE idEmpresa = '${idEmpresa}')
-        UNION ALL
-        SELECT '${warning}', '${danger}', '${idEmpresa}'
-        FROM parametrosDeAlerta
-        WHERE idEmpresa = '${idEmpresa}'
-        ON DUPLICATE KEY UPDATE 
-        ramWarning = VALUES(ramWarning), 
-        ramDanger = VALUES(ramDanger);`;
+        MERGE INTO parametrosDeAlerta AS target
+        USING (SELECT '${idEmpresa}' AS idEmpresa, '${warning}' AS ramWarning, '${danger}' AS ramDanger) AS source
+        ON target.idEmpresa = source.idEmpresa
+        WHEN MATCHED THEN
+            UPDATE SET ramWarning = source.ramWarning, ramDanger = source.ramDanger
+        WHEN NOT MATCHED THEN
+            INSERT (idEmpresa, ramWarning, ramDanger)
+            VALUES (source.idEmpresa, source.ramWarning, source.ramDanger);`;
+
     return database.executar(instrucao).then(() => {
         console.log(instrucao);
     });
 }
+
 
 function paramsProcessador(idEmpresa, warning, danger) {
     const instrucao = `
-        INSERT INTO parametrosDeAlerta (processadorWarning, processadorDanger, idEmpresa) 
-        SELECT '${warning}', '${danger}', '${idEmpresa}' 
-        FROM dual
-        WHERE NOT EXISTS (SELECT * FROM parametrosDeAlerta WHERE idEmpresa = '${idEmpresa}')
-        UNION ALL
-        SELECT '${warning}', '${danger}', '${idEmpresa}'
-        FROM parametrosDeAlerta
-        WHERE idEmpresa = '${idEmpresa}'
-        ON DUPLICATE KEY UPDATE 
-        processadorWarning = VALUES(processadorWarning), 
-        processadorDanger = VALUES(processadorDanger);`;
+        MERGE INTO parametrosDeAlerta AS target
+        USING (SELECT '${idEmpresa}' AS idEmpresa, '${warning}' AS processadorWarning, '${danger}' AS processadorDanger) AS source
+        ON target.idEmpresa = source.idEmpresa
+        WHEN MATCHED THEN
+            UPDATE SET processadorWarning = source.processadorWarning, processadorDanger = source.processadorDanger
+        WHEN NOT MATCHED THEN
+            INSERT (idEmpresa, processadorWarning, processadorDanger)
+            VALUES (source.idEmpresa, source.processadorWarning, source.processadorDanger);`;
+
     return database.executar(instrucao).then(() => {
         console.log(instrucao);
     });
 }
+
 
 function paramsRede(idEmpresa, warning, danger) {
     const instrucao = `
-        INSERT INTO parametrosDeAlerta (internetWarning, internetDanger, idEmpresa) 
-        SELECT '${warning}', '${danger}', '${idEmpresa}' 
-        FROM dual
-        WHERE NOT EXISTS (SELECT * FROM parametrosDeAlerta WHERE idEmpresa = '${idEmpresa}')
-        UNION ALL
-        SELECT '${warning}', '${danger}', '${idEmpresa}'
-        FROM parametrosDeAlerta
-        WHERE idEmpresa = '${idEmpresa}'
-        ON DUPLICATE KEY UPDATE 
-        internetWarning = VALUES(internetWarning), 
-        internetDanger = VALUES(internetDanger);`;
+        MERGE INTO parametrosDeAlerta AS target
+        USING (SELECT '${idEmpresa}' AS idEmpresa, '${warning}' AS internetWarning, '${danger}' AS internetDanger) AS source
+        ON target.idEmpresa = source.idEmpresa
+        WHEN MATCHED THEN
+            UPDATE SET internetWarning = source.internetWarning, internetDanger = source.internetDanger
+        WHEN NOT MATCHED THEN
+            INSERT (idEmpresa, internetWarning, internetDanger)
+            VALUES (source.idEmpresa, source.internetWarning, source.internetDanger);`;
+
     return database.executar(instrucao).then(() => {
         console.log(instrucao);
     });
 }
 
+
 function paramsDisco(idEmpresa, warning, danger) {
     const instrucao = `
-        INSERT INTO parametrosDeAlerta (discoWarning, discoDanger, idEmpresa) 
-        SELECT '${warning}', '${danger}', '${idEmpresa}' 
-        FROM dual
-        WHERE NOT EXISTS (SELECT * FROM parametrosDeAlerta WHERE idEmpresa = '${idEmpresa}')
-        UNION ALL
-        SELECT '${warning}', '${danger}', '${idEmpresa}'
-        FROM parametrosDeAlerta
-        WHERE idEmpresa = '${idEmpresa}'
-        ON DUPLICATE KEY UPDATE 
-        discoWarning = VALUES(discoWarning), 
-        discoDanger = VALUES(discoDanger);`;
+        MERGE INTO parametrosDeAlerta AS target
+        USING (SELECT '${idEmpresa}' AS idEmpresa, '${warning}' AS discoWarning, '${danger}' AS discoDanger) AS source
+        ON target.idEmpresa = source.idEmpresa
+        WHEN MATCHED THEN
+            UPDATE SET discoWarning = source.discoWarning, discoDanger = source.discoDanger
+        WHEN NOT MATCHED THEN
+            INSERT (idEmpresa, discoWarning, discoDanger)
+            VALUES (source.idEmpresa, source.discoWarning, source.discoDanger);`;
+
     return database.executar(instrucao).then(() => {
         console.log(instrucao);
     });
 }
+
 
 function getAllparams(idEmpresa) {
     const instrucao = `SELECT * FROM parametrosDeAlerta WHERE idEmpresa = '${idEmpresa}'`;

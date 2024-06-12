@@ -259,8 +259,11 @@
         });
 
         if (empresasFiltradas.length === 0) {
-            listaEmpresasPesquisadas.innerHTML += `   
-           empresa não encontrada`;
+            listaEmpresasPesquisadas.innerHTML += `  
+            <div class="naoEncontrada">
+                        <img style="width: 80px;" src="../assetsDashboard/Emoji.svg" alt="">
+                        <p style="font-size: 30px;" >Não encontramos nenhum resultado!</p>
+                    </div>`;
         }
     }
 

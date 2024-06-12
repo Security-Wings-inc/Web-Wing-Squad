@@ -76,7 +76,8 @@
                             <p>Modelo do processador: ${processadorModelo}</p>
                             <p id="cpuP">${processadorUso > cpuWarning ? "🔴" : processadorUso == cpuWarning ? "🟡" : "🟢"}Uso do processador: ${processadorUso}%</p>
                             <p id="ramP">${ramUso > ramWarning ? "🔴" : ramUso == ramWarning ? "🟡" : "🟢"}Uso de memória RAM: ${ramUso}%</p>
-                            <p id="redeP">${redeStatus}taxa de bits de upload: ${gbEnviados} GB</p>
+                            <p id="redeP">${redeStatus}taxa de GB de upload: ${gbEnviados} GB</p>
+                            
                         </div>`;
                     });
                 });

@@ -8,11 +8,14 @@ function listarEmpresa() {
 }
 
 
-
 function listarAdmin(idEmpresa) {
-    var instrucaoSql = `SELECT idUsuario, nome,cpf,email,isAdmin FROM usuario WHERE fkEmpresa = '${idEmpresa}' AND isAdmin = true;`
-    return database.executar(instrucaoSql);
+    var instrucaoSql = `
+        SELECT idUsuario, nome, cpf, email, isAdmin 
+        FROM usuario 
+        WHERE fkEmpresa = ${idEmpresa} AND isAdmin = 1;
+    `;
 
+    return database.executar(instrucaoSql, { idEmpresa: idEmpresa });
 }
 
 

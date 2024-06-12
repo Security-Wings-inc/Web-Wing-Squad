@@ -212,7 +212,7 @@ var idEmpresa =  sessionStorage.FK_EMPRESA;
 
   setTimeout(() => {
     window.location.reload()
-  }, 3000);
+  }, 5000);
 
 
   function findMachineId(){
@@ -254,7 +254,7 @@ var idEmpresa =  sessionStorage.FK_EMPRESA;
                         discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Vermelho.svg">`
                     }
 
-                    if (capturas.discoUso == discoWarning) {
+                    if (capturas.discoUso >= discoWarning && capturas.discoUso < discoDanger) {
                         discoH2.innerHTML = `Armazenamento <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
                     }
 
@@ -265,7 +265,7 @@ var idEmpresa =  sessionStorage.FK_EMPRESA;
                     if (capturas.processadorUso > cpuWarning) {
                         cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
                     }
-                    if (capturas.processadorUso == cpuWarning) {
+                    if (capturas.processadorUso >= cpuWarning && capturas.processadorUso < cpuDanger) {
                         cpuH2.innerHTML = `Utilização do processador <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
                     }
                     if (capturas.processadorUso < cpuWarning) {
@@ -275,7 +275,7 @@ var idEmpresa =  sessionStorage.FK_EMPRESA;
                     if (capturas.ramUso > ramWarning) {
                         ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
                     }
-                    if (capturas.ramUso == ramWarning) {
+                    if (capturas.ramUso >= ramWarning && capturas.ramUso < ramDanger) {
                         ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
                     }
                     if (capturas.ramUso < ramWarning) {
@@ -287,7 +287,7 @@ var idEmpresa =  sessionStorage.FK_EMPRESA;
                     // Comparando os dados de bytes enviados
                     if (bytesEnviadosGB > redeWarning) {
                         redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Vermelho.svg" alt="">`
-                    } else if (bytesEnviadosGB == redeWarning) {
+                    } else if (bytesEnviadosGB >= redeWarning && bytesEnviadosGB < redeDanger) {
                         redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Amarelo.svg" alt="">`
                     } else {
                         redeH2.innerHTML = `Status de Rede <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`

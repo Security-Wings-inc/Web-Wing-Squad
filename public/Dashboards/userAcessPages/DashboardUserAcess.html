@@ -291,7 +291,7 @@ var idEmpresa =  sessionStorage.FK_EMPRESA;
               ramH2.innerHTML = `Uso de Ram <img width="15px" src="../assetsDashboard/Verde.svg" alt="">`
             }
 
-            let bytesEnviadosGB = (capturas.bytesEnviados / (1024 ** 3)).toFixed(2);
+            let bytesEnviadosGB = (capturas.bytesEnviados / (1024 ** 3));
 
             // Comparando os dados de bytes enviados
             if (bytesEnviadosGB >= redeDanger) {
@@ -413,8 +413,7 @@ var idEmpresa =  sessionStorage.FK_EMPRESA;
   function rede(dados) {
     const ctx4 = document.getElementById('myChart4');
     const labels = dados.slice(-8).map(dado => dado.dataCaptura);
-    const dataBytesRecebidos = dados.slice(-8).map(dado => (dado.bytesRecebidos / (1024 ** 3)).toFixed(2));
-    const dataBytesEnviados = dados.slice(-8).map(dado => (dado.bytesEnviados / (1024 ** 3)).toFixed(2));
+    const dataBytesEnviados = dados.slice(-8).map(dado => (dado.bytesEnviados / (1024 ** 3)));
 
     new Chart(ctx4, {
         type: 'line',

@@ -6,26 +6,28 @@ function autenticar(email, senha) {
     return database.executar(instrucao);
 }
 
-function cadastrar(nomeEmpresa, cnpj, telefone, cidade, bairro, uf, rua, cep, comp) {
-    var instrucao = `INSERT INTO Empresa (nome, cnpj, telefone) VALUES ('${nomeEmpresa}', '${cnpj}', '${telefone}');`;
+async function cadastrar(nomeEmpresa, cnpj, telefone, cidade, bairro, uf, rua, cep, comp) {
+    try {
+        // Inserir na tabela Empresa
+        const queryEmpresa = `INSERT INTO Empresa (nome, cnpj, telefone) VALUES ('${nomeEmpresa}', '${cnpj}', '${telefone}')`;
+        console.log("Executando a instrução SQL: \n" + queryEmpresa);
+        await database.executar(queryEmpresa);
 
-    console.log("Executando a instrução SQL: \n" + instrucao);
+        // Obter o ID da empresa inserida
+        const resultado = await database.executar(`SELECT SCOPE_IDENTITY() AS id`);
+        const idEmpresaInserida = resultado[0].id;
 
-    return database.executar(instrucao)
-        .then(resultado => {
-            if (resultado.affectedRows > 0) {
-                var idEmpresaInserida = resultado.insertId;
+        // Inserir na tabela Endereco
+        const queryEndereco = `INSERT INTO Endereco (cidade, bairro, uf, rua, cep, complemento, fkEmpresa) VALUES ('${cidade}', '${bairro}', '${uf}', '${rua}', '${cep}', '${comp}', ${idEmpresaInserida})`;
+        console.log("Executando a instrução SQL do Endereço: \n" + queryEndereco);
+        await database.executar(queryEndereco);
 
-                var instrucaoEndereco = `INSERT INTO Endereco (cidade, bairro, uf, rua, cep, complemento, fkEmpresa) VALUES ('${cidade}', '${bairro}', '${uf}', '${rua}', '${cep}', '${comp}', ${idEmpresaInserida});`;
-
-                console.log("Executando a instrução SQL do Endereço: \n" + instrucaoEndereco);
-
-                return database.executar(instrucaoEndereco);
-            } else {
-                throw new Error("Não foi possível inserir a empresa.");
-            }
-        });
+        console.log("Empresa e endereço cadastrados com sucesso.");
+    } catch (error) {
+        console.error("Erro ao cadastrar a empresa: ", error);
+    }
 }
+
 
 
 

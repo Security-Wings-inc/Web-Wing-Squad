@@ -1,21 +1,21 @@
 var database = require("../database/config")
 
-function findMachineId(fkEmpresa, fkUsuario) {
+const sql = require('mssql');
 
-
-    var instrucao = `SELECT idComputador from ComputadorEspec WHERE fkEmpresa = '${fkEmpresa}' and fkUsuario = '${fkUsuario}'; `;
-
+async function findMachineId(fkEmpresa, fkUsuario) {
+    const instrucao = `SELECT idComputador FROM ComputadorEspec WHERE fkEmpresa = '${fkEmpresa}' AND fkUsuario = '${fkUsuario}';`;
+    
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
-function getMachineData(idMachine) {
-    var instrucao = `SELECT * FROM Monitoramento WHERE fkComputador = '${idMachine}' ORDER BY idMonitoramento;`
+async function getMachineData(idMachine) {
+    const instrucao = `SELECT * FROM Monitoramento WHERE fkComputador = '${idMachine}' ORDER BY idMonitoramento;`;
     return database.executar(instrucao);
 }
 
-function getAllMachinesByIdEmpresa(idEmpresa) {
-    var instrucao = `SELECT CE.idComputador, CE.processadorModelo, CE.processadorNucleosFisicos, CE.processadorNucleosLógicos,
+async function getAllMachinesByIdEmpresa(idEmpresa) {
+    const instrucao = `SELECT CE.idComputador, CE.processadorModelo, CE.processadorNucleosFisicos, CE.processadorNucleosLogicos,
        CE.processadorFrequencia, CE.discoTotal, CE.ramTotal,
        M.processadorUso, M.ramUso, M.discoUso, M.bytesEnviados, M.dataCaptura,
        PA.ramWarning, PA.ramDanger, PA.processadorWarning, PA.processadorDanger,
@@ -31,23 +31,13 @@ JOIN Monitoramento M ON ultimaMonitoramento.fkComputador = M.fkComputador
                       AND ultimaMonitoramento.ultimaCaptura = M.dataCaptura
 LEFT JOIN parametrosDeAlerta PA ON CE.fkEmpresa = PA.idEmpresa
 JOIN usuario U ON CE.fkUsuario = U.idUsuario
-WHERE CE.fkEmpresa = '${idEmpresa}';
-;
-    `
+WHERE CE.fkEmpresa = '${idEmpresa}';`;
+
     return database.executar(instrucao);
-
 }
-
-
-
-
-
-
 
 module.exports = {
     findMachineId,
     getMachineData,
-    getAllMachinesByIdEmpresa,
-
-
+    getAllMachinesByIdEmpresa
 };

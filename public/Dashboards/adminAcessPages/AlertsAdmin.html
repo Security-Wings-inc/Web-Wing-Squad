@@ -359,16 +359,9 @@
           sessionStorage.HD_DANGER = json.discoDanger;
           sessionStorage.HD_WARNING = json.discoWarning;
 
-  var ramDanger = sessionStorage.RAM_DANGER;
-  var ramWarning = sessionStorage.RAM_WARNING;
-  var cpuDanger = sessionStorage.CPU_DANGER;
-  var cpuWarning = sessionStorage.CPU_WARNING;
-  var redeDanger = sessionStorage.REDE_DANGER;
-  var redeWarning = sessionStorage.REDE_WARNIG;
-  var discoDanger = sessionStorage.HD_DANGER;
-  var discoWarning = sessionStorage.HD_WARNING;
+          var redeAlerta = sessionStorage.REDE_WARNING;
+          console.log(redeAlerta);
 
-  console.log(`ram danger (${ramDanger}) , ram warning (${ramWarning}) , cpu danger(${cpuDanger}) , cpu warning (${cpuWarning}) , rede danger (${redeDanger}) , rede warning (${redeWarning}) , disco danger (${discoDanger}) , disco warning (${discoWarning})`);
         })
       }
     }).catch((erro) => {
